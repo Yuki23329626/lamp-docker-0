@@ -32,7 +32,7 @@ You can change your setting in the docker-compose.yml
 
 ## ssl
 It is default using the https protocol  
-If you don't want https, you can modify the config file in the ./apache/conf/  
+If you don't want https, you can modify the config file in the ./apache/conf/apache2.conf  
 
 ## build
 
