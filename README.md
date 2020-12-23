@@ -89,11 +89,13 @@ sh stop.sh
 
 
 ## Important Notes  
-一、apache 2.2 跟 apache 2.4 的設定檔撰寫方式不太一樣  
-1. 2.4 設定檔案都在 /etc/apache2/  
-2. http host 的設定檔在 /etc/apache2/sites-available/000-default.conf  
-3. https host 可以寫在 /etc/apache2/apache2.conf 上  
-4. 如果需要使用目錄檢視的方式的話，需要在 host 設定裡的 <directory> 加上一些設定  
+一、There are several difference between apache 2.2 and apache 2.4  
+1. The config files are move into /etc/apache2/ in apache 2.4  
+2. The config file of http host is /etc/apache2/sites-available/000-default.conf  
+3. You can edit /etc/apache2/apache2.conf to enable https service  
+4. If you want to view your directories in index form in /var/www/html on the web page,  
+you need to add some setting in the block of <directory> in ./apache/conf/apache2.conf  
+	
 ```
 LoadModule ssl_module /usr/lib/apache2/modules/mod_ssl.so
 #Listen 80
