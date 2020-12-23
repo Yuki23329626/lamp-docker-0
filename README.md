@@ -1,7 +1,7 @@
 # wamp-docker
 WAMP in the docker containers. Useful in testing a website.
 
-## 重要  
+## 重要筆記  
 一、apache 2.2 跟 apache 2.4 的設定檔撰寫方式不太一樣  
 1. 2.4 設定檔案都在 /etc/apache2/  
 2. http host 的設定檔在 /etc/apache2/sites-available/000-default.conf  
