@@ -28,9 +28,6 @@ services:
       - wampnet
 ```
   
-In my case, if an user want to get my web page on the internet,  
-it needs to send http://myWebsiteDomainName:9021 to get the correspoing resources from my container  
-  
 You can change your setting in the docker-compose.yml
 
 ## ssl
