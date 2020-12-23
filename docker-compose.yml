@@ -6,8 +6,8 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    #volumes:
-      #- ./apache/data:/usr/local/apache2/htdocs:rw
+    volumes:
+      - ./apache/data:/var/www/html:rw
     networks:
       - test
 
