@@ -28,9 +28,9 @@ services:
     networks:
       - lampnet
 ```
+You can change your setting in the ./docker-compose.yml  
+
 If it doesn't work, you should check your firewall setting in you physical environment.  
-  
-You can change your setting in the ./docker-compose.yml
 
 ## SSL/TLS Setting
 This project is default turn on the https service  
