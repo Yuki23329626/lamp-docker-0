@@ -2,7 +2,7 @@
   $server = "mariadb";         # MySQL/MariaDB 伺服器
   $dbuser = "root";       # 使用者帳號
   $dbpassword = $_ENV["MYSQL_ROOT_PASSWORD"]; # 使用者密碼
-  $dbname = "mariadb";    # 資料庫名稱
+  $dbname = "pi_parking_monitor";    # 資料庫名稱
   
 
   // 面向過程
@@ -13,16 +13,18 @@
       return;
   }
   else{
-    echo "Successfully connect to MySql: ".mysqli_connect_error();
+    echo "Successfully connect to MySql";
   }
 
-  $res = mysqli_query($mysqli,"select '*' as _msg from parking_space");
+  $res = mysqli_query($mysqli,"select * as _msg from parking_space");
   $row = mysqli_fetch_assoc($res);
   echo $row["_msg"]."<br>";
   mysqli_close($mysqli);
 
+
+  $mysqli03 = mysqli_connect($server, $dbuser, $dbpassword, $dbname);
   # 查詢資料
-  $select_result = $mysqli03->query("select '*' from parking_space");
+  $select_result = $mysqli03->query("select * from parking_space");
   print_r($select_result);
   echo "<br>";
 
@@ -35,7 +37,7 @@
 
       foreach($rows as $key=>$value)
       {
-          echo "$key:$value ";
+          echo "$key: $value, ";
       }
       echo "<br>";
   }
@@ -46,7 +48,7 @@
 
   while( $row=$select_result->fetch_assoc())
   {
-      echo " camera_id= ".$row["camera_id"]." lisence_plate=".$row["lisence_plate"];
+      echo " camera_id: ".$row["camera_id"].", lisence_plate: ".$row["lisence_plate"];
       echo "<br>";
   }
   echo "<br>";

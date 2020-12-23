@@ -1,4 +1,4 @@
--- 初始化 mariadb database 使用的 sql
+-- these sqls are used to initialize database and table
 
 DROP DATABASE IF EXISTS `pi_parking_monitor`;
 CREATE DATABASE `pi_parking_monitor` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;

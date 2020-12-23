@@ -12,6 +12,7 @@ docker exec -it $container_id /bin/bash
 ```
 3. 進入 mariadb 的 cli 介面  
 ```bash
+# 使用 root 帳號登入
 mysql --local-infile -u root -p 'openid' --default-character-set=utf8mb4
 # 之後要輸入密碼
 ```
