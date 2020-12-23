@@ -12,4 +12,11 @@ CREATE TABLE `parking_space` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `parking_space` (`camera_id`, `lisence_plate`) VALUES
-(0001,	'');
+(1,	'ABC1234'),
+(2,	'ASD7365'),
+(3,	'FJO4877'),
+(4,	'DBL2846'),
+(5,	'DIH8493'),
+(6,	'XOID384'),
+(7,	'MXN2093'),
+(8,	'VVE9987');
