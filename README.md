@@ -59,7 +59,7 @@ Listen 443
 
 ## Build up the containers  
 
-build the image of Apache + Mariadb(+Adminer) by docker-compose  
+Build the image of Apache + Mariadb(+Adminer) by docker-compose  
 
 ```bash
 sh build.sh
@@ -67,13 +67,13 @@ sh build.sh
 
 ## Attach to container's bash  
 
-get into your apache container  
+Get into your apache container  
 
 ```bash
 sh attach.sh
 ```
 
-if you want to exit the container, just type "exit" in bash  
+If you want to exit the container, just type "exit" in bash  
 
 ```bash
 exit
@@ -81,14 +81,14 @@ exit
 
 ## Stop the containers  
 
-stop all your docker containers  
+Stop all your docker containers  
 
 ```bash
 sh stop.sh
 ```
 
 
-## 重要筆記  
+## Important Notes  
 一、apache 2.2 跟 apache 2.4 的設定檔撰寫方式不太一樣  
 1. 2.4 設定檔案都在 /etc/apache2/  
 2. http host 的設定檔在 /etc/apache2/sites-available/000-default.conf  
