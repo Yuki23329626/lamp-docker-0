@@ -2,6 +2,7 @@ FROM php:7.3.25-apache-stretch
 
 RUN apt-get update -y
 RUN apt-get install -y vim
+#RUN apt-get install -y php7.3-mysqlnd
 #RUN mkdir /etc/apache2/ssl
 
 COPY ./conf/.vimrc /root/

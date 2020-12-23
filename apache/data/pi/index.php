@@ -1,7 +1,7 @@
 <?php
 $server = "mariadb";         # MySQL/MariaDB 伺服器
 $dbuser = "root";       # 使用者帳號
-$dbpassword = $_ENV["USER"]; # 使用者密碼
+$dbpassword = $_ENV["MYSQL_ROOT_PASSWORD"]; # 使用者密碼
 $dbname = "mariadb";    # 資料庫名稱
 
 # 連接 MySQL/MariaDB 資料庫

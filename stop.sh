@@ -5,11 +5,17 @@
 # 2020/12/23	nxshen	First release
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 
-container_id=`docker ps | grep wamp-docker_apache | cut -c1-12`
+container_id_1=`docker ps | grep wamp-docker_apache | cut -c1-12`
+container_id_2=`docker ps | grep wamp-docker_mariadb | cut -c1-12`
+container_id_3=`docker ps | grep wamp-docker_adminer | cut -c1-12`
 
-echo "stopping container: apache"
-echo "container_id = ${container_id}"
+echo "stopping containers..."
+echo "container_id_1 = ${container_id_1}"
+echo "container_id_2 = ${container_id_2}"
+echo "container_id_3 = ${container_id_3}"
 
-docker stop $container_id
+docker stop $container_id_1
+docker stop $container_id_2
+docker stop $container_id_3
 
 exit 0
