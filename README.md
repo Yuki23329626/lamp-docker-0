@@ -31,6 +31,28 @@ If it doesn't work, you should check your firewall setting in you physical envir
   
 You can change your setting in the ./docker-compose.yml
 
+```xml
+# comment the following lines if you don't want to use ssl/tls
+LoadModule ssl_module /usr/lib/apache2/modules/mod_ssl.so
+
+#Listen 80
+Listen 443
+<VirtualHost *:443>
+	ServerName michael7105.csie.io
+	DocumentRoot /var/www/html
+	SSLEngine on
+	<Directory /var/www/html/>
+		Options Indexes FollowSymLinks
+        	AllowOverride None
+		Require all granted
+    	</Directory>
+	SSLCertificateFile "/etc/apache2/ssl/certificate.crt"
+	SSLCertificateKeyFile "/etc/apache2/ssl/private.key"
+	SSLCACertificateFile "/etc/apache2/ssl/ca_bundle.crt"
+</VirtualHost>
+# comment the above lines if you don't want to use ssl/tls
+```
+
 ## ssl
 It is default using the https protocol  
 If you don't want https, you can modify the config file in the ./apache/conf/apache2.conf  
