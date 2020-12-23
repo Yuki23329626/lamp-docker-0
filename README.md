@@ -94,7 +94,7 @@ sh stop.sh
 2. The config file of http host is /etc/apache2/sites-available/000-default.conf  
 3. You can edit /etc/apache2/apache2.conf to enable https service  
 4. If you want to view your directories in index form in /var/www/html on the web page,  
-you need to add some setting in the block of <directory> in ./apache/conf/apache2.conf  
+you need to add some setting in the block of \<directory\> in ./apache/conf/apache2.conf  
 	
 ```
 LoadModule ssl_module /usr/lib/apache2/modules/mod_ssl.so
