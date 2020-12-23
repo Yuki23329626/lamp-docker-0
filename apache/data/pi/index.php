@@ -5,7 +5,7 @@
   $dbname = "pi_parking_monitor";             # 資料庫名稱
   
 
-  // 面向過程
+  // connection
   $mysqli = mysqli_connect($server, $dbuser, $dbpassword, $dbname);
 
   if(mysqli_connect_errno($mysqli)){
