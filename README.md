@@ -27,8 +27,9 @@ services:
     networks:
       - wampnet
 ```
+If it doesn't work, you should check your firewall setting in you physical environment.  
   
-You can change your setting in the docker-compose.yml
+You can change your setting in the ./docker-compose.yml
 
 ## ssl
 It is default using the https protocol  
