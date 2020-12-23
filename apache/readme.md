@@ -1,7 +1,7 @@
 # Dockerfile
 
 It will pull Apache image from docker hub to build the container  
-you can choose which version of php-Apache http server you want by changing the tag  
+You can choose which version of php-Apache http server you want by changing the tag  
 
 For more information about tags please check [php - Docker Hub](https://hub.docker.com/_/php)  
 
