@@ -22,6 +22,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=pi_parking_monitor
+    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
     networks:
       - wampnet
 
