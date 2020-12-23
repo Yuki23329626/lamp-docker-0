@@ -7,6 +7,8 @@ services:
     ports:
       - 80:80
       - 443:443
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     volumes:
       - ./apache/data:/var/www/html:rw
     networks:
@@ -18,7 +20,8 @@ services:
     volumes:
       - ./mariadb/data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=pi_parking_monitor
     networks:
       - wampnet
 
