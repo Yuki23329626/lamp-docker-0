@@ -13,6 +13,6 @@ then
 fi
 
 echo "building container..."
-docker-compose up --build -d
+docker-compose up --build
 
 exit 0
