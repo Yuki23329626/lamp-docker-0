@@ -1,2 +1,2 @@
-# SSL 憑證存放的地方
-- 請將 SSL 相關檔案分別命名為 certificate.crt, private.key and ca_bundle.crt 存在這裡
+# This is the directory to place your CA certificates  
+CA files needs to be named as private.key, certificate.crt, and ca_bundle.crt respectively.  
