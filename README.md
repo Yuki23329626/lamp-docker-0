@@ -59,7 +59,7 @@ Listen 443
 
 ## Build up the containers  
 
-Build the image of Apache + Mariadb(+Adminer) by docker-compose  
+Build the image of Apache + Mariadb + Adminer by docker-compose  
 
 ```bash
 sh build.sh
