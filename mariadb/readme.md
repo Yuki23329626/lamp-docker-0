@@ -1,20 +1,20 @@
-# 重要 mysql 指令教學
+# Important command with MySQL
 
 
-1. 查詢密碼  
+1. Inquiring your password of mysql(in your physical environment)    
 ```bash
 echo $MYSQL_ROOT_PASSWORD
 ```
-2. 進入 mariadb 的 container bash  
+2. Attach to the bash of mariadb container  
 ```bash
 container_id=`docker ps | grep mariadb | cut -c1-12`
 docker exec -it $container_id /bin/bash
 ```
-3. 進入 mariadb 的 cli 介面  
+3. Get into command line interface of mariadb    
 ```bash
-# 使用 root 帳號登入
+# username is "root"
 mysql --local-infile -u root -p 'openid' --default-character-set=utf8mb4
-# 之後要輸入密碼
+# you will need to type your mysql root password later  
 ```
 
 
