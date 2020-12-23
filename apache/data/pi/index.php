@@ -1,8 +1,8 @@
 <?php
-  $server = "mariadb";         # MySQL/MariaDB 伺服器
+  $server = "mariadb";    # MySQL/MariaDB 伺服器
   $dbuser = "root";       # 使用者帳號
   $dbpassword = $_ENV["MYSQL_ROOT_PASSWORD"]; # 使用者密碼
-  $dbname = "pi_parking_monitor";    # 資料庫名稱
+  $dbname = "pi_parking_monitor";             # 資料庫名稱
   
 
   // 面向過程
@@ -19,12 +19,10 @@
   $res = mysqli_query($mysqli,"select * as _msg from parking_space");
   $row = mysqli_fetch_assoc($res);
   echo $row["_msg"]."<br>";
-  mysqli_close($mysqli);
 
-
-  $mysqli03 = mysqli_connect($server, $dbuser, $dbpassword, $dbname);
+  $mysqli = mysqli_connect($server, $dbuser, $dbpassword, $dbname);
   # 查詢資料
-  $select_result = $mysqli03->query("select * from parking_space");
+  $select_result = $mysqli->query("select * from parking_space");
   print_r($select_result);
   echo "<br>";
 
@@ -54,6 +52,6 @@
   echo "<br>";
 
   # 關閉連線
-  $mysqli03->close();
+  $mysqli->close();
     
 ?>
