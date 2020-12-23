@@ -25,7 +25,7 @@ services:
     volumes:
       - ./apache/data:/var/www/html:rw
     networks:
-      - wampnet
+      - lampnet
 ```
 If it doesn't work, you should check your firewall setting in you physical environment.  
   

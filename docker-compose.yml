@@ -12,7 +12,7 @@ services:
     volumes:
       - ./apache/data:/var/www/html:rw
     networks:
-      - wampnet
+      - lampnet
   
   mariadb:
     image: mariadb:10.4.6
@@ -24,7 +24,7 @@ services:
       - MYSQL_DATABASE=pi_parking_monitor
     command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
     networks:
-      - wampnet
+      - lampnet
 
   adminer:
     image: adminer:4
@@ -34,11 +34,11 @@ services:
     depends_on:
       - mariadb
     networks:
-      - wampnet
+      - lampnet
 
 volumes:
   homepage:
 
 networks:
-  wampnet:
+  lampnet:
     driver: bridge
