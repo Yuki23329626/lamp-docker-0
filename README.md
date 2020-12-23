@@ -39,7 +39,6 @@ If you don't want to use ssl/tls, you can modify the config file in the ./apache
 # comment the following lines if you don't want to use ssl/tls
 LoadModule ssl_module /usr/lib/apache2/modules/mod_ssl.so
 
-#Listen 80
 Listen 443
 <VirtualHost *:443>
 	ServerName michael7105.csie.io
