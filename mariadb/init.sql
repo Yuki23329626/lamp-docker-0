@@ -1,4 +1,4 @@
--- 初始化 mariadb database 使用的 sql
+-- these sqls are used to initialize database and table
 
 DROP DATABASE IF EXISTS `pi_parking_monitor`;
 CREATE DATABASE `pi_parking_monitor` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
@@ -12,4 +12,6 @@ CREATE TABLE `parking_space` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `parking_space` (`camera_id`, `lisence_plate`) VALUES
-(0001,	'');
+(1,	'TER9452'),
+(2,	'ADF9839'),
+(3,	'GBY7374');
