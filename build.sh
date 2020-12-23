@@ -13,6 +13,17 @@ then
 fi
 
 echo "building container..."
-docker-compose up --build
+docker-compose up --build -d
+
+SSL_crt=$(ls ./apache/ssl/ | grep certificate.crt)
+SSL_key=$(ls ./apache/ssl/ | grep private.key)
+SSL_ca=$(ls ./apache/ssl/ | grep ca_bundle.crt)
+
+if [ -z "$SSL_crt" ] || [ -z "$SSL_key" ]
+then 
+  echo "\nMissing certficate files, it may cause apache server build on failed
+If you want to disable the https service,
+please modify the configure file ./apache/conf/apache2.conf\n"
+fi
 
 exit 0
