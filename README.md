@@ -1,8 +1,6 @@
 # wamp-docker
 WAMP in the docker containers. Useful in testing a website.
-
-# Docker container for Apache web server
-Running Apache Server in docker container. Useful in testing a website.  
+ 
 ## Requirements
 Install following tools in your physical environment:  
 - [docker](https://docs.docker.com/get-docker/)
