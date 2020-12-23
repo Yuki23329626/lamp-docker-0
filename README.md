@@ -1,5 +1,5 @@
-# wamp-docker
-WAMP (php-Apache + mariadb + adminer) in the docker containers. Useful in testing a website.
+# lamp-docker
+LAMP (Linux + Apache + Mysql + PHP) in the docker containers. Useful in testing a website.
  
 ## Requirements
 Install following tools in your physical environment:  
