@@ -98,7 +98,7 @@ you need to add some setting in the block of \<Directory /var/www/html\> in ./ap
 	
 ```
 LoadModule ssl_module /usr/lib/apache2/modules/mod_ssl.so
-#Listen 80
+
 Listen 443
 <VirtualHost *:443>
 	ServerName michael7105.csie.io
