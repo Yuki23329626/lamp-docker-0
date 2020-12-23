@@ -1,5 +1,5 @@
 # wamp-docker
-WAMP in the docker containers. Useful in testing a website.
+WAMP (php-Apache + mariadb + adminer) in the docker containers. Useful in testing a website.
  
 ## Requirements
 Install following tools in your physical environment:  
@@ -31,6 +31,10 @@ If it doesn't work, you should check your firewall setting in you physical envir
   
 You can change your setting in the ./docker-compose.yml
 
+## ssl
+This project is default turn on the https service  
+If you don't want to use ssl/tls, you can modify the config file in the ./apache/conf/apache2.conf  
+
 ```xml
 # comment the following lines if you don't want to use ssl/tls
 LoadModule ssl_module /usr/lib/apache2/modules/mod_ssl.so
@@ -52,10 +56,6 @@ Listen 443
 </VirtualHost>
 # comment the above lines if you don't want to use ssl/tls
 ```
-
-## ssl
-It is default using the https protocol  
-If you don't want https, you can modify the config file in the ./apache/conf/apache2.conf  
 
 ## build
 
