@@ -7,16 +7,17 @@ USE `pi_parking_monitor`;
 DROP TABLE IF EXISTS `parking_space`;
 CREATE TABLE `parking_space` (
   `camera_id` CHAR(10) NOT NULL ,
-  `lisence_plate` text COLLATE utf8mb4_unicode_ci ,
+  `lisence_plate_head` text COLLATE utf8mb4_unicode_ci ,
+  `lisence_plate_tail` text COLLATE utf8mb4_unicode_ci ,
   PRIMARY KEY (`camera_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `parking_space` (`camera_id`, `lisence_plate`) VALUES
-('A01',	'ABC1234'),
-('A02',	'ASD7365'),
-('A03',	'FJO4877'),
-('A04',	'DBL2846'),
-('A05',	'DIH8493'),
-('A06',	'XOID384'),
-('A07',	'MXN2093'),
-('A08',	'VVE9987');
+INSERT INTO `parking_space` (`camera_id`, `lisence_plate_head`, `lisence_plate_tail` ) VALUES
+('A01',	'ABC', '1234'),
+('A02',	'ASD', '7365'),
+('A03',	'FJO', '4877'),
+('A04',	'DBL', '2846'),
+('A05',	'DIH', '8493'),
+('A06',	'XOI', 'D384'),
+('A07',	'MXN', '2093'),
+('A08',	'VVE', '9987');
