@@ -13,7 +13,7 @@ docker exec -it $container_id /bin/bash
 3. Get into command line interface of mariadb    
 ```bash
 # username is "root"
-mysql --local-infile -u root -p 'openid' --default-character-set=utf8mb4
+mysql --local-infile -u root -p 'pi_parking_monitor' --default-character-set=utf8mb4
 # you will need to type your mysql root password later  
 ```
 
