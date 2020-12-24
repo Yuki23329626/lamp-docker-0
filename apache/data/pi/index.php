@@ -46,7 +46,7 @@
 
   while( $row=$select_result->fetch_assoc())
   {
-      echo " camera_id: ".$row["camera_id"].", lisence_plate: ".$row["lisence_plate"];
+      echo " camera_id: ".$row["camera_id"].", lisence_plate_head: ".$row["lisence_plate_head"].", lisence_plate_tail: ".$row["lisence_plate_tail"];
       echo "<br>";
   }
   echo "<br>";
