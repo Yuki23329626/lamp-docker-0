@@ -4,14 +4,7 @@ DROP DATABASE IF EXISTS `pi_parking_monitor`;
 CREATE DATABASE `pi_parking_monitor` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
 
 USE `pi_parking_monitor`;
-
-SET NAMES utf8;
-SET time_zone = '+00:00';
-SET foreign_key_checks = 0;
-SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
-
 SET NAMES utf8mb4;
-
 DROP TABLE IF EXISTS `parking_space`;
 CREATE TABLE `parking_space` (
   `camera_id` char(10) COLLATE utf8mb4_unicode_ci NOT NULL,
