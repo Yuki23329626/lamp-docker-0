@@ -2,7 +2,7 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/carLocationSearch/Foundation/HelpUtil.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/carLocationSearch/Foundation/HttpReq.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/carLocationSearch/Foundation/DatabaseConfig.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/../../dbConfig/DatabaseConfig.php';
 
 // get post body
 $inputJSON = file_get_contents('php://input');

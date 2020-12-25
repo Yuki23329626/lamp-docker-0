@@ -36,6 +36,13 @@
             border-color: #000000;
             border-style: solid;
         }
+        /* car map*/
+        .map {
+            margin-left: auto;
+            margin-right: auto;
+            width: 30%;
+            height: 100px;
+        }
     </style>
 </head>
 <body>
@@ -50,34 +57,90 @@
             <input type='submit' name='submitButton' value='查詢'></form>
     </div>
     <div class="rightcolumn">
-        <?php
-
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/carLocationSearch/Foundation/HttpReq.php';
-        require_once $_SERVER['DOCUMENT_ROOT'] . '/carLocationSearch/Foundation/Config.php';
-
-        if (isset($_POST['submitButton'])){
-
-            $firstNumber = $_POST['firstNumber'];
-            $lastNumber = $_POST['lastNumber'];
-
-            if (!empty($firstNumber) and !empty($lastNumber)){
-                //post to query
-                $url = Config::$ipUrl.'carLocationSearch/Manager/location_query.php';
-                $message = array(
-                    "firstNumber" => $firstNumber,
-                    "lastNumber" => $lastNumber,
-                );
-
-                $message = json_encode($message);
-                $result = HttpReq::httpPost($url, $message);
-
-                $decodeMessage = json_decode($result);
-
-                echo "<h1>".$decodeMessage->location."</h1>";
-            }
-        }
-        ?>
+        <table class="map" cellpadding="5" border='1'>
+            <tr>
+                <td>te1</td>
+                <td>te2</td>
+                <td>te3</td>
+                <td>te4</td>
+                <td>te5</td>
+                <td>te6</td>
+                <td>te7</td>
+                <td>te8</td>
+            </tr>
+            <tr>
+                <td>te1</td>
+                <td>te2</td>
+                <td>te3</td>
+                <td>te4</td>
+                <td>te5</td>
+                <td>te6</td>
+                <td>te7</td>
+                <td>te8</td>
+            </tr>
+        </table>
+        <table class="map_null">
+            <tr>
+                <td>te1</td>
+                <td>te2</td>
+                <td>te3</td>
+                <td>te4</td>
+                <td>te5</td>
+                <td>te6</td>
+                <td>te7</td>
+                <td>te8</td>
+            </tr>
+        </table>
+        <table class="map" cellpadding="5" border='1'>
+            <tr>
+                <td>te1</td>
+                <td>te2</td>
+                <td>te3</td>
+                <td>te4</td>
+                <td>te5</td>
+                <td>te6</td>
+                <td>te7</td>
+                <td>te8</td>
+            </tr>
+            <tr>
+                <td>te1</td>
+                <td>te2</td>
+                <td>te3</td>
+                <td>te4</td>
+                <td>te5</td>
+                <td>te6</td>
+                <td>te7</td>
+                <td>te8</td>
+            </tr>
+        </table>
     </div>
 </div>
+<?php
+
+require_once $_SERVER['DOCUMENT_ROOT'] . '/carLocationSearch/Foundation/HttpReq.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/carLocationSearch/Foundation/Config.php';
+
+if (isset($_POST['submitButton'])){
+
+    $firstNumber = $_POST['firstNumber'];
+    $lastNumber = $_POST['lastNumber'];
+
+    if (!empty($firstNumber) and !empty($lastNumber)){
+        //post to query
+        $url = Config::$ipUrl.'carLocationSearch/Manager/location_query.php';
+        $message = array(
+            "firstNumber" => $firstNumber,
+            "lastNumber" => $lastNumber,
+        );
+
+        $message = json_encode($message);
+        $result = HttpReq::httpPost($url, $message);
+
+        $decodeMessage = json_decode($result);
+
+        echo "<h1>".$decodeMessage->location."</h1>";
+    }
+}
+?>
 </body>
 </html>

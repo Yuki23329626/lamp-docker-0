@@ -51,6 +51,32 @@
             background-image:url('carLocationSearch/img/carLocationIcon_click.png');
         }
     </style>
+    <script>
+        function preloader() {
+            if (document.images) {
+                var img1 = new Image();
+                var img2 = new Image();
+                var img3 = new Image();
+                img1.src = "carLocationSearch/img/carLocationIcon.png";
+                img2.src = "carLocationSearch/img/carLocationIcon_moveIn.png";
+                img3.src = "carLocationSearch/img/carLocationIcon_click.png";
+            }
+        }
+        function addLoadEvent(func) {
+            var oldonload = window.onload;
+            if (typeof window.onload != 'function') {
+                window.onload = func;
+            } else {
+                window.onload = function() {
+                    if (oldonload) {
+                        oldonload();
+                    }
+                    func();
+                }
+            }
+        }
+        addLoadEvent(preloader);
+    </script>
 </head>
 <body>
 <div class="header">
