@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE></TITLE>
+   <META NAME="Author" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="../../gif/bg-slate.gif">
+
+<UL>
+<UL>
+<P><FONT SIZE=+1>　　</FONT><IMG SRC="titile.gif" HEIGHT=59 WIDTH=340></P>
+</UL>
+
+<P><FONT SIZE=+1>　　TCP/UDP/IP 協定若有錯誤情形發生時，會利用 Internet
+Control<BR>
+Message Protocol（ICMP）協定來送錯誤訊息 。雖然 IP 用 ICMP 來<BR>
+送錯誤訊息，但是 ICMP 的封包卻是利用 IP 來包裝與傳送。</FONT></P>
+
+<P><IMG SRC="F19_1.gif" HEIGHT=207 WIDTH=499></P>
+
+<P><FONT SIZE=+1>　　所以 ICMP 封包前面加了 IP 的 20 bytes 之 header。ICMP
+本身<BR>
+的封包格式包括了 4 部份﹔</FONT></P>
+
+<UL>
+<UL>
+<P><IMG SRC="frame.gif" HEIGHT=88 WIDTH=341></P>
+</UL>
+</UL>
+
+<P><FONT SIZE=+1>　　其中 ICMP 的 data 含了造成錯誤的 IP 封包的 header
+及其 data<BR>
+的前面 8 bytes。</FONT></P>
+
+<P><FONT SIZE=+1>　　在 ICMP 的 type 中，目前約有 15 種。其中較重要的有：</FONT></P>
+
+<OL>
+<LI><FONT SIZE=+1><FONT COLOR="#FF0000">Echo Request/Reply</FONT>：任 何
+一台電腦可以送 echo request 給另一<BR>
+　　　　　　　　　台電腦，如果網路正常，收到 echo request<BR>
+　　　　　　　　　的電腦便會回 echo reply。目前我們常用的<BR>
+　　　　　　　　　指令 ping 就是利用這兩個指令來做。Echo<BR>
+　　　　　　　　　Request 與 Reply 的 type 及 code 分別是 （<BR>
+　　　　　　　　　8,0）與（0.0）。</FONT></LI>
+
+<LI><FONT SIZE=+1><FONT COLOR="#FF0000">Destination Unreachable</FONT>：
+這類訊息的 type 值是 3 。 可能的訊息<BR>
+　　　　　　　　　　　包括 network unreachable（code=0），<BR>
+　　　　　　　　　　　host unreachable（code=1） ， protocol<BR>
+　　　　　　　　　　　unreachable（code=2），port unreacha-<BR>
+　　　　　　　　　　　ble（code=3），source route fail（code<BR>
+　　　　　　　　　　　=5） ，destination network unknown （<BR>
+　　　　　　　　　　　code=6）， destination host unknown（<BR>
+　　　　　　　　　　　code = 7 ） 等 。 另外 在 IP header 的<BR>
+　　　　　　　　　　　FLAGS 中第二個 bit 設成 1 表示 router<BR>
+　　　　　　　　　　　不可做封包切割 。 但是 若 此 封包比<BR>
+　　　　　　　　　　　MTU 大，則 router 必須將此封包丟掉<BR>
+　　　　　　　　　　　， 並送一個 fragementation required （<BR>
+　　　　　　　　　　　type = 3 , code = 4 ） 的 ICMP 訊息給 <BR>
+　　　　　　　　　　　source（sender）。</FONT></LI>
+
+<LI><FONT SIZE=+1><FONT COLOR="#FF0000">Source Quench</FONT>：當 router
+的 buffer 已滿，無法再接收並轉送封<BR>
+　　　　　　　包時，router 必須丟掉再傳來的的封包 。 此時<BR>
+　　　　　　　，router 要送 source quench（type=4）的 ICMP<BR>
+　　　　　　　訊息給此封包之 source。</FONT></LI>
+
+<LI><FONT SIZE=+1><FONT COLOR="#FF0000">Routing redirect</FONT>：如果一區域網路有兩台以上之
+router，那麼有<BR>
+　　　　　　　 時工作站會將封包交給不對的 router 來轉送。<BR>
+　　　　　　　 此時 router 會將封包轉給正確的 router，並送<BR>
+　　　　　　　 一個 redirect（ type=5, code=0 or 1, （network<BR>
+　　　　　　　 host））的 ICMP 訊息給 source。</FONT></LI>
+
+<LI><FONT SIZE=+1><FONT COLOR="#FF0000">Time Exceeded</FONT>：IP header
+中的 TTL 表示可經過多少的 router。<BR>
+　　　　　　　如果 router 拿到一封包，將其 TTL 減一後是零<BR>
+　　　　　　　，router 便將封包丟掉，並送給 source 一 Time<BR>
+　　　　　　　Exceeded（type=11 ）的 ICMP 訊息。我們常用<BR>
+　　　　　　　的 traceroute 指令便是利用此 ICMP 訊息來知道<BR>
+　　　　　　　路徑 。 執行 traceroute 的 工 作站會先送出一個<BR>
+　　　　　　　ICMP echo request 封包其 TTL=1，當此封包到達第<BR>
+　　　　　　　一個router 時 ， 便會被丟掉並送回 time exceeded<BR>
+　　　　　　　的ICMP訊息。此時，此工作站再送一 TTL=2 UDP<BR>
+　　　　　　　封包，此封包會順利透過第一個 router，但在第<BR>
+　　　　　　　二個router 又被丟掉，並送回 time exceeded 的<BR>
+　　　　　　　ICMP訊息。如此，一值增加 TTL 值直到到達<BR>
+　　　　　　　destination 為止。此時destination會因收到ICMP<BR>
+　　　　　　　echo request 封包而回送ICMP echo request 封<BR>
+　　　　　　　包。這樣 ，source 端便知道已到達目的地了。</FONT></LI>
+
+<LI><FONT SIZE=+1><FONT COLOR="#FF0000">IP header error</FONT>：若封包的
+IP header 有錯（如 option 設錯或無法<BR>
+　　　　　　　進行）則送此 ICMP 訊息（type=12）。</FONT></LI>
+
+<LI><FONT SIZE=+1><FONT COLOR="#FF0000">Address Mask Request/Reply</FONT>：一台電腦可以廣播
+Address Mask <BR>
+　　　　　　　　　　　　　Request（type = 17, code = 0 ） 之<BR>
+　　　　　　　　　　　　　ICMP 訊 息以詢問 subnet mask 之<BR>
+　　　　　　　　　　　　　值。Router 收到後，會回 Address<BR>
+　　　　　　　　　　　　　Mask Reply（type=18, code=0）訊<BR>
+　　　　　　　　　　　　　息。</FONT><BR>
+</LI>
+</OL>
+</UL>
+
+</BODY>
+</HTML>

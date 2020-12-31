@@ -1,0 +1,62 @@
+;
+
+$ORIGIN cs.ccu.edu.tw.
+
+@               IN   SOA   cs.ccu.edu.tw.  root.cs.ccu.edu.tw.  (
+
+                     960206091   ; Serial
+
+                     10800       ; Refresh
+                     3600        ; Retry
+                     3600000     ; Expire
+                     86400 )     ; Minimun
+                IN   A    140.123.101.100
+                IN   NS   cs.ccu.edu.tw.
+                IN   NS   suncc.ccu.edu.tw.
+;
+; list BITNET mail relay host
+;
+*.              IN      MX      0       twnmoe10.edu.tw.
+*.com.          IN      MX      0       twnmoe10.edu.tw.
+*.jp.           IN      MX      0       twnmoe10.edu.tw.
+*.uk.           IN      MX      0       twnmoe10.edu.tw.
+*.bitnet.       IN      MX      0       twnmoe10.edu.tw.
+*.edu.          IN      MX      0       twnmoe10.edu.tw.
+*.org.          IN      MX      0       twnmoe10.edu.tw.
+*.gov.          IN      MX      0       twnmoe10.edu.tw.
+*.tw.           IN      MX      0       twnmoe10.edu.tw.
+;
+; list local name server 
+;
+localhost              IN        A              127.0.0.1
+
+cs                     IN        A              140.123.101.100
+                       IN        HINFO          SunIPX SunO.S.-4.01.2
+                       IN        WKS     140.123.101.100  UDP
+                       IN        WKS     140.123.101.100  TCP
+                       IN        MX      0  cs.ccu.edu.tw.
+;
+suncc                  IN        A              140.123.1.2
+;
+;
+dec1                    IN      A               140.123.101.25
+dec2                    IN      A               140.123.101.26
+dec3                    IN      A               140.123.101.27
+dec4                    IN      A               140.123.101.28
+vlsi1					IN		A				140.123.101.29
+dec6                    IN      A               140.123.101.30
+
+dec7                    IN      A               140.123.101.31
+
+hollic                  IN      A               140.123.101.32
+dec9                    IN      A               140.123.101.33
+dec10                   IN      A               140.123.101.34
+athena                  IN      A               140.123.101.35
+dec12                   IN      A               140.123.101.36
+rattlesnake             IN      A               140.123.101.37
+cssun5                  IN      A               140.123.101.38
+cssun4                  IN      A               140.123.101.39
+class2    				IN		A				140.123.101.40
+www 			        	CNAME   cssun5
+
+

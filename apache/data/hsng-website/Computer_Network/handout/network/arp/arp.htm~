@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE></TITLE>
+   <META NAME="Author" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="../../gif/bg-slate.gif">
+
+<UL>
+<UL>
+<UL>
+<P><IMG SRC="titile.gif" HEIGHT=59 WIDTH=340></P>
+</UL>
+</UL>
+</UL>
+
+<TABLE BGCOLOR="#FF0000" >
+<TR>
+<TD COLSPAN="3"><B><FONT COLOR="#FFFFFF"><FONT SIZE=+2>ARP　　　　　　　　　　　　　　　　　　　　</FONT></FONT></B></TD>
+</TR>
+</TABLE>
+
+<UL>
+<P><FONT SIZE=+1>　　在 IP 決定將封包交給第二層送出時，需要包裝成第二層的格<BR>
+式。 在 IP 協定一節中，我們以探討了由於 MTU 的限制而須進行<BR>
+的分割與組合。 現在我們討論另一個問題 ， 就是 MAC 格式中目<BR>
+的地位址如何得知。不管 IP 決定封包要送給同一區域網路中的另<BR>
+一台工作站或要交給 router 轉送，均需將目的地或 router 的 IP 轉<BR>
+成 MAC 位址，以便填入 MAC header 中 。 將 IP 位址轉成相對映<BR>
+的 MAC 位址，我們稱之為 Address Resolution。</FONT></P>
+
+<P><FONT SIZE=+1>　　Address Resolution 的方法可以分成三類：</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/cy_ball.gif" HEIGHT=16 WIDTH=17><FONT SIZE=+1>查表：利用類似下圖的表格，給定
+IP 位址，便可查到<BR>
+　　　　MAC 位址</FONT></P>
+</UL>
+
+<P><IMG SRC="file:///C|/www/handout/network/arp/F15_2.gif" HEIGHT=289 WIDTH=499><BR>
+<FONT SIZE=+1>　　　　　　如果表格很大時，可用 hash function 或 direct
+indexing<BR>
+　　　　　　還做搜尋。因只有在同一區域網路的 IP 位址才會進行<BR>
+　　　　　　address resolution，所以利用 IP 位址最後面的 host id<BR>
+　　　　　　當 index 是很有效的方法。</FONT></P>
+
+<P><IMG SRC="F15_3.gif" HEIGHT=280 WIDTH=499></P>
+
+<UL>
+<P><IMG SRC="../../gif/cy_ball.gif" HEIGHT=16 WIDTH=17><FONT SIZE=+1>公式計算：如果
+IP 與 MAC 位址的設定可以有一些 關 連，<BR>
+　　　　　　則可能可以用公式來計算。例如 IP 位址的 host<BR>
+　　　　　　id 是取 MAC 位址（16 bits 之邏輯位址）。但通<BR>
+　　　　　　常這樣的方法需要 MAC 位址也是可以由使用者<BR>
+　　　　　　自行決定的。在大部分網路上這是不可能的。</FONT></P>
+
+<P><IMG SRC="../../gif/cy_ball.gif" HEIGHT=16 WIDTH=17><FONT SIZE=+1>利用送特殊訊息：每一台機器都知道自己的
+IP 位址和 MAC<BR>
+　　　　　　　　　位址，所以只要彼此交換訊息便可知道對<BR>
+　　　　　　　　　方的 MAC 位址。或者可以設一些伺服器<BR>
+　　　　　　　　　專門回答 IP 位址與 MAC 位 址 之對應（<BR>
+　　　　　　　　　ARP servers）。一般工作站只要送訊息向<BR>
+　　　　　　　　　伺服器問就可以得到答案。</FONT></P>
+</UL>
+
+<P><FONT SIZE=+1>　　目前 Internet 上主要是採用查表及訊息傳遞兩方式進行。Inter-<BR>
+net 使用了 Address Resolution Protocol（ARP）來讓工作站（W）想<BR>
+送一 IP 封包給另一工作站（Y），它需要知道對方的 MAC 位址。<BR>
+於是 W 便先利用廣播方式送出一個 ARP request 之訊息。所有在區<BR>
+域網路上之機器均會收到此 request。只有（Y）在發現此 request 是<BR>
+要知道 Y 的 MAC 位址後，會以點對點傳輸方式送回一個含有 Y 的<BR>
+MAC 位址的 ARP reply 訊息。</FONT></P>
+
+<P><IMG SRC="F15_5.gif" HEIGHT=385 WIDTH=499></P>
+
+<P><FONT SIZE=+1>　　ARP 事實上不僅可以用來問 IP 與 MAC 之對映位址，也可以<BR>
+用來問其他的對映關係（如 IP 與 ATM 位址，ATMARP）主要原<BR>
+因是 ARP 的格式具有很大的彈性。下圖是 ARP 的訊息格式：</FONT></P>
+
+<P><IMG SRC="F15_6.gif" HEIGHT=251 WIDTH=499></P>
+
+<P><BR>
+<FONT SIZE=+1>　　其中各欄位意思為</FONT></P>
+
+<TABLE BORDER=1 >
+<TR>
+<TD><FONT SIZE=+1>HARDWARE ADDRESS<BR>
+TYPE</FONT></TD>
+
+<TD><FONT SIZE=+1>區域網路是哪一種。Ethernet=0x0001</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>PROTOCOL ADDRESS<BR>
+TYPE</FONT></TD>
+
+<TD><FONT SIZE=+1>上層協定是那一科。IP=0x0800</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>HADDR LEN</FONT></TD>
+
+<TD><FONT SIZE=+1>Hardware address 長度（不同網路使用<BR>
+不同長度之 MAC 位址）。Ethernet=6</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>PADDR LEN</FONT></TD>
+
+<TD><FONT SIZE=+1>協定位址長度。IP=4</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>OPERATION</FONT></TD>
+
+<TD><FONT SIZE=+1>指令（ARP request=1, ARP reply=2<BR>
+RARP request=3, RARP reply=4）</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>SENDER HADDR</FONT></TD>
+
+<TD><FONT SIZE=+1>送端 MAC 位址</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>SENDER PADDR</FONT></TD>
+
+<TD><FONT SIZE=+1>送端 IP 位址</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>TARGET HADDR</FONT></TD>
+
+<TD><FONT SIZE=+1>目的地 MAC 位址，不知道時填 0</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>TARGET PADDR</FONT></TD>
+
+<TD><FONT SIZE=+1>目的地 IP （指定）位址</FONT></TD>
+</TR>
+</TABLE>
+
+<P><FONT SIZE=+1>　　要送 ARP 封包時，MAC header 中之目的地位址設成<BR>
+0xFFFF....FF（廣播），type field 設成 0x0806 必將 ARP 封包放入<BR>
+data 欄位。如此收端便可以從 type field 辨識 ARP 封包。</FONT></P>
+
+<P><IMG SRC="F15_7.gif" HEIGHT=170 WIDTH=500></P>
+
+<P><FONT SIZE=+1>　　如果每次要送 IP 封包均要先送 ARP request，再等 ARP
+reply<BR>
+，那就太費時了。所以一般工作站會做 ARP cache。就是 cache 一<BR>
+IP 與 MAC 位址的對映表。每當它收到 ARP request 時，便可以從<BR>
+SENDER HADDR 及 SENDER DADDR 知道送出者的 MAC 與 IP<BR>
+位址。如果此對映未記在 cache 中或與 cache 中記錄不同，便加以<BR>
+更新。cache 也會記錄資料登錄時間，若很久沒有更新的資料（如<BR>
+20 分鐘）便可刪除。如果收到為 ARP request 的 TARGET PADDR<BR>
+是自己，便要以 ARP reply 訊息回應。此時因已有對方 MAC 位址<BR>
+，所以可以用一對一傳輸方式回傳。</FONT></P>
+
+<P><FONT SIZE=+1>　　所以當一工作站要送出一 IP 封包時，會先查 cache，如果已有<BR>
+記錄對方 MAC 位址，便可直接使用。否則就送 ARP request 詢問。</FONT></P>
+
+<P><FONT SIZE=+1>　　</FONT></P>
+</UL>
+
+<TABLE BGCOLOR="#FF0000" >
+<TR>
+<TD COLSPAN="3"><B><FONT COLOR="#FFFFFF"><FONT SIZE=+2>Reverse ARP (RARP)　　　　　　　　　　　　　　</FONT></FONT></B></TD>
+</TR>
+</TABLE>
+
+<UL>
+<P><FONT SIZE=+1>　　有沒有可能我們會需要從一 MAC 位址找到相對映的 IP 位址呢？<BR>
+曾經有一陣子非常流行一種無硬碟的工作站（diskless workstation）因<BR>
+此種工作站只有 ROM 沒有硬碟，所以 boot 時需透過網路從 server 下<BR>
+載作業系統。但此時它只知道其 MAC 位址，不知道 IP 位址（不太可<BR>
+能把 IP 燒在 ROM 中）。所以與 server 溝通前，需先取得 IP 位址，<BR>
+此時便需使用反向的 ARP。RARP 運作與 ARP 一樣，先廣播 request<BR>
+，再由 server 以一對一傳輸方式回 ARP reply。RARP 格式與 ARP 幾<BR>
+乎完全一樣。只有把 frame type 改成 0x8035，OP 欄中，2 表示 RARP<BR>
+request，3 表示 RARP reply。</FONT></P>
+<FONT SIZE=+1></FONT></UL>
+
+</BODY>
+</HTML>

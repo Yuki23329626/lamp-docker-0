@@ -1,0 +1,841 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE></TITLE>
+   <META NAME="Author" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY>
+
+<CENTER><P><B><FONT SIZE=+3>HyperText Transfer Protocol (HTTP)</FONT></B></P></CENTER>
+
+<UL>
+<LI><B><FONT SIZE=+2>Overview </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>An information retrieval protocol </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Aclient-server protocol has been used on the World-Wide
+Web for the exchange of HTML documents since 1990 </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Stateless, transaction-oreinted does not specify transport
+protocol, but current implementations are all based TCP and conventionally
+use port 80. </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2><A HREF="http-v11.txt">IETF draft HTTP Version 1.1</A>
+is the current standard (RFC 2068, January, 1997)</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>HTTP allows an open-ended set of methods to be used
+to indicate the purpose of a request </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>HTTP is also used as a generic protocol for communication
+between user agents and proxies/gateways to other Internet protocols, such
+as SMTP, NNTP, FTP, Gopher, and WAIS </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>HTTP builds on the discipline of reference provided
+by the Uniform Resource Indentifer (URI), as a location (URL) or name (URL),
+for indicating the resource on which a method is to be appliced </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Messages are passed in a format similar to SMTP and
+MIME</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Overall Operation</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Based on client/server architecture </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Based on a request/response paradigm </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>A client </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>establishes a connection with a server </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>sends a request to the server in the form of a request
+method, URI, and protocol version, followed by a MIME-like message containing
+request modifiers, client information, and possible body content.</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>The server responds with </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>a status line, including the message's protocol version
+and a success or error code, followed by a MIME-like message containing
+server information, entity metainformation, and possible body content.
+</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Client </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>An application program that establishes connections
+for the purpose of sending requests. </FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Server </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>An application program that accepts connections in
+order to service requests by sending back responses.</FONT></B></LI>
+</UL>
+</UL>
+
+<LI><B><FONT SIZE=+2>HTTP Communication</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Most HTTP communication is initiated by a user agent
+and consists of a request to be applied to a resource on some origin server.
+</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>In the simplest case, this may be accomplished via
+a single connection between the user agent and the origin server. </FONT></B></LI>
+
+<UL>
+<P><B><FONT SIZE=+2>request -----------------------&gt;</FONT></B></P>
+</UL>
+
+<P><B><FONT SIZE=+2>User Agent -------------v----------Server</FONT></B></P>
+
+<UL>
+<UL>
+<UL>
+<P><B><FONT SIZE=+2>&lt;-----------------------response</FONT></B></P>
+</UL>
+</UL>
+</UL>
+
+<LI><B><FONT SIZE=+2>A more complicated situation occurs when one or more
+intermediaries are present in the request/response chain </FONT></B></LI>
+
+<UL>
+<UL>
+<P><B><FONT SIZE=+2>request ---------------------------------------------------&gt;</FONT></B></P>
+</UL>
+
+<P><B><FONT SIZE=+2>User Agent -----v-----A-----v-----B-----v-----C-----v-----Server
+</FONT></B></P>
+
+<UL>
+<UL>
+<UL>
+<P><B><FONT SIZE=+2>&lt;--------------------------------------------------
+response</FONT></B></P>
+</UL>
+</UL>
+</UL>
+
+<LI><B><FONT SIZE=+2>There are three common forms of intermediary </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>proxy </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>gateway </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>tunnel</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Proxy</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>A proxy is a forwarding agent, </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>acts as both a server and a client for the purpose
+of making requests on behalf of clients </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>a proxy must interpret, and, if necessary, rewrite
+a request before forwarding </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>proxy are often used </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>as <I>client-side firewalls</I> with cache </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>helper applications handling requests via protocols
+not implemented by the user agent</FONT></B></LI>
+</UL>
+</UL>
+</UL>
+
+<LI><B><FONT SIZE=+2>Gateway</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>A server which acts as an intermediary for some other
+server (<I>server-side firewall</I>). Unlike a proxy, a gateway receives
+requests as if it were the origin server for the requested resource; the
+requesting client may not be aware that it is communicating with a gateway.
+</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>A gateway is a receiving agent, acting as a layer
+above some other server(s) and, if necessary, translating the requests
+to the underlying server's protocol.</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Tunnel</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>A tunnel is an intermediary program which is acting
+as a blind relay between two connections. </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Once active, a tunnel is not considered a party to
+the HTTP communication, though the tunnel may have been initiated by an
+HTTP request. </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Tunnels are used when a portal is necessary and the
+intermediary cannot, or should not, interpret the relayed communication.</FONT></B></LI>
+</UL>
+</UL>
+
+<LI><B><FONT SIZE=+2>Connections</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>HTTP/1.0 </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>For each request from client to server, a TCP connection
+is established </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>The connection is closed by server when at the end
+of reply </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>A home page may contains dozens of requests </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>a request for each image, voice, .... </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>a request for background gif </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>a request for text,.....</FONT></B></LI>
+</UL>
+<LI> <B><FONT SIZE=+2>A client can open parallel TCP connections to speed up the response time.
+</UL>
+
+<LI><B><FONT SIZE=+2>HTTP/1.1 </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Persistent connections </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>client may establish a long-live TCP connection which
+is used for transmitting more than one requests</FONT></B></LI>
+<LI> <B><FONT SIZE=+2> A client can combine persistent connection with
+pipelining, i.e., the client issues a
+request as soon as it encounters a reference (URL). 
+</UL>
+</UL>
+</UL>
+
+<LI><B><FONT SIZE=+2>Cache</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Cache may be made at client, proxy, or gateway </FONT></B></LI>
+
+<UL>
+<UL>
+<P><B><FONT SIZE=+2>request -----------------------&gt;</FONT></B></P>
+</UL>
+
+<P><B><FONT SIZE=+2>User Agent -----v-----A-----v-----B-----v-----C-----v-----Server
+</FONT></B></P>
+
+<UL>
+<UL>
+<UL>
+<P><B><FONT SIZE=+2>&lt;----------------------- response (cache at B)</FONT></B></P>
+</UL>
+</UL>
+</UL>
+</UL>
+
+<LI><B><FONT SIZE=+2>Validation of cache </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>cache control </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Even cache is expired, send query to ask if the content
+has been modified since</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Proxy with cache</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>User agent only knows one proxy </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>How to improve? </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>User agent knows a number of proxies </FONT></B></LI>
+<UL>
+<LI> How to know where to send the request? Cache Array Routing Protocol
+(CARP) uses a hash function on URL to direct the request to a unique proxy
+within a cluster of proxies.
+</UL>
+
+<LI><B><FONT SIZE=+2>Hierarchical proxies known as virtual proxy proxies
+are structed into tree structure communication among proxies is transparent
+to user agent</FONT></B></LI>
+<UL>
+<LI> The Internet Caching Protocol (ICP, RFC 2186) specifies the cooperation
+between proxies (parent and sibling).
+<LI> ICP is used extensively in many cooperative caching systems, and is
+fully supported by Squid, a popular public-domain software for Web caching.
+</UL>
+</UL>
+</UL>
+</UL>
+</UL>
+
+<LI><B><FONT SIZE=+2>Uniform Resource Locator (URL)</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Used extensively on the World-Wide Web. They are used
+in HTML documents to specify the target of a hyperlink (Defined in RFC
+1808) </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Example of URLs: </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>ftp://wuarchive.wustl.edu/msdos/graphics/gifkit.zip
+</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>http://www.w3.org/default.html </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>news:alt.hypertext </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>telnet://dra.com </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>mailto:dbh@doc.ic.ac.uk </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>http://wombat.doc.ic.ac.uk/?Uniform+Resourcet </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>http://www.w3.org/default.html#Introduction</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>URL Syntactic Components</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>&lt;scheme&gt;://&lt;net_loc&gt;/&lt;path&gt;;&lt;params&gt;?&lt;query&gt;#&lt;fragment&gt;
+</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>scheme &quot;:&quot; ::= scheme name </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>&quot;//&quot; net_loc ::= network location and login
+information </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>&quot;/&quot; path ::= URL path </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>&quot;;&quot; params ::= object parameters (e.g.,
+&quot;;type=a&quot;) </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>&quot;?&quot; query ::= query information </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>&quot;#&quot; fragment ::= fragment identifier.</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Specific Schemes defined in RFC 1738</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>ftp: File Transfer protocol </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>http: Hypertext Transfer Protocol </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>gopher: The Gopher protocol </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>mailto: Electronic mail address </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>news: USENET news </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>nntp: USENET news using NNTP access </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>telnet: Reference to interactive sessions </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>wais: Wide Area Information Servers </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>file: Host-specific file names </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>prospero: Prospero Directory Service</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>afs: Andrew File System global file names. </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>mid: Message identifiers for electronic mail. </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>cid: Content identifiers for MIME body parts. </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>nfs: Network File System (NFS) file names. </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>tn3270: Interactive 3270 emulation sessions. </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>mailserver: Access to data available from mail servers.
+</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>z39.50: Access to ANSI Z39.50 services.</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Common Internet Scheme Syntax</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>&lt;scheme&gt;://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;url-path&gt;
+</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>For example: </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>ftp://misttc:passwd@mis.ccu.edu.tw/home/teacher/misttc/
+</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Empty user name and no user name </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>an empty user name and no password </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>ftp://@host.com/ </FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>no user name</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>ftp://host.com/ </FONT></B></LI>
+</UL>
+</UL>
+</UL>
+</UL>
+</UL>
+
+<LI><B><FONT SIZE=+2>HTTP Message</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>HTTP-message = Simple-Request ;HTTP/0.9 message </FONT></B></LI>
+
+<UL>
+<UL>
+<UL>
+<UL>
+<P><B><FONT SIZE=+2>| Simple-Response </FONT></B></P>
+
+<P><B><FONT SIZE=+2>| Full-Request ;HTTP/1.1 message </FONT></B></P>
+
+<P><B><FONT SIZE=+2>| Full-Response </FONT></B></P>
+</UL>
+</UL>
+</UL>
+</UL>
+
+<LI><B><FONT SIZE=+2>Simple Messages (HTTP/0.9)</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Simple-Request = &quot;GET&quot; SP Request-URI CRLF</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Simple-Response = [ Entity-Body ]</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Entity-Body = *OCTET </FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Full Messages (HTTP/1.0,1.1)</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Full-Request = Request-Line *( General-Header | Request-Header
+| Entity-Header ) CRLF [ Entity-Body ] </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Request-Line</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Request-Line = Method SP Request-URI SP HTTP-Version
+CRLF </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Method = &quot;OPTIONS&quot; | &quot;GET&quot; | &quot;HEAD&quot;
+| &quot;POST&quot; | &quot;PUT&quot; | &quot;DELETE&quot; | &quot;TRACE&quot;
+| extension-method</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>extension-method = token</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Request-URI = &quot;*&quot; | absoluteURI | abs_path
+</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>For example: </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>OPTIONS * HTTP/1.1 </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>&quot;*&quot;: refer to server itself</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>GET http://www.w3.org/pub/WWW/TheProject.html HTTP/1.1</FONT></B></LI>
+</UL>
+</UL>
+</UL>
+
+<LI><B><FONT SIZE=+2>General-Header</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>General-Header = Cache-Control | Connection | Date
+| Pragma | Transfer-Encoding | Upgrade | Via</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Request Header </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Request-Header = Accept | Accept-Charset | Accept-Encoding
+| Acept-Language | Authorization | From | Host | If-Modified-Since | If-Match
+| If-None-Match | If-Range | If-Unmodified-Since | Max-Forwards | Proxy-Authorization
+| Range | Referer | User-Agent</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Entity Header</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Entity-Header = Allow | Content-Base | Content-Encoding
+| Content-Language | Content-Length | Content-Location | Content-MD5 |
+Content-Range | Content-Type | ETag | Expires | Last-Modified | extension-header</FONT></B></LI>
+</UL>
+</UL>
+
+<LI><B><FONT SIZE=+2>Full-Response = Status-Line *( General-Header | Response-Header
+| Entity-Header ) CRLF [ Entity-Body ] </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Status-Line</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Status-Line = HTTP-Version SP Status-Code SP Reason-Phrase
+CRLF</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Status-Code: status of the response</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>100,...,505 </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>e.g., 100: continue, 200: OK, 204: no content</FONT></B></LI>
+</UL>
+</UL>
+</UL>
+
+<LI><B><FONT SIZE=+2>Response-Header</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Response-header = Age | Location | Proxy-Authenticate|
+Public | Retry-After | Server | Vary | Warning | WWW-Authenticate</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Example of a Full-Response</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>HTTP/1.1 206 Partial content </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Date: Wed, 15 Nov 1995 06:25:24 GMT </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Last-modified: Wed, 15 Nov 1995 04:05:08 GMT </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Content-Range: bytes 21010-47021/47022 </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Content-Length: 26012 Content-type: image/gif</FONT></B></LI>
+</UL>
+</UL>
+</UL>
+
+<LI><B><FONT SIZE=+2>Some examples of header field definitions</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Accept</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Syntax - Accept = &quot;Accept&quot; &quot;:&quot;
+#( media-range [ accept-params ] )</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+1>media-range = ( &quot;*/*&quot; | ( type &quot;/&quot;
+&quot;*&quot; ) | ( type &quot;/&quot; subtype ) ) *( &quot;;&quot; parameter
+)</FONT></B></LI>
+
+<LI><B><FONT SIZE=+1>accept-params = &quot;;&quot; &quot;q&quot; &quot;=&quot;
+qvalue *( accept-extension )</FONT></B></LI>
+
+<LI><B><FONT SIZE=+1>accept-extension = &quot;;&quot; token [ &quot;=&quot;
+( token | quoted-string ) ] </FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Example - Accept: audio/*; q=0.2, audio/basic</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Accept-Charset</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Syntax - Accept-Charset = &quot;Accept-Charset&quot;
+&quot;:&quot; 1#( charset [ &quot;;&quot; &quot;q&quot; &quot;=&quot; qvalue
+] ) </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Example - Accept-Charset: iso-8859-5</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Accept-Encoding</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Syntax - Accept-Encoding = &quot;Accept-Encoding&quot;
+&quot;:&quot; #( content-coding )</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Example - Accept-Encoding: compress, gzip</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Allow </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Syntax - Allow = &quot;Allow&quot; &quot;:&quot; 1#method
+</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Example - Allow: GET, HEAD </FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Authorization </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Syntax - Authorization = &quot;Authorization&quot;
+&quot;:&quot; credentials </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>credentials = basic-credentials | ( auth-scheme #auth-param
+)</FONT></B></LI>
+</UL>
+</UL>
+
+<LI><B><FONT SIZE=+2>Cache-Control</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Cache-Control = &quot;Cache-Control&quot; &quot;:&quot;
+1#cache-directive</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>cache-directive = cache-request-directive | cache-response-directive</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+1>cache-request-directive = &quot;no-cache&quot; [ &quot;=&quot;
+&lt;&quot;&gt; 1#field-name &lt;&quot;&gt; ] | &quot;no-store&quot; | &quot;max-age&quot;
+&quot;=&quot; delta-seconds | &quot;max-stale&quot; [ &quot;=&quot; delta-seconds
+] | &quot;min-fresh&quot; &quot;=&quot; delta-seconds | &quot;only-if-cached&quot;
+| cache-extension </FONT></B></LI>
+
+<LI><B><FONT SIZE=+1>cache-response-directive = &quot;public&quot; | &quot;private&quot;
+[ &quot;=&quot; &lt;&quot;&gt; 1#field-name &lt;&quot;&gt; ] | &quot;no-cache&quot;
+[ &quot;=&quot; &lt;&quot;&gt; 1#field-name &lt;&quot;&gt; ] | &quot;no-store&quot;
+| &quot;no-transform&quot; | &quot;must-revalidate&quot; | &quot;proxy-revalidate&quot;
+| &quot;max-age&quot; &quot;=&quot; delta-seconds | cache-extension </FONT></B></LI>
+</UL>
+</UL>
+</UL>
+
+<LI><B><FONT SIZE=+2>Connection</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Connection-header = &quot;Connection&quot; &quot;:&quot;
+1#(connection-token) </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>connection-token = token </FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Example - Connection: close</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Content-Base</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Content-Base = &quot;Content-Base&quot; &quot;:&quot;
+absoluteURI</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Content-Encoding </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Syntax - Content-Encoding = &quot;Content-Encoding&quot;
+&quot;:&quot; content-coding </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Example - Content-Encoding: x-gzip </FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Content-Length </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Syntax - Content-Length = &quot;Content-Length&quot;
+&quot;:&quot; 1*DIGIT </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Example - Content-Length: 3495 </FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Content-Range</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Content-Range = &quot;Content-Range&quot; &quot;:&quot;
+content-range-spec</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>content-range-spec = byte-content-range-spec</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>byte-content-range-spec = bytes-unit SP first-byte-pos
+&quot;-&quot; last-byte-pos &quot;/&quot; entity-length</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>entity-length = 1*DIGIT </FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Content-Range: bytes 21010-47021/47022</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Content-Type </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Syntax - Content-Type = &quot;Content-Type&quot; &quot;:&quot;
+media-type </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Example - Content-Type: text/html</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>ETag </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>ETag = &quot;ETag&quot; &quot;:&quot; entity-tag</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>ETag: &quot;xyzzy&quot;</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>From</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>From = &quot;From&quot; &quot;:&quot; mailbox</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Example - From: webmaster@w3.org </FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Host</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Host = &quot;Host&quot; &quot;:&quot; host [ &quot;:&quot;
+port ]</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Example</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+1>GET /pub/WWW/ HTTP/1.1 </FONT></B></LI>
+
+<LI><B><FONT SIZE=+1>Host: www.w3.org</FONT><FONT SIZE=+2> </FONT></B></LI>
+</UL>
+</UL>
+
+<LI><B><FONT SIZE=+2>If-Modified-Since</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>If-Modified-Since = &quot;If-Modified-Since&quot;
+&quot;:&quot; HTTP-date</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Example - If-Modified-Since: Sat, 29 Oct 1994 19:43:31
+GMT </FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>If-Match</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>If-Match = &quot;If-Match&quot; &quot;:&quot; ( &quot;*&quot;
+| 1#entity-tag )</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>If-Match: &quot;xyzzy&quot;</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>If-Range</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>If-Range = &quot;If-Range&quot; &quot;:&quot; ( entity-tag
+| HTTP-date )</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Last-Modified</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Last-Modified = &quot;Last-Modified&quot; &quot;:&quot;
+HTTP-date</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Last-Modified: Tue, 15 Nov 1994 12:45:26 GMT</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Location </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Location = &quot;Location&quot; &quot;:&quot; absoluteURI</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Location: http://www.w3.org/pub/WWW/People.html</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Max-Forwards</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Max-Forwards = &quot;Max-Forwards&quot; &quot;:&quot;
+1*DIGIT</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Proxy-Authenticate</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Proxy-Authenticate = &quot;Proxy-Authenticate&quot;
+&quot;:&quot; challenge</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Proxy-Authorization</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Proxy-Authorization = &quot;Proxy-Authorization&quot;
+&quot;:&quot; credentials</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Public </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Public = &quot;Public&quot; &quot;:&quot; 1#method</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Public: OPTIONS, MGET, MHEAD, GET, HEAD </FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Retry-After</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Retry-After = &quot;Retry-After&quot; &quot;:&quot;
+( HTTP-date | delta-seconds )</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Retry-After: Fri, 31 Dec 1999 23:59:59 GMT </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Retry-After: 120 </FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Via</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Via = &quot;Via&quot; &quot;:&quot; 1#( received-protocol
+received-by [ comment ] )</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Via: 1.0 ricky, 1.1 ethel, 1.1 fred, 1.0 lucy</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Warning</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Warning = &quot;Warning&quot; &quot;:&quot; 1#warning-value</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Warning : 10 host:port Response is stale</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>WWW-Authenticate</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>WWW-Authenticate = &quot;WWW-Authenticate&quot; &quot;:&quot;
+1#challenge</FONT></B></LI>
+</UL>
+</UL>
+</UL>
+</UL>
+
+</BODY>
+</HTML>

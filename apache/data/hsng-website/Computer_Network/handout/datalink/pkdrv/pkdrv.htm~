@@ -1,0 +1,463 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>實習教材一</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="../../gif/bg-slate.gif">
+
+<P><B><FONT COLOR="#0080FF"><FONT SIZE=+3>實習教材一</FONT></FONT></B></P>
+
+<P><B><FONT COLOR="#0080FF"><FONT SIZE=+3>Packet Driver </FONT></FONT></B></P>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>Packet
+drivers provide a simple, common programming interface <BR>
+　for multiple applications to share a network interface at data link level.</FONT><BR>
+</P>
+
+<UL>
+<P><IMG SRC="img00001.gif" HEIGHT=334 WIDTH=404></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>PC/TCP
+Packet Driver Specification</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>By
+FTP Software Company</FONT> <BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>We
+will use Version 1.11, June, 1994</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>Levels
+of Packet Driver Functions</FONT> </P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>Basic
+packet driver</FONT> </P>
+
+<UL>
+<P><IMG SRC="../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>Provide
+operations to broadcast and receive packet</FONT> </P>
+</UL>
+
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>Extended
+packet driver</FONT> </P>
+
+<UL>
+<P><IMG SRC="../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>Multicast,
+Statistics</FONT> </P>
+</UL>
+
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>High
+Performance Functions</FONT> </P>
+
+<UL>
+<P><IMG SRC="../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>for
+performance improvement, e.g., asynchronously send <BR>
+　packets </FONT></P>
+</UL>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>Network
+Interface: &lt;Class, Type, Number&gt;</FONT> </P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>Class:
+Kind of media (Ethernet, DecNet, Appletalk, ..., etc.)</FONT> </P>
+
+<UL>
+<P><TT><FONT SIZE=+1>/* packet driver interface classes */</FONT> </TT></P>
+
+<P><TT><FONT SIZE=+1>#define CL_NONE 0</FONT> <BR>
+<FONT SIZE=+1>#define CL_ETHERNET 1</FONT> <BR>
+<FONT SIZE=+1>#define CL_PRONET_10 2</FONT> <BR>
+<FONT SIZE=+1>#define CL_IEEE8025 3</FONT> <BR>
+<FONT SIZE=+1>#define CL_OMNINET 4</FONT> <BR>
+<FONT SIZE=+1>#define CL_APPLETALK 5</FONT> <BR>
+<FONT SIZE=+1>#define CL_SERIAL_LINE 6</FONT> <BR>
+<FONT SIZE=+1>#define CL_STARLAN 7</FONT> <BR>
+<FONT SIZE=+1>#define CL_ARCNET 8</FONT> <BR>
+<FONT SIZE=+1>#define CL_AX25 9</FONT> <BR>
+<FONT SIZE=+1>#define CL_KISS 10</FONT> <BR>
+<FONT SIZE=+1>#define CL_IEEE8023 11</FONT> <BR>
+<FONT SIZE=+1>#define CL_FDDI 12</FONT> <BR>
+<FONT SIZE=+1>#define CL_INTERNET_X25 13</FONT> <BR>
+<FONT SIZE=+1>#define CL_LANSTAR 14</FONT> <BR>
+<FONT SIZE=+1>#define CL_SLFP 15</FONT> <BR>
+<FONT SIZE=+1>#define CL_NETROM 16</FONT> <BR>
+<FONT SIZE=+1>#define NCLASS 17</FONT></TT></P>
+</UL>
+
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>Type:
+Interface Supporter (3Com, D-Link, Accton, NE-2000,<BR>
+　Intel, ....)</FONT> </P>
+
+<UL>
+<P><TT><FONT SIZE=+1>/* &quot;Bluebook&quot; Ethernet packet driver inter-<BR>
+face types (not a complete list) */</FONT> </TT></P>
+
+<P><TT><FONT SIZE=+1>#define NIC_3C503 12</FONT> <BR>
+<FONT SIZE=+1>#define D_LINK_16 28</FONT> <BR>
+<FONT SIZE=+1>#define NE_2000 54</FONT> <BR>
+<FONT SIZE=+1>#define 3Com_3C509 94</FONT> <BR>
+<FONT SIZE=+1>#define ANYTYPE 0xffff</FONT></TT></P>
+</UL>
+
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>Number:
+Interface number (not used, always 0)</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>Byte
+and Bit ordering</FONT> </P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>Note
+that byte ordering on network is different from integers in PC</FONT> <BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>Do
+a byte swap before call the packet driver</FONT><BR>
+</P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>Packet
+driver is invoked via a software interrupt in the range 0x60-0x80</FONT>
+</P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>Handler
+starts with 3 bytes of jump instruction</FONT> <BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>Followed
+by &quot;<B>PKT DRVR</B>&quot;</FONT> <BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>Can
+have a program to detect the existence of a packet driver</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>Program
+Interface</FONT> </P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>We
+provide high level functions in C</FONT> <BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>Each
+function interrupts the packet driver vector with <B>AH</B> contains<BR>
+　the function code.</FONT><BR>
+</P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>Load
+a packet driver</FONT> </P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>pktdrv
+&lt;interrupt number&gt; &lt;IRQ&gt; &lt;base I/O address&gt;</FONT> <BR>
+<FONT SIZE=+1>　ex. de220 0x60 0xb 0x300</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>Send
+a packet</FONT> </P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>Prepare
+the packet in a buffer</FONT></P>
+
+<UL>
+<P><IMG SRC="img00002.gif" HEIGHT=72 WIDTH=404> </P>
+</UL>
+
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>Call
+send_pkt(char far *buffer, unsigned length)</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>Receive
+Packets</FONT> </P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>Call
+<TT>access_type()</TT> to sepcify type of packet (e.g., IP, ARP, ...)<BR>
+　to receive and a user defined function <TT>receiver()</TT> to receive
+the<BR>
+　packets.</FONT> <BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>Calll
+<TT>set_rcv_mode()</TT> to set receive mode (owner, multicast, <BR>
+　broadcast, ...)</FONT> <BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>When
+a packet arrives, <TT>receiver()</TT> is first called to request for a
+<BR>
+　buffer</FONT> <BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1><TT>receiver()</TT>
+is called again when the packet is copied into the buffer.</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>Statistics</FONT>
+</P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>Call
+<TT>get_statistics()</TT> to get the interface statistics (e.g., number
+of <BR>
+　lost packets) </FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>Functions
+of packet driver</FONT></P>
+
+<UL>
+<P><TT><FONT SIZE=+1>/* packet driver function call numbers */</FONT> </TT></P>
+
+<P><TT><FONT SIZE=+1>#define DRIVER_INFO 1</FONT> <BR>
+<FONT SIZE=+1>#define ACCESS_TYPE 2</FONT> <BR>
+<FONT SIZE=+1>#define RELEASE_TYPE 3</FONT> <BR>
+<FONT SIZE=+1>#define SEND_PKT 4</FONT> <BR>
+<FONT SIZE=+1>#define TERMINATE 5</FONT> <BR>
+<FONT SIZE=+1>#define GET_ADDRESS 6</FONT> <BR>
+<FONT SIZE=+1>#define RESET_INTERFACE 7</FONT> <BR>
+<FONT SIZE=+1>#define GET_PARAMETERS 10 /* high performance */</FONT> <BR>
+<FONT SIZE=+1>#define OLD_AS_SEND_PKT 11 /* high performance */</FONT>
+<BR>
+<FONT SIZE=+1>#define AS_SEND_PKT 12 /* high performance */</FONT> <BR>
+<FONT SIZE=+1>#define DROP_PKT 13 /* high performance */</FONT> <BR>
+<FONT SIZE=+1>#define SET_RCV_MODE 20 /* extended */</FONT> <BR>
+<FONT SIZE=+1>#define GET_RCV_MODE 21 /* extended */</FONT> <BR>
+<FONT SIZE=+1>#define SET_MULTICAST_LIST 22 /* extended */</FONT> <BR>
+<FONT SIZE=+1>#define GET_MULTICAST_LIST 23 /* extended */</FONT> <BR>
+<FONT SIZE=+1>#define GET_STATISTICS 24 /* extended */</FONT> <BR>
+<FONT SIZE=+1>#define SET_ADDRESS 25 /* extended */</FONT> <BR>
+<FONT SIZE=+1>#define SEND_RAW_BYTES 26 /* extended */</FONT> <BR>
+<FONT SIZE=+1>#define FLUSH_RAW_BYTES 27 /* extended */</FONT> <BR>
+<FONT SIZE=+1>#define FETCH_RAW_BYTES 28 /* extended */</FONT> <BR>
+<FONT SIZE=+1>#define SIGNAL 29 /* extended */</FONT> <BR>
+<FONT SIZE=+1>#define GET_STRUCTURE 30 /* extended */</FONT></TT></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT COLOR="#000000"><FONT SIZE=+1><B>Functions
+we have implemented</B> </FONT></FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><TT><FONT SIZE=+1>int
+set_int_no(int int_no);</FONT></TT></P>
+</UL>
+
+<UL>
+<UL>
+<P><FONT SIZE=+1>Set interrupt number that the packet has resident</FONT><BR>
+</P>
+</UL>
+
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><TT><FONT SIZE=+1>int
+driver_info(DriverInfo *drv_info);</FONT></TT></P>
+
+<UL>
+<P><TT><FONT SIZE=+1>typedef struct {</FONT> <BR>
+<FONT SIZE=+1>int version; /* packet driver version */</FONT> <BR>
+<FONT SIZE=+1>int class; /* network interface card's class (see above)
+*/</FONT> <BR>
+<FONT SIZE=+1>int type; /* network interface card's type (see above) */</FONT>
+<BR>
+<FONT SIZE=+1>int number; /* network interface card number */</FONT> <BR>
+<FONT SIZE=+1>char far *drv_name; /* name of packet driver */</FONT> <BR>
+<FONT SIZE=+1>int functionality; /* the ability of the packet driver */</FONT>
+<BR>
+<FONT SIZE=+1>} DriverInfo; /* packet driver informations */</FONT></TT><BR>
+</P>
+
+<P><FONT SIZE=+1>Return the information about the interface. Functionality<BR>
+indicates functions presented.</FONT></P>
+
+<P><TT><FONT SIZE=+1>#define BAS 1 /* basic */</FONT> <BR>
+<FONT SIZE=+1>#define BAS_EXT 2 /* basic and extended */</FONT> <BR>
+<FONT SIZE=+1>#define BAS_HI 5 /* basic and high performance */</FONT>
+<BR>
+<FONT SIZE=+1>#define BAS_HI_EXT 6 /* basic, high performance and extended
+*/</FONT> <BR>
+<FONT SIZE=+1>#define NOT_INSTALL 255 /* not installed */</FONT> </TT></P>
+</UL>
+
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><TT><FONT SIZE=+1>int
+access_type(HANDLE *handle, DriverInfo *drv_info,<BR>
+　char far *frame_type, int type_len, RECEIVER receiver);</FONT></TT></P>
+
+<UL>
+<P><FONT SIZE=+1>Initiates access to packets of the specified type. Some
+well know types<BR>
+are: IP: 0x0800, ARP: 0x0806, RARP: 0x8035. Set type_len=0 to receive<BR>
+all kinds of packets. A handle will be returned which is used to indentify<BR>
+an interface of receiving certain type of packets.</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><TT><FONT SIZE=+1>int
+release_type(HANDLE handle);</FONT></TT></P>
+
+<UL>
+<P><FONT SIZE=+1>Ends access to packets associated with a handle.</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><TT><FONT SIZE=+1>int
+send_pkt(char far *buffer, unsigned length);</FONT></TT></P>
+
+<UL>
+<P><FONT SIZE=+1>Transmits length bytes of data, starting at buffer.</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><TT><FONT SIZE=+1>int
+get_address(HANDLE handle, char far *buffer,<BR>
+　　　　　　　　　int *length);</FONT></TT></P>
+
+<UL>
+<P><FONT SIZE=+1>Copy current local network address of the interface into
+buffer. <BR>
+The actual number of bytes copied is returned in length.</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><TT><FONT SIZE=+1>int
+terminate(HANDLE handle);</FONT></TT></P>
+
+<UL>
+<P><FONT SIZE=+1>Terminates the driver associated with handle.</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><TT><FONT SIZE=+1>int
+reset_interface(HANDLE handle);</FONT></TT></P>
+
+<UL>
+<P><FONT SIZE=+1>Resets the interface associated with handle to a known
+state, <BR>
+aborting any transmits in process and reinitializing the receiver.</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><TT><FONT SIZE=+1>int
+get_parameters(DriverParam far **parameters);</FONT></TT></P>
+
+<UL>
+<P><TT><FONT SIZE=+1>typedef struct {</FONT> <BR>
+<FONT SIZE=+1>unsigned char major_rev; /* revision of Packet Driver spec
+*/</FONT> <BR>
+<FONT SIZE=+1>unsigned char minor_rev; /* this driver conforms to. */</FONT>
+<BR>
+<FONT SIZE=+1>unsigned char length; /* length of structure in bytes */</FONT>
+<BR>
+<FONT SIZE=+1>unsigned char addr_len; /* length of MAC-layer address */</FONT>
+<BR>
+<FONT SIZE=+1>unsigned short mtu; /* MTU, including MAC headers */</FONT>
+<BR>
+<FONT SIZE=+1>unsigned short multicast_aval; /* buffer size for multicast
+addr */</FONT> <BR>
+<FONT SIZE=+1>unsigned short rcv_bufs; /* (# of back-to-back MTU rcvs)
+- 1 */</FONT> <BR>
+<FONT SIZE=+1>unsigned short xmt_bufs; /* (# of successive xmits) - 1 */</FONT>
+<BR>
+<FONT SIZE=+1>unsigned short int_num; /* interrupt # to hook for post-EOI
+*/</FONT> <BR>
+<FONT SIZE=+1>/* processing, 0 == none */</FONT> <BR>
+<FONT SIZE=+1>} DriverParam; /* packet driver parameters */</FONT> </TT></P>
+
+<P><FONT SIZE=+1>Get driver parameters. Note that rcv_bufs and xmt_bufs
+indicate <BR>
+the number of back-to-back receives or transmits the card/driver<BR>
+combination can accomodate.</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><TT><FONT SIZE=+1>int
+old_as_send_pkt(char far *buffer, unsigned length,<BR>
+　　　　　　　　　　　UPCALL upcall);</FONT> </TT></P>
+
+<UL>
+<P><FONT SIZE=+1>Asynchronously send packets in v1.09.</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><TT><FONT SIZE=+1>int
+as_send_pkt(iocb);</FONT></TT></P>
+
+<UL>
+<P><TT><FONT SIZE=+1>structure iocb {</FONT> <BR>
+<FONT SIZE=+1>char far *buffer; /* Pointer to xmit buffer */</FONT> <BR>
+<FONT SIZE=+1>unsigned length; /* Length of buffer */</FONT> <BR>
+<FONT SIZE=+1>unsigned char flagbits; /* Flag bits (DONE, UPCALL) */</FONT>
+<BR>
+<FONT SIZE=+1>unsigned char code; /* Error code */</FONT> <BR>
+<FONT SIZE=+1>void (far *transmitter)(); /* transmitter upcall */</FONT>
+<BR>
+<FONT SIZE=+1>char reserved[4]; /* Future gather write */</FONT> <BR>
+<FONT SIZE=+1>char private[8]; /* Driver's private data */</FONT> <BR>
+<FONT SIZE=+1>};</FONT> </TT></P>
+
+<P><FONT SIZE=+1>Asynchronously send packets with upcall option.</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><TT><FONT SIZE=+1>int
+set_rcv_mode(HANDLE handle, int mode);</FONT></TT></P>
+
+<UL>
+<P><FONT SIZE=+1>Set receiver mode. Mode=1~7.</FONT> </P>
+
+<P><FONT SIZE=+1><FONT COLOR="#FF8080">1</FONT> turn off receiver</FONT>
+<BR>
+<FONT SIZE=+1><FONT COLOR="#FF8080">2</FONT> receive only packets send
+to this interface (station)</FONT> <BR>
+<FONT SIZE=+1><FONT COLOR="#FF8080">3</FONT> 2 plus receive broadcast packets</FONT>
+<BR>
+<FONT SIZE=+1><FONT COLOR="#FF8080">4</FONT> 3 plus receive multicast to
+this station</FONT> <BR>
+<FONT SIZE=+1><FONT COLOR="#FF8080">5</FONT> 3 plus receive all multicast
+packets</FONT> <BR>
+<FONT SIZE=+1><FONT COLOR="#FF8080">6</FONT> all packets</FONT> <BR>
+<FONT SIZE=+1><FONT COLOR="#FF8080">7</FONT> raw mode</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><TT><FONT SIZE=+1>int
+get_rcv_mode(HANDLE handle, int *mode);</FONT></TT></P>
+
+<UL>
+<P><FONT SIZE=+1>Return current receive mode of the interface associated
+with handle.</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><TT><FONT SIZE=+1>int
+set_multicast_list(char far *addrlst, int length);</FONT></TT></P>
+
+<UL>
+<P><FONT SIZE=+1>Set multicast list. Usually, get the list first. Then
+add current <BR>
+address to the list.</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><TT><FONT SIZE=+1>int
+get_multicast_list(char far **addrlst, int *length);</FONT></TT></P>
+
+<UL>
+<P><FONT SIZE=+1>Get multicast list address.</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><TT><FONT SIZE=+1>int
+get_statistics(HANDLE handle, Statistics far **stats);</FONT></TT></P>
+
+<UL>
+<P><TT><FONT SIZE=+1>typedef struct {</FONT> <BR>
+<FONT SIZE=+1>unsigned long packets_in; /* totals across all handles */</FONT>
+<BR>
+<FONT SIZE=+1>unsigned long packets_out;</FONT> <BR>
+<FONT SIZE=+1>unsigned long bytes_in; /* including MAC headers */</FONT>
+<BR>
+<FONT SIZE=+1>unsigned long bytes_out;</FONT> <BR>
+<FONT SIZE=+1>unsigned long errors_in; /* totals across all error types
+*/</FONT> <BR>
+<FONT SIZE=+1>unsigned long errors_out;</FONT> <BR>
+<FONT SIZE=+1>unsigned long packets_lost; /* no buffer from receiver(),
+card */</FONT> <BR>
+<FONT SIZE=+1>/* out of resources, etc */</FONT> <BR>
+<FONT SIZE=+1>} Statistics;</FONT> </TT></P>
+
+<P><FONT SIZE=+1>Get statistics of the interface.</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><TT><FONT SIZE=+1>int
+set_address(char far *addr, int *length);</FONT></TT></P>
+
+<UL>
+<P><FONT SIZE=+1>Set local network address.</FONT></P>
+</UL>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1><A HREF="project1.zip">範例程式碼（不含ARP)</A></FONT></P>
+
+</BODY>
+</HTML>

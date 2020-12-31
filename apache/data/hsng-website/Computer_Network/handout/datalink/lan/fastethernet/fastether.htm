@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Fast Ehternet: 100BaseT</TITLE>
+   <META NAME="Author" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="../../../gif/bg-slate.gif">
+
+<P><B><FONT COLOR="#0080FF"><FONT SIZE=+3>100BASE-T Fast Ethernet</FONT></FONT></B></P>
+
+<UL>
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><B><FONT COLOR="#000000"><FONT SIZE=+2>簡介</FONT></FONT></B></P>
+</UL>
+
+<UL>
+<UL>
+<LI>100BASE-T Fast Ethernet is an extension of the existing Ethernet IEEE
+802.3<BR>
+standard.</LI>
+
+<LI>The new technology uses the existing 802.3 MAC layer, connected through
+a <BR>
+media-independent interface (MII) layer to one of three physical (PHY)
+layers.<BR>
+(See Figure 1.)</LI>
+
+<LI>The minimum frame size remains 64 bytes. </LI>
+
+<LI>The MII specification is similar to the 10 Mbps Ethernet attachment
+unit interface<BR>
+(AUI) and provides a single interface that can support external transceivers
+for<BR>
+any of the 100BASE-T media specifications.</LI>
+
+<P><IMG SRC="fetfig2.gif" HEIGHT=295 WIDTH=540></P>
+
+<UL>
+<UL>
+<P>Figure 1. <I>Compatible Ethernet and Fast Ethernet Architectures</I></P>
+</UL>
+</UL>
+</UL>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><B><FONT SIZE=+2>線材選擇</FONT></B></P>
+</UL>
+
+<UL>
+<UL>
+<P>100BASE-T supports three media specifications: 100BASE-TX, 100BASE-T4,
+and <BR>
+100BASE-FX. The 100BASE-T standard also defines a 100BASE-T repeater and
+a<BR>
+management interface. 100BASE-TX, 100BASE-T4, and 100BASE-FX systems can<BR>
+be mixed together and interconnected through a hub.</P>
+
+<UL>
+<LI>100BASE-TX</LI>
+
+<UL>
+<LI>a two-pair system for data grade (EIA 568 Category 5) UTP and STP<BR>
+cabling</LI>
+
+<LI>based on FDDI/CDDI PMD specification.(4B/5B encoding)</LI>
+</UL>
+
+<LI>100BASE-T4 </LI>
+
+<UL>
+<LI>a four-pair system for both voice and data grade (Category 3, 4, or
+5)<BR>
+UTP cabling</LI>
+
+<LI>three (1,3,4) of the four pairs are for frame transmission (33.3Mbps
+<BR>
+each, half- duplex). The second pair is for carrier sense. (8B6T encoding)
+</LI>
+
+<LI>to address the needs of the installed base of UTP C3 used in older<BR>
+10BASE-T networks</LI>
+</UL>
+
+<LI>100BASE-FX</LI>
+
+<UL>
+<LI>a two-strand fiber system</LI>
+
+<LI>for extended distances, downlinks, and backbones. (see Figure 2)</LI>
+</UL>
+</UL>
+</UL>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><B><FONT SIZE=+2>10/100 Mbps
+自動判斷</FONT></B></P>
+
+<UL>
+<LI>To provide easy migration from 10 to 100 Mbps, the 100BASE-T standard
+includes<BR>
+automatic speed sensing as part of the Auto-Negotiation, or NWay, function.
+</LI>
+
+<LI>This allows an adapter or switch capable of transmitting at both 10BASE-T
+and<BR>
+100BASE-T speeds to automatically communicate available modes of operation.<BR>
+(see Figure 3, the 10-100 switch.)</LI>
+</UL>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><B><FONT SIZE=+2>Topology
+Rules</FONT></B></P>
+
+<UL>
+<LI>Fast Ethernet preserves the critical 100-meter maximum UTP cable length
+from the <BR>
+hub to the desktop. </LI>
+
+<LI>100BASE-T networks will be broken up into multiple collision domains.
+Each port<BR>
+on a bridge, router, or switch starts another collision domain. </LI>
+
+<LI>The 100BASE-T standard defines two classes of repeaters, called Class
+I and Class<BR>
+II repeaters. A collision domain can include at most one Class I or two
+Class II repeaters. </LI>
+</UL>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><B><FONT SIZE=+2>Key topology
+rules are as follows:</FONT></B></P>
+</UL>
+
+<UL>
+<UL>
+<LI>Using two Class II repeaters, the maximum diameter of the collision
+domain is 205 <BR>
+meters (typically 100m + 5m + 100m). (see level 2 in Figure 2)</LI>
+
+<LI>With just a single Class II repeater in the collision domain, the diameter
+can be extended<BR>
+to 309 meters using fiber (typically 100m UTP + 209m fiber downlink). (level
+3 in Figure 2)</LI>
+
+<LI>With a single Class I repeater in the collision domain, the diameter
+can be extended to 261<BR>
+meters using fiber (typically 100m UTP + 161m fiber downlink). (not shown
+in Figure 2)</LI>
+
+<LI>Connecting from MAC to MAC (switch to switch, or end-station to switch)
+using half-duplex<BR>
+100BASE-FX, a 412-meter fiber run is allowed. (level 4 in Figure 2)</LI>
+
+<LI>For very long distance runs, a nonstandard, full-duplex version of
+100BASE-FX can be <BR>
+used to connect two devices over a 2-kilometer distance. (level 1 in Figure
+2)</LI>
+</UL>
+</UL>
+
+<CENTER><P><IMG SRC="fetfig3.gif" HEIGHT=681 WIDTH=409></P></CENTER>
+
+<CENTER><P>Figure 2. <I>100BASE-T Topology Rules</I></P></CENTER>
+
+<UL>
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><B><FONT SIZE=+2>轉移步驟</FONT></B></P>
+</UL>
+
+<CENTER><P><IMG SRC="fetfig4.gif" HEIGHT=631 WIDTH=554></P></CENTER>
+
+<H6 ALIGN=CENTER><FONT SIZE=+0>Figure 3. <I>Full Migration to Fast Ethernet</I></FONT></H6>
+<CENTER>
+<P><A HREF="javascript:history.go(-1)">
+<IMG SRC="../../../gif/goup.jpg" BORDER=0 HEIGHT=55 WIDTH=136></A></P>
+</CENTER>
+</BODY>
+</HTML>

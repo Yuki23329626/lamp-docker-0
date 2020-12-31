@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE></TITLE>
+   <META NAME="Author" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY>
+
+<CENTER><P><B><FONT SIZE=+3>MIME (Multipurpose Internet Mail Extensions)</FONT></B></P></CENTER>
+
+<UL>
+<LI><B><FONT SIZE=+2>Overview</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>To provide facilities to include multiple objects
+in a single message </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>To represent body text in character sets other than
+US-ASCII </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>To represent formatted multi-font text messages </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>To represent non-textual material such as images and
+audio fragments</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>To facilitate later extensions defining new types
+of Internet mail for use by cooperating mail agents.</FONT></B></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>Example </FONT></B></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Content-Type: multipart/mixed; boundary=&quot------------3736B6378F4&quot </FONT></LI>
+<LI><FONT SIZE=+1>This is a multi-part message in MIME format.</FONT></LI>
+
+<LI><FONT SIZE=+1>--------------3736B6378F4 </FONT></LI>
+
+<LI><FONT SIZE=+1>Content-Type: text/plain; charset=us-ascii </FONT></LI>
+<LI><FONT SIZE=+1>Content-Transfer-Encoding: 7bit</FONT></LI>
+
+<LI><FONT SIZE=+1>This X'mas card must be run in MS-Win!</FONT></LI>
+
+<LI><FONT SIZE=+1>--------------3736B6378F4 </FONT></LI>
+
+<LI><FONT SIZE=+1>Content-Type: application/octet-stream; name=&quot;Xmascard.exe&quot;
+<LI><FONT SIZE=+1>Content-Transfer-Encoding: base64 </FONT></LI>
+<LI><FONT SIZE=+1>Content-Disposition: attachment; filename=&quot;Xmascard.exe&quot;</FONT></LI>
+</UL>
+
+<LI><B><FONT SIZE=+2>BNF Notation of Content-Type Header Field</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>content := &quot;Content-Type&quot; &quot;:&quot;
+type &quot;/&quot; subtype *(&quot;;&quot; parameter) </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>type := &quot;application&quot; / &quot;audio&quot;
+/ &quot;image&quot; / &quot;message&quot; / &quot;multipart&quot; / &quot;text&quot;
+/ &quot;video&quot; / extension-token </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>extension-token := x-token / iana-token </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+1>iana-token := &lt;a publicly-defined extension token,
+registered with IANA&gt;</FONT></B></LI>
+
+<LI><B><FONT SIZE=+1>x-token := &lt;The two characters &quot;X-&quot; or
+&quot;x-&quot; followed, with no intervening white space, by any token&gt;
+</FONT></B></LI>
+</UL>
+</UL>
+
+<LI><B><FONT SIZE=+2>subtype := token </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>parameter := attribute &quot;=&quot; value </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+1>attribute := token </FONT></B></LI>
+
+<LI><B><FONT SIZE=+1>value := token / quoted-string token := 1*&lt;any
+(ASCII) CHAR except SPACE, CTLs, or tspecials&gt; </FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+1>tspecials := &quot;(&quot; / &quot;)&quot; / &quot;&lt;&quot;
+/ &quot;&gt;&quot; / &quot;@&quot;/ &quot;,&quot; / &quot;;&quot; / &quot;:&quot;
+/ &quot;\&quot; / &lt;&quot;&gt;/ &quot;/&quot; / &quot;[&quot; / &quot;]&quot;
+/ &quot;?&quot; / &quot;=&quot;</FONT></B></LI>
+</UL>
+</UL>
+</UL>
+
+<LI><B><FONT SIZE=+2>Content type</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+2>Used to specify the type and subtype of data in the
+body of a message and to fully specify the native representation (encoding)
+of such data. </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>A &quot;text&quot; Content-Type value, which can be
+used to represent textual information in a number of character sets and
+formatted text description languages in a standardized manner. </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>A &quot;multipart&quot; Content-Type value, which
+can be used to combine several body parts, possibly of differing types
+of data, into a single message. </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>An &quot;application&quot; Content-Type value, which
+can be used to transmit application data or binary data, and hence, among
+other uses, to implement an electronic mail file transfer service. </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>A &quot;message&quot; Content-Type value, for encapsulating
+another mail message. </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>An &quot;image&quot; Content-Type value, for transmitting
+still image (picture) data.</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>An &quot;audio&quot; Content-Type value, for transmitting
+audio or voice data. </FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>A &quot;video&quot; Content-Type value, for transmitting
+video or moving image data, possibly with audio as part of the composite
+video data format.</FONT></B></LI>
+
+<LI><B><FONT SIZE=+2>Examples</FONT></B></LI>
+
+<UL>
+<LI><B><FONT SIZE=+1>application/news-transmission </FONT></B></LI>
+
+<LI><B><FONT SIZE=+1>application/octet-stream bin </FONT></B></LI>
+
+<LI><B><FONT SIZE=+1>application/oda oda </FONT></B></LI>
+
+<LI><B><FONT SIZE=+1>application/pdf pdf </FONT></B></LI>
+
+<LI><B><FONT SIZE=+1>application/postscript ai eps ps </FONT></B></LI>
+
+<LI><B><FONT SIZE=+1>application/remote-printing </FONT></B></LI>
+
+<LI><B><FONT SIZE=+1>application/rtf rtf</FONT></B></LI>
+
+<LI><B><FONT SIZE=+1>application/x-ustar ustar </FONT></B></LI>
+
+<LI><B><FONT SIZE=+1>audio/x-wav wav </FONT></B></LI>
+
+<LI><B><FONT SIZE=+1>image/gif gif </FONT></B></LI>
+
+<LI><B><FONT SIZE=+1>image/jpeg jpeg jpg jpe </FONT></B></LI>
+
+<LI><B><FONT SIZE=+1>image/tiff tiff tif </FONT></B></LI>
+
+<LI><B><FONT SIZE=+1>image/x-cmu-raster ras </FONT></B></LI>
+
+<LI><B><FONT SIZE=+1>image/x-portable-anymap pnm </FONT></B></LI>
+
+<LI><B><FONT SIZE=+1>text/x-setext etx </FONT></B></LI>
+
+<LI><B><FONT SIZE=+1>video/mpeg mpeg mpg mpe </FONT></B></LI>
+
+<LI><B><FONT SIZE=+1>video/quicktime qt mov </FONT></B></LI>
+
+<LI><B><FONT SIZE=+1>video/x-msvideo avi</FONT></B></LI>
+</UL>
+</UL>
+</UL>
+
+</BODY>
+</HTML>

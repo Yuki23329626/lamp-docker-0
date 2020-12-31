@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Untitled</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="../../gif/bg-slate.gif">
+
+<P><FONT COLOR="#0080FF"><FONT SIZE=+3>網路連結技術</FONT></FONT></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>連結方法</FONT></FONT><FONT SIZE=+1>
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>直接連結
+<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>區域網路連結廣域區路
+<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>兩區域網路透過廣域網路連結
+<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>階層式連結</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>連結設備</FONT></FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>訊號增益器(Repeater)
+</FONT></P>
+</UL>
+
+<UL>
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>連接完全相同之網路段(實體層訊號增強)
+</FONT></P>
+<A HREF="repeater.mov"> Repeater 動畫範例 </A>(
+<A HREF="../../../software/qt32inst.exe">QuickTime Format</A>)
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>網路橋(Bridge)
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>連接不同實體層之網路(可連不同之MAC協定)<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=14 WIDTH=14>Bridge 的種類：</FONT></P>
+<A HREF="bridge.mov"> Bridge 動畫範例 </A>(
+<A HREF="../../../software/qt32inst.exe">QuickTime Format</A>)
+<UL>
+<P><IMG SRC="../../gif/orangeba.gif" HEIGHT=16 WIDTH=17><B><A HREF="transbridge.htm">Transparent
+Bridge</A><BR>
+<IMG SRC="../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><A HREF="sroute.htm">Source
+Routing Bridge</A><BR>
+<IMG SRC="../../gif/orangeba.gif" HEIGHT=16 WIDTH=17><A HREF="rroute.htm">Remote
+Bridg</A></B><A HREF="rroute.htm">e</A></P>
+</UL>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>路徑選擇器(Router)
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>連接不同資料鏈結層之網路(網路層須一樣)
+</FONT></P>
+<A HREF="Router.mov"> Router 動畫範例 </A>(
+<A HREF="../../../software/qt32inst.exe">QuickTime Format</A>)
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>網路閘門(Gateway)
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>連接完全不同形態之網路
+<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=14 WIDTH=14>必須做資料格式，位址，及協定之轉換
+</FONT></P>
+</UL>
+</UL>
+
+<P><IMG SRC="../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>骨幹網路(Backbone Network)</FONT></FONT><FONT SIZE=+1>
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>將連結設備(bridge,
+route, gateway)以較高速之網路(如FDDI)連接起來 <BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>優點 </FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>高效率：慢速用戶電腦不可上backbone
+<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=14 WIDTH=14>高可靠度：各網路獨立作業，故障時互不影響
+<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=14 WIDTH=14>較佳之流量控制 <BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=14 WIDTH=14>高速，長距離</FONT></P>
+</UL>
+</UL>
+
+<CENTER><P><A HREF="../llc/llc.htm" BORDER="0"><IMG SRC="../../gif/up.jpg" BORDER=0 HEIGHT=46 WIDTH=107></A>
+<A HREF="../pkdrv/pkdrv.htm" BORDER="0"><IMG SRC="../../gif/down.jpg" BORDER=0 ></A>
+</P></CENTER>
+
+</BODY>
+</HTML>

@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+
+   <TITLE>PhotoImpact Java Rollover Assistant----Untitle</TITLE>
+
+</HEAD>
+
+<Script Language="JavaScript">
+<!--Ulead(R) RollOverButton(TM) 1.0 Generated JavaScript. Please do not edit.
+nMaxItem = 4;
+NameIndex = 0;
+DefaultState = 1;
+
+MouseOverState = 2;
+MouseDownState = 3;
+imgCounter = 0;
+
+ImageList = new Array();
+
+bIsSupportOK = (
+	((navigator.appName == "Netscape") && (parseInt(navigator.appVersion) >= 3 )) ||
+	((navigator.appName == "Microsoft Internet Explorer") && (parseInt(navigator.appVersion) >= 4 ))
+);
+
+function AddImageToImageList(name, Default, MouseOver, MouseDown)
+{
+	ImageList[imgCounter] = new Array(nMaxItem);
+	ImageList[imgCounter][NameIndex] = name;
+	ImageList[imgCounter][DefaultState] = new Image();
+	ImageList[imgCounter][DefaultState].src = Default;
+	if (MouseOver != "") {
+		ImageList[imgCounter][MouseOverState] = new Image();
+		ImageList[imgCounter][MouseOverState].src = MouseOver;
+	}
+	if (MouseDown != "") {
+		ImageList[imgCounter][MouseDownState] = new Image();
+		ImageList[imgCounter][MouseDownState].src = MouseDown;
+	}
+
+	imgCounter++;
+}
+
+function ReplaceImage(name, state)
+{
+	for (i = 0; i < imgCounter; i++) {
+		if (document.images[ImageList[i][NameIndex]] != null) {
+			if ((name == ImageList[i][NameIndex]) && (ImageList[i][state] != null))
+				document.images[name].src = ImageList[i][state].src;
+		}
+	}
+}
+
+// ------------
+// . First:
+// . You can copy the "AddImageToImageList(...)" script and
+// . paste it into your HTML file to compile and
+// . define your rollover button.
+// . ------------
+
+AddImageToImageList("Untitle", "images/test_normal.gif", "images/test_over.gif", "images/test_down.gif");
+
+// ------------>
+</Script>
+
+<BODY>
+<! ------------
+// . Second:
+// . You can copy the "<a href=......></a>" script and
+// . paste it into your HTML file to compile and
+// . define your rollover button.
+   ------------>
+
+<A HREF=""
+	ONMOUSEDOWN="if (bIsSupportOK) ReplaceImage('Untitle', MouseDownState);"
+	ONMOUSEUP="if (bIsSupportOK) ReplaceImage('Untitle', MouseOverState);"
+	ONMOUSEOUT="if (bIsSupportOK) ReplaceImage('Untitle',DefaultState);"
+	ONMOUSEOVER="if (bIsSupportOK) ReplaceImage('Untitle', MouseOverState);"
+	TARGET="">
+	<IMG NAME="Untitle" SRC="images/test_normal.gif" ALT="" WIDTH="137" HEIGHT="48" BORDER="0"></A>
+
+<! ------------
+// . Third:
+// . It is important to note that after copying all the rollover button
+// . JavaScript codes from the PhotoImpact Java Rollover Assistant,
+// . all the image files needed for your rollover buttons
+// . should be placed within your target folder as well.
+   ------------>
+
+</BODY>
+</HTML>

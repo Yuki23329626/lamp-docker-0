@@ -1,0 +1,288 @@
+
+<!-- begin new headers and page layout -->
+<body bgcolor="#ffffff">
+<br>
+<center>
+<table border=0 cellpadding=0 cellspacing=0>
+<tr>
+<td><a href="http://www.ietf.org/home.html" tppabs="http://www.ietf.org/home.html"><img src="../images/header/ietflogo_sm.gif" tppabs="http://www.ietf.org/images/header/ietflogo_sm.gif" border="0"></a></td>
+<td><a href="http://www.ietf.org/home.html" tppabs="http://www.ietf.org/home.html"><img src="../images/header/home11.gif" tppabs="http://www.ietf.org/images/header/home11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.ietf.org/html.charters/wg-dir.html" tppabs="http://www.ietf.org/html.charters/wg-dir.html"><img src="../images/header/wg11.gif" tppabs="http://www.ietf.org/images/header/wg11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.ietf.org/meetings/meetings.html" tppabs="http://www.ietf.org/meetings/meetings.html"><img src="../images/header/meetings11.gif" tppabs="http://www.ietf.org/images/header/meetings11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.ietf.org/proceedings/directory.html" tppabs="http://www.ietf.org/proceedings/directory.html"><img src="../images/header/proceed11.gif" tppabs="http://www.ietf.org/images/header/proceed11.gif"  border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="../1id-abstracts.html" tppabs="http://www.ietf.org/1id-abstracts.html"><img src="../images/header/id-index11.gif" tppabs="http://www.ietf.org/images/header/id-index11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.isi.edu/rfc-editor/" tppabs="http://www.isi.edu/rfc-editor/"><img src="../images/header/rfc11.gif" tppabs="http://www.ietf.org/images/header/rfc11.gif" border="0"></a></td>
+</tr>
+</table>
+</center>
+<hr>
+<!-- end new headers and layout -->
+
+<dl>
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-rolc-nhrp-12.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-rolc-nhrp-12.txt">
+"NBMA Next Hop Resolution Protocol (NHRP)", D Katz, David Piscitello, B.   Cole, J. Luciani, 10/30/1997. (122237 bytes)</A>
+<dd>     This document describes the NBMA Next Hop Resolution Protocol (NHRP).
+       NHRP can be used by a source station (host or router) connected to a
+       Non-Broadcast, Multi-Access (NBMA) subnetwork to determine the
+       internetworking layer address and NBMA subnetwork addresses of the
+       ''NBMA next hop'' towards a destination station.  If the destination
+    is
+       connected to the NBMA subnetwork, then the NBMA next hop is the
+       destination station itself.  Otherwise, the NBMA next hop is the
+       egress router from the NBMA subnetwork that is ''nearest'' to the
+       destination station.  NHRP is intended for use in a multiprotocol 
+    internetworking layer environment over NBMA subnetworks.
+     
+       Note that while this protocol was developed for use with NBMA
+       subnetworks, it is possible, if not likely, that it will be applied
+       to BMA subnetworks as well.  However, this usage of NHRP is for
+       further study.  
+    
+       This document is intended to be a functional superset of the NBMA
+       Address Resolution Protocol (NARP) documented in [1].
+     
+       Operation of NHRP as a means of establishing a transit path across 
+    an
+       NBMA subnetwork between two routers will be addressed in a separate
+       document (see [13]).                                                
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ion-nhrp-appl-02.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ion-nhrp-appl-02.txt">
+"NHRP Protocol Applicability Statement", D. Cansever, 07/25/1997. (19032 bytes)</A>
+<dd>     As required by the Routing Protocol Criteria [RFC 1264], this draft 
+    report discusses the applicability of the Next Hop Resolution Protocol 
+    (NHRP) in routing of IP datagrams over Non-Broadcast Multiple Access 
+    (NBMA) networks, such as ATM, SMDS and X.25. The final form of this 
+    draft report is a prerequisite to advancing NHRP on the standards 
+    track.                                                                 
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ion-ipatm-classic2-03.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ion-ipatm-classic2-03.txt">
+"Classical IP and ARP over ATM", Mark Laubach, Joel Halpern, 10/07/1997. (64637 bytes)</A>
+<dd>     This memo defines an initial application of classical IP and ARP in
+       an Asynchronous Transfer Mode (ATM) network environment configured 
+    as
+       a Logical IP Subnetwork (LIS) as described in Section 5.  This memo
+       does not preclude the subsequent development of ATM technology into
+       areas other than a LIS; specifically, as single ATM networks grow to
+       replace many Ethernet local LAN segments and as these networks 
+    become
+       globally connected, the application of IP and ARP will be treated
+       differently.  This memo considers only the application of ATM as a
+       direct replacement for the                                          
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ion-mib-04.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ion-mib-04.txt">
+"Definitions of Managed Objects for Classical IP and ARP Over ATM Using   SMIv2", M. Greene, T Kuo, J. Luciani, K. White, 07/14/1997. (82559 bytes)</A>
+<dd>     The purpose of this memo is to define the Management Information Base 
+    (MIB) for supporting Classical IP and ARP over ATM as specified in 
+    Classical IP and ARP over ATM, refer to reference [3]. Support of an 
+    ATM interface by an IP layer will require implementation of objects 
+    from several Management Information Bases (MIBs) as well as their 
+    enhancement in order to enable usage of ATM transports. It is the 
+    intent of this MIB to fully adhere to all prerequisite MIBs unless 
+    explicitly stated. Deviations will be documented in corresponding 
+    conformance statements. The specification of this MIB will utilize the 
+    Structure of Management Information (SMI) for Version 2 of the Simple 
+    Network Management Protocol Version (refer to RFC1902, reference [1]). 
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ion-scsp-02.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ion-scsp-02.txt">
+"Server Cache Synchronization Protocol (SCSP)", Joel Halpern, G.   Armitage, J. Luciani, 10/30/1997. (94832 bytes)</A>
+<dd>     This document describes the Server Cache Synchronization Protocol
+       (SCSP) and is written in terms of SCSP's use within Non Broadcast
+       Multiple Access (NBMA) networks; although, a somewhat straight
+       forward usage is applicable to BMA networks.  SCSP attempts to solve
+       the generalized cache synchronization/cache-replication problem for
+       distributed protocol entities.  However, in this document, SCSP is
+       couched in terms of the client/server paradigm in which distributed
+       server entities, which are bound to a Server Group (SG) through some
+    means, wish to synchronize the contents (or a portion thereof) of
+       their caches which contain information about the state of clients
+       being served.                                                       
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ion-sig-uni4.0-05.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ion-sig-uni4.0-05.txt">
+"ATM Signalling Support for IP over ATM - UNI Signalling 4.0 Update", M.   Perez, 10/16/1997. ( bytes)</A>
+<dd>     This memo describes how to efficiently use the ATM call control
+       signalling procedures defined in UNI Signalling 4.0 [SIG40] to
+       support IP over ATM environments as described in RFC XXX [LAUB97] 
+    and
+       in [LUC97]. Among the new features found in UNI Signalling 4.0 are
+       Available Bit Rate signalling and traffic parameter negotiation.
+       This draft highlights the features of UNI Signalling 4.0 that 
+    provide
+       IP entities capabilities for requesting ATM service in sites with 
+    SVC
+       support, whether it is private ATM or publicly provisioned ATM, in
+       which case the SVC support is probably configured inside PVPs.
+     
+       This document is only relevant to IP when used as the well known
+       ''best effort'' connectionless service. In particular, this means 
+    that
+       this document does not pertain to IP in the presence of implemented
+       IP Integrated Services.  The topic of IP with Integrated Services
+       over ATM will be handled by a different specification or set of
+       specifications being worked on in the ISSLL WG.
+     
+       This specification is follow-on to RFC 1755, ''ATM Signaling Support
+    for IP over ATM'', which is based on UNI 3.1 signalling [UNI95].
+       Readers are assumed to be familiar with RFC 1755.                   
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ion-ipv6-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ion-ipv6-00.txt">
+"IPv6 over Non-Broadcast Multiple Access (NBMA) networks", G. Armitage,   M. Jork, P. Schulter, G. Harter, 10/13/1997. (98261 bytes)</A>
+<dd>     This document describes a general architecture for IPv6 over NBMA
+       networks. It forms the basis for subsidiary companion documents that
+       describe details for various specific NBMA technologies (such as ATM
+       or Frame Relay). The IPv6 over NBMA architecture allows conventional
+       host-side operation of the IPv6 Neighbor Discovery protocol, while
+       also supporting the establishment of 'shortcut' NBMA forwarding 
+    paths
+       when dynamically signaled NBMA links are available. Operations over
+       administratively configured Point to Point NBMA links are also
+       described.
+     
+       Dynamic NBMA shortcuts are achieved through the use of IPv6 Neighbor
+       Discovery protocol operation within Logical Links, and inter-router
+       NHRP for the discovery of off-Link NBMA destinations. Both  
+    flow-triggered and explicitly source-triggered shortcuts are supported.
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ion-nhrp-mib-01.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ion-nhrp-mib-01.txt">
+"Definitions of Managed Objects for the NBMA Next Hop Resolution Protocol  (NHRP)", M. Greene, J. Luciani, 01/31/1997. (73706 bytes)</A>
+<dd>     This memo defines an experimental portion of the Management Information
+    Base (MIB) for use with network management protocols in the Internet 
+    community.  In particular, it describes managed objects for the Next 
+    Hop Resolution Protocol (NHRP) as defined in [1].                      
+    This memo specifies a MIB module in a manner that is both compliant to 
+    the SNMPv2 SMI, and semantically identical to the peer SNMPv1 
+    definitions.     This memo does not specify a standard for the Internet
+    community.                                                             
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ion-fr-update-03.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ion-fr-update-03.txt">
+"Multiprotocol Interconnect over Frame Relay", C. Brown, A. Malis, T.   Bradley, 05/07/1997. (73702 bytes)</A>
+<dd>     This memo describes an encapsulation method for carrying network 
+    interconnect traffic over a Frame Relay backbone.  It covers aspects of
+    both Bridging and Routing.                                             
+    Systems with the ability to transfer both the encapsulation method 
+    described in this document, and others must have a priori knowledge of 
+    which virtual circuits will carry which encapsulation method and this 
+    encapsulation must only be used over virtual circuits that have been 
+    explicitly configured for its use.                                     
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ion-transition-02.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ion-transition-02.txt">
+"Classical IP to NHRP Transition", J. Luciani, 05/15/1997. (9412 bytes)</A>
+<dd>     This document describes methods and procedures for the graceful 
+    transition from an ATMARP LIS[1] to an NHRP LIS[2] network model over 
+    ATM.                                                                   
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ion-inarp-update-01.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ion-inarp-update-01.txt">
+"Inverse Address Resolution Protocol", C. Brown, A. Malis, T. Bradley,   05/07/1997. (13858 bytes)</A>
+<dd>     This memo describes additions to ARP that will allow a station to 
+    request a protocol address corresponding to a given hardware address.  
+    Specifically, this applies to Frame Relay stations that may have a Data
+    Link Connection Identifier (DLCI), the Frame Relay equivalent of a 
+    hardware address, associated with an established Permanent Virtual 
+    Circuit (PVC), but do not know the protocol address of the station on 
+    the other side of this connection.  It will also apply to other 
+    networks with similar circumstances.                                   
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ion-mars-mib-04.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ion-mars-mib-04.txt">
+"Definitions of Managed Objects for Multicast over UNI 3.0/3.1 based ATM   Networks", M. Greene, C. Chung, 11/24/1997. (111634 bytes)</A>
+<dd>        This memo defines an experimental portion of the Management
+       Information Base (MIB) for use with network management protocols in
+       the Internet community.  In particular, it describes managed objects
+       for IP hosts and routers that use a Multicast Address Resolution
+       Server (MARS) to support IP multicast over ATM, as described in
+       'Support for Multicast over UNI 3.0/3.1 based ATM Networks' [1].
+     
+       This memo specifies a MIB module in a manner that is both compliant
+       to the SNMPv2 SMI, and semantically identical to the peer SNMPv1
+       definitions.
+     
+       This memo does not specify a standard for the Internet community.
+                                                                           
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ion-r2r-nhrp-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ion-r2r-nhrp-00.txt">
+"NHRP for Destinations off the NBMA Subnetwork", Y Rekhter, 02/03/1997. (29524 bytes)</A>
+<dd>     The NBMA Next Hop Resolution Protocol (NHRP) [NHRP] specifies a 
+    mechanism that allows a source station (e.g., a host or a router) on an
+    NBMA subnetwork to find the NBMA subnetwork address address of a 
+    destination station when the destination station is connected to the 
+    NBMA subnetwork. For the case where the destination station is off the 
+    NBMA subnetwork the mechanism described in [NHRP] allows to determine 
+    the NBMA subnetwork address of an egress router from the NBMA 
+    subnetwork that is ``nearest'' to the destination station.  However, 
+    the ability of determining the egress router is constrained to the 
+    destinations that are directly connected to the egress router.         
+    This document describes extensions to the NBMA Next Hop Resolution 
+    Protocol (NHRP) [NHRP] that allow to acquire and maintain the 
+    information about the egress router without constraining the 
+    destination(s) to be directly connected to the egress router.          
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ion-intralis-multicast-01.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ion-intralis-multicast-01.txt">
+"Intra-LIS IP multicast among routers over ATM using Sparse Mode PIM", D.  Farinacci, David Meyer, Y Rekhter, 08/22/1997. (10802 bytes)</A>
+<dd>     This document describes how intra-LIS IP multicast can be efficiently 
+    supported among routers over ATM without using the Multicast Address 
+    Resolution Server (MARS). The method described here is specific to 
+    Sparse Mode PIM [PIM-SM], and relies on the explicit join mechanism 
+    inherent in PIM-SM to notify routers when they should create group 
+    specific point-to-multipoint VCs.                                      
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ion-scsp-atmarp-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ion-scsp-atmarp-00.txt">
+"A Distributed ATMARP Service Using SCSP", J. Luciani, B. Fox,   04/16/1997. (10811 bytes)</A>
+<dd>     This document describes a method for distributing an ATMARP service 
+    within a LIS[1].  This method uses the Server Cache Synchronization 
+    Protocol (SCSP)[2] to synchronize the ATMARP server databases within a 
+    LIS.  When SCSP is used to synchronize the caches of ATMARP servers in 
+    a LIS, the LIS defines the boundary of an SCSP Server Group (SG).      
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ion-scsp-nhrp-02.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ion-scsp-nhrp-02.txt">
+"A Distributed NHRP Service Using SCSP", J. Luciani, 10/29/1997. (12379 bytes)</A>
+<dd>        This document describes a method for distributing an NHRP service
+       within a LIS[1].  This method uses the Server Cache Synchronization
+       Protocol (SCSP)[2] to synchronize the client information databases
+       held by NHRP Servers (NHSs) within a LIS.                           
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ion-discov-mars-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ion-discov-mars-00.txt">
+"ILMI-Based Server Discovery for MARS", Michael Davison, 08/20/1997. (10028 bytes)</A>
+<dd>        This memo defines how ILMI-based Server Discovery, which provides a
+       method for ATM-attached hosts and routers to dynamically determine
+       the ATM address of servers,  shall be used to locate MARS servers.  
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ion-discov-atmarp-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ion-discov-atmarp-00.txt">
+"ILMI-Based Server Discovery for ATMARP", Michael Davison, 08/20/1997. (10016 bytes)</A>
+<dd>        This memo defines how ILMI-based Server Discovery, which provides a
+       method for ATM-attached hosts and routers to dynamically determine
+       the ATM address of servers,  shall be used to locate ATMARP servers.
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ion-scsp-mars-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ion-scsp-mars-00.txt">
+"A Distributed MARS Service Using SCSP", J. Luciani, A. Gallo,   07/25/1997. (16482 bytes)</A>
+<dd>     This document describes a method for distributing a MARS service within
+    a LIS[1].  This method uses the Server Cache Synchronization Protocol 
+    (SCSP)[2] to synchronize the MARS Server databases within a LIS.  When 
+    SCSP is used to synchronize the caches of MARS Servers in a LIS, the 
+    LIS defines the boundary of an SCSP Server Group (SG).                 
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ion-intra-area-unicast-01.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ion-intra-area-unicast-01.txt">
+"Intra-area IP unicast among routers over legacy ATM", Juha Heinanen,   11/20/1997. (11599 bytes)</A>
+<dd>        This document describes how IP unicast can be efficiently 
+    implemented
+       among routers belonging to the same area of a routing domain, where
+       the connectivity is provided by a legacy ATM network as defined by
+       the ATM Forum or ITU.  This proposal is designed to be complementary
+       to IP multicast solutions such as the one described in [1].
+                                                                           
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ion-discov-nhrp-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ion-discov-nhrp-00.txt">
+"ILMI-Based Server Discovery for NHRP", Michael Davison, 08/20/1997. (9918 bytes)</A>
+<dd>        This memo defines how ILMI-based Server Discovery, which provides a
+       method for ATM-attached hosts and routers to dynamically determine
+       the ATM address of servers,  shall be used to locate NHRP servers.  
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ion-ipv6-atm-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ion-ipv6-atm-00.txt">
+"IPv6 over ATM Networks", G. Armitage, M. Jork, P. Schulter, G. Harter,   10/13/1997. (18030 bytes)</A>
+<dd>        This document is a companion to the ION working group's architecture
+       document 'IPv6 over Non Broadcast Multiple Access (NBMA) networks'.
+       It provides specific details on how to apply the IPv6 over NBMA
+       architecture to ATM networks. This architecture allows conventional
+       host-side operation of the IPv6 Neighbor Discovery protocol, while
+       also supporting the establishment of 'shortcut' ATM forwarding paths
+       (when using SVCs).  Operation over administratively configured Point
+       to Point PVCs is also supported.                                    
+</dl>
+
+<HR>
+
+<I> IETF Secretariat - Please send questions, comments, and/or 
+suggestions to </I> <a href="mailto:ietf-web@ietf.org">ietf-web@ietf.org</a>.
+<P>
+
+<A HREF="../1id-abstracts.html" tppabs="http://www.ietf.org/1id-abstracts.html">
+<IMG SRC="../icons/back.xbm" tppabs="http://www.ietf.org/icons/back.xbm"> Return to Internet-Draft directory. </A> <P>
+
+<A HREF="http://www.ietf.org/home.html" tppabs="http://www.ietf.org/home.html">
+<IMG SRC="../icons/back.xbm" tppabs="http://www.ietf.org/icons/back.xbm"> <IMG SRC="../icons/back.xbm" tppabs="http://www.ietf.org/icons/back.xbm">
+Return to IETF home page. </A>
+
+</body>
+</html>
+

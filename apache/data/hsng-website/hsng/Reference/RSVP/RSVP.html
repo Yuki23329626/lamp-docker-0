@@ -1,0 +1,808 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>Summary of "RSVP : A New Resource ReSerVation Protocol (From IEEE Network , 1993 Sep.)"</title>
+</head>
+
+<body background="../../Back.gif">
+
+<dl>
+    <div align="center"><center>
+    <dt><font color="#0000FF" size="7">Summary of </font></dt>
+    </center></div><div align="center"><center>
+    <dt><font color="#0000FF" size="7">&quot;RSVP : A New
+        Resource</font></dt>
+    </center></div><div align="center"><center>
+    <dt><font color="#0000FF" size="7">ReSerVation Protocol</font></dt>
+    </center></div><div align="center"><center>
+    <dt><font color="#0000FF" size="7">(From IEEE Network , 1993
+        Sep.)&quot;</font></dt>
+    </center></div>
+</dl>
+
+<dl>
+    <div align="center"><center>
+    <dt><img src="../../rainbow.gif" width="535" height="4"></dt>
+    </center></div>
+</dl>
+
+<hr>
+
+<h1 align="center"><font color="#0000FF">Why RSVP</font></h1>
+
+<hr>
+
+<ol>
+    <li>First, many of these applications are very sensitive to
+        the quality of service their packets receive.</li>
+    <li>Second, these new applications are not solely
+        point-to-point, with a single sender and a single
+        receiver of data; instead, they are often
+        multipoint-to-multipoint with several senders and
+        receivers of data.</li>
+</ol>
+
+<hr>
+
+<h1 align="center"><font color="#0000FF">Normal Components</font></h1>
+
+<hr>
+
+<ol>
+    <li><em>Flow Specification</em> : describes both the
+        characteristics of the <em>traffic stream sent by the
+        source</em>, and <em>the service requirements of the
+        application</em>. In some sense, the flowspec is the <em>central</em>
+        component of the architecture, since it embodies the
+        service interface that applications intract with.</li>
+    <li><em>Routing</em> : decide how to transport packets from
+        the source to the receiver of the flow. <em>P.S.None of
+        the current proposals have yet dealt sufficiently with
+        the interaction between routing and quality of service
+        constraints.</em></li>
+    <li><em>Resource Reservatiopn</em> : It is usually necessary
+        to set aside certain resources, such as a share of
+        bandwidth or a number of buffers, for that flow. And to
+        create and maintain resource reservations on each link
+        along the transport path.</li>
+    <li><em>Admission Control</em> : Determine which reservation
+        requests to grant(同意) and which to deny, thereby
+        maintaining the network load at an appropriate level.</li>
+    <li><em>Packet Scheduling</em> : Decide whether or not
+        transmit the next packet, and which is next.</li>
+    <li><em>Summary : RSVP is receiver-oriented</em> : The
+        receiver of the data flow is responsible for the
+        initiation of the resource reservation.</li>
+</ol>
+
+<hr>
+
+<h1 align="center"><font color="#0000FF">RSVP Design Goals</font></h1>
+
+<hr>
+
+<ol>
+    <li><em>Accomodate hetergeneous receivers</em> : To provide
+        the ability for heterogeneous receivers to make
+        reservations specifically tailored to their own needs.</li>
+    <li><em>Adapt to changing multicast group membership</em> :
+        To deal gracefully with changes in the multicast group
+        membership. (減少無謂之資源浪費)</li>
+    <li><em>Exploit(開發；利用) the resource needs of
+        different applications in order to use network resource
+        efficiently</em> : To allow end users to specify their
+        application needs, so the aggregate(合計的) resources
+        actually needed by that group.</li>
+    <li><em>Allow receivers to switch channels</em> : A receiver
+        should be able to control which packets are carried on
+        its reserved(保留的) resources, not only what gets
+        displayed on its local screen. Moreover, a receiver
+        should be able to switch among sources without the risk
+        of having the change request denied, as could occur if a
+        new reservation request had to be submitted in order to
+        &quot;switch channels&quot;. The goal is to enable this
+        channel changing feature.</li>
+    <li><em>Adopt to changes in the underlying(基礎的) unicast
+        and multicast routers</em> : RSVP is not a routing
+        protocol and should avoid replication(複製) any routing
+        functions. RSVP's task is to establish and maintain
+        resource reservations over a path or a distribution tree,
+        independent of how the path or tree was created. RSVP
+        should deal gracefully with such changes in routers,
+        automatically reestablishing the resource reservations
+        along the new paths as long as adequate resources are
+        available.</li>
+    <li><em>Control protocol overhead so that it does not grow
+        linearly (or worse) with the number of participants</em>
+        : It means both avoiding the explosion(劇增) in
+        protocol overhead when group size gets large and also
+        incorporating(加入) tunable parameters so that the
+        amount of protocol overhead can be adjusted.</li>
+    <li><em>Make the design modular to accomodate heterogeneous
+        underlying technologies</em> : Our design goal is not
+        specific to the problem at hand but rtather is a general
+        matter of modular design. Clearly a particular
+        implementation on RSVP will be tied quite closely to the
+        flowspec and interfaces used by the routing and admission
+        control algorithms. However, the general protocol design
+        should be independent of these. This design goal makes
+        RSVP deployable in many contexts. For optimally efficient
+        routing decisions, however, routing selection and
+        resource reservation should be integrated. Such an
+        integration would lead to more coordination between the
+        choice of which resources to reserve and the mechanics of
+        establishing the reservation (which is RSVP's main
+        focus). This integration is something that requires
+        further research.</li>
+    <li><em>Summary</em> : RSVP communicates requirements for a
+        wide range of network services but does not directly
+        provide them. Althiough we described RSVP as a resource
+        reservation protocol, it can be seen more generally as a
+        &quot;switch state establishment&quot; protocol.</li>
+</ol>
+
+<hr>
+
+<h1 align="center"><font color="#0000FF">RSVP Basic Principles</font></h1>
+
+<hr>
+
+<ol>
+    <li><em>Receiver-Initiated Reservation</em> :<ol>
+            <li>Data source initiates the reservation request.</li>
+            <li>Receivers choose the level of resources reserved
+                and are responsible for initiating and keeping
+                the reservation active as long as they want to
+                receive the data.</li>
+            <li>The multicast group membership is defined as the
+                group of receivers. A sender doesn't care whether
+                adequate resources are available, a sender to a
+                multicast group doesn't necessarily know who is
+                currently a member of the multicast group itself.</li>
+        </ol>
+    </li>
+    <li><em>Separating reservation from packet filtering</em> :<ol>
+            <li>The resource reservation does not determine which
+                packets can use the resources, but merely
+                sprcifies what amount of resources are reserved
+                for whom. Here, &quot;whom&quot; does not refer
+                to &quot;which packets&quot; can use the reserved
+                resources, it refers to &quot;which entity&quot;
+                controls the resources.</li>
+            <li>A separate function, called a packet filter,
+                selects those packets that can use the resources;
+                it is set by the reservation entity. Moreover, it
+                can be changed without changing the amount of
+                reserved resources. We allow this filter to be
+                dynamic; that is, the receiver can change it
+                during the course of the reservation.</li>
+            <li>The distination enables us to offer several
+                different reservation styles, and will be
+                described in the next section.</li>
+        </ol>
+    </li>
+    <li><em>Providing different reservatioon styles</em> :<ol>
+            <li>Currnetly, there are three reservation styles:
+                no-filter, fixed-filter, and dynamic-filter.</li>
+            <li>A receiver makes a resource reservation for a
+                multicast application, it can specify whether or
+                not a data source filter is to be used. </li>
+            <li>If no filter is used then any packets destined
+                for that multicast group may use the reserved
+                resources.</li>
+            <li>If source filtering is needing, the filter is
+                specified by a list of sources. Only the packets
+                from the specified sources can use the reserved
+                resources.</li>
+            <li>A &quot;fixed-filter&quot; reservation allows a
+                receiver to receive data only from the sources
+                listed in the original reservation request, for
+                the duration of the reservation; a
+                &quot;dynamic-filter&quot; reservation allows
+                receiver to change its filter to different
+                sources over time.</li>
+            <li>Having several different reservation styles
+                allows intermediate switches to decide how
+                individual reservation rewuests for the same
+                multicast group can be efficiently merged. (有不同之reservation
+                styles使得intermediate switches能決定如何使同一multicast
+                group中之個別reservation request能有效率地merge)</li>
+        </ol>
+    </li>
+    <li><em>Maintaining &quot;soft-state&quot; in network</em> :<ol>
+            <li>soft-state : 所謂soft-state是指當switches
+                lost時，能自動地在最短時間內使switches復原的狀態</li>
+            <li>RSVP負責維持soft-state，而將reservation之維護工作交給end-users</li>
+            <li>在傳遞期間，RSVP一直在判斷兩個固定資料是否有所變化：1.Path
+                message , 2.Reservation message，進而改變Path
+                state及Reservation state，而Reservatioon state是附加在Path
+                state上的</li>
+            <li>Routing方法之決定權在於Routing Protocol，而非RSVP</li>
+            <li>F-Flag：在Update Path message時，事實上是在Update兩個資料：1.由該位置到Source之路徑、2.由Source一直到Receivers之multicast
+                group的路徑。假如F-flags是On的，則除了以上兩個資料外，還包含前一個hop到Source之路徑。</li>
+            <li>每一個Reservation message都攜帶有flowspec、reservation
+                style及packet filter等資料，而當處理reservation
+                message時，switches藉由紀錄以下資料update
+                reservation state：1.被保留之資源的數量，2.被保留資源之Source
+                Filter，3.reservation style，4.使否reservation
+                style是dynamic-filtered</li>
+            <li>Reservation message經由反轉Path message之程序會將之由Receivers送為Source，而隨時保存Path
+                message之目的便是為此</li>
+            <li>而Path message及Reservation message會有一個Timeout資料，而此一資料是Intermediate
+                Switches用以使Resource在長久未能送達Receivers之情況下會想辦法將資料更新或自行消滅</li>
+            <li>This soft-state approach adds both adaptivity and
+                robustness to RSVP. (這種soft-state方法增進了RSVP的適應立即強固性)</li>
+        </ol>
+    </li>
+    <li><em>Protocol overhead control</em> :<ol>
+            <li>RSVP的overhead是由以下三點來決定：1.被送出的RSVP
+                message，2.RSVP messages的大小，3.Path &amp;
+                Reservation messages的Refresh頻率</li>
+            <li>RSVP藉由Path message及Reservation message所攜帶的timeout長短來控制refresh
+                frequency，且timeout時間越大，則refresh的頻率越小</li>
+        </ol>
+    </li>
+    <li><em>Modularity</em> :<ol>
+            <li>在real-time及multicast的應用程式中，RSVP包含三個介面供人操作：1.flowspec，2.the
+                network routing protocol，3.the network
+                admission control，我們希望這三部分盡量不相關，並將之個別模組化</li>
+        </ol>
+    </li>
+</ol>
+
+<hr>
+
+<h1 align="center"><font color="#0000FF">RSVP Operation Overview</font></h1>
+
+<hr>
+
+<ol>
+    <li>RSVP必須由Receiver向Sources建立Sink Tree，如原文中之Figure
+        2.</li>
+    <li>一般而言，每一個reservation包含reserver(為reservation
+        message送回之工作者，為multicast group中receivers之一個)、filter及被保留資源之數量。當為no-filter
+        reservations時，前兩個欄位無用；為fixed-filter時，第一個欄位不需要</li>
+</ol>
+
+<hr>
+
+<h1 align="center"><font color="#0000FF">Example</font></h1>
+
+<hr>
+
+<p>本例只使用Unicast Routing之方式實作，並未有Multicast
+Routing之某些特性</p>
+
+<p>範例環境：</p>
+
+<p align="center"><img src="RSVPExample.jpg" width="576"
+height="231"></p>
+
+<hr>
+
+<p align="center"><font color="#FF0000" size="4">1. No-Filter
+Reservcations</font></p>
+
+<hr>
+
+<p>Assumption :</p>
+
+<ol>
+    <li>each sender can reach all the receivers</li>
+    <li><u>F-flag is off</u> from all the siurcesm so the
+        switches <u>don't record source information</u></li>
+    <li>No reservations been made yet (剛開始並無任何Reservation先被產生)</li>
+</ol>
+
+<p>剛開始的path message：</p>
+<div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center">S1</td>
+        <td align="center">S2</td>
+        <td align="center">S3</td>
+    </tr>
+    <tr>
+        <td align="center">Incomming-Links</td>
+        <td align="center">L1 , L2 , L6</td>
+        <td align="center">L5 , L6 , L7</td>
+        <td align="center">L3 , L4 , L7</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L1 , L2 , L6</td>
+        <td align="center">L5 , L6 , L7</td>
+        <td align="center">L3 , L4 , L7</td>
+    </tr>
+</table>
+</center></div>
+
+<p>H1想由所有其他的Sender取得audio資料而發出一要求R1(B,no-filter)
+[B為要求之bandwidth大小]，當R1到達S1，S1將R1傳向H2及S2，並在L1處保留一個大小為B之Reservation：</p>
+<div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="3">S1</td>
+    </tr>
+    <tr>
+        <td align="center">Incomming-Links</td>
+        <td align="center">L1</td>
+        <td align="center">L2</td>
+        <td align="center">L6</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L1 (B)</td>
+        <td align="center">L2</td>
+        <td align="center">L6</td>
+    </tr>
+</table>
+</center></div>
+
+<p>當R1經由L6到達S2，並由S2為L6保留大小為B之Reservation，再將R1送至L5及L7，而透過L7，S3將收到R1，並將保留B給L7，且將R1送至H3及H4：</p>
+<div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="3">S1</td>
+        <td align="center" colspan="3">S2</td>
+        <td align="center" colspan="3">S3</td>
+    </tr>
+    <tr>
+        <td align="center">Incomming-Links</td>
+        <td align="center">L1</td>
+        <td align="center">L2</td>
+        <td align="center">L6</td>
+        <td align="center">L5</td>
+        <td align="center">L6</td>
+        <td align="center">L7</td>
+        <td align="center">L3</td>
+        <td align="center">L4</td>
+        <td align="center">L7</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L1 (B)</td>
+        <td align="center">L2</td>
+        <td align="center">L6</td>
+        <td align="center">L5</td>
+        <td align="center">L6 (B)</td>
+        <td align="center">L7</td>
+        <td align="center">L3</td>
+        <td align="center">L4</td>
+        <td align="center">L7 (B)</td>
+    </tr>
+</table>
+</center></div>
+
+<p>若H2送出一R2(B,no-filter)給S1，此時S1將R2送到H1，但不送到S2，因為S2早已保留了一個&quot;B&quot;，不需再提出要求：</p>
+<div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="3">S1</td>
+        <td align="center" colspan="3">S2</td>
+        <td align="center" colspan="3">S3</td>
+    </tr>
+    <tr>
+        <td align="center">Incomming-Links</td>
+        <td align="center">L1</td>
+        <td align="center">L2</td>
+        <td align="center">L6</td>
+        <td align="center">L5</td>
+        <td align="center">L6</td>
+        <td align="center">L7</td>
+        <td align="center">L3</td>
+        <td align="center">L4</td>
+        <td align="center">L7</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L1 (B)</td>
+        <td align="center">L2 (B)</td>
+        <td align="center">L6</td>
+        <td align="center">L5</td>
+        <td align="center">L6 (B)</td>
+        <td align="center">L7</td>
+        <td align="center">L3</td>
+        <td align="center">L4</td>
+        <td align="center">L7 (B)</td>
+    </tr>
+</table>
+</center></div>
+
+<hr>
+
+<p align="center"><font color="#FF0000" size="4">2. Filtered
+Reservations</font></p>
+
+<hr>
+
+<p>假設H2、H3、H4及H5都是receivers，而H1、H4及H5都是source，所有path
+message之F-flag都是On的，所以每個switches都需保留在其之前一個hop的Source之列表，如下：</p>
+<div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="2">S1</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L2(src H1,H1 | H4,S2 | H5,S2)</td>
+        <td align="center">L6(src H1,H1)</td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="3">S2</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L5(src H1,S1 | H4,S3)</td>
+        <td align="center">L6(src H4,S3 | H5,H5)</td>
+        <td align="center">L7(src H1,S1 | H5,H5)</td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="3">S3</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L3(src H1,S2 | H4,H4 | H5,S2)</td>
+        <td align="center">L4(src H1,S2 | H5,S2)</td>
+        <td align="center">L7(src H4,H4)</td>
+    </tr>
+</table>
+</center></div>
+
+<p align="center"><u>(H1並非Receiver，所以S1不Outgoing到L1)</u></p>
+
+<p>當H2送出一個Reservation Message R2(B,H4)到S1，則S1幫H2保留一個大小為B之Bandwidth</p>
+<div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="2">S1</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L2(src H1,H1 | <u>H4,S2</u> | H5,S2) <em><strong><u>(B)</u></strong></em></td>
+        <td align="center">L6(src H1,H1)</td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="3">S2</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L5(src H1,S1 | H4,S3)</td>
+        <td align="center">L6(src H4,S3 | H5,H5)</td>
+        <td align="center">L7(src H1,S1 | H5,H5)</td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="3">S3</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L3(src H1,S2 | H4,H4 | H5,S2)</td>
+        <td align="center">L4(src H1,S2 | H5,S2)</td>
+        <td align="center">L7(src H4,H4)</td>
+    </tr>
+</table>
+</center></div>
+
+<p>並發現H4確實是此處所得之的Source之一，並將R2經由L6送至S2</p>
+
+<p>而S2接到R2時，便為L6保留B之Bandwidth</p>
+<div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="2">S1</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L2(src H1,H1 | H4,S2 | H5,S2)<em><strong><u>(B)</u></strong></em></td>
+        <td align="center">L6(src H1,H1)</td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="3">S2</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L5(src H1,S1 | H4,S3)</td>
+        <td align="center">L6(src <u>H4,S3</u> | H5,H5) <em><strong><u>(B)</u></strong></em></td>
+        <td align="center">L7(src H1,S1 | H5,H5)</td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="3">S3</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L3(src H1,S2 | H4,H4 | H5,S2)</td>
+        <td align="center">L4(src H1,S2 | H5,S2)</td>
+        <td align="center">L7(src H4,H4)</td>
+    </tr>
+</table>
+</center></div>
+
+<p>並發現H4確實是此處所得之的Source之一，並將R2經由L57送至來自H4之上一個Router
+S3</p>
+<div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="2">S1</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L2(src H1,H1 | H4,S2 | H5,S2) <em><strong><u>(B)</u></strong></em></td>
+        <td align="center">L6(src H1,H1)</td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="3">S2</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L5(src H1,S1 | H4,S3)</td>
+        <td align="center">L6(src H4,S3 | H5,H5) <em><strong><u>(B)</u></strong></em></td>
+        <td align="center">L7(src H1,S1 | H5,H5)</td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="3">S3</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L3(src H1,S2 | H4,H4 | H5,S2)</td>
+        <td align="center">L4(src H1,S2 | H5,S2)</td>
+        <td align="center">L7(src H4,H4) <em><strong><u>(B)</u></strong></em></td>
+    </tr>
+</table>
+</center></div>
+
+<p>當S3收到R2，便在L7上保留一大小為B之Bandwidth，然後將R2送到H4，此時在H2到H4之間已建立了一個大小為B之溝通管路</p>
+
+<p align="center"><em><strong><u>§維持原狀態§</u></strong></em></p>
+
+<p>若H5送出一R5(2B,*)，則此R5與先前之R2不同，具有Dynamic-filter之功能，而R2只是fixed-filter，當S2收到R5，S2便為L5保留2B之頻寬，然後將R5送至S1及S3</p>
+<div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="2">S1</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L2(src H1,H1 | H4,S2 | H5,S2) <em><strong><u>(B)</u></strong></em></td>
+        <td align="center">L6(src H1,H1)</td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="3">S2</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L5(src <u>H1,S1</u> | <u>H4,S3</u>) <em><strong><u>(2B)</u></strong></em></td>
+        <td align="center">L6(src H4,S3 | H5,H5) <em><strong><u>(B)</u></strong></em></td>
+        <td align="center">L7(src H1,S1 | H5,H5)</td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="3">S3</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L3(src H1,S2 | H4,H4 | H5,S2)</td>
+        <td align="center">L4(src H1,S2 | H5,S2)</td>
+        <td align="center">L7(src H4,H4) <em><strong><u>(B)</u></strong></em></td>
+    </tr>
+</table>
+</center></div>
+
+<p>S1收到R5時，因為已經在L6上保留了B的頻寬，所以只再給予L6
+B之頻寬，並將R5送至H1</p>
+<div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="2">S1</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L2(src H1,H1 | H4,S2 | H5,S2) <em><strong><u>(B)</u></strong></em></td>
+        <td align="center">L6(src <u>H1,H1</u>) <em><strong><u>(22B)</u></strong></em></td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="3">S2</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L5(src H1,S1 | H4,S3)</td>
+        <td align="center">L6(src H4,S3 | H5,H5) <em><strong><u>(B)</u></strong></em></td>
+        <td align="center">L7(src H1,S1 | H5,H5)</td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="3">S3</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L3(src H1,S2 | H4,H4 | H5,S2)</td>
+        <td align="center">L4(src H1,S2 | H5,S2)</td>
+        <td align="center">L7(src H4,H4) <em><strong><u>(B)</u></strong></em></td>
+    </tr>
+</table>
+</center></div>
+
+<p>S3收到R5時， ???????</p>
+<div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="2">S1</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L2(src H1,H1 | H4,S2 | H5,S2) <em><strong><u>(B)</u></strong></em></td>
+        <td align="center">L6(src H1,H1)</td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="3">S2</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L5(src H1,S1 | H4,S3)</td>
+        <td align="center">L6(src H4,S3 | H5,H5) <em><strong><u>(B)</u></strong></em></td>
+        <td align="center">L7(src H1,S1 | H5,H5)</td>
+    </tr>
+</table>
+</center></div><div align="center"><center>
+
+<table border="1" width="100%">
+    <tr>
+        <td align="center">　</td>
+        <td align="center" colspan="3">S3</td>
+    </tr>
+    <tr>
+        <td align="center">Outgoing-Links</td>
+        <td align="center">L3(src H1,S2 | H4,H4 | H5,S2)</td>
+        <td align="center">L4(src H1,S2 | H5,S2)</td>
+        <td align="center">L7(src H4,H4) <em><strong><u>(B)</u></strong></em></td>
+    </tr>
+</table>
+</center></div>
+
+<hr>
+
+<h1 align="center"><font color="#0000FF">Related Work</font></h1>
+
+<hr>
+
+<p>一般之RSVP Implementation都先在Unicast reservation
+protocol之下，而The Stream Protocol (ST) 士一個比較先進的Multicast
+Reservation Protocol Design，而他雖然可以里處前面所述之Multicast技術，但還另外需要一個中央存取控制機制(centralized
+Access Controller)來協調所有的參與者並管理Tree的建立。而新的ST，ST-II，則繼續將Unicast
+Routing之機制整合進來。</p>
+
+<p>而ST及ST-II之產生提供了一些重要觀點：為了有效率地之支援異質環境中的接收方式，每一個接收者必須對於部分正想要接收之資訊指定一個Stream
+Filter，以使送出去之Filter能在途中過濾一些不該傳到Receiver的資料，使那些資料不再往前送，以節省者一段之頻寬與時間，否則這些資料即使已經送到了門口，也會因為不需要而去除掉。</p>
+
+<hr>
+
+<h1 align="center"><font color="#0000FF">Unsolved Issues</font></h1>
+
+<hr>
+
+<p>在本文中，作者們提出一點：『We expect that
+further incremental design changes will be made as we gain
+experience with RSVP, both on DARTnet and also through further
+simulation』</p>
+
+<p>對於Routing的期待在RSVP設計中佔的並不多，但究竟使用哪一個Routing最好呢？</p>
+
+<p>我們對於上述的各種Filter定義了不同的service
+model及interface，但這些東西並未真正地加在RSVP的實作過程中。</p>
+
+<p>我們並不知道當Multicast group變得很大時，會有何結果！？</p>
+
+<hr>
+
+<h1 align="center"><font color="#0000FF">Summary</font></h1>
+
+<hr>
+
+<ol>
+    <li>RSVP提供接收者導向的Reservation傳輸，使之能適應異質環境中之動態成員變化</li>
+    <li>RSVP將filter由Reservation中分離，使得個別的channel能動態改變自身之行為</li>
+    <li>以Soft-State之方式維護Resource Reservation，使RSVP能提供動態且強固的多點對多點傳輸</li>
+    <li>RSVP將routing及reservation分離，使得RSVP能在routing之上執行而不干涉，並能享有multicast
+        routing之好處</li>
+</ol>
+
+<hr>
+<div align="right">
+
+<address>
+    <font color="#0000FF"><u>Made by Chun-min Hsu</u></font><u> </u>
+</address>
+</div>
+
+<hr>
+
+<p align="center"><img src="../../rainbow.gif" width="535"
+height="4"></p>
+</body>
+</html>

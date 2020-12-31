@@ -1,0 +1,232 @@
+<HTML>
+<BODY >
+
+<P></P><A HREF="JavaScript:parent.ItemClicked(1, 0)"> Socket Options </A><br><UL>
+<LI>getsockopt( ) & setsockopt( )
+<UL>
+int getsockopt(int sock, int level, int optname, char *optval, int *optlen);
+<BR><BR>int setsockopt(int sock, int level, int optname, char *optval, int optlen);
+<LI>three levels
+<UL>
+<LI>internet
+<UL>
+<LI>IPPROTO_IP
+<LI>IPPROTO_TCP
+</UL><LI>XNS
+<UL>
+<LI>NSPROTO_SPP, ....
+</UL><LI>socket
+<UL>
+<LI>SOL_SOCKET
+</UL><LI>optval
+<UL>
+<LI>value of the option
+<LI>data type depends on option (int in most cases)
+</UL><LI>optlen
+<UL>
+<LI>length of the option value
+<LI>returned value in getsockopt( )</UL></UL></UL></UL></P>
+<P>
+<P></P><A HREF="JavaScript:parent.ItemClicked(2, 0)"> Option Name </A><br><UL>
+<LI>List only those useful to us
+</UL><UL>
+<LI>IPPROTO_IP level (in.h)
+<UL>
+<LI>IP_OPTIONS
+<UL>
+<LI>allow us to set specific optionsin the IP header
+</UL></UL></UL><UL>
+<LI>IPPROTO_TCP level (tcp.h)
+<UL>
+<LI>TCP_MAXSEG
+<UL>
+<LI>set/return the maximum segment size in use for the socket
+</UL><LI>TCP_NODELAY
+<UL>
+<LI>to allow user application to send small TCP packets as soon as possible</UL></UL></UL></P>
+<P>
+<P></P><A HREF="JavaScript:parent.ItemClicked(3, 0)"> SOL_SOCKET level  (socket.h)
+ </A><br><UL>
+<LI>SOL_SOCKET level  (socket.h)
+<UL>
+<LI>SO_DEBUG
+<UL>
+<LI>Enables or disables low-level debugging within the kernel
+</UL><LI>SO_DONTROUTE
+<UL>
+<LI>bypass the normal routing mechanism
+<LI>direct packet to appropriate network interface only
+</UL><LI>SO_ERROR
+<UL>
+<LI>return current content of so_error
+</UL><LI>SO_KEEPALIVE
+<UL>
+<LI>Enables periodic transmissions on a connected socket, when no other data is being exchanged
+</UL><LI>SO_LINGER
+<UL>
+struct linger {
+<BR><BR>	int l_onoff;   /* off=false, on=true */
+<BR>	int l_linger;   /* in seconds, linger time */
+<BR>}
+<LI>if off, all unsent data are discarded
+<LI>if on and linger time != 0, the system will attempt to deliver any unset data</UL></UL></UL></P>
+<P>
+<P></P><A HREF="JavaScript:parent.ItemClicked(4, 0)"> SO_OOBINLINE
+ </A><br><UL>
+<LI>SO_OOBINLINE
+<UL>
+<LI>leave the out-of-band data in the normal input (in-line) queue
+<LI>for TCP only
+</UL><LI>SO_RCVBUF and SO_SNDBUF
+<UL>
+<LI>Specifies the size of the receive queue buffer or the send queue buffer for the socket
+</UL><LI>SO_REUSEADDR
+<UL>
+<LI>Instructs the system to allow local addresses to be reused
+</UL><LI>SO_TYPE
+<UL>
+<LI>returns the socket type
+<LI>SOCK_STREAM or SOCK_DGRAM</UL></UL></P>
+<P>
+<P></P><A HREF="JavaScript:parent.ItemClicked(5, 0)"> Examples </A><br><UL>
+<LI>Get TCP’s MSS
+<UL>
+int maxseg, optlen;
+<BR><BR>if (getsockopt(sock,IPPROTO_TCP,TCP_MAXSEG, (char *) &maxseg, &optlen)==0)
+<BR>	printf(“TCP MSG = %d\n”, maxseg);
+</UL></UL><UL>
+<LI>Set send buffer
+<UL>
+int sendbuff = 32768;
+<BR><BR>if (setsockopt(sock.SOL_SOCKET,SO_SNDBF, (char *)&sendbuff, sizeof(sendbuff))==0)
+<BR>	printf(“set send buffer to %d\n”,sendbuff);
+<BR>sendbuff = 0;
+<BR>if (getsockopt(sock.SOL_SOCKET,SO_SNDBF, (char *)&sendbuff, &optlen)==0)
+<BR>	printf(“send buffer size = %d\n”,sendbuff);
+</UL></UL></P>
+<P>
+<P></P><A HREF="JavaScript:parent.ItemClicked(6, 0)"> Asynchronous Notification </A><br><UL>
+<LI>Asynchronous I/O by signal (SIGIO)
+</UL><UL>
+<LI>Declare a signal catcher
+<UL>
+int sig; (e.g., SIGIO=23)
+<BR><BR>int (* newhandler)( ), (*oldhandler)( );
+<BR>oldhandler = singal(sig, newhandler);
+<BR>int newhandler(sig, code, scp)
+<BR>int sig, code;
+<BR>struct sigcontext *scp;
+</UL></UL></P>
+<P>
+<P></P><A HREF="JavaScript:parent.ItemClicked(7, 0)"> Use fcntl(fd, cmd, arg)
+ </A><br><UL>
+<LI>Use fcntl(fd, cmd, arg)
+<UL>
+<LI>cmd: F_SETOWN, F_GETOWN, F_SETFL, F_GETFL
+<LI>arg:
+<UL>
+<LI>FAPPEND: append on write
+<LI>FASYNC: signal process when data ready
+<LI>FCREATE: create if nonexist
+<LI>FEXCC: error if already created
+<LI>FNDELAY: nonblocking I/O
+</UL><LI>errno: EWOULDBLOCK, EINPROGRESS
+</UL></UL><UL>
+<LI>Set socket to be asynchronous
+<UL>
+fcntl(sock, F_SETOWN, getpid());
+<BR><BR>fcntl(sock, F_SETFL, FASYNC);
+<BR>/* when data arrives, SIGIO will be generated */
+</UL></UL><UL>
+<LI>We can also set socket to be nonblocking
+<UL>
+fcntl(sock, F_SETFL, FNDELAY);<BR></UL></UL></P>
+<P>
+<P></P><A HREF="JavaScript:parent.ItemClicked(8, 0)"> Asynchronous I/O </A><br><UL>
+<LI>use of iotcl(fd, request, char * arg)
+<UL>
+<LI>request: file, socket, routing, interface
+<UL>
+<LI>FIONBIO: set/clear nonblocking I/O
+<LI>FIOASYNC: asynchronous I/O
+<LI>FIONREAD: arg contains number of bytes can be read
+<LI>FIOSETOWN: set owner process/group id
+<LI>FIOGETOWN: get owner id
+<LI>SIOCADDRT: add entry to routing table
+<LI>SIOCDELRT: delete entry from r.t.
+<LI>SIOCSIFADDR: set interface address
+<LI>SIOCGIFADDR: get interface address
+<LI>SIOCSARP: set ARP entry
+<LI>SIOCGARP: get ARP entry
+<LI>SIOCDARP: delete ARP entry
+</UL><LI>arg
+<UL>
+<LI>int for file, socket
+<LI>struct rtentry for routing
+<LI>struct ifreq for interface</UL></UL></UL></P>
+<P>
+<P></P><A HREF="JavaScript:parent.ItemClicked(9, 0)">  I/O Multiplexing </A><br><UL>
+<LI>Select function provides simultaneous, asynchronous I/O 
+</UL><UL>
+<LI>Commonly used for concurrent servers
+</UL><UL>
+<LI>Select function
+<UL>
+int numdes;
+<BR><BR>fd_set *readmask, *writemask, *exceptmask;
+<BR>struct timeval *timeout;
+<BR>nfound = select(numdes, readmask, writemask, exceptmask, timeout);
+</UL></UL></P>
+<P>
+<P></P><A HREF="JavaScript:parent.ItemClicked(10, 0)"> Macros
+ </A><br><UL>
+<LI>Macros
+</UL><UL>
+#ifdef SUNDBE
+</UL><UL>
+#define FD_SETSIZE      2048
+</UL><UL>
+#else
+</UL><UL>
+#define FD_SETSIZE      256
+</UL><UL>
+#endif /* SUNDBE */
+</UL><UL>
+
+</UL><UL>
+#define FD_SET(n, p)    ((p)-&#062fds_bits[(n)/NFDBITS] |= (1 &#060&#060 ((n) % NFDBITS)))
+</UL><UL>
+#define FD_CLR(n, p)    ((p)-&#062fds_bits[(n)/NFDBITS] &= ~(1 &#060&#060 ((n) % NFDBITS)))
+</UL><UL>
+#define FD_ISSET(n, p)  ((p)-&#062fds_bits[(n)/NFDBITS] & (1 &#060&#060 ((n) % NFDBITS)))
+</UL><UL>
+#define FD_ZERO(p)      bzero((char *)(p), sizeof (*(p)))</UL></P>
+<P>
+<P></P><A HREF="JavaScript:parent.ItemClicked(11, 0)"> Example </A><br><UL>
+main( ) {
+<UL>
+	fd_set rmask, xmask, mask;
+<BR><BR>	struct timeval timeout = {5,0}; 
+<BR>	.....
+<BR>	FD_ZERO(&mask);
+<BR>	FD_SET(sock, &mask);
+<BR>	FD_SET(fileno(stdin), &mask);
+<BR>	....
+<BR>	while (1) {
+<BR>	rmask = mask;
+<BR>	nfound = select(FD_SETSIZE, &rmask, (fd_set *)0, (fd_set *) 0, &timeout);
+<BR>	if (nfound&#0600)
+<BR>		    error()
+<BR>	else if (nfound==0)
+<BR>	    printf(“no input\n”);
+<BR>	else {
+<BR>	    if (FD_ISSET(sock, &rmask)){
+<BR>	        nread = read(sock, buf, sizeof buf);
+<BR>	    else if (FD_ISSET(fileno(stdin), &rmask)) {
+<BR>	          fgets(buf, sizeof buf, stdin);
+<BR>             write(sock, buf, strlen(buf));
+<BR>	    }
+<BR>	}}}</UL></UL></P>
+<P>
+</BODY>
+</HTML>

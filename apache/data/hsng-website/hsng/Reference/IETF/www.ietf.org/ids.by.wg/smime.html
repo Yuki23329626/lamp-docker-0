@@ -1,0 +1,160 @@
+
+<!-- begin new headers and page layout -->
+<body bgcolor="#ffffff">
+<br>
+<center>
+<table border=0 cellpadding=0 cellspacing=0>
+<tr>
+<td><a href="http://www.ietf.org/home.html" tppabs="http://www.ietf.org/home.html"><img src="../images/header/ietflogo_sm.gif" tppabs="http://www.ietf.org/images/header/ietflogo_sm.gif" border="0"></a></td>
+<td><a href="http://www.ietf.org/home.html" tppabs="http://www.ietf.org/home.html"><img src="../images/header/home11.gif" tppabs="http://www.ietf.org/images/header/home11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.ietf.org/html.charters/wg-dir.html" tppabs="http://www.ietf.org/html.charters/wg-dir.html"><img src="../images/header/wg11.gif" tppabs="http://www.ietf.org/images/header/wg11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.ietf.org/meetings/meetings.html" tppabs="http://www.ietf.org/meetings/meetings.html"><img src="../images/header/meetings11.gif" tppabs="http://www.ietf.org/images/header/meetings11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.ietf.org/proceedings/directory.html" tppabs="http://www.ietf.org/proceedings/directory.html"><img src="../images/header/proceed11.gif" tppabs="http://www.ietf.org/images/header/proceed11.gif"  border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="../1id-abstracts.html" tppabs="http://www.ietf.org/1id-abstracts.html"><img src="../images/header/id-index11.gif" tppabs="http://www.ietf.org/images/header/id-index11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.isi.edu/rfc-editor/" tppabs="http://www.isi.edu/rfc-editor/"><img src="../images/header/rfc11.gif" tppabs="http://www.ietf.org/images/header/rfc11.gif" border="0"></a></td>
+</tr>
+</table>
+</center>
+<hr>
+<!-- end new headers and layout -->
+
+<dl>
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-smime-cms-01.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-smime-cms-01.txt">
+"Cryptographic Message Syntax", Russ Housley, 11/14/1997. (40178 bytes)</A>
+<dd>        This document describes the Cryptographic Message Syntax.  This
+       syntax is used to digitally sign or encrypt arbitrary messages.
+     
+       The Cryptographic Message Syntax is derived from PKCS #7 version 
+    1.5.
+       Wherever possible, backward compatibility is preserved; however,
+       changes were necessary to accomodate attribute certificate transfer
+       and key agreement techniques for key management.
+     
+       This drfat obosletes the previously released <draft-housley-smime-
+       cms-00.txt>.
+     
+       This draft is being discussed on the ''ietf-smime'' mailing list. To
+       subscribe, send a message to:
+            ietf-smime-request@imc.org
+       with the single                                                     
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-smime-ess-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-smime-ess-00.txt">
+"Enhanced Security Services for S/MIME", Paul Hoffman, 11/19/1997. (62388 bytes)</A>
+<dd>     This document describes three optional security service extensions for
+    S/MIME. These services provide functionality that is similar to the 
+    Message
+    Security Protocol [MSP], but are useful in many other environments,
+    particularly business and finance. The services are:
+     - signed receipts
+     - security labels
+     - secure mailing lists
+     
+    The services described here are extensions to S/MIME version 2 [SMIME2]
+    and
+    S/MIME version 3 [SMIME3]. Most of this document can be used with 
+    S/MIME
+    version 2, which relies on PKCS #7 version 1.5 [PKCS7-1.5]. A small 
+    number
+    of the services require mechanisms described in Cryptographic Message
+    Syntax [CMS].
+     
+    This draft is being discussed on the ''ietf-smime'' mailing list. To
+    subscribe, send a message to:
+         ietf-smime-request@imc.org
+    with the single word
+         subscribe
+    in the body of the message. There is a Web site for the mailing list at
+    <http://www.imc.org/ietf-smime/>.                                      
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-smime-cert-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-smime-cert-00.txt">
+"S/MIME Version 3 Certificate Handling", B. Ramsdell, 11/21/1997. (34045 bytes)</A>
+<dd>     S/MIME (Secure/Multipurpose Internet Mail Extensions), described in
+    [SMIME-MSG], provides a method to send and receive secure MIME
+    messages. In order to validate the keys of a message sent to it, an
+    S/MIME agent needs to certify that the key is valid. This draft
+    describes the mechanisms S/MIME uses to create and validate keys using
+    certificates.
+     
+    This specification is compatible with the Cryptographic Message Syntax
+    [CMS] in that it uses the data types defined by CMS. It also inherits
+    all the varieties of architectures for certificate-based key
+    management supported by CMS. Note that the method S/MIME messages make
+    certificate requests is defined in [SMIME-MSG].
+     
+    In order to handle S/MIME certificates, an agent has to follow
+    specifications in this draft, as well as some of the specifications
+    listed in the following documents:
+     - ''PKCS #1: RSA Encryption'', [PKCS-1].
+     - ''Cryptographic Message Syntax'', [CMS].
+     - ''PKCS #10: Certification Request Syntax'', [PKCS-10].              
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-smime-msg-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-smime-msg-00.txt">
+"S/MIME Version 3 Message Specification",, 11/21/1997. (62860 bytes)</A>
+<dd>     S/MIME (Secure/Multipurpose Internet Mail Extensions) provides a
+    consistent way to send and receive secure MIME data. Based on the
+    popular Internet MIME standard, S/MIME provides the following
+    cryptographic security services for electronic messaging applications:
+    authentication, message integrity and non-repudiation of origin (using
+    digital signatures) and privacy and data security (using encryption).
+     
+    S/MIME can be used by traditional mail user agents (MUAs) to add
+    cryptographic security services to mail that is sent, and to interpret
+    cryptographic security services in mail that is received. However,
+    S/MIME is not restricted to mail; it can be used with any transport
+    mechanism that transports MIME data, such as HTTP. As such, S/MIME
+    takes advantage of the object-based features of MIME and allows secure
+    messages to be exchanged in mixed-transport systems.
+     
+    Further, S/MIME can be used in automated message transfer agents that
+    use cryptographic security services that do not require any human
+    intervention, such as the signing of software-generated documents and
+    the encryption of FAX messages sent over the Internet.
+                                                                           
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-smime-crs-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-smime-crs-00.txt">
+"Certificate Request Syntax", H. Prafullchandra, Barbara Fox, Xiaoyi Liu,  M. Myers, Jeff Weinstein, 11/26/1997. (50246 bytes)</A>
+<dd>     This document defines an Internet PKI Certificate Request Syntax (CRS).
+    It addresses a growing need within the Internet PKI community for an
+    interface to public key certification products and services based on
+    PKCS7 [PKCS7] and PKCS10 [PKCS10]. A small number of additional 
+    services
+    are defined to supplement the core certificate request service. Current
+    industry practice regarding the use of PKCS7 and PKCS10 is also
+    documented for the benefit of the Internet community.
+     
+    In general, the use of PKCS7 in this document is aligned to the
+    Cryptographic Message Syntax [CMS] which provides a superset of the
+    PKCS7 syntax.  Throughout this document, the term CMS should be taken 
+    to
+    include the PKCS #7 document as defined in [PKCS7].  The term CRS 
+    refers
+    to this specification.
+     
+    The chief differences between CRS and PKIXMGMT are:
+     
+    - Use of PKCS7 for security encapsulation and transaction framework
+    - Use of PKCS10 as the certification request message content
+    - Certification of Diffie-Hellman Public Keys based on PKCS10 requests
+    - No assumption of reliable connectivity or persistent on-line 
+    operation
+    - Single request/response transaction model
+                                                                           
+</dl>
+
+<HR>
+
+<I> IETF Secretariat - Please send questions, comments, and/or 
+suggestions to </I> <a href="mailto:ietf-web@ietf.org">ietf-web@ietf.org</a>.
+<P>
+
+<A HREF="../1id-abstracts.html" tppabs="http://www.ietf.org/1id-abstracts.html">
+<IMG SRC="../icons/back.xbm" tppabs="http://www.ietf.org/icons/back.xbm"> Return to Internet-Draft directory. </A> <P>
+
+<A HREF="http://www.ietf.org/home.html" tppabs="http://www.ietf.org/home.html">
+<IMG SRC="../icons/back.xbm" tppabs="http://www.ietf.org/icons/back.xbm"> <IMG SRC="../icons/back.xbm" tppabs="http://www.ietf.org/icons/back.xbm">
+Return to IETF home page. </A>
+
+</body>
+</html>
+

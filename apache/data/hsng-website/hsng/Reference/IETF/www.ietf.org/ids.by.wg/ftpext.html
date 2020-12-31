@@ -1,0 +1,105 @@
+
+<!-- begin new headers and page layout -->
+<body bgcolor="#ffffff">
+<br>
+<center>
+<table border=0 cellpadding=0 cellspacing=0>
+<tr>
+<td><a href="http://www.ietf.org/home.html" tppabs="http://www.ietf.org/home.html"><img src="../images/header/ietflogo_sm.gif" tppabs="http://www.ietf.org/images/header/ietflogo_sm.gif" border="0"></a></td>
+<td><a href="http://www.ietf.org/home.html" tppabs="http://www.ietf.org/home.html"><img src="../images/header/home11.gif" tppabs="http://www.ietf.org/images/header/home11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.ietf.org/html.charters/wg-dir.html" tppabs="http://www.ietf.org/html.charters/wg-dir.html"><img src="../images/header/wg11.gif" tppabs="http://www.ietf.org/images/header/wg11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.ietf.org/meetings/meetings.html" tppabs="http://www.ietf.org/meetings/meetings.html"><img src="../images/header/meetings11.gif" tppabs="http://www.ietf.org/images/header/meetings11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.ietf.org/proceedings/directory.html" tppabs="http://www.ietf.org/proceedings/directory.html"><img src="../images/header/proceed11.gif" tppabs="http://www.ietf.org/images/header/proceed11.gif"  border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="../1id-abstracts.html" tppabs="http://www.ietf.org/1id-abstracts.html"><img src="../images/header/id-index11.gif" tppabs="http://www.ietf.org/images/header/id-index11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.isi.edu/rfc-editor/" tppabs="http://www.isi.edu/rfc-editor/"><img src="../images/header/rfc11.gif" tppabs="http://www.ietf.org/images/header/rfc11.gif" border="0"></a></td>
+</tr>
+</table>
+</center>
+<hr>
+<!-- end new headers and layout -->
+
+<dl>
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ftpext-mlst-02.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ftpext-mlst-02.txt">
+"Extended Directory Listing and Restart Mechanism for FTP", Robert Elz,   Paul Hethmon, 08/01/1997. (63480 bytes)</A>
+<dd>        In order to overcome the problems caused by the undefined format of
+       the current FTP LIST command output, a new command is needed to
+       transfer standardized listing information from Server-FTP to Client-
+       FTP.  Commands to enable this are defined in this document.
+     
+       This proposal also extends the FTP protocol to allow character sets
+       other than US-ASCII[1] by allowing the transmission of 8-bit
+       characters and the recommended use of UTF-8[2] encoding.
+     
+       Much implemented, but long undocumented, mechanisms to permit
+       restarts of interrupted data transfers in STREAM mode, are also
+       included here.
+    
+       This version contains corrections and additions agreed on the 
+    mailing
+       list.  Some sections incomplete in the previous draft have been
+       completed.  Several editorial adjustments have been made.  This
+       version is still not nearly complete.  This paragraph will be 
+    deleted
+       from the final version of this document.
+                                                                           
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ftpext-intl-ftp-02.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ftpext-intl-ftp-02.txt">
+"Internationalization of the File Transfer Protocol", B. Curtin,   06/11/1997. (42883 bytes)</A>
+<dd>     The File Transfer Protocol, as defined in RFC 959 [RFC959] and RFC 1123
+    Section 4 [RFC1123], is one of the oldest and widely used protocols on 
+    the Internet. The protocol's primary character set, 7 bit ASCII, has 
+    served the protocol well through the early growth years of the 
+    Internet. However, as the Internet becomes more global, there is a need
+    to support character sets beyond 7 bit ASCII.                          
+    This document addresses the internationalization (I18n) of FTP, which 
+    includes supporting the multiple character sets found throughout the 
+    Internet community.  This is achieved  by extending the FTP 
+    specification and giving recommendations for proper 
+    internationalization support.                                          
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ftpext-restart-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ftpext-restart-00.txt">
+"REST Command and Extensions to FTP", R. Adams, David Borman, 03/21/1997. (10642 bytes)</A>
+<dd>     This memo describes changes to FTP [1], which were proposed by Rick 
+    Adams in May of 1989, to allow the RESTART mechanism to be used with 
+    STREAM mode transfers.  Along with this, two new optional commands are 
+    added, MODIFICATION TIME (MDTM) and SIZE OF FILE (SIZE).  All these 
+    changes have been implemented, and are in use today in many production 
+    FTP implementations.                                                   
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-ftpext-feat-02.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-ftpext-feat-02.txt">
+"Feature negotiation mechanism for the File Transfer Protocol", Robert   Elz, Paul Hethmon, 11/26/1997. (17616 bytes)</A>
+<dd>        The File Transfer Protocol is, from time to time, extended with new
+       commands, or facilities.  Implementations of the FTP protocol cannot
+       be assumed to all immediately implement all newly defined 
+    mechanisms.
+       This document provides a mechanism by which clients of the FTP
+       protocol can discover which new features are supported by a
+       particular FTP server.
+     
+       Minor changes to conform more closely with the final version of the
+       ABNF specification have been made in this version.  There have been 
+    a
+       few minor editorial cleanups, and a copyright disclaimer added.
+       There are no changes of substance in this version.  This paragraph
+       will be deleted in the final version of this document.
+                                                                           
+</dl>
+
+<HR>
+
+<I> IETF Secretariat - Please send questions, comments, and/or 
+suggestions to </I> <a href="mailto:ietf-web@ietf.org">ietf-web@ietf.org</a>.
+<P>
+
+<A HREF="../1id-abstracts.html" tppabs="http://www.ietf.org/1id-abstracts.html">
+<IMG SRC="../icons/back.xbm" tppabs="http://www.ietf.org/icons/back.xbm"> Return to Internet-Draft directory. </A> <P>
+
+<A HREF="http://www.ietf.org/home.html" tppabs="http://www.ietf.org/home.html">
+<IMG SRC="../icons/back.xbm" tppabs="http://www.ietf.org/icons/back.xbm"> <IMG SRC="../icons/back.xbm" tppabs="http://www.ietf.org/icons/back.xbm">
+Return to IETF home page. </A>
+
+</body>
+</html>
+

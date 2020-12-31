@@ -1,0 +1,25 @@
+<HTML>
+<HEAD><TITLE>國立中正大學非同步學習系統電腦網路課程線上討論區</TITLE></HEAD>
+<BODY>
+<BODY TEXT="#0000FF" BACKGROUND="http://caipc4.cs.ccu.edu.tw/course3/picture/bg02.gif"
+BGCOLOR="#CAF5C5" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+<CENTER>
+<IMG SRC="http://caipc4.cs.ccu.edu.tw/course3/discuss/item5.gif" border=0>
+<P>
+<APPLET CODEBASE="http://caipc4.cs.ccu.edu.tw/course/chatroom/Client"
+CODE="javaTalk.class" WIDTH=552 HEIGHT=270>
+</APPLET><P>
+請先輸入 NickName 然後按下Network按紐即可加入討論。
+
+
+
+<TABLE BORDER=0 CELLPADDING=10>
+<TR>
+<TD ALIGN=CENTER NOWRAP>
+<IMG SRC="http://caipc4.cs.ccu.edu.tw/course3/picture/horse1.gif" border=0 alt="馬1"></TD>
+<TD ALIGN=CENTER NOWRAP>
+<IMG SRC="http://caipc4.cs.ccu.edu.tw/course3/picture/horse2.gif" border=0 alt="馬2"></TD></TR></TABLE>
+
+</CENTER>
+</BODY>
+</HTML>

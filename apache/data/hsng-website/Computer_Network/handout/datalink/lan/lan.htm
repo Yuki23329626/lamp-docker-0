@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE></TITLE>
+   <META NAME="Author" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="../../gif/bg-slate.gif">
+
+<P><FONT COLOR="#0080FF"><FONT SIZE=+3>區域網路技術</FONT></FONT></P>
+
+<P><FONT SIZE=+1>　　一個網路中的傳輸媒體可以是單獨給連接的兩台電腦使用，也可以是<BR>
+許多台電腦共用。如果是一對一的方式單獨使用時，任何兩台想通訊的電<BR>
+腦間必須有一專用的線路。所以如果有 N台電腦要連成網路便需 N(N-1)/2<BR>
+條專線，這對一個區域網路而言，是太昂貴了。因此，除了骨幹網路因電<BR>
+腦與電腦間距離太長需用專線外，區域網路均使用共享式的或稱廣播式的<BR>
+傳輸媒體。當許多電腦共用一傳輸媒體時，彼此間必須協調傳送的時間以<BR>
+避免兩台電腦以上同時使用傳輸媒體，造成資料因衝突而遺失。</FONT></P>
+
+<UL>
+<P><A HREF="qa1.htm"><IMG SRC="../../gif/selftest.gif" BORDER=0 HEIGHT=35 WIDTH=35></A><FONT SIZE=+1><A HREF="qa1.htm">為什麼共享式傳輸媒體不適合骨幹網路？</A></FONT></P>
+</UL>
+
+<P><FONT SIZE=+1>　　區域網路式目前使用最多，最頻繁的網路。因為我們使用網路時有兩<BR>
+個習慣： (1) 大部分時間我們是與同一單位（如資工系）內的電腦在通訊<BR>
+(2) 大部分時間我們只跟少數電腦在通訊（如 WWW server, FTP server, 401 <BR>
+公用工作站）。所以區域網路的技術是非常重要的。</FONT></P>
+
+<P><FONT SIZE=+1>　　常見的區域網路的形狀有星狀、環狀、匯流排，和樹狀。</FONT></P>
+
+<UL>
+<P><FONT COLOR="#0000FF"><FONT SIZE=+1>星狀：</FONT></FONT></P>
+</UL>
+
+<P><IMG SRC="F6_3.gif" HEIGHT=257 WIDTH=499></P>
+
+<UL>
+<P><FONT COLOR="#0000FF"><FONT SIZE=+1>環狀：</FONT></FONT></P>
+</UL>
+
+<P><IMG SRC="F6_4.gif" HEIGHT=284 WIDTH=499></P>
+
+<UL>
+<P><FONT COLOR="#0000FF"><FONT SIZE=+1>匯流排狀：</FONT></FONT></P>
+</UL>
+
+<UL>
+<P><IMG SRC="F6_5.gif" HEIGHT=159 WIDTH=502></P>
+
+<P><FONT COLOR="#0000FF"><FONT SIZE=+1>樹狀：</FONT></FONT></P>
+
+<UL>
+<P><IMG SRC="treenet.gif" HEIGHT=192 WIDTH=357></P>
+</UL>
+</UL>
+
+<P><FONT SIZE=+1>　　不同的形狀有不同的媒體存取方法（ Medium Access Control,
+MAC ）。<BR>
+媒體存取方法大致上可分成兩類: 隨機存取方式及有控制的存取方式。
+
+<DL>
+<DT><FONT COLOR=#FF0000 SIZE+=1> 隨機存取方式 </FONT>
+<DD>電腦送封包到媒體上時，並沒有以某一種機制彼此協調，而是以分散式、<BR>
+隨機地存取媒體。所以這種方式常因兩台電腦同時傳送資料而造成碰撞<BR>
+(collision)。IEEE 802.3 乙太網路就是使用這種媒體存取方式。<P>
+<DT><FONT COLOR=#FF0000 SIZE+=1> 有控制的存取方式 </FONT>
+<DD>電腦利用某種協調的機制來控制封包的傳送。例如以權杖(token)來控制<BR>
+誰可以傳送資料，或者以預約的方式來控制傳送的順序。這種方式不會<BR>
+造成資料的碰撞。Token Bus (IEEE 802.4)、Token Ring (IEEE 802.5)、<BR>
+FDDI均使用權杖來控制，而 DQDB (IEEE 802.6)、100VG-AnyLAN 則是<BR>
+以預約的方式來控制。
+</DL>
+<P><A HREF="qa2.htm"><IMG SRC="../../gif/selftest.gif" HEIGHT=35 WIDTH=35 border=0></A><FONT SIZE=+1><A HREF="qa2.htm">這兩種方式那一種比較好呢？</A></FONT></P>
+
+以下我們以 IEEE 802標準為大綱來介紹目前我們常見的區域網路技術。</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1><A HREF="./ethernet/ethernet.htm">乙太網路（
+IEEE 802.3）</A></FONT></P>
+
+<P><IMG SRC="../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1><A HREF="./tokenbus/tokenbus.htm">Token
+Bus 網路（ IEEE 802.4）</A></FONT></P>
+
+<P><IMG SRC="../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1><A HREF="./ring/ring.htm">環狀網路（
+IEEE 802.5）</A></FONT></P>
+
+<P><IMG SRC="../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1><A 
+HREF="./fddi/fddi.htm">FDDI
+（ANSI ASC X3T9.5）</A></FONT></P>
+
+<P><IMG SRC="../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1><A HREF="./fastethernet/fastether.htm">高速乙太網路</A></FONT></P>
+
+<P><IMG SRC="../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1><A HREF="./100vg/100vg.htm">100
+VG-AnyLAN（ IEEE 802.12）</A></FONT></P>
+
+<P><IMG SRC="../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1><A HREF="./etherswitch/ethswitch.htm">EtherSwitch</A></FONT></P>
+<P><IMG SRC="../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1><A HREF="./dqdb/dqdb.htm">Distributed Queue Dual Bus(IEEE 802.6 DQDB)</A></FONT></P>
+</UL>
+<CENTER>
+<P>
+<A HREF="../mac/mac.htm" BORDER="0">
+<IMG SRC="../../gif/up.jpg" BORDER=0 ></A>
+<A HREF="../llc/llc.htm" BORDER="0">
+<IMG SRC="../../gif/down.jpg" BORDER=0 ></A>
+</P>
+</CENTER>
+</BODY>
+</HTML>

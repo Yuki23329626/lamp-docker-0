@@ -1,0 +1,332 @@
+
+<!-- begin new headers and page layout -->
+<body bgcolor="#ffffff">
+<br>
+<center>
+<table border=0 cellpadding=0 cellspacing=0>
+<tr>
+<td><a href="http://www.ietf.org/home.html" tppabs="http://www.ietf.org/home.html"><img src="../images/header/ietflogo_sm.gif" tppabs="http://www.ietf.org/images/header/ietflogo_sm.gif" border="0"></a></td>
+<td><a href="http://www.ietf.org/home.html" tppabs="http://www.ietf.org/home.html"><img src="../images/header/home11.gif" tppabs="http://www.ietf.org/images/header/home11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.ietf.org/html.charters/wg-dir.html" tppabs="http://www.ietf.org/html.charters/wg-dir.html"><img src="../images/header/wg11.gif" tppabs="http://www.ietf.org/images/header/wg11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.ietf.org/meetings/meetings.html" tppabs="http://www.ietf.org/meetings/meetings.html"><img src="../images/header/meetings11.gif" tppabs="http://www.ietf.org/images/header/meetings11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.ietf.org/proceedings/directory.html" tppabs="http://www.ietf.org/proceedings/directory.html"><img src="../images/header/proceed11.gif" tppabs="http://www.ietf.org/images/header/proceed11.gif"  border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="../1id-abstracts.html" tppabs="http://www.ietf.org/1id-abstracts.html"><img src="../images/header/id-index11.gif" tppabs="http://www.ietf.org/images/header/id-index11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.isi.edu/rfc-editor/" tppabs="http://www.isi.edu/rfc-editor/"><img src="../images/header/rfc11.gif" tppabs="http://www.ietf.org/images/header/rfc11.gif" border="0"></a></td>
+</tr>
+</table>
+</center>
+<hr>
+<!-- end new headers and layout -->
+
+<dl>
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-dhcpv6-10.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-dhcpv6-10.txt">
+"Dynamic Host Configuration Protocol for IPv6 (DHCPv6)", C. Perkins, J.   Bound, 05/28/1997. (84764 bytes)</A>
+<dd>     The Dynamic Host Configuration Protocol (DHCPv6) provides a framework 
+    for passing configuration information, via extensions, to IPv6 nodes.  
+    It offers the capability of automatic allocation of reusable network 
+    addresses and additional configuration flexibility.  This protocol 
+    should be considered a stateful counterpart to the IPv6 Stateless 
+    Address Autoconfiguration protocol specification.                      
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-dhcp-dns-05.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-dhcp-dns-05.txt">
+"Interaction between DHCP and DNS", Y Rekhter, 11/24/1997. (16367 bytes)</A>
+<dd>        DHCP provides a powerful mechanism for IP host autoconfiguration.
+       However, the autoconfiguration provided by DHCP does not include
+       updating DNS, and specifically updating the name to address and
+       address to name mappings maintained by DNS.
+     
+       This document specifies how DHCP clients and servers should use the
+       Dynamic DNS Updates mechanism to update the DNS name to address and
+       address to name mapping, so that the mappings for DHCP clients would
+       be consistent with the IP addresses that the clients acquire via
+       DHCP.
+                                                                           
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-options-opt127-03.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-options-opt127-03.txt">
+"An Extension to the DHCP Option Codes", Ralph Droms, 07/25/1997. (5028 bytes)</A>
+<dd>     The Dynamic Host Configuration Protocol (DHCP) provides a framework for
+    passing configuration information to hosts on a TCP/IP network.  This 
+    document defines a new option to extend the available option codes.    
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-fqdn-opt-03.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-fqdn-opt-03.txt">
+"An option for FQDNs in DHCP options", Ralph Droms, Y Rekhter,   07/25/1997. (8118 bytes)</A>
+<dd>     DHCP [DHCP] can be used to automate the process of configuring TCP/IP 
+    host computers.  However, some of the DHCP options carry IP addresses 
+    rather than Fully Qualified Domain Names (FQDN). Use of IP addresses 
+    constrains the DHCP client to use the addresses that were in use at the
+    time the client received its configuration information; these addresses
+    may change over time, (e.g., a server may be assigned a new IP 
+    address), so that the IP addresses used by the client may become 
+    invalid.                        An alternative to passing IP addresses 
+    is to pass FQDNs instead of (numeric) IP addresses.  Doing this allows 
+    a client to defer binding between a particular network entity (e.g., a 
+    server) and its IP address until run time.  As stated in 
+    [Carpenter:96], 'Deferring the binding avoids the risk of changed 
+    mapping between IP addresses and specific network entities (due to 
+    changing addressing information).  Moreover, reliance on FQDNs (rather 
+    than IP addresses) also localizes to the DNS the changes needed to deal
+    with changing addressing information due to renumbering.'     This 
+    document defines a new DHCP option that allows the use of FQDNs instead
+    of IP addresses in DHCP options.                                       
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-authentication-04.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-authentication-04.txt">
+"Authentication for DHCP Messages", Ralph Droms, 08/28/1997. (15131 bytes)</A>
+<dd>        The Dynamic Host Configuration Protocol (DHCP) [1] provides a
+       framework for passing configuration information to hosts on a TCP/IP
+       network.  In some situations, network administrators may wish to
+       constrain the allocation of addresses to authorized hosts.
+       Additionally, some network administrators may wish to provide for
+       authentication of the source and contents of DHCP messages.  This
+       document defines a new DHCP option through which authorization
+       tickets can be easily generated and newly attached hosts with proper
+       authorization can be automatically configured from an authenticated
+       DHCP server.                                                        
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-v6exts-07.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-v6exts-07.txt">
+"Extensions for the Dynamic Host Configuration Protocol for IPv6", C.   Perkins, 08/04/1997. (70789 bytes)</A>
+<dd>     The Dynamic Host Configuration Protocol for IPv6 [4] (DHCPv6)
+       provides a framework for passing configuration information to hosts
+       on a TCP/IP network.  Configuration parameters and other control
+       information are carried in typed data items that are stored in the
+       'extensions' field of the DHCPv6 message.  The data items themselves
+       are also called 'extensions.'
+     
+       This document specifies the current set of DHCPv6 extensions.  This
+       document will be periodically updated as new extensions are defined.
+       Each superseding document will include the entire current list of
+       valid extensions.                                                   
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-slp-02.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-slp-02.txt">
+"DHCP Options for Service Location Protocol", C. Perkins, 05/12/1997. (9243 bytes)</A>
+<dd>     The Dynamic Host Configuration Protocol provides a framework for 
+    passing configuration information to hosts on a TCP/IP network. 
+    Entities using the Service Location Protocol need to find out the 
+    address of Directory Agents in order to transact messages.  In certain 
+    other instances they may need to discover the correct scope to be used 
+    in conjunction with the service attributes which are exchanged using 
+    the Service Location Protocol.                                         
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-provan-dhcp-options-dir-serv-02.txt" tppabs="ftp://ietf.org/internet-drafts/draft-provan-dhcp-options-dir-serv-02.txt">
+"DHCP Options for Novell Directory Services", D. Provan, 10/23/1997. (7209 bytes)</A>
+<dd>     This document defines three new DHCP options for delivering
+        configuration information to clients of the Novell Directory
+        Services. The first option carries a list of NDS servers. The 
+    second
+        option carries the name of the client's NDS tree. The third carries
+        the initial NDS context. These three options provide an NDS client
+        with enough information to connect to an NDS tree without manual
+        configuration of the client.                                       
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-userclass-02.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-userclass-02.txt">
+"The User Class Option for DHCP", Ralph Droms, G. Stump, 11/14/1997. (9054 bytes)</A>
+<dd>        This option is used by a DHCP client to optionally identify the type
+       or category of user or applications it represents.  The information
+       contained in this option is an NVT ASCII text object that represents
+       the user class of which the client is a member.                     
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-timezone-03.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-timezone-03.txt">
+"DHCP Option for IEEE 1003.1 POSIX Timezone Specifications", M. Carney,   07/30/1997. (6438 bytes)</A>
+<dd>     The Dynamic Host Configuration Protocol (DHCP) [1] provides a framework
+    for passing configuration information to hosts on a TCP/IP network. 
+    This document defines a new option to extend the available option codes
+    [3].                                                                   
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-interserver-02.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-interserver-02.txt">
+"An Inter-server Protocol for DHCP", Ralph Droms, R. Cole, K. Kinnear,   08/04/1997. (189305 bytes)</A>
+<dd>     The DHCP protocol is designed to allow for multiple DHCP servers, so 
+    that reliability of DHCP service can be improved through the use of 
+    redundant servers.  To provide redundant service, multiple DHCP servers
+    must carry the same information about assigned IP addresses and 
+    parameters; i.e., the servers must be configured with the same 
+    bindings.  Because DHCP servers may dynamically assign new addresses or
+    configuration parameters, or extend the lease on an existing address 
+    assignment, the bindings on some servers may become out of date.  The 
+    DHCP inter-server protocol provides an automatic mechanism for 
+    synchronization of the bindings stored on a set of cooperating DHCP 
+    servers.  The underlying capabilities of the DHCP inter-server protocol
+    required for multiple server cache replications are based upon the 
+    Server Cache Synchronization Protocol (SCSP).                          
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-agent-options-02.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-agent-options-02.txt">
+"DHCP Relay Agent Information Option", M. Patrick, 08/01/1997. (23092 bytes)</A>
+<dd>        Newer high-speed public Internet access technologies call for a
+       high-speed modem to have a LAN attachment to one or more user hosts.
+       It is advantageous to use DHCP to assign user host IP addresses in
+       this environment, but a number of security and scaling problems 
+    arise
+       with such 'public' DHCP use.  This draft calls for the definition of
+       a 'DHCP Relay Agent Information' option that is appended to a DHCP
+       packet forwarded from a client to a server by a relay agent.  The
+       Server may or may not use the information in the the Relay Agent
+       Information option; in either case, it echoes back the option
+       verbatim in server-to-client replies.
+     
+       The 'Relay Agent Information' option contains sub-options that 
+    convey
+       information known by the relay agent.  The initial sub-options are
+       defined for a relay agent that is co-located in a public circuit
+       access unit.  These include a 'circuit ID' for the incoming circuit
+       and a 'remote ID' which provides a trusted identifier for the remote
+       high-speed modem.
+                                                                           
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-multopt-02.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-multopt-02.txt">
+"Multicast address allocation extensions options", B. Patel, M. Shah,   11/24/1997. (8494 bytes)</A>
+<dd>        This document describes host configuration options that may be used
+       by multicast address allocation protocols[3]. The options include
+       critical information such as the multicast address
+       of the multicast address allocation server(s) and a list of
+       multicast scopes supported by respective servers. These options are
+       designed to work with the extensions to DHCP [1] servers to support
+       multicast address allocation (described in a separate draft),
+       however, their use may not be limited to the above protocol.
+                                                                           
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-mdhcp-03.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-mdhcp-03.txt">
+"Multicast address allocation extensions to the Dynamic Host   Configuration Protocol", B. Patel, M. Shah, 11/24/1997. (29235 bytes)</A>
+<dd>        The Dynamic Host Configuration Protocol (DHCP) provides a framework
+       for passing configuration information to hosts on a TCP/IP network.
+       The multicast extensions to DHCP add additional capability of
+       dynamic allocation of the multicast addresses and additional
+       configuration options.
+                                                                           
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-dyn-subnet-conf-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-dyn-subnet-conf-00.txt">
+"DSCP: Dynamic Subnet Configuration Protocol", K. Taniguchi, T. Nishida,   03/24/1997. (16598 bytes)</A>
+<dd>     The Dynamic Subnet Configuration Protocol (DSCP) provides a framework 
+    for passing configuration information to administrative servers on a 
+    TCP/IP network which allows dynamic subnet configuration. Examples of 
+    administrative servers, which are DSCP clients, are a network 
+    administrator's host, DHCP server, etc.  DSCP is built on a client 
+    server model.  The DSCP server allocates subnet configuration 
+    parameters to dynamically configured subnetworks.  DSCP is an extension
+    of DHCP [1,2]. This document describes DSCP model and defines a new 
+    DHCP options to allow the subnet configuration dynamically.            
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-sso-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-sso-00.txt">
+"The Server Selection Option for DHCP", G. Stump, P. Gupta, 03/24/1997. (13057 bytes)</A>
+<dd>     This option is provided by DHCP servers to DHCP clients so that clients
+    may optionally select from among multiple offers received from DHCP 
+    servers in the network based on a network-administrated preference 
+    system.  The information contained in this option is a hex value that 
+    represents the priority of the offer in which this option is contained.
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-sio-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-sio-00.txt">
+"The Server Identification Option for DHCP", G. Stump, P. Gupta,   03/24/1997. (11381 bytes)</A>
+<dd>     This option is provided by DHCP servers to DHCP clients to identify the
+    origin of a DHCPOFFER -- on a basis other than a server's IP address --
+    so that a DHCP client may optionally select from among multiple offers 
+    based on a client's preference to a particular DHCP server(s).  The 
+    information contained in this option is a hex value indicating the 
+    assigned identification of the server originating the DHCPOFFER in 
+    which this option is contained.                                        
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-security-arch-01.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-security-arch-01.txt">
+"Security Architecture for DHCP", O. Gudmundsson, 08/04/1997. (31303 bytes)</A>
+<dd>     This document addresses the general security requirements of both v4 
+    and v6 versions of DHCP. This document lists security requirements and 
+    proposes as security model, which meets scaling requirements, security 
+    requirements and efficiency requirements.                              
+    The proposed security model uses public key cryptography and a proposed
+    trusted key distribution mechanism to authenticate clients and servers.
+    The authentication protocol can also exchange keying material for more 
+    efficiently protecting successive communication between client and 
+    server.  The security model also addresses securing relay agents.      
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-interserver-alt-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-interserver-alt-00.txt">
+"An Inter-server Protocol for DHCP", Ralph Droms, R. Cole, K. Kinnear,   04/14/1997. (104811 bytes)</A>
+<dd>     The DHCP protocol is designed to allow for multiple DHCP servers, so 
+    that reliability of DHCP service can be improved through the use of 
+    redundant servers.  To provide redundant service, all of the DHCP 
+    servers must be configured with the same information about assigned IP 
+    addresses and parameters; i.e., all of the servers must be configured 
+    with the same bindings.  Because DHCP servers may dynamically assign 
+    new addresses or configuration parameters, or extend the lease on an 
+    existing address assignment, the bindings on some servers may become 
+    out of date.  The DHCP inter-server protocol provides an automatic 
+    mechanism for synchronization of the bindings stored on a set of 
+    cooperating DHCP servers.               This draft is a direct 
+    extension of draft-ietf-dhc-interserver-00.txt, but has been renamed 
+    draft-ietf-dhc-interserver-alt-00.txt since an alternative proposal 
+    (also a direct extension of draft-ietf-dhc-interserver-00.txt but in a 
+    different direction) exists named draft-ietf-dhc-interserver-01.txt.   
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-namedpool-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-namedpool-00.txt">
+"The Named Pool Request Option for DHCP", K. McGrew, 05/14/1997. (7686 bytes)</A>
+<dd>     This option is used by a DHCP client to optionally identify the 
+    specific named pool from which it should be assigned an IP address.  
+    The information contained in this option is an ASCII text object that 
+    represents the named pool from which the DHCP server assign an IP 
+    address to the DHCP client.                                            
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-netware-options-01.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-netware-options-01.txt">
+"Netware/IP Domain Name and Information", Ralph Droms, K. Fong,   10/30/1997. (9699 bytes)</A>
+<dd>     The Dynamic Host Configuration Protocol (DHCP) [RFC 2131] provides a
+       framework for passing configuration information to hosts on a TCP/IP
+       network. DHCP includes options for specific configuration parameters
+       [RFC 2132].  This document defines options that carry NetWare/IP
+       domain name and NetWare/IP sub-options to DHCP clients.             
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-securing-dhc-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-securing-dhc-00.txt">
+"Securing DHCP", B. Patel, 07/30/1997. (13373 bytes)</A>
+<dd>     This proposal describes methods of securing DHCP based on IETF DHCP and
+    IPSEC protocols. This protocol achieves security goals for DHCP client 
+    and servers without having to define a new security protocol. Instead, 
+    it first bootstraps the DHCP client in un-trusted mode using existing 
+    DHCP protocol and then proceeds to secure configuration of the client 
+    using existing DHCP and IP protocol features.                          
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-subsel-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-subsel-00.txt">
+"Subnet Selection Option for DHCP", P. Gupta, W. Mark Townsley,   07/30/1997. (8632 bytes)</A>
+<dd>     The Subnet Selections option is provided by a DHCP client to DHCP a
+    server as an indication to which subnet or subnets to select an address
+    from for the client's lease. When present, the DHCP server will use 
+    this value as an indication to which configured subnet pool of 
+    addresses to select from, effectively divorcing the giaddr of its 
+    overloaded subnet selection function for a packet forwarded by a DHCP 
+    relay agent. The giaddr is retains its function as the address for the 
+    DHCP server to send replies to. 
+    
+    An application for this new option would be to allow a Network Access 
+    Server (NAS) acting as DHCP proxy on behalf of a large number of 
+    dial-in 
+    users to obtain an address that is in the desired subnet(s) for the 
+    dial 
+    users without having to configure multiple giaddr values at the NAS, or
+    requiring the NAS to utilize an address within each subnet.            
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-domsrch-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-domsrch-00.txt">
+"The Domain Search Option for DHCP", G. Stump, P. Gupta, 08/04/1997. (5732 bytes)</A>
+<dd>        The Dynamic Host Configuration Protocol (DHCP) [1] provides a
+       framework for passing configuration information to hosts on a TCP/IP
+       network. This document defines a new option which is passed form the
+       DHCP server to the DHCP Client to configure the domain search list
+       which is used by the clients to resolve hostnames in the Domain Name
+       System.
+                                                                           
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-failover-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-failover-00.txt">
+"DHCP Failover Protocol", Ralph Droms, Arun Kapur, Greg Rabil, Mike   Dooley, 11/21/1997. (18019 bytes)</A>
+<dd>        DHCP [RFC 2131] allows for multiple servers to be operating on a
+       single network. Some sites are interested in running multiple 
+    servers
+       in such a way so as to provide redundancy in case of server failure.
+       In order for this to work reliably, the servers must maintain a
+       consistent database of the lease information.  This implies that
+       servers will need to coordinate any and all lease activity so that
+       this information is synchronized in case of failover.
+     
+       This document defines a protocol to provide this synchronization
+       between two servers.  One server is designated the ''primary'' 
+    server,
+       the other is the ''secondary'' server.  Additionally, this document
+       describes a protocol for the automatic transfer of control from the
+       primary to the secondary in the case of failure (failover), as well
+       as the re-establishment of control by the primary server.           
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-dhc-options-cont-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-dhc-options-cont-00.txt">
+"DHCP Continuation Option Code", Angelos Keromytis, William Arbaugh,   11/24/1997. (4865 bytes)</A>
+<dd>     The Dynamic Host Configuration Protocol (DHCP) provides a framework
+       for passing configuration information to hosts on a TCP/IP network.
+       Currently options are limited to an information size of 256 bytes
+       because of the one-octet size of the length field. This document
+       defines a new option that permits the continuation of the previous
+       option information.                                                 
+</dl>
+
+<HR>
+
+<I> IETF Secretariat - Please send questions, comments, and/or 
+suggestions to </I> <a href="mailto:ietf-web@ietf.org">ietf-web@ietf.org</a>.
+<P>
+
+<A HREF="../1id-abstracts.html" tppabs="http://www.ietf.org/1id-abstracts.html">
+<IMG SRC="../icons/back.xbm" tppabs="http://www.ietf.org/icons/back.xbm"> Return to Internet-Draft directory. </A> <P>
+
+<A HREF="http://www.ietf.org/home.html" tppabs="http://www.ietf.org/home.html">
+<IMG SRC="../icons/back.xbm" tppabs="http://www.ietf.org/icons/back.xbm"> <IMG SRC="../icons/back.xbm" tppabs="http://www.ietf.org/icons/back.xbm">
+Return to IETF home page. </A>
+
+</body>
+</html>
+

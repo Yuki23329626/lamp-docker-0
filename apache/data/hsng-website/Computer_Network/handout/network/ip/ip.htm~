@@ -1,0 +1,506 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE></TITLE>
+   <META NAME="Author" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="../../gif/bg-slate.gif">
+
+<UL>
+<UL>
+<UL>
+<P><IMG SRC="title.gif" HEIGHT=60 WIDTH=341></P>
+</UL>
+</UL>
+</UL>
+
+<TABLE BGCOLOR="#FF0000" >
+<TR>
+<TD COLSPAN="3"><B><FONT COLOR="#FFFFFF"><FONT SIZE=+2>IP Address　 　　　　　　　　　　　　　　　　</FONT></FONT></B></TD>
+</TR>
+</TABLE>
+
+<UL>
+<P><FONT SIZE=+1>　　當兩台不相鄰的電腦要彼此通訊時，必須要靠網路層的通訊<BR>
+協定。 IP 是目前網際網路所使用的網路層通訊協定。為了辨識<BR>
+網路上不同的機器，每一台要連線的電腦必須要有一個唯一的辨<BR>
+識碼，我們稱之為 IP 位址。 IP 位址是一個 32 bit 的二進位碼，<BR>
+與我們在 MAC 層所輸的　MAC 位址不同。為什麼 IP 不直接用<BR>
+MAC 的位址呢？有二個主要原因。首先，不同的 MAC protocol<BR>
+使用不同的 MAC 定址方法，彼此間並不能統一。甚至同一 MAC<BR>
+protocol 還可以用兩種定址方法，如 IEEE 802.3, 802.5 均可使用<BR>
+6-byte universal address 和 2-byte local address。再則 MAC 位址是<BR>
+flat 格式，完全沒有階層概念。但網路層位址一定要有階層式概<BR>
+念，否則無法知道某一位址的位置，也就無法進行路徑選擇。一<BR>
+個階層式的位址就是從邏輯的位址上可以得知其實際的位置在什<BR>
+麼地方。例如我們的位址是中華民國台灣省嘉義縣民雄鄉三興村<BR>
+160 號，這便是一個階層式位址，因它告訴了我們大至國家名稱<BR>
+小至某一小村落的某一唯一的門牌號碼。</FONT></P>
+
+<P><FONT SIZE=+1>　　IP 位址分成兩部份，前半部代表網路號碼，後半部則代表機<BR>
+器號碼。這兩部份各佔踱少位元與網路大小有關係。大網路需要<BR>
+後半部的位元數大些。但要有許多網路共存時，前半部位元數就<BR>
+要大些。為此， IP 將位址分成五個種類：</FONT></P>
+
+<P><IMG SRC="F14_1.gif" HEIGHT=257 WIDTH=499></P>
+
+<OL>
+<LI><FONT SIZE=+1>Class A：這類位址是給大網路使用，一個網路可以有<BR>
+　　　　16777216 台機器。此類網路編號為 0 到 127</FONT></LI>
+
+<LI><FONT SIZE=+1>Class B：這類位址是給中型網路使用，一個網路可以有<BR>
+　　　　65536 台機器。此類網路編號為 128 到 191</FONT></LI>
+
+<LI><FONT SIZE=+1>Class C：這類位址是給小型網路使用，一個網路可以有<BR>
+　　　　256 台機器。此類網路編號為 192 到 223</FONT></LI>
+
+<LI><FONT SIZE=+1>Class D：Internet 保留了網路編號 224 到 239 給一對多<BR>
+　　　　連線（multicast）使用</FONT></LI>
+
+<LI><FONT SIZE=+1>Class D：網路編號 240 到 255 目前暫時保留不用</FONT></LI>
+</OL>
+
+<P><FONT SIZE=+1>　　因 IP 位址是 32-bit，對人而言不好記，所以我們都是將其分<BR>
+成 4 個部份，每一部份有 8 bits，以一十進位數字表示。所以就<BR>
+形成了目前所熟悉的表示方法。如：</FONT></P>
+
+<P><FONT SIZE=+1>10000000 10000000 11111111 00000000 表示成 128.128.255.0</FONT></P>
+</UL>
+
+<TABLE BGCOLOR="#FF0000" >
+<TR>
+<TD COLSPAN="3"><B><FONT COLOR="#FFFFFF"><FONT SIZE=+2>IP Subnet Address　
+　　　　　　　　　　　　　</FONT></FONT></B></TD>
+</TR>
+</TABLE>
+
+<UL>
+<P><FONT SIZE=+1>　　Class A 與 B 的位址，其機器號碼部份的位元數均相當大，當<BR>
+分配給某一單位（國家或公司）時，這個單位會再依階層方式將IP<BR>
+位址分成子網路位址（subnet）給其所屬的區域網路。</FONT></P>
+
+<P><FONT SIZE=+1>　　以中正大學為例，我們被分配到的 IP 位址是以 140.123
+為開<BR>
+頭的 Class B 位址。但中正大學內有許多系所，每一系所自成一個<BR>
+（或以上）的區域網路。所以電算中心便將後面的 16-bit 的機器號<BR>
+碼分成兩部份，各佔 8-bit ，前半段是子網路位址，後半段則是機<BR>
+器號碼。所以同一區域網路的機器的 IP 位址其前面的 24 bit 是一<BR>
+樣的（16-bit network + 8-bit subnet）。記得我們前面提過一台 IP<BR>
+host 上的 routing 很簡單，首先要判斷目的地是否與 source 在同一<BR>
+區域網路。而要做這項工作，在中正大學而言，就是看前面 24 bit<BR>
+是否相同。所以 IP 就利用一個 netmask 來作這件事。在每台機器<BR>
+上都要設定一個 netmask 來表示 network + subnet 共佔了多少位元<BR>
+。以中正大學而言，我們要設 netmask 為 255.255.255.0（即前 24<BR>
+bit 為 1 ，表示前 24 bit 是 network + subnet 位址）。在 IP 做 routing<BR>
+時，只要把目的地位址與 netmask 做 AND 後看是不是與 source 的<BR>
+區域網路位址相同，便知道是否與 source 在同一區域網路上。</FONT></P>
+
+<UL>
+<P><IMG SRC="ipsubnet.gif" HEIGHT=207 WIDTH=402></P>
+</UL>
+</UL>
+
+<P><IMG SRC="ipmask.gif" HEIGHT=265 WIDTH=568></P>
+
+<UL>
+<P><FONT SIZE=+1>　　再來我們談一下一些特殊的 IP 位址。</FONT></P>
+
+<OL>
+<LI><FONT SIZE=+1>如果 host id = 0，則此 IP 位址是用來表示一個區域網路（例<BR>
+如，140.123.101.0）</FONT></LI>
+
+<LI><FONT SIZE=+1>如果目的地的 host id = 255 則表示此封包要在某一區域網路<BR>
+上廣播。</FONT></LI>
+
+<LI><FONT SIZE=+1>如果一台機器剛啟動尚不之網路號碼，則可用 255.255.255.255<BR>
+在所連接的線上（區域網路）進行廣播。</FONT></LI>
+
+<LI><FONT SIZE=+1>如果 network 與 subnet id 是 0 ，則表示目的地在同一區域網<BR>
+路中</FONT></LI>
+
+<LI><FONT SIZE=+1>127 開頭的 IP 位址是為迴路測試（loopback）用。大部分機器<BR>
+使用 127.0.0.1 來當迴路測試。</FONT></LI>
+
+<LI><FONT SIZE=+1>如果 IP 位址為 0.0.0.0 則表示自己的 IP 因剛啟動不知道</FONT></LI>
+</OL>
+
+<P><IMG SRC="F14_7.gif" HEIGHT=192 WIDTH=499></P>
+
+<P><FONT SIZE=+1>　　最後值得一提的是大部分機器只有一片網路卡，只接一個區域<BR>
+網路，所以只有一個 IP 位址。但是特殊的機器，像 router，會有二<BR>
+片以上的網路卡，接二個以上的區域網路，所以也就有二個以上的<BR>
+IP 位址（且其 subnet id 不同）。通常一台機器若有二個以上的 IP<BR>
+位址，我們就稱之為 multihomed。</FONT></P>
+
+<P><IMG SRC="F14_8.gif" HEIGHT=280 WIDTH=500></P>
+</UL>
+
+<TABLE BGCOLOR="#FF0000" >
+<TR>
+<TD COLSPAN="3"><B><FONT COLOR="#FFFFFF"><FONT SIZE=+2>IP Packet 　　 　　　　　　　　　　　　　　　　</FONT></FONT></B></TD>
+</TR>
+</TABLE>
+
+<UL>
+<P><FONT SIZE=+1>　　Internet Protocol (IP) 是採 datagram 服務，亦即非連接導向服務<BR>
+。也就是說 IP 並不保證可靠的傳輸。每一個 IP packet 均含 header<BR>
+及 data 兩部份。header 中有目的地的 IP 位址。（記得 datagram 的<BR>
+packet 必須含目的地的位址而 virtual circuit 只需含 VC ID。）當一<BR>
+IP packet到達router後，router先將header中之目的地位址和其routing<BR>
+table 做比較，以決定下部是傳給哪一個 router 或是目的地已在此<BR>
+router 之區域網路上。因 IP 位址分許多類且每一類之 host 位址又可<BR>
+分出 subnet 位址，所以目的地位址在與 routing table 的 entry 比較時<BR>
+，每一 entry 含有 netmask 之欄位，以決定要比對的位元是位址的前<BR>
+面多少位元。將目的地 IP 位址與 netmask 做 AND 後，便可與 des-<BR>
+tination 欄位所記錄之網路位址做比對。值得注意的是 router 並不會<BR>
+改變 IP header 的目的地位址（及來源地址），router 只決定下一步<BR>
+如何走。</FONT></P>
+
+<P><IMG SRC="F16_3.gif" HEIGHT=300 WIDTH=500></P>
+
+<UL>
+<P><IMG SRC="../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>IP
+的封包格式如下圖</FONT></P>
+</UL>
+
+<P><IMG SRC="F16_4.gif" HEIGHT=271 WIDTH=499></P>
+
+<UL>
+<P><IMG SRC="../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>各欄位之意思與用途解釋如下：</FONT></P>
+</UL>
+</UL>
+
+<TABLE BORDER=1 >
+<TR>
+<TD><FONT SIZE=+1>VERS</FONT></TD>
+
+<TD><FONT SIZE=+1>表示 IP 的版本，目前是使用第 4 版，下一代是<BR>
+第 6 版</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>H. LEN</FONT></TD>
+
+<TD><FONT SIZE=+1>IP header 長度。IP header 包含固定部份和選項<BR>
+部份。一般只有固定部份時為 5 words（請注意<BR>
+單位是 word，1 word = 32 bits）選項部份長度<BR>
+不固定</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>SERVICE<BR>
+TYPE</FONT></TD>
+
+<TD><FONT SIZE=+1>這八個位元用來表示 IP 上一層的協定希望某一<BR>
+封包要如何處理。前三位元（bit 0~2）表示<BR>
+priority（0 最高）。中間三位元（bit 3~5）表示<BR>
+此封包希望的服務品質。當這三位元中之一位<BR>
+元是 1 時，分別表示此封包希望低延遲、高效<BR>
+能、高可靠度。最後兩位元為保留位元。</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>TOTAL<BR>
+LENGTH</FONT></TD>
+
+<TD><FONT SIZE=+1>表示整個 IP packet 的長度、包括 header 及 data<BR>
+，以 byte 為單位。</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>IDENTIFICATION</FONT></TD>
+
+<TD><FONT SIZE=+1>封包編號（sequence number）</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>FLAGS</FONT></TD>
+
+<TD><FONT SIZE=+1>三位元中，第二位元與第三位元用來作封包切割<BR>
+與組合用。第二位元表示此封包是否可以被切割<BR>
+。第三位元為 1 時則表示此封包是否為切割後的<BR>
+最後一個碎片（fragment）</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>FRAGMENT<BR>
+OFFSET</FONT></TD>
+
+<TD><FONT SIZE=+1>表示此碎片在原來的封包中的起始位置</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>TIME TO LIVE</FONT></TD>
+
+<TD><FONT SIZE=+1>為避免 IP 封包因找不到目的地而一直在 Ineter-<BR>
+net 上環繞，每個封包傳送前會給一個 1 到 255<BR>
+間之值。此值每經過一個 router 就減一，減到<BR>
+零時，router 便不再轉送此封包。</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>TYPE</FONT></TD>
+
+<TD><FONT SIZE=+1>表示上一層是哪一個協定， <BR>
+IP=0, ICMP=1, TCP=6, UDP=17</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>HEADER<BR>
+CHECKSUM</FONT></TD>
+
+<TD><FONT SIZE=+1>header 之錯誤檢查碼。以 16-bit 為單位加總後取<BR>
+1 的補數</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>SOURCE IP<BR>
+ADDRESS</FONT></TD>
+
+<TD><FONT SIZE=+1>來源位址</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>DESTINATION<BR>
+IP ADDRESS</FONT></TD>
+
+<TD><FONT SIZE=+1>目的地位址</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>OPTION</FONT></TD>
+
+<TD><FONT SIZE=+1>IP 有不同的選項，如 loose source routing, strick<BR>
+source routing, record route, record timestamp</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>PADDING</FONT></TD>
+
+<TD><FONT SIZE=+1>header 一定要是 32 bit 的整數倍</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>DATA</FONT></TD>
+
+<TD><FONT SIZE=+1>上一層要傳的資料</FONT></TD>
+</TR>
+</TABLE>
+
+<TABLE BGCOLOR="#FF0000" >
+<TR>
+<TD COLSPAN="3"><B><FONT COLOR="#FFFFFF"><FONT SIZE=+2>IP 包裝、切割與組合　
+　　　　　　　　　　 　</FONT></FONT></B></TD>
+</TR>
+</TABLE>
+
+<UL>
+<P><FONT SIZE=+1>　　當 IP packet 的 header 和 data 均準備好，可以傳給目的地時<BR>
+，要如何傳呢？以前我們說過來源地（source）先用 netmask 與<BR>
+目的地 IP 位址做 AND，以決定是否目的地與來源地在同一區域<BR>
+網路中。如果是，則直接透過區域網路廣播的特性傳給目的地，<BR>
+否則，依 routing table 選擇要傳給哪一個 router 。在你學過packet<BR>
+driver 程式設計後，在這裡，你應該會發現兩個問題。第一，要<BR>
+在區域網路上傳 IP packet 時，需要目的地或 router 的 MAC 位址<BR>
+。第二，要將 IP packet 包裝在 MAC frame 格式後，才可以傳。<BR>
+第一個問題需要利用位址調解協定（Address Resolution Protocol,<BR>
+<A HREF="../arp/arp.htm">ARP</A>）來解決。ARP 協定我們待會再看。知道目的地或
+router<BR>
+MAC 位址後，我們就可以將 MAC frame 準備好了。</FONT></P>
+
+<P><IMG SRC="F17_1.gif" HEIGHT=163 WIDTH=499></P>
+
+<P><FONT SIZE=+1>　　如果此封包要經過好幾個 router ，那麼在每一個 router
+上均<BR>
+需要將 MAC frame 解包裝，取得目的地位址及下一站 router 位址<BR>
+後再包裝成下一個 MAC frame，直到目的地為止。</FONT></P>
+
+<P><IMG SRC="F17_2.gif" HEIGHT=434 WIDTH=498></P>
+
+<P><FONT SIZE=+1>　　在將 IP packet 包裝成 MAC frame 時，你是否想到區域網路<BR>
+上的 MAC frame 有大小的限制的問題呢？從 IP packet 格式中，<BR>
+我們知道一個 IP packet 最大可以到 2</FONT><SUP>16</SUP><FONT SIZE=+1> =
+64KB，但是乙太網路<BR>
+最大的 frame（稱之為 Maximum Transmission Unit, MTU）只可<BR>
+以到 1518 bytes，FDDI 也只能到 4500 bytes。而且當一封包穿越<BR>
+Internet 時，會遇到不同的 MAC 協定，各有其 MTU。很顯然的<BR>
+，IP 在包裝其 packet 或 MAC frame 前，一定要確定其大小不可<BR>
+超過 MTU。所以 IP 遇到上層傳下來大封包時，必須先進行切割<BR>
+的動作，將此大封包切成合乎 MTU 規定的許多小封包（稱之為<BR>
+碎片）。等到目的地後再組合回來。</FONT></P>
+
+<P><IMG SRC="F17_3.gif" HEIGHT=138 WIDTH=499></P>
+
+<P><IMG SRC="F17_4.gif" HEIGHT=205 WIDTH=500></P>
+
+<P><FONT SIZE=+1>　　IP 切割的方法是利用 header 中 FLAGS 欄位的最後一個位元<BR>
+稱之為 more bit，來表示。一般沒有切割的封包，此位元為 0。如<BR>
+果有一大封包被切割時，其第一個碎片到倒數第二個碎片的 more<BR>
+bit 會被設為 1 ，直到最後一個碎片的 more bit 才回復 0。所以當<BR>
+目的地收到一 IP 封包，其 more bit 為 1 時，便知道這是一個切割<BR>
+後的碎片。每一碎片在原來封包的位置則是以 header 中之 offset<BR>
+來記錄。</FONT></P>
+
+<P><FONT SIZE=+1>　　由於 IP 提供的是不可靠的傳輸，IP packet 可能會遺失，所以<BR>
+在目的地組合時，要特別小心。首先，目的地必須以 header 中的<BR>
+IDENTIFICATION 欄位為確認哪些碎片是屬於同一封包的（其 ID<BR>
+必須相同）。如果是同一封包，再利用 OFFSET 將碎片組回來，<BR>
+即使碎片到達順序可能不一樣。最後必須用 TOTAL LENGTH 來<BR>
+確定整個封包大小是對的。如此，即使碎片可能有遺失、順序不<BR>
+對、重複、長度不對等問題，目的地均能利用 IDENTIFICATION<BR>
+，OFFSET 及 FLAGS 來確定一封包被正確地組合回來。如果在組<BR>
+合過程中有發生錯誤，則整個 IP 封包將被丟棄。</FONT></P>
+
+<P><FONT SIZE=+1>　　還有一個問題是各個區域網路 MTU 大小不同是否造成切割<BR>
+後還區要再切割呢？例如：</FONT></P>
+
+<P><IMG SRC="F17_5.gif" HEIGHT=154 WIDTH=500></P>
+
+<P><FONT SIZE=+1>　　因每一切割後的碎片仍保有完整的 header，所以一碎片再切割<BR>
+成許多碎片是可以的，而且動作和上面所描述的一樣。只是 router<BR>
+只會做再切割的動作，不會做組合的動作，即使下一個區域網路的<BR>
+MTU 變大了（如上圖之 R</FONT><SUB>2</SUB><FONT SIZE=+1>）。只有目的地才會進行封包的組合。</FONT></P>
+</UL>
+
+<TABLE BGCOLOR="#FF0000" >
+<TR>
+<TD COLSPAN="3"><B><FONT COLOR="#FFFFFF"><FONT SIZE=+2>新一代的 IP　 　　　　　　　　　　　　　　　　</FONT></FONT></B></TD>
+</TR>
+</TABLE>
+
+<UL>
+<P><FONT SIZE=+1>　　目前 Internet 的成功是因為 IP 使用的 addressing 方式、routing<BR>
+方式及 packet 格式使得區域網路的技術進步、異質網路的存在及<BR>
+Internet 機器愈來愈多這些因素都不影響 IP 的運作。例如 IP address-<BR>
+ing 的方式使得不管區域網路改成 Fast Ethernet 或 100 VG-AnyLAN<BR>
+均不受影響。</FONT></P>
+
+<P><FONT SIZE=+1>　　那 IPv4 有沒有什麼缺點使我們想設計一新的 IP 協定來取代呢<BR>
+？目前我們遇到的問題有兩個：（一）Internet 愈來愈大，機器愈來<BR>
+愈多，已造成 IP address space（32-bit = 2</FONT><SUP>32</SUP><FONT SIZE=+1>）不夠用了。特別是在<BR>
+區域網路上。例如我們系上目前 140.123.101.0 這網域的機器已超過<BR>
+255 台，造成我們必須讓 router 在一個 port 上用兩個網域的位址（<BR>
+140.123.101.0 及 140.123.103.0），造成網路效率下降（為什麼？要<BR>
+學以致用喔！）所以擴充 IP address space 是當務之急。（二）Inter-<BR>
+net 上愈來愈多的多媒體應用，例如視訊點播、視訊會議、即時聲音<BR>
+廣播（realaudio）等。這些多媒體應用因有 audio 和 video 資料在裡<BR>
+面，所以傳輸時對延遲（delay）及延遲變異（delay jitter）有相當高<BR>
+的要求。通常我們稱之為服務品質的要求（requirement of quality of <BR>
+service）。雖然 IPv4 的 header 中有 SERVICE TYPE 可以指定delay<BR>
+, throughput, reliability 等服務品質，但大部分 router（或 routing pro-<BR>
+tocol）並不支援（即不特別處理），且這些服務品質的定義也不夠<BR>
+嚴謹。例如 low delay 是指延遲多少以下稱之為 low delay？</FONT></P>
+
+<P><FONT SIZE=+1>　　有鑑於此，IETF 於 1990 年起開始請大家提出下一代 IP
+的計<BR>
+畫。1993 年決定採用 Deering 和 Francis 所提計畫之綜合版成為下<BR>
+一代 IP 的建議標準。此協定叫 SIPP（Simple Internet Protocol Plus<BR>
+）或 IPng（IP- The Next Generation）或 IPv6（IP version 6）。詳<BR>
+細內容在 IETF 的 RFC 1883 及 RFC 1887 中。</FONT></P>
+
+<P><FONT SIZE=+1>　　IPv6 主要的新的特色包括：(1) 使用 128 bits 的 address
+來應付<BR>
+日益增大的 Internet (2) 改變 header 格式，使固定 header 部份減少<BR>
+，但增加 extension header 以應付新的功能需求。(3) 提供服務品質<BR>
+機制以支援 audio 及 video 等多媒體資料的傳輸。 IPv6 為讓更多機<BR>
+器可以上 Internet 而決定使用 128-bit 的 address 。所以如果用傳統<BR>
+的表示方法的話，以後的 IP 位址會像：</FONT></P>
+
+<UL>
+<P><FONT SIZE=+1>105.220.136.100.255.255.255.255.0.0.18.128.140.10.255.255</FONT></P>
+</UL>
+
+<P><FONT SIZE=+1>這樣寫起來實在太長了，所以 IPv6 建議使用 16 進位（colon
+hexde-<BR>
+cimal notation）加冒號來表示，例如上面的 IP 可以寫成</FONT></P>
+
+<UL>
+<P><FONT SIZE=+1>69DC:8864:FFFF:FFFF:0:1280:8C0A:FFFF</FONT></P>
+</UL>
+
+<P><FONT SIZE=+1>剛開始時，因為只太充裕，一般 IP 位址中會用許多 0，所以
+IPv6<BR>
+建議使用 zero compression 來減少 IP 位址長度。其方法是利用兩個<BR>
+冒號來代表一串零。例如：</FONT></P>
+
+<UL>
+<P><FONT SIZE=+1>FF0C:0:0:0:0:0:0:B1</FONT></P>
+</UL>
+
+<P><FONT SIZE=+1>可以寫成：</FONT></P>
+
+<UL>
+<P><FONT SIZE=+1>FF0C::B1</FONT></P>
+</UL>
+
+<P><FONT SIZE=+1>　　事實上，當 IPv4 轉成 IPv6 時，我們會希望暫時維持現有
+IP<BR>
+位址，所以會直接將前面 96 bits 設成 0。那要表示現有的 IP 時，<BR>
+就只要多加個冒號就好了。例如：140.123.101.100 就表示成：<BR>
+::907B:6564。</FONT></P>
+
+<P><FONT SIZE=+1>　　在 IPv6 中，位址將分成三大類：一對一位址，一對多位址，<BR>
+群簇位址。一對一位址就是每台機器的每片網路卡均需要的位址，<BR>
+作為一對一傳輸用。一對多位址則使多台機器可以加入某一一對多<BR>
+位址，只要將封包送往這個位址，所有加入此一位址的機器均可收<BR>
+到。群簇位址是新的位址類別，以前 IPv4 沒有的。加入某一群簇<BR>
+的機器其 IP 前面（prefix）必須相同（即在同一區域網路上）。當<BR>
+一封包送到此群簇位址時，只有其中一台機器會收到。主要的應用<BR>
+是當許多機器合起來當某一種伺服器（如 WWW server）時，Client<BR>
+的要求只要被其中任一台處理即可。</FONT></P>
+
+<P><FONT SIZE=+1>　　新的 IPv6 header 包含一固定長度的基本 header 加可變長度的<BR>
+extension header，其格式如下：</FONT></P>
+
+<P><IMG SRC="F18_1.gif" HEIGHT=169 WIDTH=500></P>
+
+<P><FONT SIZE=+1>　　其中固定長度 header 包括 VERS（版本號碼為 6），FLOW
+<BR>
+LABEL，PAYLOAD LENGTH（資料長度，不含 header），NEXT<BR>
+HEADER（下一個 extension header 是哪一種），HOP LIMIT（即<BR>
+IPv4 之 TIME-TO-LIVE）。</FONT></P>
+
+<P><IMG SRC="F18_2.gif" HEIGHT=310 WIDTH=499></P>
+
+<P><FONT SIZE=+1>　　FLOW LABEL 就是提供多媒體資料傳輸時服務品質的保證。<BR>
+它包含兩部份：traffic class 和特殊路徑。送端先利用 traffic class指<BR>
+定所需求的服務品質（如延遲在 100 ms 以下）。告訴網路。（<BR>
+routers）依此需求建立一路徑後，便告訴送端一個路徑辨識碼。以<BR>
+後送端送封包時，將此路徑辨識碼填入特殊路徑欄位， router 便知<BR>
+道該如何轉送此封包。</FONT></P>
+
+<P><FONT SIZE=+1>　　NEXT HEADER 是指定下一個 extension header 是哪一類別。<BR>
+如果沒有 extension header 了，那就填入上一層協定的類別，如下<BR>
+所示：</FONT></P>
+
+<P><IMG SRC="F18_3.gif" HEIGHT=237 WIDTH=499></P>
+
+<P><FONT SIZE=+1>　　每一個 extension header 均是可變長度，故需一個長度的欄位<BR>
+來與下個 extension header 區分開來。</FONT></P>
+
+<P><IMG SRC="F18_4.gif" HEIGHT=164 WIDTH=500></P>
+
+<P><FONT SIZE=+1>　　我們可以發現 IPv6 中並沒有 FLAGS 及 OFFSET，使以 IPv6<BR>
+如何進行切割與組合呢？它是利用一種特殊的 extension header 叫<BR>
+fragement extension header 來取代原來的 FLAGS 及 OFFSET 之功<BR>
+能。換句話說，就是把 FLAGS 及 OFFSET 搬到 extension header中<BR>
+。</FONT></P>
+
+<P><IMG SRC="F18_5.gif" HEIGHT=408 WIDTH=499></P>
+
+<P><FONT SIZE=+1>　　另外 IPv6 中， router 也不管切割與組合的工作。送端必須自<BR>
+行將 IP packet 切成可以通過各個 router 界面的大小的碎片。如果<BR>
+router 發現某一 IP packet 大於其 MTU 則會將此封包丟掉。但送端<BR>
+如何知道路徑中最小 MTU 呢？它是利用一個 path MTU discovery<BR>
+的程序來找路徑中最小的 MTU。</FONT></P>
+
+<P><FONT SIZE=+1>　　IPv6 使用 extension header 的好處包括：(1) 減小固定
+header長<BR>
+度。以往在 IPv4 中，許多 header 的欄位是大部分封包用不到的，<BR>
+例如 FLAGS 及 OFFSET。所以造成了許多浪費。(2) 比較有擴充性<BR>
+，使用者可以自訂新的 extension header 來 implement 新的功能。</FONT></P>
+</UL>
+
+</BODY>
+</HTML>

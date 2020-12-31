@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE></TITLE>
+   <META NAME="Author" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="../../gif/bg-slate.gif">
+
+<P><FONT COLOR="#0080FF"><FONT SIZE=+3>資料編碼技巧</FONT></FONT></P>
+
+<P><FONT SIZE=+1>區域網路在使用基頻傳輸時，通常須用較複雜的編碼方式。<BR>
+常見的編碼技巧有</FONT></P>
+
+<UL>
+<P><FONT COLOR="#FF0000"><FONT SIZE=+1><IMG SRC="../../gif/redcube.gif">RS-232-C</FONT></FONT></P>
+
+<UL>
+<P><FONT SIZE=+1><IMG SRC="../../gif/orangeba.gif">用於低速資料傳送，如 9600 bps 之 RS-232-C 標準。<BR>
+<IMG SRC="../../gif/orangeba.gif">以一位元組 (5~8bits) 為單位傳送，前後 加 Start 及 Stop bits。<BR>
+<IMG SRC="../../gif/orangeba.gif">負電壓代表 1，正電壓代表 0。<BR>
+<IMG SRC="../../gif/orangeba.gif">使用非同步傳輸→平常不送資料時維持在負電壓，送資料之<BR>
+　前先送一個正電壓代表 start bit （非資料）。<BR>
+<IMG SRC="../../gif/orangeba.gif">兩字元間最少要隔一個 stop bit （負電壓）。</FONT></P>
+</UL>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+1><IMG SRC="../../gif/redcube.gif">Zero-Complemented 差動式編碼</FONT></FONT></P>
+
+<UL>
+<P><FONT SIZE=+1><IMG SRC="../../gif/orangeba.gif">高效率線路控制程序使用， 如 IBM SDLC。<BR>
+<IMG SRC="../../gif/orangeba.gif">在一位元時間內，電壓由正電位變負電 位代表0，無電位變<BR>
+　化代表1。</FONT></P>
+</UL>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+1><IMG SRC="../../gif/redcube.gif">曼撤斯特編碼</FONT></FONT></P>
+
+<UL>
+<P><FONT SIZE=+1><IMG SRC="../../gif/orangeba.gif">為使電位變化有預期的規律性，讓每一 位元在傳送及接收時<BR>
+　，可以達到同步的 效果<BR>
+<IMG SRC="../../gif/orangeba.gif">在一位元時間內，電壓由正電位變負電 位代表0，反之代表 1。</FONT></P>
+</UL>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+1><IMG SRC="../../gif/redcube.gif">差動式曼撤斯特編碼</FONT></FONT></P>
+
+<UL>
+<P><FONT SIZE=+1><IMG SRC="../../gif/orangeba.gif">在一位元時間的中段有電壓變化代表 1。<BR>
+<IMG SRC="../../gif/orangeba.gif">在一位元時間的開始及中段有電壓變化 代表 0。</FONT></P>
+</UL>
+</UL>
+
+<P><IMG SRC="../../bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#0080FF"><FONT SIZE=+3>同步化</FONT></FONT></P>
+
+<P><FONT SIZE=+1>傳送與接收端在資料傳輸期間必須保持同步，方能確定每一位元時<BR>
+間的開始與結束。建立同步的方法有</FONT></P>
+
+<UL>
+<P><FONT COLOR="#FF0000"><FONT SIZE=+1><IMG SRC="../../gif/redcube.gif">利用啟始和結束位元：如 RS-232-C</FONT></FONT></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+1><IMG SRC="../../gif/redcube.gif">利用同步位元 </FONT></FONT></P>
+
+<P><IMG SRC="Img00012.gif" HEIGHT=916 WIDTH=493></P>
+</UL>
+
+<CENTER><P><A HREF="../signal/signal.htm" BORDER="0"><IMG SRC="../../gif/up.jpg" BORDER=0 ></A>
+</P>
+</CENTER>
+
+</BODY>
+</HTML>

@@ -1,0 +1,161 @@
+
+<!-- begin new headers and page layout -->
+<body bgcolor="#ffffff">
+<br>
+<center>
+<table border=0 cellpadding=0 cellspacing=0>
+<tr>
+<td><a href="http://www.ietf.org/home.html" tppabs="http://www.ietf.org/home.html"><img src="../images/header/ietflogo_sm.gif" tppabs="http://www.ietf.org/images/header/ietflogo_sm.gif" border="0"></a></td>
+<td><a href="http://www.ietf.org/home.html" tppabs="http://www.ietf.org/home.html"><img src="../images/header/home11.gif" tppabs="http://www.ietf.org/images/header/home11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.ietf.org/html.charters/wg-dir.html" tppabs="http://www.ietf.org/html.charters/wg-dir.html"><img src="../images/header/wg11.gif" tppabs="http://www.ietf.org/images/header/wg11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.ietf.org/meetings/meetings.html" tppabs="http://www.ietf.org/meetings/meetings.html"><img src="../images/header/meetings11.gif" tppabs="http://www.ietf.org/images/header/meetings11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.ietf.org/proceedings/directory.html" tppabs="http://www.ietf.org/proceedings/directory.html"><img src="../images/header/proceed11.gif" tppabs="http://www.ietf.org/images/header/proceed11.gif"  border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="../1id-abstracts.html" tppabs="http://www.ietf.org/1id-abstracts.html"><img src="../images/header/id-index11.gif" tppabs="http://www.ietf.org/images/header/id-index11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.isi.edu/rfc-editor/" tppabs="http://www.isi.edu/rfc-editor/"><img src="../images/header/rfc11.gif" tppabs="http://www.ietf.org/images/header/rfc11.gif" border="0"></a></td>
+</tr>
+</table>
+</center>
+<hr>
+<!-- end new headers and layout -->
+
+<dl>
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-find-cip-tagged-04.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-find-cip-tagged-04.txt">
+"A Tagged Index Object for use in the Common Indexing Protocol", Roland   Hedberg, R. Moats, M. Wahl, B. Greenblatt, 11/18/1997. (43290 bytes)</A>
+<dd>          This document defines a mechanism by which information servers can
+    exchange indices of information from their databases by making use of
+    the Common Indexing Protocol (CIP).  This document defines the 
+    structure
+    of the index information being exchanged, as well as a the appropriate
+    meanings for the headers that are defined in the Common Indexing Proto-
+    col.  It is assumed that the structures defined here can be used by
+    X.500 DSAs, LDAP servers, Whois++ servers, CCSO servers and many 
+    others.                                                                
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-find-ldapc-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-find-ldapc-00.txt">
+"A CIP-based Centroid Exchange for LDAP", M. Wahl, 02/10/1997. (27923 bytes)</A>
+<dd>     This document describes how an LDAP server (the supplier) may transmit,
+    through an out-of-band email, index information or attributes of its 
+    naming context to another LDAP server (the consumer).  The consumer 
+    server will make use of this information when determining whether the 
+    supplier server is likely to have entries in that naming context which 
+    match a particular search filter.  This assists the consumer in 
+    processing subtree searches in distributed directories.                
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-find-cip-soif-02.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-find-cip-soif-02.txt">
+"CIP Index Object Format for SOIF Objects", Mike Schwartz, D. Hardy, M.   Bowman, E. Hardie, Duane Wessels, 10/31/1997. (29451 bytes)</A>
+<dd>     The Common Indexing Protocol (CIP) allows servers to form a referral
+    mesh for query handling by defining a mechanism by which cooperating
+    servers exchange hints about the searchable indices they maintain.  The
+    structure and transport of CIP are described in (Ref. 1), as are 
+    general
+    rules for the definition of index object types.  This document 
+    describes
+    SOIF, the Summary Object Interchange Format, as an index object type in
+    the context of the CIP framework.  SOIF is a machine-readable syntax 
+    for
+    transmitting structured summary objects, currently used primarily in 
+    the
+    context of the World Wide Web.
+     
+    Query referral has often been dismissed as an ineffective strategy for
+    handling searches of Web resources, and Web resources certainly present
+    challenges not present in structured directory services like Rwhois.  
+    In
+    situations where a keyword-based free text search is desired, query
+    referral is not likely to be effective because the query will probably
+    be routed to every server participating in the referral mesh.  Where a
+    search can be limited by reference to a specific resource attribute,
+    however, query referral is an effective tool.  SOIF can be used to
+    create such a known-attribute query mesh because it provides a method
+    for associating attributes with net-addressable resources.
+    
+    Mic Bowman, Darren Hardy, Mike Schwartz, and Duane Wessels each
+    contributed to the creation of the SOIF format and to the descriptions
+    from which this draft is drawn; errors in this description of their 
+    work
+    are the responsibility of Edward Hardie and corrections should be
+    directed accordingly.
+                                                                           
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-find-cip-hierarchy-01.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-find-cip-hierarchy-01.txt">
+"Hierarchical Extensions to the Common Indexing Protocol", Chris Weider,   P. Leach, 07/15/1997. (14930 bytes)</A>
+<dd>     This work explores what, in the parlance of the current CIP draft, is 
+    called an index type -- specifically, a new kind of index that merges 
+    indexing of  hierarchically named attribute-value entities (such as in 
+    LDAP and RWHOIS) and ones without distinguished names (such as in 
+    WHOIS++). It is based on a previous version of the CIP specification, 
+    but that was just a convenient syntactical jumping off point. It is 
+    intended to be orthogonal to the FIND working group task of  defining a
+    framing syntax and functionality for a common indexing data wrapping 
+    protocol, and that the concepts and protocol elements in this draft 
+    should be able to be expressed in a manner consistent with the new CIP 
+    framework at the appropriate time.                                     
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-find-soif-registry-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-find-soif-registry-00.txt">
+"Registration Procedures for SOIF Template Types", E. Hardie, 05/27/1997. (14119 bytes)</A>
+<dd>     The Summary Object Interchange Format [Ref. 1] was first defined by the
+    Harvest Project [Ref 2.] in January 1994.  SOIF was derived from a 
+    combination of the Internet Anonymous FTP Archives IETF Working Group 
+    (IAFA) templates [Ref 3.] and the BibTeX bibliography format [Ref 4.]. 
+    The combination was originally noted for its advantages of providing a 
+    convenient and intuitive way for delimiting objects within a stream, 
+    and setting apart the URL for easy object access or invocation, while 
+    still preserving compatibility with IAFA templates.              SOIF 
+    uses named template types to indicate the attributes which may be 
+    contained within a particular summary object.  Within the context of a 
+    single application, private agreement on the definition of template 
+    types has been adequate.  As SOIF objects are moved among applications,
+    however, the need for standard, well-specified, and easily identifiable
+    template types increases.  This need is particularly intense in the 
+    context of query referral, where knowledge of an attribute's definition
+    and the allowed data types for specific values is crucial.  For a 
+    discussion of this in the context of the Common Indexing Protocol, see 
+    [Ref. 1].                                                              
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-find-cip-trans-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-find-cip-trans-00.txt">
+"CIP Transport Protocols", P. Leach, J. Allen, 06/10/1997. (15331 bytes)</A>
+<dd>     This document specifies three protocols for transporting CIP requests, 
+    responses and index objects, utilizing TCP, mail, and HTTP. The objects
+    themselves are defined in [CIP-MIME] and the overall CIP architecture 
+    is defined in [CIP-ARCH].                                              
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-find-cip-mime-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-find-cip-mime-00.txt">
+"MIME Object Definitions for the Common Indexing Protocol  (CIP)", M.   Mealling, J. Allen, 06/11/1997. (33198 bytes)</A>
+<dd>     The Common Indexing Protocol (CIP) is used to pass indexing information
+    from server to server in order to facilitate query routing. The 
+    protocol is comprised of several MIME objects being passed from server 
+    to server. This document describes the definitions of those objects as 
+    well as the methods and requirements needed to define a new index type.
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-find-cip-arch-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-find-cip-arch-00.txt">
+"The Architecture of the Common Indexing Protocol (CIP)", M. Mealling, J.  Allen, 06/11/1997. (37506 bytes)</A>
+<dd>     The Common Indexing Protocol (CIP) is used to pass indexing information
+    from server to server in order to facilitate query routing. Query 
+    routing is the process of redirecting and replicating queries through a
+    distributed database system towards servers holding the desired 
+    results. This document describes the CIP framework, including it's 
+    architecture and the protocol specifics of exchanging indices.         
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-find-cip-ldapv2-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-find-cip-ldapv2-00.txt">
+"LDAPv2 client Vs the Index Mesh", Roland Hedberg, 11/03/1997. (12871 bytes)</A>
+<dd>        Since LDAP v2 clients implemented according to RFC 1777 [1] has no
+       notion on referral. The integration between such a client and
+       a Index mesh, as defined by the current Common Indexing Protocol
+       draft [2], who heavily depends on referrals has to be handled
+       in a somewhat special way. This document defines one possible
+       way of doing this.                                                  
+</dl>
+
+<HR>
+
+<I> IETF Secretariat - Please send questions, comments, and/or 
+suggestions to </I> <a href="mailto:ietf-web@ietf.org">ietf-web@ietf.org</a>.
+<P>
+
+<A HREF="../1id-abstracts.html" tppabs="http://www.ietf.org/1id-abstracts.html">
+<IMG SRC="../icons/back.xbm" tppabs="http://www.ietf.org/icons/back.xbm"> Return to Internet-Draft directory. </A> <P>
+
+<A HREF="http://www.ietf.org/home.html" tppabs="http://www.ietf.org/home.html">
+<IMG SRC="../icons/back.xbm" tppabs="http://www.ietf.org/icons/back.xbm"> <IMG SRC="../icons/back.xbm" tppabs="http://www.ietf.org/icons/back.xbm">
+Return to IETF home page. </A>
+
+</body>
+</html>
+

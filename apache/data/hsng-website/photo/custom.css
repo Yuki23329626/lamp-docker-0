@@ -1,0 +1,10 @@
+/* Draws a border around media player control
+   The style below is suitable for main_blue.css color scheme.
+*/
+#MediaPlayer
+{
+	border: 4px #336699 solid;
+    background-color: black;
+    filter: progid:DXImageTransform.Microsoft.dropShadow(color='#222222', OffX='10', OffY='10')
+            progid:DXImageTransform.Microsoft.BasicImage(enabled:false);
+}

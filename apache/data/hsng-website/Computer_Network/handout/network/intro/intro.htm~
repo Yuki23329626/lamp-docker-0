@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE></TITLE>
+   <META NAME="Author" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="../../gif/bg-slate.gif">
+
+<P><FONT SIZE=+2>簡介</FONT></P>
+
+<UL>
+<P><FONT SIZE=+1>　　網路層主要的工作是提供網路上任何兩節點間資料傳輸的功<BR>
+能。這工作與我們在資料鏈結層區域網路技術所介紹的最大的不<BR>
+同是在第二層時，我們只探討“相鄰的”兩節點間資料如何傳輸。<BR>
+所以在區域網路中，我們一直強調它具有廣播的特性。但因廣播<BR>
+的特性也限制了區域網路的距離及大小。在網路層中，我們將考<BR>
+慮相兩個網路節點不能直接通訊時，如何進行資料的傳遞。這個<BR>
+工作最大的問題便是路徑選擇 ( routing)，即如何找到一連串的中<BR>
+間節點(router)來幫忙轉送資料。為了能很快找到一條路徑，網路<BR>
+層的定址(addressing)必須具階層(hierarchical)，這也是一個重要的<BR>
+問題。 基本上網路層可以提供給上層（傳輸層）兩種服務：虛擬<BR>
+電路(virtual circuit)和資料包傳遞(datagram)。Virtual circuit 即是連<BR>
+接導向的服務，它提供了完全可靠的傳輸。Datagram則是非可靠<BR>
+服務的非連接導向服務。提供virtual circuit時，在傳資料之前，兩<BR>
+個網路節點必須先建立連線。當連線建立完後，所有資料必須使<BR>
+用這個連線所建立的路徑來傳給對方。所以使用virtual circuit傳資<BR>
+料時，資料順序不會被改變。相反的，使用datagram服務時，事<BR>
+先不用建立連線，北醫比資料（封包）可以利用不同的路徑傳到<BR>
+目的地。所以網路並不保證資料的順序及是否傳輸有錯誤。</FONT></P>
+
+<P><IMG SRC="../../gif/selftest.gif" HEIGHT=35 WIDTH=35><FONT SIZE=+1><A HREF="qa1.htm">思考一下virtual
+circuit與datagram的優缺點。 </A></FONT></P>
+
+<P><FONT SIZE=+1>　　</FONT></P>
+
+<P><FONT SIZE=+1>　　網路層跟資料鏈結層一樣，如果要提供連接導向服務，必須<BR>
+做擁塞控制 ( congestion control ) 及流量控制 ( flow control ) 。與<BR>
+資料鏈結層不同的是網路層的擁塞控制和流量控制可以是 hop-by-<BR>
+hop 或 end-to-end 。可以是針對每一個 virtual circuit 進行控制，也<BR>
+可以所有連線一起考慮。如果網路層只提供 datagram 服務，則壅<BR>
+塞控制就會移到傳輸層去做，所以我們也把這兩問題留到傳輸層<BR>
+再詳細討論。</FONT></P>
+</UL>
+
+</BODY>
+</HTML>

@@ -1,0 +1,21 @@
+<HTML>
+<TITLE> Talk 相關資訊 </TITLE>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B"
+ALINK="#FF0000">
+<CENTER>
+<table><TR>
+<TD bgcolor="#926FD9"><font color="#ffffff"
+size=+3>聊天室紀錄登錄查詢系統</font></td>
+</tr></table>
+<table>
+<TR><td><img src="../../redcube.gif">
+<A HREF="/talkreg/talkreg.html"> 登錄 talk 紀錄 </A></td></tr>
+<TR><td>
+<A HREF="/cgi-bin/talkquery.cgi"> 查詢 talk 次數 </A></td></tr>
+<TR><td>
+<A HREF="/talkreg">登錄之詳細資料</A></td></tr>
+</table>
+</CENTER>
+
+</BODY>
+</HTML>

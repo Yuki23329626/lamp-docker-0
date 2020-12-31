@@ -1,0 +1,96 @@
+ 
+<html>
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Department of History</title>
+<!-- #EndEditable --> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript">
+<!--
+function MM_swapImgRestore() { //v2.0
+  if (document.MM_swapImgData != null)
+    for (var i=0; i<(document.MM_swapImgData.length-1); i+=2)
+      document.MM_swapImgData[i].src = document.MM_swapImgData[i+1];
+}
+
+function MM_preloadImages() { //v2.0
+  if (document.images) {
+    var imgFiles = MM_preloadImages.arguments;
+    if (document.preloadArray==null) document.preloadArray = new Array();
+    var i = document.preloadArray.length;
+    with (document) for (var j=0; j<imgFiles.length; j++) if (imgFiles[j].charAt(0)!="#"){
+      preloadArray[i] = new Image;
+      preloadArray[i++].src = imgFiles[j];
+  } }
+}
+
+function MM_swapImage() { //v2.0
+  var i,j=0,objStr,obj,swapArray=new Array,oldArray=document.MM_swapImgData;
+  for (i=0; i < (MM_swapImage.arguments.length-2); i+=3) {
+    objStr = MM_swapImage.arguments[(navigator.appName == 'Netscape')?i:i+1];
+    if ((objStr.indexOf('document.layers[')==0 && document.layers==null) ||
+        (objStr.indexOf('document.all[')   ==0 && document.all   ==null))
+      objStr = 'document'+objStr.substring(objStr.lastIndexOf('.'),objStr.length);
+    obj = eval(objStr);
+    if (obj != null) {
+      swapArray[j++] = obj;
+      swapArray[j++] = (oldArray==null || oldArray[j-1]!=obj)?obj.src:oldArray[j];
+      obj.src = MM_swapImage.arguments[i+2];
+  } }
+  document.MM_swapImgData = swapArray; //used for restore
+}
+//-->
+</script>
+<meta name="keywords" content="Enter, Keywords, Here">
+<meta name="description" content="Enter brief description here.">
+</head>
+<body bgcolor="#FFFFFF" background="../images/backg.gif" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('../images/nav/fac_hi.gif','#931914015883');MM_preloadImages('../images/nav/prog_hi.gif','#931914051666');MM_preloadImages('../images/nav/cal_hi.gif','#931914098883')" text="#000000" link="#000066" vlink="#333333" alink="#000066">
+<!-- #BeginEditable "top" --> 
+<table width="600" border="0" cellspacing="0" cellpadding="0">
+  <tr valign="top"> 
+    <td height="14" width="583"><a href="../index.htm"><img src="../images/logo.gif" width="352" height="60" alt="Logo" border="0"></a></td>
+  </tr>
+  <tr valign="top"> 
+    <td height="19" width="583"><img src="../images/nav/greybar.gif" width="181" height="19" border="0" alt=" "><a href="../faculty.htm" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('document.Image6','document.Image6','../images/nav/fac_hi.gif','#931914015883')"><img name="Image6" border="0" src="../images/nav/fac_off.gif" width="113" height="19" alt="Faculty"></a><a href="../project.htm" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('document.Image7','document.Image7','../images/nav/prog_hi.gif','#931914051666')"><img name="Image7" border="0" src="../images/nav/prog_off.gif" width="65" height="19" alt="Programs"></a><img src="../images/nav/cour_on.gif" width="107" height="19" border="0" alt="Course Schedule"><a href="../reference.htm" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('document.Image9','document.Image9','../images/nav/cal_hi.gif','#931914098883')"><img name="Image9" border="0" src="../images/nav/cal_off.gif" width="117" height="19" alt="Calendar"></a><img src="../images/nav/greybar.gif" width="17" height="19" border="0" alt=" "></td>
+  </tr>
+</table>
+<!-- #EndEditable --><br>
+<br>
+<table width="600" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="15"><img src="../images/spacer.gif" width="15" height="8" alt=" "></td>
+    <td width="114" align="center" valign="top"><!-- #BeginEditable "quote" --> 
+      <p><img src="../images/smimage.gif" width="93" height="94" alt="Image" border="0"></p>
+      <p><img src="../images/quote.gif" alt="Quote" border="0" width="105" height="44"></p>
+      <!-- #EndEditable --></td>
+    <td width="15"><img src="../images/spacer.gif" width="15" height="8" alt=" "></td>
+    <td bgcolor="#CCCCCC" width="1"><img src="../images/spacer.gif" width="1" height="5" alt=" " border="0"></td>
+    <td width="19"><img src="../images/spacer.gif" width="19" height="8" alt=" "></td>
+    <td width="230" valign="top"><!-- #BeginEditable "content%201" --> 
+      <p><img src="../images/headings/sched.gif" width="150" height="12" border="0" alt="Course Schedule"><br>
+        <br>
+        <font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#000000"><b>Class 
+        Name </b><b> (CLS-XXX)</b><br>
+        <i>Professors Name<br>
+        </i></font><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#000000">Time: 
+        X:XX - XX:XX M F<br>
+        Limit: XX</font></p>
+      <p>&nbsp;</p>
+      <!-- #EndEditable --></td>
+    <td width="15" valign="top"><img src="../images/spacer.gif" width="15" height="8" alt=" "></td>
+    <td width="280" valign="top"><!-- #BeginEditable "content%202" --> 
+      <p>&nbsp;</p>
+      <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#000000"><b>Class 
+        Name </b><b> (CLS-XXX)</b><br>
+        <i>Professors Name<br>
+        </i></font><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#000000">Time: 
+        X:XX - XX:XX M F<br>
+        Limit: XX</font></p>
+      <p>&nbsp;</p>
+      <!-- #EndEditable --></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+
+</html>
