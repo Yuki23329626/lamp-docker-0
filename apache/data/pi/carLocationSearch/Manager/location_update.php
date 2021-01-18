@@ -5,7 +5,7 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 
-require_once $_SERVER['DOCUMENT_ROOT']. '/pi/carLocationSearch/Foundation/HelpUtil.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/pi/carLocationSearch/Foundation/HelpUtil.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/pi/carLocationSearch/Foundation/HttpReq.php';
 // require_once $_SERVER['DOCUMENT_ROOT'] . '/../../dbConfig/DatabaseConfig.php';
 // require_once $_SERVER['DOCUMENT_ROOT'] . '/dbConfig/DatabaseConfig.php';
