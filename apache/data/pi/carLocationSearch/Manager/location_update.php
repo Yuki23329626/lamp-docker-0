@@ -19,6 +19,8 @@ if( isset($input) ) {
     $lastNumber = $input->lisence_plate_tail;
     $location = $input->camera_id;
 
+    // $username = DatabaseConfig::$account;
+    // $password = DatabaseConfig::$password;
     $username = 'root';
     $password = $_ENV["MYSQL_ROOT_PASSWORD"];
     $host = "mariadb";

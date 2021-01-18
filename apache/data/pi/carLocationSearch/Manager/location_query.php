@@ -18,6 +18,8 @@ if( isset($input) ) {
     $firstNumber = $input->firstNumber;
     $lastNumber = $input->lastNumber;
 
+    // $username = DatabaseConfig::$account;
+    // $password = DatabaseConfig::$password;
     $username = 'root';
     $password = $_ENV["MYSQL_ROOT_PASSWORD"];
     $host = "mariadb";

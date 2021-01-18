@@ -10,6 +10,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/carLocationSearch/Foundation/HttpReq.
 // require_once $_SERVER['DOCUMENT_ROOT'] . '/../../dbConfig/DatabaseConfig.php';
 // require_once $_SERVER['DOCUMENT_ROOT'] . '/dbConfig/DatabaseConfig.php';
 
+// $username = DatabaseConfig::$account;
+// $password = DatabaseConfig::$password;
 $username = 'root';
 $password = $_ENV["MYSQL_ROOT_PASSWORD"];
 $host = "mariadb";
