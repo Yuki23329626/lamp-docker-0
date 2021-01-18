@@ -1,6 +1,6 @@
 #!/bin/bash
 # Program:
-#	The script is used to attach to bash of the apache container 的腳本
+#	The script is used to attach to bash of the apache container
 # History:
 # 2020/12/23	nxshen	First release
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
