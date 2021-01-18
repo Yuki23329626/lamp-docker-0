@@ -10,14 +10,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/carLocationSearch/Foundation/HttpReq.
 // require_once $_SERVER['DOCUMENT_ROOT'] . '/../../dbConfig/DatabaseConfig.php';
 // require_once $_SERVER['DOCUMENT_ROOT'] . '/dbConfig/DatabaseConfig.php';
 
-class DatabaseConfig
-{
-    public static $account = 'root';
-    public static $password = $_ENV["MYSQL_ROOT_PASSWORD"];
-}
-
-$username = DatabaseConfig::$account;
-$password = DatabaseConfig::$password;
+$username = 'root';
+$password = $_ENV["MYSQL_ROOT_PASSWORD"];
 $host = "mariadb";
 $db_name = "pi_parking_monitor";
 $conn = mysqli_connect($host, $username, $password, $db_name);
