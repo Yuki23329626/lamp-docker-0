@@ -1,0 +1,14 @@
+<HTML>
+<HEAD>
+   <TITLE>中正資工電腦網路應用層簡介</TITLE>
+   <META NAME="Author" CONTENT="黃仁竑">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="../gif/bg-slate.gif">
+
+目前網路應用軟體很多，每一種網路工具均有其使用的協定。在此，我們介紹四種 <br>
+協定:DNS是將hostname轉成IP address的協定，SMTP(含MIME)是送電子郵件的協定， <br>
+POP3是Mail Agent使用的協定，HTTP則是WWW所使用的協定。
+
+</BODY>
+</HTML>

@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=x-x-UTF-8">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>Talk 次數登錄系統</title>
+<meta name="FORMATTER" content="Microsoft FrontPage 2.0">
+</head>
+
+<body bgcolor="#FFFFFF">
+<!--webbot bot="GeneratedScript" preview=" " startspan --><script
+language="JavaScript"><!--
+function FrontPage_Form1_Validator(theForm)
+{
+
+  if (theForm.month.value == "")
+  {
+    alert("Please enter a value for the \"month\" field.");
+    theForm.month.focus();
+    return (false);
+  }
+
+  if (theForm.month.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"month\" field.");
+    theForm.month.focus();
+    return (false);
+  }
+
+  if (theForm.which_day.value == "")
+  {
+    alert("Please enter a value for the \"which_day\" field.");
+    theForm.which_day.focus();
+    return (false);
+  }
+
+  if (theForm.which_day.value.length > 2)
+  {
+    alert("Please enter at most 2 characters in the \"which_day\" field.");
+    theForm.which_day.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></script><!--webbot bot="GeneratedScript" endspan -->
+<form action="cgi-bin/talkreg.cgi" method="POST"
+onsubmit="return FrontPage_Form1_Validator(this)"
+name="FrontPage_Form1">
+    <div align="center"><center><table border="1">
+        <tr>
+            <td><align="left">日期 <!--webbot bot="Validation"
+            b-value-required="TRUE" i-maximum-length="2" --><input
+            type="text" size="3" maxlength="2" name="month">月<!--webbot
+            bot="Validation" b-value-required="TRUE"
+            i-maximum-length="2" --><input type="text" size="3"
+            maxlength="2" name="which_day">號 填表助教<select
+            name="TA" size="1">
+                <option>楊錫昌</option>
+                <option>張晃崚</option>
+                <option selected>吳政璟</option>
+            </select> </td>
+        </tr>
+        <tr>
+            <td><align="center"> 
+            <input type="checkbox" name="C1">劉峰志 482210020 
+            <input type="checkbox" name="C2">黃星寶 483410026 
+            <input type="checkbox" name="C3">李佳政 482410016<BR> 
+            <input type="checkbox" name="C4">游佳明 483410016 
+            <input type="checkbox" name="C5">蘇惟勝 483410031
+            <input type="checkbox" name="C6">堵耀國 483410046<BR>
+            <input type="checkbox" name="C7">何碩晏 482220040
+            <input type="checkbox" name="C8">陳淑芳 483410039
+            <input type="checkbox" name="C9">陳韻文 483410042<BR>
+            <input type="checkbox" name="C10">林維德 483410015
+            <input type="checkbox" name="C11">李正軒 483410008
+            <input type="checkbox" name="C12">吳名蕙 483410005<BR>
+            <input type="checkbox" name="C13">邱紹禎 483410034
+            <input type="checkbox" name="C14">張賢宗 483410018
+            <input type="checkbox" name="C15">曾渝頊 483410019<BR>
+            <input type="checkbox" name="C16">文宇軒 482410040
+            <input type="checkbox" name="C17">蔡嘉禾 482210023
+            <input type="checkbox" name="C18">林世燦 483410007<BR>
+            <input type="checkbox" name="C19">張赤宇 482410030
+            <input type="checkbox" name="C20">謝偉德 482410003
+            <input type="checkbox" name="C21">凌旺杰 482410028<BR>
+            <input type="checkbox" name="C22">陳虹芬 482410018
+            <input type="checkbox" name="C23">侯彥希 482410011
+            <input type="checkbox" name="C24">郭錦福 483410013<BR>
+            <input type="checkbox" name="C25">周志勝 483410028
+            <input type="checkbox" name="C26">張智光 484410053
+            <input type="checkbox" name="C27">馬國翔 483410047<BR>
+            <input type="checkbox" name="C28">王德源 482410022
+            <input type="checkbox" name="C29">徐　煒 483210004
+            <input type="checkbox" name="C30">陳宏嘉 483210003<BR>
+            <input type="checkbox" name="C31">莊富凱 483410012
+            <input type="checkbox" name="C32">蔡恭全 483410021
+            <input type="checkbox" name="C33">蔡升富 483410020<BR>
+            <input type="checkbox" name="C34">林清池 482220029
+            <input type="checkbox" name="C35">曾弘岳 483410038
+            <input type="checkbox" name="C36">郭偉程 483410006<BR>
+            <input type="checkbox" name="C37">秦之誠 482225028
+            <input type="checkbox" name="C38">詹育豪 483410004
+            <input type="checkbox" name="C39">周昌憲 483410033<BR>
+            <input type="checkbox" name="C40">顏文祺 482410027
+            <input type="checkbox" name="C41">簡博彬 483410003
+            <input type="checkbox" name="C42">陳俊德 482410017
+            </td>
+        </tr>
+        <tr>
+            <td>確認密碼<input type="password" size="20"
+            name="passwd1"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" name="send1"
+            value="登錄資料"><input type="reset" name="B3"
+            value="重新選擇"></td>
+        </tr>
+    </table>
+    </center></div>
+</form>
+
+<p align="center">　</p>
+
+<hr>
+</body>
+</html>

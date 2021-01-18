@@ -1,0 +1,23 @@
+directory        /var/named
+;
+; primary server
+;
+;
+; type          domain                    source host/file
+;
+cache           .                         named.ca
+primary         cs.ccu.edu.tw             named.hosts
+primary         101.123.140.in-addr.arpa  named.rev
+primary         102.123.140.in-addr.arpa  named.102.rev
+primary         103.123.140.in-addr.arpa  named.103.rev
+primary         104.123.140.in-addr.arpa  named.104.rev
+primary         0.0.127.in-addr.arpa      named.local
+;
+;  secondary server
+;
+secondary       coco.ccu.edu.tw         140.123.11.75   ccu.zone
+secondary       ccu.edu.tw              140.123.1.2     ccu.zone
+secondary       123.140.in-addr.arpa    140.123.1.2     ccu.rev
+;
+secondary       edu.tw                  140.111.1.2     edu.zone
+secondary       111.140.in-addr.arpa    140.111.1.2     edu.rev

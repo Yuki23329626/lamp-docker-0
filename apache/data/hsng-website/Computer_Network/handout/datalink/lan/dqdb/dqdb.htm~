@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE></TITLE>
+   <META NAME="Author" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="../../../gif/bg-slate.gif">
+
+<P><FONT COLOR="#0080FF"><FONT SIZE=+3>Distributed Queue Dual Bus (IEEE
+802.6 DQDB)</FONT></FONT></P>
+
+<P><IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>DQDB架構</FONT></P>
+
+<P><IMG SRC="dqdb.gif" HEIGHT=247 WIDTH=620></P>
+
+<P><IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>MAC格式</FONT></P>
+
+<P><IMG SRC="macframe.gif" HEIGHT=347 WIDTH=549></P>
+
+<P><IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>運作原理</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>Free/Busy
+Frame 用 busy bit (1位元)來區別﹔Request bits 則由<BR>
+　3個位元來表示</FONT></P>
+
+<P><IMG SRC="flows.gif" HEIGHT=237 WIDTH=530></P>
+
+<P><IMG SRC="file:///C|/user/chj84/net/net97/handout/gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>當工作站沒有
+Queued-Arbitrated (QA) Slot 資料存在佇列中等待傳<BR>
+　送時，其反應如下：</FONT></P>
+
+<OL>
+<LI><FONT SIZE=+1>每次收到一個由匯流排 B 傳來的申請則將其（申請計數器,<BR>
+Request Counter）的值加 1</FONT></LI>
+
+<LI><FONT SIZE=+1>每次收到一個由匯流排 A 傳來的空槽則將其中申請計數器<BR>
+的值加 1</FONT></LI>
+</OL>
+
+<P><IMG SRC="algo1.gif" HEIGHT=340 WIDTH=444></P>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>當工作站有一筆
+QA 資料要送到匯流排 A 時，其處理如下：</FONT></P>
+
+<OL>
+<LI><FONT SIZE=+1>在匯流排 B 上送出申請（根據資料的優先權等級設定 slot的<BR>
+申請欄）</FONT></LI>
+
+<LI><FONT SIZE=+1>將申請計數器的值放到（倒數計數器, Countdown Counter）上</FONT></LI>
+
+<LI><FONT SIZE=+1>申請計數器的值設為 0 並且開始其計數功能</FONT></LI>
+
+<LI><FONT SIZE=+1>每收到一個由匯流排 A 傳來的空槽則將倒數計數器上的值減
+1<BR>
+，直到其值等於 0 為止。此時工作站可將下次收到的空槽改為<BR>
+滿槽，並且將資料寫到 slot 上往下游傳送</FONT></LI>
+</OL>
+
+<P><IMG SRC="algo2.gif" HEIGHT=345 WIDTH=617></P>
+</UL>
+
+<P><IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>例子</FONT></P>
+
+<OL>
+<LI><FONT SIZE=+1>工作站 5 提出申請，將其 RQ(0) 值放到 CD 中。此申請經由回流排<BR>
+B 傳送使得每一個工作站的 RQ 值加 1 成為 1。</FONT></LI>
+
+<LI><FONT SIZE=+1>工作站 2 提出申請，將其 RQ(1) 值放到 CD 中，並且讓 RQ
+= 0。此<BR>
+申請經由匯流排 B 傳送使得工作站 1 的 RQ 值加 1 成為 2。</FONT></LI>
+
+<LI><FONT SIZE=+1>工作站 3 提出申請，將其 RQ(1) 值放到 CD 中並且讓 RQ =
+0 。此申<BR>
+請經由匯流排 B 傳送使得工作站 1,2 的 RQ 值分別加 1 成為 3 和 1。</FONT></LI>
+</OL>
+
+<P><IMG SRC="example1.gif" HEIGHT=551 WIDTH=635></P>
+<FONT SIZE=+1></FONT>
+<OL>
+<LI><FONT SIZE=+1>當第一個空槽經過時，工作站 1 將其 RQ 值減 1 為 2，工作站
+2 將其<BR>
+CD 值減 1 為 0 ，工作站 3 將其 CD 值減 1 成為 0 ，工作站 4 將其 RQ<BR>
+值減 1 成為 0 ，而最後工作站 5 得到此空槽之使用權並將之改為滿槽<BR>
+。</FONT></LI>
+
+<LI><FONT SIZE=+1>當第二的空槽經過時，工作站 1 將其 RQ 值減 1 成為 1 ，工作站
+2 因<BR>
+其 CD 值為 0 ，因此可以使用此空槽，其他工作站的狀態則不變。當<BR>
+下一個空槽出現時，工作站 1, 2 的 RQ 值將會成為 0 ，而工作站 3 將<BR>
+可以使用該空槽。</FONT></LI>
+</OL>
+
+<P><IMG SRC="example2.gif" HEIGHT=529 WIDTH=626></P>
+<P><A HREF="javascript:history.go(-1)">
+<IMG SRC="../../../gif/goup.jpg" BORDER=0 HEIGHT=55 WIDTH=136></A></P>
+</BODY>
+</HTML>

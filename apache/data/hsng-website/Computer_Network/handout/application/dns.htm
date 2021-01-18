@@ -1,0 +1,733 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.01 [en] (Win95; I) [Netscape]">
+   <TITLE>DNS</TITLE>
+</HEAD>
+<BODY>
+
+<CENTER><B><FONT SIZE=+3>Domain Name Server (DNS)</FONT></B></CENTER>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>DNS presents a hierarchical approach to the problem of
+organizing the name space of large computer networks. Each element of the
+hierarchy is referred to as a domain.</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>Naming hierarchy</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>A tree structure</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>Top-Level Domain (edu, com, gov, net, org, mil, int,...)</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>Geographical Domains (us, tw, hk, ....)</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>A node at each level may have a name server which knows
+the mapping between machine name and IP address (a database) or the name
+servers of its subdomains</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>In practice</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>many levels may share one name server</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>one level may have many servers, e.g., there are many
+root servers</FONT></B></LI>
+</UL>
+</UL>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>Software</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>Client:</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>Library functions:</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+1>gethostbyname(): hsotname -> IP</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+1>gethostbyaddr(): IP-> hostname</FONT></B></LI>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>Files</FONT></B></LI>
+
+<UL>
+<LI>
+<FONT SIZE=+1>/etc/resolv.conf</FONT></LI>
+
+<UL>
+<LI>
+<FONT SIZE=+1>three commands: search, nameserver and domain; (; or # for
+comments)</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>search cs.ccu.edu.tw ccu.edu.tw</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>nameserver 140.123.101.100</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>nameserver 140.123.3.5</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>domain: the default domain name of this host</FONT></LI>
+</UL>
+
+<LI>
+<FONT SIZE=+1>etc/hosts</FONT></LI>
+
+<UL>
+<LI>
+<FONT SIZE=+1>Set up your local cache</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>140.123.101.25 dec1.cs.ccu.edu.tw</FONT></LI>
+</UL>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>Commands</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>nslookup</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>host</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>set q=type</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>A: The host's Internet address (the default).</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>CNAME: The canonical name for an alias.</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>HINFO: The host CPU and operating system type.</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>MD: The mail destination.</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>MX: The mail exchanger.</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>MB: The mailbox domain name.</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>MG: The mail group member.</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>MINFO: The mailbox or mail list information.</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>NS: Name server</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>PTR: Pointer (symbolic link to domain name)</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>SOA: Start of Authority (major information about a name
+server)</FONT></B></LI>
+</UL>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>dig</FONT></B></LI>
+</UL>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>Server</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>BIND: Berkeley Internet Name Domain System (an implementation
+of DNS server from Berkeley)</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>BIND includes</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>named (in.named, or bind)</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>A primary name server for each zone</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>zone: a domain or subdomain</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>A secondary name server copies data from the primary name
+server by "zone transfer" operation</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>A machine can be a primary server for one domain while
+also be a secondary server for another domain</FONT></B></LI>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>Library routines</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>libc.a or libresolv.a</FONT></B></LI>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>Commands: nslookup, dig, host</FONT></B></LI>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>Files</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>/etc/named.boot</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+1><A HREF="named.boot.txt">Click here to see an example</A></FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>directory: directory that contains related files</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>cache: file that contains root server names of the world</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>primary: which domain this server serves as the primary
+name server, and the database file for this domain</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>secondary: which domain this server serves as the secondary
+name server, the ip of the primary server, and the cache file for that
+domain</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>Examples:</FONT></B></LI>
+
+<UL>
+<LI>
+<FONT SIZE=+1>directory /var/named</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>cache . named.ca</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>primary cs.ccu.edu.tw named.hosts</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>primary 101.123.140.in-addr.arpa named.rev</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>secondary ccu.edu.tw 140.123.1.2 
+<A HREF="ccu.zone.txt"> ccu.zone </A></FONT></LI>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>Other Commands</FONT></B></LI>
+
+<UL>
+<LI>
+<FONT SIZE=+1>forwards ip: before send any DNS requests to other servers,
+send to this ip first</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>xfrnets ip: which host can accept the database file of this
+server</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>bogusns ip: the hosts that cannot receive the database file
+of this server</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>include filename: include a file</FONT></LI>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>Some notes</FONT></B></LI>
+
+<UL>
+<LI>
+<FONT SIZE=+1>Since a machine can be the primary/secondary server for more
+than one domain, there could be more than one line of primary/secondary
+commands</FONT></LI>
+<LI>
+<FONT SIZE=+1>
+To enforce a running secondary DNS server to update cache from the primary
+name server's database file, use the command &quot; kill -HUP `cat named.pid'
+&quot;. 
+</FONT></LI>
+</UL>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>/etc/named.pid</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>process id of named</FONT></B></LI>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>/var/named/named.ca</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+1><A HREF="named.ca.txt">Click here to see an example</A></FONT></B></LI>
+
+<LI>
+<FONT SIZE=+1>Contain root servers</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+99999999&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+NS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ns.nic.ddn.mil.</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>ns.nic.ddn.mil.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+99999999&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 192.112.36.4</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>tw.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+99999999&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+NS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; moevax.edu.tw.</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>moevax.edu.tw.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 99999999&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+IN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+140.111.2.2</FONT></LI>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>/var/named/named.hosts</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+1><A HREF="named.hosts.txt">Click here to see an example</A></FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+1>Command format: [name] [ttl] [class] type data</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+1>name: hostname, ttl: time to live, class: IN(Internet),
+CH(ChaosNet), HS(Hesiod)</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+1>types: SOA, NS, A, PTR, MX, CNAME, HINFO, RP, WKS, TXT,
+....</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+1>comments: ; or #</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+1>current domain: @</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+1>Since @ is used as the current domain, email address canot
+have @ in it</FONT></B></LI>
+</UL>
+
+<LI>
+<B><FONT SIZE=+1>SOA: basic information about this server</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+1>@ IN SOA cs.ccu.edu.tw. root.cs.ccu.edu.tw. (</FONT></B></LI>
+
+<LI>
+<FONT SIZE=+1><B>960206020 ; </B>Serial : lets secondary servers know whether
+the database has changed</FONT></LI>
+
+<LI>
+<FONT SIZE=+1><B>10800 ; </B>Refresh : interval for secondary servers to
+check with this server</FONT></LI>
+
+<LI>
+<FONT SIZE=+1><B>3600 ; </B>Retry : if secondary server fails to do zone
+transfer, how long to try again</FONT></LI>
+
+<LI>
+<FONT SIZE=+1><B>3600000 ; </B>Expire : if secondary server does not get
+response from primary server, cache will be expired after this time interval</FONT></LI>
+
+<LI>
+<FONT SIZE=+1><B>86400 ) ; </B>Minimun : time to live for cached data</FONT></LI>
+</UL>
+
+<LI>
+<FONT SIZE=+1><B>A: defines ip address of a host; </B><I>hostname [ttl]
+[class] A ip</I></FONT></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+1>@ IN A 140.123.101.100</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+1>dec1 IN A 140.123.101.25</FONT></B></LI>
+</UL>
+
+<LI>
+<FONT SIZE=+1><B>NS: defines name server; </B><I>zone [ttl] [class] NS
+ip</I></FONT></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+1>@ IN NS cs.ccu.edu.tw.</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+1>@ IN NS suncc.ccu.edu.tw.</FONT></B></LI>
+</UL>
+
+<LI>
+<B><FONT SIZE=+1>MX defines mail exchanger; </FONT></B><I><FONT SIZE=+1>name
+[ttl] [class] MX preference host</FONT></I></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+1>*.edu. IN MX 10 twnmoe10.edu.tw.</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+1>* IN MX 10 cs.ccu.edu.tw.</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+1>dec1.cs.ccu.edu.tw IN MX 10 cs.ccu.edu.tw.</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+1>dec1.cs.ccu.edu.tw IN MX 20 dec1.cs.ccu.edu.tw.</FONT></B></LI>
+</UL>
+
+<LI>
+<FONT SIZE=+1><B>CNAME: defines an alias for a host;&nbsp;</B><I> nickname
+[ttl] [class] CNAME hostname</I></FONT></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+1>www IN CNAME cssun18.cs.ccu.edu.tw.</FONT></B></LI>
+</UL>
+
+<LI>
+<FONT SIZE=+1><B>HINFO: host information; </B><I>name [ttl] [class] HINFO
+hosttype OS</I></FONT></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+1>cs IN HINFO "ultra2" "solaris 2.5"</FONT></B></LI>
+</UL>
+
+<LI>
+<FONT SIZE=+1><B>WKS: supported well known service; </B><I>name [ttl] [class]
+WKS [address] protocol services (not secure, not recommended)</I></FONT></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+1>cs IN WKS TCP telnet smtp ftp</FONT></B></LI>
+</UL>
+
+<LI>
+<FONT SIZE=+1><B>TXT: additional information; </B><I>name [ttl] [class]
+TXT info</I></FONT></LI>
+
+<UL>
+<LI>
+<I><FONT SIZE=+1>especially for secure_zone which controls who can use
+this name server</FONT></I></LI>
+
+<LI>
+<B><FONT SIZE=+1>secure_zone IN TXT 140.123.101.0</FONT></B></LI>
+</UL>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>/var/named/named.rev</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+1><A HREF="named.rev.txt">Click here to see an example</A></FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+1>; information of reverse translation (IP->host)</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+1>25 IN PTR dec1.cs.ccu.edu.tw.</FONT></B></LI>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>/var/named/named.local</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+1>; basic information about this server</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+1>; similar to the first part of named.hosts</FONT></B></LI>
+</UL>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>Reverse address resolution</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+1>A seperate domain, IN-ADDR.ARPA, is used for this purpose</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+1>The type 'PTR' is used for pointer to the correct DNS
+name space</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+1>Command: nslookup</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+1>25.101.123.140.in-addr.arpa</FONT></B></LI>
+</UL>
+</UL>
+</UL>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>Resolution algorithm</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>Client sends a request to a name server it knows</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>A client must know at least one name server</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>Some client software is able to find the name server automatically,
+but this is not defined in the DNS protocol</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>A request contains</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>the name to be resolved</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>class: IN (internet), ...</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>type: A (32-bit IP), MX (mail exchanger), ... </FONT>(as
+specified above in nslookup command)</B></LI>
+
+<LI>
+<B><FONT SIZE=+2>flag: one of the bit indicates whether the client wants
+<I>recursive</I> or <I>iterative</I> resolution</FONT></B></LI>
+</UL>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>Name server receives a request</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>If it finds the answer in its database, then provides
+the answer (according to the type requested)</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>Otherwise, if the request is recursive</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>Contacts another name server that can resolve it</FONT></B></LI>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>If the request is iterative</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>Returns the names of servers that the client might contact
+later</FONT></B></LI>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>Who should provide recursive response?</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>A client always recommended to use recursive request</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>A low level name server is suggested to support recursive
+request</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+1>Better performance: get the answer, put it into cache</FONT></B></LI>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>A high level name server (near to the root) should not
+provide recursive response since it would be easily overloaded</FONT></B></LI>
+</UL>
+</UL>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>Caching</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>Caching is very important for efficiency</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+1>We seldomly change the name or IP of our machines</FONT></B></LI>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>Caching at server</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>A server may answer a request according to its cache information,
+but it must tells the client that the answer is nonauthoriative and the
+server to contact with if the client wants to verify the answer</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>A bit in the flag (of the message header) indicates whether
+the answer is authoriative</FONT></B></LI>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>Caching can also be done at client (depends on client's
+software)</FONT></B></LI>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>Message format</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>ID</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>Flag</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>query or response</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>query type: standard or reverse</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>authoriative?</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>truncated?</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>recursive desired?</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>recursive available?</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>response code: ok, format error, server fail, name does
+not exist</FONT></B></LI>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>Number of questions</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>Number of answers</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>Number of authorities</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>Number of additional</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>Question section</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>Answer section</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>Authority section</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>Additional section</FONT></B></LI>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>Question section</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>query name</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>type</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>class</FONT></B></LI>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2>Resource records (for Answer section, Authority section,
+Additional section)</FONT></B></LI>
+
+<UL>
+<LI>
+<B><FONT SIZE=+2>resource name</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>type</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>class</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>time to live (how long this information can be cached)</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>resource data length</FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+2>resource data (the answer)</FONT></B></LI>
+</UL>
+
+<LI>
+<B><FONT SIZE=+2><A HREF="handout/application/dns.ps">For
+further reading</A></FONT></B></LI>
+</UL>
+
+</BODY>
+</HTML>

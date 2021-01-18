@@ -1,0 +1,684 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Untitled</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="../../../gif/bg-slate.gif">
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>網路特性</FONT></FONT><FONT SIZE=+1>
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>主動式訊號增益器
+</FONT></P>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>單向傳送
+</FONT></P>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>利用Token控制資料傳送順序
+</FONT></P>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>適合即時應用系統，可提供延遲保證
+</FONT></P>
+
+<P><IMG SRC="ring.gif" HEIGHT=387 WIDTH=439></P>
+</UL>
+
+<P><IMG SRC="../../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>訊號增益器功能 </FONT></FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>加入資料訊息(Frame
+Insertion)：需先拿到Token </FONT></P>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>接收資料訊息(Frame
+Reception)：判斷目的地位址 </FONT></P>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>消除資料訊息(Frame
+Removal)： </FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>由sender消除：receiver可加入ACK
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>由receiver消除：可提高效率
+</FONT></P>
+</UL>
+</UL>
+
+<P><IMG SRC="../../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>訊號增益器狀態</FONT></FONT><FONT SIZE=+1>
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>聆聽狀態
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>特殊字元辨識(Token,
+Address等) <BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>將資料拷貝給工作站
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>修改一位元資料
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>會造成一位元延遲
+</FONT></P>
+</UL>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>傳送狀態
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>將資料傳送出去並從另一端接收
+</FONT></P>
+</UL>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>跳接狀態
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>工作站故障或關機</FONT></P>
+</UL>
+
+<P><IMG SRC="repstate.gif" HEIGHT=191 WIDTH=568></P>
+</UL>
+
+<P><IMG SRC="../../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>環狀網路優點</FONT></FONT><FONT SIZE=+1>
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>在高負載下可有高的使用率
+</FONT></P>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>點對點通訊
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>訊號可在每一點增強
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>較低傳送錯誤率
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>基頻傳輸時，可有較長距離
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>可採光纖線路 </FONT></P>
+</UL>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>容易找出故障線路</FONT></P>
+</UL>
+
+<P><IMG SRC="../../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>環狀網路缺點 </FONT></FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>線路斷裂或增益器故障會造成網路癱瘓
+</FONT></P>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>安裝複雜</FONT></P>
+</UL>
+
+<P><IMG SRC="../../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>環狀網路種類</FONT></FONT><FONT SIZE=+1>
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>槽式環狀網路(Slotted
+Ring) </FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>將網路位元長度(即網路上可以同時存在的位元數)分割成若干個<BR>
+　固定長度的槽 <BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>每個槽有以下欄位
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>狀態位元(busy
+or empty) <BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>目的地位址 <BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>原始點位址 <BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>資料欄 <BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>控制欄：資料傳送結果
+</FONT></P>
+</UL>
+
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>工作站利用空槽傳資料
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>資料必須切割成固定大小
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>資料必須由sender消除並將該槽釋放
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>缺點：二個位址欄，浪費頻寬</FONT><BR>
+<IMG SRC="slottedring.gif" HEIGHT=357 WIDTH=385></P>
+</UL>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>暫存器插入式環狀網路
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>訊號增益器有一個位移暫存器及一個緩衝器
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>接收資料 </FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>等目的地位址進入位移暫存器候，辨識是否為本站資料
+<BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>是則將資料轉給工作站並丟棄位移暫存器內之位址
+<BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>不是則將資料依序移入<B>/</B>出暫存器
+</FONT></P>
+</UL>
+
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>若要傳資料，須先移入緩衝器
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>當一筆資料從位移暫存器中完全移出後，假如下面條件符合，<BR>
+　此工作站便可傳資料。 </FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>有一筆資料在緩衝器中待傳
+<BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>位移暫存器有足夠空位元位置
+</FONT></P>
+</UL>
+
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>公平性
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>在輕負載時，資料很快就可以送出
+<BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>在高負載時，每一工作站一次只能傳一筆資料
+</FONT></P>
+</UL>
+
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>高線路使用率
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>資料長度可不固定
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>允許多筆資料同時在網路上傳送
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>較長傳送時間 </FONT></P>
+</UL>
+
+<P><IMG SRC="register.gif" HEIGHT=263 WIDTH=490></P>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>信物環狀網路(Token
+Ring) </FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>Free
+Token：一特殊位元字串，如11111111 <BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>Busy Token：與Free
+Token只差最後一位元，如11111110 <BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>當一工作站收到Free
+Token時，可以將它改成Busy Token並<BR>
+　將資料隨後送出 <BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>資料送完後須再送出一Free
+Token <BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>網路上可能有多個Free
+Tokens </FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>為避免複雜，送端只在接收到Busy
+Token回來後，才<BR>
+　將Free Token送出 </FONT></P>
+</UL>
+
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>資料可由送端或接收端消除
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>容易送回應訊息
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>公平 <BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>高負載時，線路使用率高
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>須維護信物 </FONT></P>
+</UL>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>三種環狀網路比較：</FONT></P>
+
+<P><IMG SRC="compare.gif" HEIGHT=260 WIDTH=573></P>
+</UL>
+
+<P><IMG SRC="../../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>IBM Token Ring</FONT></FONT><FONT SIZE=+1>
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>星－環結構</FONT></P>
+
+<P><IMG SRC="starring.gif" HEIGHT=528 WIDTH=536></P>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>主要設備
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>集中器(Ring
+Wiring Concentrator, RWC) </FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>以線接器(wiring
+lobe)接工作站 <BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>線接器跳接(lobe-bypass)
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/cy_ball.gif" HEIGHT=16 WIDTH=17><FONT SIZE=+1>隔離障礙
+<BR>
+<IMG SRC="../../../gif/cy_ball.gif" HEIGHT=16 WIDTH=17>網路維護與重組 </FONT></P>
+</UL>
+</UL>
+
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>網路橋(Bridge)
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>高速數位交換技術
+<BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>連接數個環狀網路成一大網路<BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>功能 </FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/cy_ball.gif" HEIGHT=16 WIDTH=17><FONT SIZE=+1>過濾
+<BR>
+<IMG SRC="../../../gif/cy_ball.gif" HEIGHT=16 WIDTH=17>輸出/入緩衝 <BR>
+<IMG SRC="../../../gif/cy_ball.gif" HEIGHT=16 WIDTH=17>Routing <BR>
+<IMG SRC="../../../gif/cy_ball.gif" HEIGHT=16 WIDTH=17>傳送資料 </FONT></P>
+</UL>
+</UL>
+
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>網路閘門(Gateway)
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>連接區域網路與長程網路
+<BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>功能 </FONT></P>
+</UL>
+
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>位址轉換
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>速率與協定轉換
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>資料切割與重組
+</FONT></P>
+</UL>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>資料格式
+</FONT></P>
+</UL>
+
+<P><IMG SRC="ibmframe.gif" HEIGHT=592 WIDTH=648></P>
+
+<UL>
+<UL>
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>MAC
+Frame = HEADER + LLC-Frame + TRAILER <BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>HEADER = STARTING
+DELIMITER + PCF + DA + SA <BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>TRAILER = FCS(CRC)
++ ENDING DELIMITER + PCF <BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>STARTING PCF (Physical
+Control Field) </FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>PM
+(Priority Mode)：資料priority <BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>PR (Priority Reservation)：工作站預約的最高priority
+<BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>T (Token)：Free
+or Busy <BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>MC (Monitor Count)：一般資料或控制資料
+<BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>RR (Reserved Bits)
+<BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>Control indicator：資料狀態或網管訊息用
+</FONT></P>
+</UL>
+
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>Ending
+PCF </FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>ARI
+(Address Recognized Indicator)：目的地工作站設<BR>
+　定已拷貝此資料 <BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>FCI (Frame Copied
+Indicator)：目的地工作站是否已拷<BR>
+　貝此資料 <BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>SEI (Soft Error
+Indicator)：Software Error <BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>ARI, FCI均有2份，以便檢查
+</FONT></P>
+</UL>
+</UL>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>網路運作原理
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>每個工作站得到Free
+Token後，將它改為Busy Token並送<BR>
+　出資料 <BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>單一信物：送端回收Busy
+Token後才送出Free Token <BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>資料由送端消除
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>回應： </FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>接收端設定ARI表示存在，FCI表示已拷貝
+<BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>ARI=1, FCI=0表示接收端有狀況
+</FONT></P>
+</UL>
+</UL>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>信物監督者
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>負責監督信物流失與不斷循環繞之忙碌信物之處理
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>信物流失 </FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>原因：干擾或雜訊
+<BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>偵測：信物監督者每次送出一信物時，便設定一timer<BR>
+　。如時間到了卻沒有再收到信物，表示已流失 <BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>處理：產生新的自由信物
+</FONT></P>
+</UL>
+
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>不斷環繞之忙碌信物
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>原因：傳送端因故當機
+<BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>偵測：當信物經過監督者時，Monitor
+Count Flag會被<BR>
+　設定。新信物送出時，送端則會reset成0。所以如果監<BR>
+　督者收到MC=1之忙碌信物，便知道送端故障 <BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>處理：刪除忙碌信物及資料，產生新的自由信物
+</FONT></P>
+</UL>
+</UL>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>多重信物問題
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>原因：雜訊干擾
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>偵測：送端發現回收之資料SA不是自己
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>處理：不再送出自由信物，已造成信物流失再由監督者處理
+</FONT></P>
+</UL>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>最小網路位元長度
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>當所有工作站都idle時，只有自由信物在網路上傳送。此時必<BR>
+　須保證自由信物可以傳送，所以網路位元長度最少是Token<BR>
+　長度。信物監督者必須保持此最小長度(藉由延遲也可以) </FONT></P>
+</UL>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>信物監督者當機
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>偵測：每一工作站均有Free
+Token Time-out Timer。當一工作<BR>
+　站送出一自由信物後，便開始計時。若時間到了而信物未回<BR>
+　來，則表示監督者故障 <BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>處理：偵測到之工作站送出忙碌信物，並在資料欄中填入自<BR>
+　己的位址。若此資料繞一圈回來，則可成為監督者。若SA比<BR>
+　此工作站大，則放棄競爭，否則再送一次 </FONT></P>
+</UL>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>決定前一工作站(Predecessor)
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>目的：便利找出障礙
+<BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>方法：信物監督者週期性的送出「開始點名」控制
+</FONT></P>
+
+<UL>
+<P><FONT SIZE=+1>1.訊息(Roll-Call-Pull) <BR>
+2.信物監督者的下一工作站設定ARI且拷貝SA為前一工作<BR>
+　站 <BR>
+3.當此工作站得到Free Token時，送出「繼續點名」(Roll-<BR>
+　Call-Repeat)給下一個工作站 <BR>
+4.依此類推直到監督者收到沒有ARI設定之「繼續點名」<BR>
+　訊號 </FONT></P>
+</UL>
+</UL>
+
+<P><IMG SRC="predecessor.gif" HEIGHT=286 WIDTH=485></P>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>網路故障偵測
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>硬體故障
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>線路斷裂、傳送器/接收器故障
+<BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>偵測：工作站接收器收不到訊號
+<BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>處理：送出求救(beacon)訊息(含自己及前一工作站<BR>
+　位址) </FONT></P>
+</UL>
+
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>環境干擾
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>不良傳輸環境
+<BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>偵測：工作站所接收之資料老是錯誤
+<BR>
+<IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18>處理：送出資料時，將SEI設定
+</FONT></P>
+</UL>
+</UL>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>網路故障排除
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>工作站與RWC間線路斷裂：RWC自動排除(如lobe
+bypss)<BR>
+　。RWC收到beacon訊號 <BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>RWC與RWC間線路斷裂：網路重組
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>利用雙環結構
+</FONT></P>
+</UL>
+
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>人工操作
+</FONT></P>
+</UL>
+</UL>
+
+<P><IMG SRC="../../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>IEEE 802.5 Token Ring </FONT></FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>運作原理：</FONT></P>
+
+<UL>
+<P><IMG SRC="tokenpass.gif" HEIGHT=578 WIDTH=434></P>
+</UL>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>MAC資料格式
+</FONT></P>
+</UL>
+
+<UL>
+<UL>
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT COLOR="#0000FF"><FONT SIZE=+2>Token:其中
+AC 之 Token bit = 1</FONT></FONT></P>
+
+<P><IMG SRC="frame5.gif" HEIGHT=210 WIDTH=473></P>
+
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT COLOR="#0000FF"><FONT SIZE=+2>資料：</FONT></FONT></P>
+</UL>
+</UL>
+
+<P><IMG SRC="frame4.gif" HEIGHT=229 WIDTH=620></P>
+
+<UL>
+<UL>
+<UL>
+<P><IMG SRC="../../../gif/cy_ball.gif" HEIGHT=16 WIDTH=17><FONT SIZE=+1>SD
+: Starting Delimiter <BR>
+<IMG SRC="../../../gif/cy_ball.gif" HEIGHT=16 WIDTH=17>AC : Access Control</FONT></P>
+
+<UL>
+<P><IMG SRC="frame3.gif" HEIGHT=56 WIDTH=176></P>
+</UL>
+</UL>
+</UL>
+</UL>
+
+<UL>
+<UL>
+<UL>
+<UL>
+<P><FONT SIZE=+1>ppp : priority of the token <BR>
+T : Token bit = 0表示資料 <BR>
+M :用來避免持續傳送資料或高priority token <BR>
+RRR : request priority level of the next token </FONT></P>
+</UL>
+
+<P><IMG SRC="../../../gif/cy_ball.gif" HEIGHT=16 WIDTH=17><FONT SIZE=+1>FC
+: Frame Control <BR>
+　　　Frame type : MAC or LLC frame <BR>
+<IMG SRC="../../../gif/cy_ball.gif" HEIGHT=16 WIDTH=17>FCS : checksum <BR>
+<IMG SRC="../../../gif/cy_ball.gif" HEIGHT=16 WIDTH=17>ED : Ending Delimiter</FONT></P>
+</UL>
+</UL>
+</UL>
+
+<UL>
+<UL>
+<UL>
+<UL>
+<P><IMG SRC="frame1.gif" HEIGHT=90 WIDTH=150></P>
+</UL>
+</UL>
+</UL>
+</UL>
+
+<UL>
+<UL>
+<UL>
+<UL>
+<P><FONT SIZE=+1>I : last or more frame <BR>
+E : set if error detected </FONT></P>
+</UL>
+
+<P><IMG SRC="../../../gif/cy_ball.gif" HEIGHT=16 WIDTH=17><FONT SIZE=+1>FS
+: Frame Status</FONT></P>
+</UL>
+</UL>
+</UL>
+
+<UL>
+<UL>
+<UL>
+<UL>
+<P><IMG SRC="frame2.gif" HEIGHT=91 WIDTH=152></P>
+</UL>
+</UL>
+</UL>
+</UL>
+
+<UL>
+<UL>
+<UL>
+<UL>
+<P><FONT SIZE=+1>A : destination present C : copied <BR>
+1. A = 0 and C = 0 : destination not present or not powerd<BR>
+　up. <BR>
+2. A = 1 and C = 0 : destination present but frame not<BR>
+　accepted. <BR>
+3. A = 1 and C = 1 : desitnation present and frame copied. </FONT></P>
+</UL>
+</UL>
+</UL>
+</UL>
+
+<UL>
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>優先權
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>工作站必須取得一個比所欲傳送的資料的優先等級相等或更<BR>
+　低的Token才可傳資料 <BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>可預約Token priority
+(用RRR field)，但須優先權大於原信物<BR>
+　上之預約priority <BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14>Token priority
+由原提升工作站還原 </FONT></P>
+</UL>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>信物優先權決定方法
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>在傳完資料後：</FONT></P>
+
+<P><IMG SRC="7-19.gif" HEIGHT=351 WIDTH=448></P>
+
+<P><BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>如果沒有資料要傳，在取得自由信物後</FONT></P>
+
+<UL>
+<UL>
+<P><IMG SRC="7-20.gif" HEIGHT=369 WIDTH=286></P>
+</UL>
+</UL>
+
+<P><BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>若有資料要傳：</FONT></P>
+
+<P><IMG SRC="7-21.gif" HEIGHT=516 WIDTH=593></P>
+
+<P><BR>
+<IMG SRC="../../../gif/orangeba.gif" HEIGHT=14 WIDTH=14><FONT SIZE=+1>例子：</FONT></P>
+
+<P><IMG SRC="7-22-1.gif" HEIGHT=529 WIDTH=587></P>
+
+<P><IMG SRC="7-22-2.gif" HEIGHT=255 WIDTH=585></P>
+</UL>
+
+<P><IMG SRC="../../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>環的維護與IBM
+Token Ring大致相同</FONT><BR>
+</P>
+<CENTER>
+<A HREF="ring.mov"> Ring 動畫範例 </A>(
+<A HREF="../../../software/qt32inst.exe">QuickTime Format</A>)
+</CENTER>
+</UL>
+<CENTER>
+<P><A HREF="javascript:history.go(-1)"><IMG SRC="../../../gif/goup.jpg" BORDER=0 HEIGHT=55 WIDTH=136></A></P>
+</CENTER>
+</BODY>
+</HTML>

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE></TITLE>
+   <META NAME="Author" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="../../gif/bg-slate.gif">
+
+<UL>
+<UL>
+<UL>
+<P><IMG SRC="title.gif" HEIGHT=60 WIDTH=343></P>
+</UL>
+</UL>
+
+<P><FONT SIZE=+1>　　網路層所提供給傳輸層的服務是任何兩工作站間的資料傳輸<BR>
+。這傳輸服務可能 virtual circuit 或 datagram。以 Internet為例，IP<BR>
+所提供的便是非連接導向的 datagram 服務。而傳輸層所要提供給<BR>
+上層的服務則是連接導向（可靠傳輸）及非連接導向（非可靠傳<BR>
+輸）兩者均要。這是因上層依各種應用的特性的不同而有不同的<BR>
+需求。如果網路層提供的是不可靠的傳輸，那麼傳輸層主要的工<BR>
+作便是如何在不可靠的傳輸服務上提供可靠的傳輸。事實上這個<BR>
+問題我們早在 LLC（HDLC）層時已遇過。只是當時是在相鄰兩<BR>
+點間的傳輸。不過 LLC 所用的方法還是可以直接用在傳輸層。<BR>
+也就是利用 sequence number，acknowledgement，retransmission，<BR>
+及timer就可以在非可靠傳輸的網路層上提供可靠的傳輸。而LLC<BR>
+所用的流量控制方法：Go-Back-N 及 Select-Repeat 也是可以用在<BR>
+傳輸層。例如 TCP 便是利用 GBN 的方法（只是receiver含buffer<BR>
+out-of-order 的 packet），ISO 的的 TP4 也是用 GBN，XTP 則是<BR>
+在提供 GBN 的同時可也加入 SR 控制。</FONT></P>
+
+<P><FONT SIZE=+1>　　在提供可靠的傳輸時，兩點間必須建連線 。 在 LLC 層，我<BR>
+們沒有詳細介紹連線建立與管理的問題，在這一層中，我們將會<BR>
+詳細介紹 。 另外我們也會介紹除了 sliding window 以外的流量控<BR>
+制與壅塞控制的方法 。最後我們會介紹 Internet 上的兩個傳輸協<BR>
+定：TCP 與 UDP。</FONT></P>
+</UL>
+
+</BODY>
+</HTML>

@@ -1,0 +1,790 @@
+<HTML>
+<HEAD>
+<TITLE>UNIX Network Programming 4.3 BSD Socket System Calls</TITLE>
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Microsoft Word 2.0z">
+</HEAD>
+<BODY>
+<P>
+<CENTER><FONT SIZE=6>UNIX Network Programming 4.3 BSD Socket System
+Calls</FONT></CENTER>
+<P>
+<FONT SIZE=6>Socket：</FONT>
+<UL>
+<LI><FONT SIZE=5>an abstract object to/from which messages send/received</FONT>
+<LI><FONT SIZE=5>an endpoint for communication</FONT>
+<LI><FONT SIZE=5>a file descriptor of type S_IFSOCK</FONT>
+<LI><FONT SIZE=5>a bidirection, asymmetric communication channel
+between a CLIENT and a SERVER<BR>
+(主僕關係由 call socket 之順序及使用方式決定)</FONT>
+<LI><FONT SIZE=5>can provide different communication services
+using a variety of protocols.</FONT>
+</UL>
+<P>
+<FONT SIZE=5></FONT>
+<H3><CENTER><IMG SRC="socket1.gif">Domains</CENTER></H3>
+<UL>
+<LI><FONT SIZE=5>socket 提供四種 protocol suits (family)</FONT>
+</UL>
+<P>
+<FONT SIZE=5> Family   實際 protocol suite</FONT>
+<P>
+<FONT SIZE=5> AF_UNIX  Unix Internet Protocols</FONT>
+<P>
+<FONT SIZE=5>※ AF_INET  Internet Protocols</FONT>
+<P>
+<FONT SIZE=5> AF_NS   Xerox NS Protocols</FONT>
+<P>
+<FONT SIZE=5> AF_IMPLINK  IMP Link Layer<BR>
+</FONT>
+<H4><CENTER><FONT SIZE=5>Addressing</FONT></CENTER></H4>
+<UL>
+<LI><FONT SIZE=5>一個 transport layer 以上之 connection 兩個終點addressing
+方式</FONT>
+</UL>
+<P>
+<CENTER><IMG SRC="socket2.gif"></CENTER>
+<H2><CENTER>Overview</CENTER></H2>
+<UL>
+<LI><FONT SIZE=5 FACE="Times New Roman">Connection-oriented protocol</FONT>
+</UL>
+<P>
+<CENTER><IMG SRC="socket3.gif"></CENTER>
+<UL>
+<LI><FONT SIZE=5 FACE="Times New Roman">Connectionless protocol</FONT>
+</UL>
+<P>
+<CENTER><IMG SRC="socket4.gif"></CENTER>
+<H3><CENTER>Socket Addresses</CENTER></H3>
+<UL>
+<LI><FONT SIZE=5>Many of the BSD networking system calls require
+a pointer to a socket address structure as an argument.</FONT>
+<LI><FONT SIZE=5>The definition of this structure is in &lt;sys/socket.h&gt;</FONT>
+</UL>
+<P>
+<FONT SIZE=5>struct sockaddr {</FONT>
+<P>
+<FONT SIZE=5> u_short sa_family;  /* address family: AF_xxx value
+*/</FONT>
+<P>
+<FONT SIZE=5> char  sa_data[14]; /* up to 14 bytes of protocol-</FONT>
+<P>
+<FONT SIZE=5>      specific address */</FONT>
+<P>
+<FONT SIZE=5>};<BR>
+</FONT>
+<UL>
+<LI><FONT SIZE=5>The contents of the 14 bytes of protocol-specific
+address are interpreted according to the type of address.</FONT>
+<LI><FONT SIZE=5>For the Internet family, the following structures
+are defined in &lt;netinet/in.h&gt;:</FONT>
+</UL>
+<P>
+<FONT SIZE=5>struct in_addr {</FONT>
+<P>
+<FONT SIZE=5> u_long s_addr;  /* 32-bit netid/hostid */</FONT>
+<P>
+<FONT SIZE=5>      /* network byte ordered */</FONT>
+<P>
+<FONT SIZE=5>};</FONT>
+<P>
+<FONT SIZE=5>struct sockaddr_in {</FONT>
+<P>
+<FONT SIZE=5> short   sin_family; /* AF_INET /</FONT>
+<P>
+<FONT SIZE=5> u_short  sin_port;  /* 16-bit port number */</FONT>
+<P>
+<FONT SIZE=5>       /* network byte ordered */</FONT>
+<P>
+<FONT SIZE=5> struct in_addr sin_addr;  /* 32-bit netid/hostid
+*/</FONT>
+<P>
+<FONT SIZE=5>       /* network byte ordered */</FONT>
+<P>
+<FONT SIZE=5> char   sin_zero[8]; /* unused */</FONT>
+<P>
+<FONT SIZE=5>};</FONT>
+<H2><CENTER><FONT SIZE=6>Elementary Socket System Calls</FONT></CENTER>
+</H2>
+<H3><CENTER><I>Socket</I> System Call</CENTER></H3>
+<UL>
+<LI><FONT SIZE=5>Specifying the type communication ptotocol</FONT>
+</UL>
+<P>
+<FONT SIZE=5>#include &lt;sys/types.h&gt;</FONT>
+<P>
+<FONT SIZE=5>#include &lt;sys/socket.h&gt;</FONT>
+<P>
+<U><FONT SIZE=5>int socket(int family, int type, int protocol);</FONT></U>
+<UL>
+<LI><FONT SIZE=5>Family<BR>
+AF_UNIX (Unix internal protocols)<BR>
+AF_INET (Internet protocols)<BR>
+AF_NS (Xerox NS protocols)<BR>
+AF_IMPLINK (Interface Message Processor)</FONT>
+<LI><FONT SIZE=5>type<BR>
+SOCK_STREAM (stream socket)<BR>
+SOCK_DGRAM (datagram socket)<BR>
+SOCK_RAW (raw socket)<BR>
+SOCK_SEQPACKET (seqenced packet socket)<BR>
+SOCK_RDM (reliably delvered message socket)</FONT>
+<LI><FONT SIZE=5>Protocol: typically set to 0 (default network
+protocol)</FONT>
+<LI><FONT SIZE=5>Example</FONT>
+</UL>
+<P>
+<FONT SIZE=5>int sock;</FONT>
+<P>
+<FONT SIZE=5>sock = socket(AF_INET, SOCK_STREAM, 0)</FONT>
+<TABLE BORDER=1>
+<TR><TD WIDTH=125><CENTER><FONT SIZE=5>family</FONT></CENTER>
+</TD><TD WIDTH=161><CENTER>type</CENTER></TD><TD WIDTH=161><CENTER>protocol</CENTER>
+</TD><TD WIDTH=104><CENTER><FONT SIZE=5>actual prot.</FONT></CENTER>
+</TD></TR>
+<TR><TD WIDTH=125><CENTER>AF_INET</CENTER></TD><TD WIDTH=161><CENTER><FONT SIZE=5>SOCK_DGRAM</FONT></CENTER>
+</TD><TD WIDTH=161><CENTER><FONT SIZE=5>IPPROTO_UDP</FONT></CENTER>
+</TD><TD WIDTH=104><CENTER><FONT SIZE=5>UDP</FONT></CENTER></TD>
+</TR>
+<TR><TD WIDTH=125><CENTER>AF_INET</CENTER></TD><TD WIDTH=161><CENTER><FONT SIZE=5>SOCK_STREAM</FONT></CENTER>
+</TD><TD WIDTH=161><CENTER><FONT SIZE=5>IPPROTO_TCP</FONT></CENTER>
+</TD><TD WIDTH=104><CENTER><FONT SIZE=5>TCP</FONT></CENTER></TD>
+</TR>
+<TR><TD WIDTH=125><CENTER>AF_INET</CENTER></TD><TD WIDTH=161><CENTER><FONT SIZE=5>SOCK_RAW</FONT></CENTER>
+</TD><TD WIDTH=161><CENTER><FONT SIZE=5>IPPROTO_ICMP</FONT></CENTER>
+</TD><TD WIDTH=104><CENTER><FONT SIZE=5>ICMP</FONT></CENTER></TD>
+</TR>
+<TR><TD WIDTH=125><CENTER>AF_INET</CENTER></TD><TD WIDTH=161><CENTER><FONT SIZE=5>SOCK_RAW</FONT></CENTER>
+</TD><TD WIDTH=161><CENTER><FONT SIZE=5>IPPROTO_RAW</FONT></CENTER>
+</TD><TD WIDTH=104><CENTER><FONT SIZE=5>(raw)</FONT></CENTER>
+</TD></TR>
+</TABLE>
+
+<TABLE BORDER=1>
+<TR><TD COLSPAN=2 WIDTH=102><CENTER><FONT SIZE=4>protocol</FONT></CENTER>
+</TD><TD COLSPAN=2 WIDTH=163><CENTER><FONT SIZE=4>local host-id, port #</FONT></CENTER>
+</TD><TD COLSPAN=2 WIDTH=234><CENTER><FONT SIZE=4>foreign host-id, port #</FONT></CENTER>
+</TD></TR>
+<TR><TD WIDTH=58><CENTER><FONT SIZE=4>server</FONT></CENTER></TD>
+<TD WIDTH=100><CENTER>socket()</CENTER></TD><TD COLSPAN=2 WIDTH=163><CENTER>bind()</CENTER>
+</TD><TD WIDTH=185><CENTER>listen(), accept()</CENTER></TD><TD WIDTH=49><CENTER><FONT SIZE=4>TCP</FONT></CENTER>
+</TD></TR>
+<TR><TD WIDTH=58><CENTER><FONT SIZE=4>client</FONT></CENTER></TD>
+<TD WIDTH=100><CENTER>socket()</CENTER></TD><TD COLSPAN=3 WIDTH=347><CENTER>connect()</CENTER>
+</TD><TD WIDTH=49><CENTER><FONT SIZE=4>TCP</FONT></CENTER></TD>
+</TR>
+<TR><TD WIDTH=58><CENTER><FONT SIZE=4>server</FONT></CENTER></TD>
+<TD WIDTH=100><CENTER>socket()</CENTER></TD><TD WIDTH=162><CENTER>bind()</CENTER>
+</TD><TD COLSPAN=2 WIDTH=186><CENTER>recvfrom()</CENTER></TD>
+<TD WIDTH=49><CENTER><FONT SIZE=4>UDP</FONT></CENTER></TD></TR>
+<TR><TD WIDTH=58><CENTER><FONT SIZE=4>client</FONT></CENTER></TD>
+<TD WIDTH=100><CENTER>socket()</CENTER></TD><TD WIDTH=162><CENTER>bind()</CENTER>
+</TD><TD COLSPAN=2 WIDTH=186><CENTER>sendto()</CENTER></TD><TD WIDTH=49><CENTER><FONT SIZE=4>UDP</FONT></CENTER>
+</TD></TR>
+</TABLE>
+<H3><CENTER><I>Bind </I>System Call</CENTER></H3>
+<UL>
+<LI><FONT SIZE=5>A socket is created without an address - processes
+have no way to reference a socket (e.g. receive messages)</FONT>
+<LI><FONT SIZE=5>Servers use bind to register their well-known
+address with the system (this must be done for both connection-oriented
+and connectionless servers)</FONT>
+<LI><FONT SIZE=5>A client can use bind to register a specific
+address for itself</FONT>
+<LI><FONT SIZE=5>A connectionless client needs to use bind to
+get a unique address, so that the other end (server) has valid
+return address.</FONT>
+<LI><FONT SIZE=5>Bind fills the host id and port # of the association</FONT>
+<LI><FONT SIZE=5>connect() and accept primitives are used to complete
+a socket's association</FONT>
+</UL>
+<P>
+<FONT SIZE=5></FONT>
+<P>
+<FONT SIZE=5>#include &lt;sys/types.h&gt;</FONT>
+<P>
+<FONT SIZE=5>#include &lt;sys/socket.h&gt;</FONT>
+<P>
+<FONT SIZE=5>int bind(int sockfd, struct sockaddr *myaddr, int
+addrlen);<BR>
+</FONT>
+<UL>
+<LI><FONT SIZE=5>sockfd is the socket descriptor</FONT>
+<LI><FONT SIZE=5>*myaddr is a pointer to a protocol specific address</FONT>
+<LI><FONT SIZE=5>addrlen is the size the above address structure</FONT>
+</UL>
+<P>
+<FONT SIZE=5></FONT>
+<UL>
+<LI><FONT SIZE=5>Example</FONT>
+</UL>
+<P>
+<FONT SIZE=5>connection-oriented server, sockfd is the descriptor
+<BR>
+</FONT>
+<P>
+<FONT SIZE=5>struct sockaddr_in server;</FONT>
+<P>
+<FONT SIZE=5>..........<BR>
+sockfd=socket(   );</FONT>
+<P>
+<FONT SIZE=5>server.sin_family = AF_INET;</FONT>
+<P>
+<FONT SIZE=5>server.sin_addr.s_addr = INADDR_ANY;</FONT>
+<P>
+<FONT SIZE=5>server.sin_port = htons(MY_PORT_ID);</FONT>
+<P>
+<FONT SIZE=5>if(bind(sockfd, (struct sockaddr *)&amp;server, sizeof
+server))&lt;0)</FONT>
+<P>
+<FONT SIZE=5>sys_error(&quot;binding stream socket&quot;);</FONT>
+<H3><CENTER><I>listen</I> System Call</CENTER></H3>
+<P>
+<FONT SIZE=5>#include &lt;sys/types.h&gt;</FONT>
+<P>
+<FONT SIZE=5>#include &lt;sys/socket.h&gt;</FONT>
+<P>
+<FONT SIZE=5>int listen(int sockfd, int backlog);</FONT>
+<UL>
+<LI><FONT SIZE=5>In addition to bind, for the server to receiver
+a client's connection it has (1) to indicate a willingness to
+listen for incoming requests and (2) to accept them</FONT>
+<LI><FONT SIZE=5>listen system call fulfils the first part</FONT>
+<LI><FONT SIZE=5>sockfd is the socket descriptor</FONT>
+<LI><FONT SIZE=5>backlog specifies the number of connection requests
+that can be queued by the system while it waits for the server
+to execute accept system call (it is usually specified as 5, the
+maximum allowed)</FONT>
+<LI><FONT SIZE=5>listen is usually executed after socket and bind
+calls by server</FONT>
+</UL>
+<UL>
+<LI><FONT SIZE=5>Example (connection-oriented server)</FONT>
+</UL>
+<P>
+<FONT SIZE=5>••••••••••</FONT>
+<P>
+<FONT SIZE=5>sockfd = socket(•••);</FONT>
+<P>
+<FONT SIZE=5>bind(•••);</FONT>
+<P>
+<FONT SIZE=5>••••••••••••</FONT>
+<P>
+<FONT SIZE=5>listen(sockfd, 5); </FONT>
+<P>
+<FONT SIZE=5>/*return to wait (below) for connections*/</FONT>
+<H3><CENTER><I>accept</I> System Call<BR>
+</CENTER></H3>
+<P>
+<FONT SIZE=5>#include &lt;sys/types.h&gt;</FONT>
+<P>
+<FONT SIZE=5>#include &lt;sys/socket.h&gt;</FONT>
+<P>
+<FONT SIZE=5>int accept(int sockfd, struct sockaddr *peer, int
+*addrlen);</FONT>
+<P>
+<FONT SIZE=5>return actual socket's fd<BR>
+</FONT>
+<UL>
+<LI><FONT SIZE=5>accept causes the server to block until a client
+request a service</FONT>
+<LI><FONT SIZE=5>sockfd is the descriptor of the socket on which
+to wait for a connection</FONT>
+<LI><FONT SIZE=5>peer specifies the address of the client's socket
+once this client connects to the server (return value) (foreign
+host-id &amp; port #)</FONT>
+<LI><FONT SIZE=5>addrlen is the size of this address</FONT>
+<LI><FONT SIZE=5>a new socket descriptor is created is returned
+on receipt of a connection</FONT>
+<LI><FONT SIZE=5>accept normally blocks (i.e. does not return
+until a connection is available)</FONT>
+<LI><FONT SIZE=5>a process can't indicate which connections to
+refuse (it is up to user processes to decide)</FONT>
+<LI><FONT SIZE=5>upon return from accept, a complete association
+is set up</FONT>
+</UL>
+<P>
+<FONT SIZE=5>Example<BR>
+</FONT>
+<P>
+<FONT SIZE=5>short fromlen;</FONT>
+<P>
+<FONT SIZE=5>struct sockaddr_in from;</FONT>
+<P>
+<FONT SIZE=5>•••••••••••</FONT>
+<P>
+<FONT SIZE=5>fromlen=sizeof(from);</FONT>
+<P>
+<FONT SIZE=5>newsock=accept(s, (struct sockaddr *)&amp;from, &amp;fromlen);
+<BR>
+</FONT>
+<UL>
+<LI><FONT SIZE=5>Concurrent server</FONT>
+</UL>
+<P>
+<FONT SIZE=5>如果 server 要接受一個以上之 client， 可以用 fork()
+<BR>
+</FONT>
+<P>
+<FONT SIZE=5>if (fork() == 0) { child process</FONT>
+<P>
+<FONT SIZE=5>close(s);</FONT>
+<P>
+<FONT SIZE=5>doit(newsock);</FONT>
+<P>
+<FONT SIZE=5>exit(0);</FONT>
+<P>
+<FONT SIZE=5>}</FONT>
+<P>
+<FONT SIZE=5>close(newsock); &lt;－parent process</FONT>
+<H3><CENTER><I>connect</I> System Call</CENTER></H3>
+<UL>
+<LI><FONT SIZE=5>connection establishment is usually not symmetric
+- one process is a client, another is a server</FONT>
+<LI><FONT SIZE=5>server advertises its services by binding a socket
+to a well-known address and by listening for incoming requests</FONT>
+<LI><FONT SIZE=5>an unrelated client can connect to such a server</FONT>
+<LI><FONT SIZE=5>such a client requests services by initating
+a connection to server's socket</FONT>
+<LI><FONT SIZE=5>if the socket of the client is unbound at the
+time of connect, the system selects and binds a name to the socket,
+if needed (that is the usual way of binding local addresses)</FONT>
+<LI><FONT SIZE=5>for connection-oriented protocols(e.g. TCP) ,
+connect call results in the actual connection between local and
+destination processes</FONT>
+<LI><FONT SIZE=5>for connectionless protocols (e.g UDP),connect
+call stores the destation address (we don't need to specify destation
+address for every datagram that we send) (只在 local machine 做，與另一端
+(通常是 server) 無關)</FONT>
+<LI><FONT SIZE=5>如果沒有 call connect，connectionless protocols
+要用 sendto()、recvfrom() 傳/收 data。若有 call 則可用 read()、write()、send()、recv()。</FONT>
+</UL>
+<P>
+<FONT SIZE=5>#include &lt;sys/types.h&gt;</FONT>
+<P>
+<FONT SIZE=5>#include &lt;sys/socket.h&gt;</FONT>
+<P>
+<FONT SIZE=5>int connect (int sockfd, struct sockaddr *servaddr,
+int addrlen);<BR>
+</FONT>
+<UL>
+<LI><FONT SIZE=5>sockfd: a socket descriptor<BR>
+*servaddr: pointer to a protocol specific address<BR>
+addrlen: size of the above address structure</FONT>
+<LI><FONT SIZE=5>connect results in the actual establishment of
+a connection</FONT>
+<LI><FONT SIZE=5>connect assigns 4 values in the association:
+<BR>
+<I>local-addr, local-process, foreign-addr, foreign-process</I></FONT>
+<LI><FONT SIZE=5>Example: connection-oriented client</FONT>
+</UL>
+<P>
+<FONT SIZE=5>struct sockaddr_in server;</FONT>
+<P>
+<FONT SIZE=5>struct hostend *hp, *gethostbyname()<BR>
+</FONT>
+<P>
+<FONT SIZE=5>server.sin_family = AF_INET;</FONT>
+<P>
+<FONT SIZE=5>hp = gethostbyname(argv[1]);</FONT>
+<P>
+<FONT SIZE=5>bcopy((char *)hp-&gt;h_addr, (char *)&amp;server.sin_addr,</FONT>
+<P>
+<FONT SIZE=5>  hp-&gt;h_length);  /* get IP address */</FONT>
+<P>
+<FONT SIZE=5>server.sin_port = port_number;</FONT>
+<P>
+<FONT SIZE=5>if ((connect(sock, (struct sockaddr *)&amp;server,
+sizeof(server)&lt;0))</FONT>
+<P>
+<FONT SIZE=5> sys_error(&quot; connecting stream socket&quot;);</FONT>
+<H3><CENTER>Conection-oriented server</CENTER></H3>
+<P>
+<FONT SIZE=5>#include &lt;stdio.h&gt;</FONT>
+<P>
+<FONT SIZE=5>#include &lt;sys/types.h&gt;</FONT>
+<P>
+<FONT SIZE=5>#include &lt;sys/socket.h&gt;</FONT>
+<P>
+<FONT SIZE=5>#include &lt;netinet/in.h&gt;</FONT>
+<P>
+<FONT SIZE=5>#include &lt;arpa/inet.h&gt;</FONT>
+<P>
+<FONT SIZE=5>#include &lt;erron.h&gt;<BR>
+</FONT>
+<P>
+<FONT SIZE=5>#define MY_PORT_ID 6090 /* a number &gt; 5000*/</FONT>
+<P>
+<FONT SIZE=5>main()</FONT>
+<P>
+<FONT SIZE=5>{ </FONT>
+<P>
+<FONT SIZE=5>int sockid, newsockid, i, j;</FONT>
+<P>
+<FONT SIZE=5>struct sockaddr_in ssock_addr, csock_addr;<BR>
+</FONT>
+<P>
+<FONT SIZE=5>/* create a socket */</FONT>
+<P>
+<FONT SIZE=5>if((sockid=socket(AF_INET,SOCK_STREAM,0))&lt;0)</FONT>
+<P>
+<FONT SIZE=5>{printf(&quot;error creating socket, error:%d\n&quot;,
+errno); exit(0);}<BR>
+</FONT>
+<P>
+<FONT SIZE=5>/* name the socket using wildcards*/</FONT>
+<P>
+<FONT SIZE=5>bzero((char*)&amp;ssock_addr, sizeof(ssock_addr));</FONT>
+<P>
+<FONT SIZE=5>ssock_addr.sin_family = AF_INET;</FONT>
+<P>
+<FONT SIZE=5>ssock_addr.sin_addr.s_addr = htonl(<U>INADDR_ANY</U>);</FONT>
+<P>
+<FONT SIZE=5>/*一個 server(host) 可能有 2 個以上之 IP address。用此
+constant 表示可接受任何一個*/</FONT>
+<P>
+<FONT SIZE=5>ssock_addr.sin_port = htons(MY_PORT_ID);<BR>
+</FONT>
+<P>
+<FONT SIZE=5>/*bind the socket to port address*/</FONT>
+<P>
+<FONT SIZE=5>if((bind(sockid, (struct sockaddr *)&amp;ssock_addr,
+sizeof(ssock_addr))&lt;0)</FONT>
+<P>
+<FONT SIZE=5>{printf(&quot;error binding socket, error:%d\n&quot;,
+errno); exit(0);}<BR>
+</FONT>
+<P>
+<FONT SIZE=5>/* start accepting connections */</FONT>
+<P>
+<FONT SIZE=5>if(listen(sockid,5)&lt;0)</FONT>
+<P>
+<FONT SIZE=5>{printf(&quot;error listening : %d\n&quot;, errno);
+exit(0);}<BR>
+</FONT>
+<P>
+<FONT SIZE=5>for(;;) {</FONT>
+<P>
+<FONT SIZE=5>/*accept a connection*/</FONT>
+<P>
+<FONT SIZE=5>newsockid = accept(sockid, (struct sockaddr *) &amp;csock_addr,
+(int *) &amp;j);</FONT>
+<P>
+<FONT SIZE=5>if(newsockid&lt;0)</FONT>
+<P>
+<FONT SIZE=5>{printf(&quot;error accepting socket, error:%d\n&quot;,
+errno); exit(0);}</FONT>
+<P>
+<FONT SIZE=5>••••••••</FONT>
+<P>
+<FONT SIZE=5>/* do whatever processing need using newsockid to
+communicat */</FONT>
+<P>
+<FONT SIZE=5>/* with the client process via read/write */</FONT>
+<P>
+<FONT SIZE=5>••••••••</FONT>
+<P>
+<FONT SIZE=5>close(newsockid);</FONT>
+<P>
+<FONT SIZE=5>}</FONT>
+<P>
+<FONT SIZE=5>close(socket);</FONT>
+<H3><CENTER>Connection-oriented client</CENTER></H3>
+<P>
+<FONT SIZE=5>#include &lt;stdio.h&gt;</FONT>
+<P>
+<FONT SIZE=5>#include &lt;sys/types.h&gt;</FONT>
+<P>
+<FONT SIZE=5>#include &lt;sys/socket.h&gt;</FONT>
+<P>
+<FONT SIZE=5>#include &lt;netinet/in.h&gt;</FONT>
+<P>
+<FONT SIZE=5>#include &lt;arpa/inet.h&gt;</FONT>
+<P>
+<FONT SIZE=5>#include &lt;errno.h&gt;</FONT>
+<P>
+<FONT SIZE=5>#define MY_PORT_ID 6090 /*a number &gt; 5000*/</FONT>
+<P>
+<FONT SIZE=5>#define SERV_HOST_ADDR &quot;128.119.40.186&quot;
+</FONT>
+<P>
+<FONT SIZE=5>/*Jim's host machine */</FONT>
+<P>
+<FONT SIZE=5>/*以上必需事先知道*/</FONT>
+<P>
+<FONT SIZE=5>main()</FONT>
+<P>
+<FONT SIZE=5>{</FONT>
+<P>
+<FONT SIZE=5>int sockid;</FONT>
+<P>
+<FONT SIZE=5>struct sockaddr_in ssock_addr;</FONT>
+<P>
+<FONT SIZE=5>/*create a socket*/</FONT>
+<P>
+<FONT SIZE=5>if((sockid=socket(AF_INET,SOCK_STREAM,0))&lt;0)</FONT>
+<P>
+<FONT SIZE=5>{ printf(&quot;error creating client socket, error
+%d\n&quot;,errno); exit(0);}</FONT>
+<P>
+<FONT SIZE=5>bzero((char *)&amp;ssock_addr, sizeof(ssock_addr));</FONT>
+<P>
+<FONT SIZE=5>ssock_addr.sin_family=AF_INET;</FONT>
+<P>
+<FONT SIZE=5>ssock_addr.sin_addr.s_addr=inet_addr(SERV_HOST_ADDR);</FONT>
+<P>
+<FONT SIZE=5>ssock_addr.sin_port=htons(MY_PORT_ID);</FONT>
+<P>
+<FONT SIZE=5>if(connect(sockid, (struct sockaddr *)&amp;ssock_addr,
+sizeof(ssock_addr)) &lt;0)</FONT>
+<P>
+<FONT SIZE=5>{printf(&quot;error connecting to server, error:%d\n&quot;,error);exit(0);}</FONT>
+<P>
+<FONT SIZE=5>••••••••••••</FONT>
+<P>
+<FONT SIZE=5>/*client uses sockid to read/write, thus receiving/sending
+info*/</FONT>
+<P>
+<FONT SIZE=5>/* from/to the server process */</FONT>
+<P>
+<FONT SIZE=5>••••••••••••</FONT>
+<P>
+<FONT SIZE=5>close(sockid);</FONT>
+<P>
+<FONT SIZE=5>}</FONT>
+<H3><CENTER>Connectionless Client</CENTER></H3>
+<P>
+<FONT SIZE=5>#include &lt;sys/types.h&gt;</FONT>
+<P>
+<FONT SIZE=5>#include &lt;sys/socket.h&gt;</FONT>
+<P>
+<FONT SIZE=5>:</FONT>
+<P>
+<FONT SIZE=5>:</FONT>
+<P>
+<FONT SIZE=5>#define SERVER_HOST_ID ...</FONT>
+<P>
+<FONT SIZE=5>#define SERVER_PORT 6000</FONT>
+<P>
+<FONT SIZE=5>/* 以上兩行需事先知道 */</FONT>
+<P>
+<FONT SIZE=5>:</FONT>
+<P>
+<FONT SIZE=5>:</FONT>
+<P>
+<FONT SIZE=5>main()</FONT>
+<P>
+<FONT SIZE=5>{</FONT>
+<P>
+<FONT SIZE=5>int sockfd;</FONT>
+<P>
+<FONT SIZE=5>struct sockaddr_in cli_addr, serv_addr;</FONT>
+<P>
+<FONT SIZE=5>if((sockfd=socket(AF_INET,SOCK_DGRAM,0))&lt;0)</FONT>
+<P>
+<FONT SIZE=5>error_print(．．．．．．)</FONT>
+<P>
+<FONT SIZE=5>cli_addr.sin_family=AF_INET;</FONT>
+<P>
+<FONT SIZE=5>cli_addr.sin_addr.s_addr=htonl(INADDR_ANY);</FONT>
+<P>
+<FONT SIZE=5>cli_addr.sin_port = htons(0);  /*decided by o.s*/</FONT>
+<P>
+<FONT SIZE=5>if(bind(sockfd,(struct sockaddr *)&amp;cli_addr,sizeof(...)&lt;0)</FONT>
+<P>
+<FONT SIZE=5>   error_print(．．．．．．)</FONT>
+<P>
+<FONT SIZE=5>/* decide the server address*/</FONT>
+<P>
+<FONT SIZE=5>serv_addr.sin_family=AF_INET;</FONT>
+<P>
+<FONT SIZE=5>serv_addr.sin_addr.s_addr=<U>inet_addr</U>(SERV_HOST_ID);</FONT>
+<P>
+<FONT SIZE=5>serv_addr.sin_port=htons(SERVER_PORT);</FONT>
+<P>
+<FONT SIZE=5>:</FONT>
+<P>
+<FONT SIZE=5>:</FONT>
+<P>
+<FONT SIZE=5>if(sendto(sockfd,data,len,0,serv_addr,serv_len) !=
+len)</FONT>
+<P>
+<FONT SIZE=5>   error_print(．．．．．．)</FONT>
+<P>
+<FONT SIZE=5>}</FONT>
+<H3><CENTER>Connectionless Server</CENTER></H3>
+<P>
+<FONT SIZE=5>#include &lt;sys/types.h&gt;</FONT>
+<P>
+<FONT SIZE=5>#include &lt;sys/socket.h&gt;</FONT>
+<P>
+<FONT SIZE=5>:</FONT>
+<P>
+<FONT SIZE=5>:</FONT>
+<P>
+<FONT SIZE=5>#define SERVER_PORT 6000<BR>
+</FONT>
+<P>
+<FONT SIZE=5>main(argc, argv)</FONT>
+<P>
+<FONT SIZE=5>int argc;</FONT>
+<P>
+<FONT SIZE=5>char *argv[];</FONT>
+<P>
+<FONT SIZE=5>{</FONT>
+<P>
+<FONT SIZE=5>int sockfd;</FONT>
+<P>
+<FONT SIZE=5>struct sockaddr_in cli_addr, serv_addr;</FONT>
+<P>
+<FONT SIZE=5>/*create a socket*/</FONT>
+<P>
+<FONT SIZE=5>if((sockfd=<U>socket</U>(AF_INET,SOCK_DGRAM,0))&lt;0)</FONT>
+<P>
+<FONT SIZE=5>error_print(．．．．．．);</FONT>
+<P>
+<FONT SIZE=5>bzero((char*)&amp;serv_addr,sizeof(serv_addr));</FONT>
+<P>
+<FONT SIZE=5>serv_addr.sin_family=AF_INET;</FONT>
+<P>
+<FONT SIZE=5>serv_addr.sin_addr.s_addr=inet_addr(SERV_HOST_ID);</FONT>
+<P>
+<FONT SIZE=5>serv_addr.sin_port=htons(SERVER_PORT);</FONT>
+<P>
+<FONT SIZE=5>if(bind(sockfd,(struct sockaddr *)&amp;serv_addr,
+  sizeof(serv_addr)&lt;0)</FONT>
+<P>
+<FONT SIZE=5>   error_print(．．．．．．)</FONT>
+<P>
+<FONT SIZE=5>sendto(．．．．．．);</FONT>
+<P>
+<FONT SIZE=5>or</FONT>
+<P>
+<FONT SIZE=5>recvfrom(．．．．．．);</FONT>
+<P>
+<FONT SIZE=5>/*通常 server  會先等 client 送 data 來 才會知道
+clinet 的 address*/</FONT>
+<P>
+<FONT SIZE=5>}</FONT>
+<H3><CENTER>Other System Calls</CENTER></H3>
+<UL>
+<LI><FONT SIZE=5>close(sockfd)</FONT>
+</UL>
+<P>
+<FONT SIZE=5>結束 connection, user process 不會被 blocked, 但
+o.s. kernel 需處理後續事情</FONT>
+<UL>
+<LI><FONT SIZE=5>傳/送 data 可用</FONT>
+</UL>
+<P>
+<IMG SRC="socket5.gif">
+<P>
+<FONT SIZE=5>Flags:</FONT>
+<P>
+<FONT SIZE=5>MSG_PEEK: data 讀出後, system 不discard ( 還在fd
+之 buffer)</FONT>
+<P>
+<FONT SIZE=5>MSG_OOB : send/recv out of band data</FONT>
+<P>
+<FONT SIZE=5>MSG_DONTROUTE : 使用 source routing</FONT>
+<H3><CENTER>Byte Ordering</CENTER></H3>
+<UL>
+<LI><FONT SIZE=5>不同的機器存放一個 16 - bit 之 interger 之方式可能不同:</FONT>
+<UL>
+<LI><FONT SIZE=5>Big endian：IBM, SUN</FONT>
+</UL>
+</UL>
+
+<TABLE BORDER=1>
+<TR><TD WIDTH=191><CENTER><FONT SIZE=5>high-order byte</FONT></CENTER>
+</TD><TD WIDTH=189><CENTER>low-order byte</CENTER></TD></TR>
+</TABLE>
+<P>
+addr A   addr A+1
+<UL>
+<LI>Little endian：DEC, IBM PC
+</UL>
+
+<TABLE>
+<TR><TD COLSPAN=2 WIDTH=293><P>
+<CENTER>high-order byte</CENTER>
+</TD><TD WIDTH=-292><CENTER>low-order byte</CENTER></TD></TR>
+</TABLE>
+<P>
+addr A+1                     addr A
+<UL>
+<LI>Solution：protocol 指定使用那一種 
+</UL>
+<P>
+TCP/IP, XNS, SNA big endian<BR>
+<UL>
+<LI>System calls
+</UL>
+
+<TABLE>
+<TR><TD WIDTH=107><CENTER>u_long</CENTER></TD><TD WIDTH=165><CENTER>htonl(u_long n) </CENTER>
+</TD><TD WIDTH=222><CENTER>host to network long</CENTER></TD>
+</TR>
+<TR><TD WIDTH=107><CENTER>u_short</CENTER></TD><TD WIDTH=165><CENTER>htons(u_short n)</CENTER>
+</TD><TD WIDTH=222><CENTER>host to network short</CENTER></TD>
+</TR>
+<TR><TD WIDTH=107><CENTER>u_long</CENTER></TD><TD WIDTH=165><CENTER>ntohl(u_long n)</CENTER>
+</TD><TD WIDTH=222><CENTER>network to host long</CENTER></TD>
+</TR>
+<TR><TD WIDTH=107><CENTER>u_short</CENTER></TD><TD WIDTH=165><CENTER>ntohs(u_short n)</CENTER>
+</TD><TD WIDTH=222><CENTER>network to host short</CENTER></TD>
+</TR>
+</TABLE>
+<UL>
+<LI>Address conversion
+</UL>
+<P>
+#include &lt;arpa/inet.h&gt;
+<P>
+inet_addr(char *ptr) 把 dot format 轉成 32 bits address
+<P>
+inet_ntoa(struct in_addr inaddr)  反向
+<H3><CENTER>其它 system calls</CENTER></H3>
+<UL>
+<LI><FONT SIZE=5>int getpeername(int sockfd, struct sockaddr *peer,
+int *addrlen)</FONT>
+</UL>
+<P>
+<FONT SIZE=5>取得 foreign host_id 及 port<BR>
+</FONT>
+<UL>
+<LI><FONT SIZE=5>int getsockname(••••••)</FONT>
+</UL>
+<P>
+<FONT SIZE=5>取得 local host_id, port#<BR>
+</FONT>
+<UL>
+<LI><FONT SIZE=5>int getsockopt(int sockfd, int level, int optname,
+char     *optval, int *optlen)<BR>
+int setsockopt(int sockfd, int level, int optname, char     *optval,
+int *optlen)</FONT>
+</UL>
+<P>
+<FONT SIZE=5></FONT>
+<P>
+<FONT SIZE=5>level: 1. IPPROTO_IP<BR>
+2. IPPROTO_TCP<BR>
+</FONT>
+<P>
+<FONT SIZE=5>optname: 1. IP_OPTIONS<BR>
+2. TCP_MAXSEG<BR>
+ TCP_NODELAY<BR>
+  (send data as soon as possible)<BR>
+</FONT>
+<UL>
+<LI><FONT SIZE=5>Socket 可用 fcntl 及 ioctl  來控制</FONT>
+</UL>
+<P>
+<FONT SIZE=5>int fcntl(sockfd, cmd, arg)</FONT>
+<P>
+<FONT SIZE=5>cmd: F_SETFL</FONT>
+<P>
+<FONT SIZE=5>arg: 1.FASYNC - asynchronous com,<BR>
+ 2. FNDELAY - nonblocking<BR>
+</FONT>
+</BODY>
+</HTML>

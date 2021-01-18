@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE></TITLE>
+   <META NAME="Author" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="../../gif/bg-slate.gif">
+
+<P><FONT COLOR="#0080FF"><FONT SIZE=+3>網路階層架構</FONT></FONT></P>
+
+<UL>
+<P><FONT SIZE=+1>目的：為了解決設計複雜度，將網路的問題分層解決。<BR>
+國家標準組織（ISO）提出開放系統連接模式（OSI），<BR>
+將通訊軟、硬體結構分層解決。</FONT></P>
+
+<P><FONT SIZE=+1>OSI 的七層架構與其主要任務</FONT></P>
+
+<TABLE BORDER=1 >
+<TR ALIGN=CENTER VALIGN=CENTER>
+<TH>層別</TH>
+
+<TH ALIGN=CENTER VALIGN=BASELINE>主要任務</TH>
+</TR>
+
+<TR ALIGN=CENTER>
+<TD ALIGN=CENTER VALIGN=CENTER>實體層</TD>
+
+<TD>負責將資料傳遞於實際線路上面。本層會考慮到電壓<BR>
+高低與位元期間等參數﹔會處理有關機械、電子、功<BR>
+能與程序等項目，以建立、維護或終止線路之連接。<BR>
+譬如，連接 PC 主機與印表機間之電纜，一般是採用<BR>
+RS-232-C 介面，該介面所允許之最大距離為 50 英呎<BR>
+，最高傳輸速率為 20,000 位元/秒，擁有 20 個釘腳（<BR>
+Pin ）等特性﹔換言之， RS-232-C 乃在負責實體層之<BR>
+工作。又如 RS-449 介面擁有 37 個釘腳，傳輸速率可<BR>
+以超過 2,000,000 位元/秒。 RS-449 與 RS-232-C 兩種<BR>
+介面皆可以運用到同步傳輸或非同步傳輸。</TD>
+</TR>
+
+<TR>
+<TD ALIGN=CENTER VALIGN=CENTER>資料鏈結層</TD>
+
+<TD>負責資料傳遞於節點間之可靠性。本曾在傳遞資料時<BR>
+，一般會以一個框（ Frame ）為傳輸單位。每個框內<BR>
+部，除了擁有所欲傳送之資料外，仍會擁有同步控制<BR>
+、錯誤控制與流量控制等訊息，以確保每個框之可靠<BR>
+性。譬如，通訊用之協定（Protocol）HDLC， SDLC <BR>
+或 Bisync 等皆屬於本層之運用例子。</TD>
+</TR>
+
+<TR>
+<TD ALIGN=CENTER VALIGN=CENTER>網路層</TD>
+
+<TD>負責兩站間連接（ Connection ）之建立、維護與終止<BR>
+工作。有了本層之功能後，第 4 層，亦即運輸層，可<BR>
+以不用考慮到資料傳輸速率或所使用交換技術類別等<BR>
+細部性問題。X.25 的第 3層，即為本層之運用例子。</TD>
+</TR>
+
+<TR>
+<TD ALIGN=CENTER VALIGN=CENTER>運輸層</TD>
+
+<TD>當甲乙兩站在互相傳送資料時，本層在負責該兩個端<BR>
+點間，資料傳遞之可靠性與使用之透明性。本層提供<BR>
+兩個端點間之錯誤控制與流量控制。</TD>
+</TR>
+
+<TR>
+<TD ALIGN=CENTER VALIGN=CENTER>會議層</TD>
+
+<TD>當甲站的應用程式 A 要與乙站的應用程式 B 進行資<BR>
+料之傳遞（猶如兩個應用程式在開會）時，本層乃在<BR>
+負責該會議工作之建立、管理與終止。</TD>
+</TR>
+
+<TR>
+<TD ALIGN=CENTER VALIGN=CENTER>呈現層</TD>
+
+<TD>提供一些使用只所需要之應用性功能或通訊之服務。<BR>
+譬如，提供加密（ Encryption ）、解密（Decryption ）<BR>
+、內文濃縮（ Text Compression ）、或重新規格化（<BR>
+Reformatting）等功能。</TD>
+</TR>
+
+<TR>
+<TD ALIGN=CENTER VALIGN=CENTER>應用層</TD>
+
+<TD>提供服務給 OSI 架構之使用者。譬如，提供交易性<BR>
+服務、檔案傳輸、或網路管理等服務。</TD>
+</TR>
+</TABLE>
+</UL>
+
+<P><IMG SRC="../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#0080FF"><FONT SIZE=+3>分層原則</FONT></FONT></P>
+
+<UL>
+<P><FONT COLOR="#FF0000"><FONT SIZE=+1><IMG SRC="../../gif/redcube.gif">各層負責特定的功能。(different
+functions)<BR>
+<IMG SRC="../../gif/redcube.gif">類似功能置於同一層。<BR>
+<IMG SRC="../../gif/redcube.gif">Create boundary at</FONT></FONT></P>
+
+<UL>
+<P><FONT SIZE=+1><IMG SRC="../../gif/orangeba.gif">description of services can be small<BR>
+<IMG SRC="../../gif/orangeba.gif">number of interactions across boundary are minimized.<BR>
+<IMG SRC="../../gif/orangeba.gif">potential for interface standardized.</FONT></P>
+</UL>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+1><IMG SRC="../../gif/redcube.gif">每一層處理資料有不同層次之抽象。
+different level of <BR>
+　abstraction in the handling of data (e.g., syntax, semantics)<BR>
+<IMG SRC="../../gif/redcube.gif">每一層提供適服務給上一層。（圖3-2）</FONT></FONT></P>
+
+<P><IMG SRC="Img00005.gif" HEIGHT=338 WIDTH=547></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+1><IMG SRC="../../gif/redcube.gif">每一層使用下一層所提供之服務（服務
+點）。<BR>
+<IMG SRC="../../gif/redcube.gif">某一層之更換不影響上下層之工作。<BR>
+<IMG SRC="../../gif/redcube.gif">具模組性，層次不可太多。<BR>
+<IMG SRC="../../gif/redcube.gif">容許不同的軟、硬體產品互相連接。</FONT></FONT> </P>
+</UL>
+
+<P><IMG SRC="../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#0080FF"><FONT SIZE=+3>資料流程</FONT></FONT></P>
+
+<UL>
+<P><FONT COLOR="#FF0000"><FONT SIZE=+1><IMG SRC="../../gif/redcube.gif">包裝與拆裝 （Encapsulation/Decapsulation）<BR>
+<IMG SRC="../../gif/redcube.gif">分段與組合（Segmentation/Reassembly）<BR>
+<IMG SRC="../../gif/redcube.gif">連線建立（圖3-4）</FONT></FONT></P>
+
+<P><IMG SRC="Img00006.gif" HEIGHT=509 WIDTH=548></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+1><IMG SRC="../../gif/redcube.gif">流量控制<BR>
+<IMG SRC="../../gif/redcube.gif">錯誤控制<BR>
+<IMG SRC="../../gif/redcube.gif">多工處理 </FONT></FONT></P>
+</UL>
+
+<CENTER>
+<P>
+<A HREF="../switching/switching.htm" BORDER="0"><IMG SRC="../../gif/up.jpg" BORDER=0 ></A>
+<A HREF="../protocol/protocol.htm" BORDER="0"><IMG SRC="../../gif/down.jpg" BORDER=0 ></A>
+</P>
+</CENTER>
+
+</BODY>
+</HTML>

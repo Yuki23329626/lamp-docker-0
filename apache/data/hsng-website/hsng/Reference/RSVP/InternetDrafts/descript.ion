@@ -1,0 +1,13 @@
+draft-ietf-rsvp-policy-oops-01.txt "Open Outsourcing Policy Service (OOPS) for RSVP", R. Guerin, Shai Herzog, R. Rajan, D. Pendarakis
+draft-ietf-rsvp-partial-service-00.txt "Partial Service Deployment in the Integrated Services Architecture", L. Breslau, S. Shenker
+draft-ietf-rsvp-md5-05.txt "RSVP Cryptographic Authentication", Fred Baker
+draft-ietf-rsvp-cidr-ext-01.txt "RSVP Extensions for CIDR Aggregated Data Flows", J. Boyle
+draft-ietf-rsvp-policy-ext-02.ps "RSVP Extensions for Policy Control", Shai Herzog , PS Format
+draft-ietf-rsvp-v2-mib-00.txt RSVP Management Information Base
+draft-ietf-rsvp-pepci-00.txt "Protocol for Exchange of PoliCy Information (PEPCI)", R. Yavatkar, Laura Cunningham, Ron Cohen, J. Boyle, David Durham
+draft-ietf-rap-framework-00.txt "A Framework for Policy-based Admission Control", R. Yavatkar, R. Guerin, D. Pendarakis
+draft-ietf-rsvp-rapi-00.txt "RAPI -- An RSVP Application Programming Interface", Bob Braden, D. Hoffman
+draft-ietf-rsvp-policy-ext-02.txt "RSVP Extensions for Policy Control", Shai Herzog
+draft-ietf-rsvp-rapi-00.ps "RAPI -- An RSVP Application Programming Interface", Bob Braden, D. Hoffman
+draft-ietf-rsvp-policy-oops-01.ps "Open Outsourcing Policy Service (OOPS) for RSVP", R. Guerin, Shai Herzog, R. Rajan, D. Pendarakis
+draft-ietf-rsvp-tunnels-interop-00.txt "Designing Tunnels for Interoperability with RSVP", John Krawczyk

@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE></TITLE>
+   <META NAME="Author" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.01Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<CENTER><B><FONT COLOR="#0000FF" SIZE=+4>登 錄 查 詢 系 統</FONT><br>
+
+<IMG SRC="/network.gif" HEIGHT=300 WIDTH=355><br>
+參觀人數
+<img src="cgi-bin/Count.cgi?ft=5|frgb=69;139;50|tr=0|trgb=0;0;0|
+wxh=15;20|md=5|dd=A|st=5|sh=1|df=u_network97.dat"> <BR> <font size=-1>since 3/3/1997
+<BR>
+
+
+<P><A HREF="register.html"><font size=5>登錄系統</font></A><BR>
+<A HREF="del_mem.html"><font size=5>退選刪除系統</font></A><BR>
+<a href="teacher.html"><font size=5>老師助教登錄處</font></A>
+</CENTER>
+
+</BODY>
+</HTML>

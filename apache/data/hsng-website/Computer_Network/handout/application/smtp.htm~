@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+<TITLE>Simple Mail Transfer Protocol (SMTP)</TITLE>
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Microsoft Word 2.0z">
+</HEAD>
+<BODY>
+<P>
+<CENTER><B><FONT SIZE=5>Simple Mail Transfer Protocol (SMTP)</FONT></B></CENTER>
+<HR>
+<UL>
+<LI>簡介
+<UL>
+<LI>SMTP是目前電子郵件使用的通訊協定。
+<LI>RFC 821定義了收/送電子郵件的相關指令。RFC 822則制定了郵件內容的格式。另外RFC
+1341制定了多媒體郵件內容的格式，RFC 1113, 1422-1424則是討論如何增進電子郵件的隱私性(Privacy
+Enhanced Mail, PEM)。
+<LI>SMTP伺服器在TCP port 25上等客戶端連線。所以SMTP假設傳輸層提供可靠的傳輸。
+<LI>一封電子郵件可以視為一個檔案，其中包含header及body兩部份。
+<UL>
+<LI>Header是一行一行的ASCII文字，通常包含&lt;Keyword&gt;:&lt;Value&gt;，例如<BR>
+Received: (from rhhwang@localhost) by cssun9.cs.ccu.edu.tw ... <br>
+From: rhhwang@cs.ccu.edu.tw <BR>
+Message-Id: <199912280914.RAA11027@cssun9.cs.ccu.edu.tw> <br>
+Subject: Greetings! <br>
+To: rhhwang@cs.ccu.edu.tw <br>
+Date: Tue, 28 Dec 1999 17:14:14 +0800 (CST) <br>
+
+<LI>Body是許多行的ASCII文字，以一行只含句點的特殊行做結束。
+</UL>
+</UL>
+<LI>Client可使用的指令
+<UL>
+<LI>HELO hostname: 與Server打招呼並告知Client使用的機器名字
+<LI>MAIL FROM: sender_id : 告訴Server Client的Email address
+<LI>RCPT TO: receiver_id : 告訴Server要送信給誰
+<LI>DATA : 下此指令後便可開始輸入信的內容，並以只含句點的特殊行做結束。
+<LI>RESET: 取消剛才的指令，從新開始。
+<LI>VERIFY userid: 問Server某一帳號是否存在。(此指令是選擇性指令，Server不一定支援。)
+<LI>QUIT : 結束與Server的連線。
+</UL>
+<LI>Server的回應
+<UL>
+<LI>格式: reply number + explanation
+<LI>220 service ready
+<LI>221 OK, I am closing too
+<LI>250 request mail action OK, completed
+<LI>354 start to send data, end with &lt;CRLF&gt;.&lt;CRLF&gt;
+<LI>500 syntax error, Command unrecognized
+<LI>550 action not taken, mailbox unavailable
+<LI>552 aborted mail: user out of filespace
+</UL>
+<LI>範例
+</UL>
+<PRE>
+>>	helo president.gov.tw
+<<	250 cs.ccu.edu.tw Hello president.gov.tw (sparc1.cs.ccu.edu.tw),pleased to meet you
+>>	Mail From: lee@president.gov.tw
+<<	250 lee@president.gov.tw... Sender ok
+>>	RCPT TO: rhhwang@cs.ccu.edu.tw
+<<	250 rhhwang@cs.ccu.edu.tw... Recipient ok
+>>	data
+<<	354 Enter mail, end with &quot;.&quot; on a line by itself
+>>	Dear Prof. Hwang,
+>>
+>>        This is to recognize your great achievement on teaching the computer
+>>	network course at National Chung Cheng University. Your effort on this
+>>	course is very much appreciated.
+>>
+>>                                                Sincerely,
+>>
+>>                                                D.-H. Lee
+>>
+>>                                                President
+>>                                                Republic of China
+>>	.
+<<	250 Mail accepted
+>>	quit
+<<	221 cs.ccu.edu.tw delivering mail<BR>
+</PRE>
+
+rhhwang會收到以下的mail<BR>
+<PRE>
+From lee@president.gov.tw Mon Apr 21 16:07:47 1997
+<P>
+Return-Path: &lt;lee@president.gov.tw&gt;
+<P>
+Received: from president.gov.tw by cs.ccu.edu.tw (4.1/SMI-4.1)
+<P>
+        id AA28279; Mon, 21 Apr 97 16:05:00 CST
+<P>
+Date: Mon, 21 Apr 97 15:50:02 CST
+<P>
+From: lee@president.gov.tw
+<P>
+Message-Id: &lt;9704210805.AA28279@cs.ccu.edu.tw&gt;
+<P>
+Apparently-To: rhhwang@cs.ccu.edu.tw
+<P>
+X-UIDL: 861610089.000
+<P>
+Status: RO<BR>
+<P>
+Dear Prof. Hwang,
+<P>
+        This is to recognize your great achievement on teaching the computer <BR>
+network course at National Chung Cheng University. Your effort on this<BR>
+course is very much appreciated.<BR>
+<P>
+                                                Sincerely,
+<P>
+                                                D.-H. Lee
+<P>
+                                                President
+<P>
+                                                Republic of China
+</BODY>
+</HTML>

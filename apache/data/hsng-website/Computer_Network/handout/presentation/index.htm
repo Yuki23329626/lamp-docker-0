@@ -1,0 +1,284 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE></TITLE>
+   <META NAME="Author" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY>
+
+<CENTER><P><FONT SIZE=+3>The Presentation Layer</FONT></P></CENTER>
+
+<UL>
+<LI><FONT SIZE=+2>Introducation</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+2>Data representation</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+2>ASN.1</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+2>Data compression</FONT></LI>
+
+<LI><FONT SIZE=+2>Data Encryption</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+2>Data representation</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+2>The problem</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+2>Different machines, operating systems, languages use
+different formats for representating data </FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>big endian/ little endian</FONT></LI>
+
+<LI><FONT SIZE=+1>floating point format</FONT></LI>
+
+<LI><FONT SIZE=+1>ASCII/EBCDIC</FONT></LI>
+
+<LI><FONT SIZE=+1>different size of integers</FONT></LI>
+
+<LI><FONT SIZE=+1>different memory layout/size of data structures</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+2>Need a machine indepent method for describing data structure</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+2>Presentation context</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+2>abstract syntax: describes data structure</FONT></LI>
+
+<LI><FONT SIZE=+2>transfer syntax: rules for encoding/decoding data structures</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+2>Abstract Syntax Notation 1 (ASN.1)</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+2>a data description language</FONT></LI>
+
+<LI><FONT SIZE=+2>Primitive types</FONT></LI>
+
+<TABLE BORDER=1 >
+<TR>
+<TD>
+<CENTER><P>Tag</P></CENTER>
+</TD>
+
+<TD>Type</TD>
+</TR>
+
+<TR>
+<TD>1</TD>
+
+<TD>BOOLEAN</TD>
+</TR>
+
+<TR>
+<TD>2</TD>
+
+<TD>INTEGER</TD>
+</TR>
+
+<TR>
+<TD>3</TD>
+
+<TD>BITSTRING</TD>
+</TR>
+
+<TR>
+<TD>4</TD>
+
+<TD>OCTETSTRING</TD>
+</TR>
+
+<TR>
+<TD>5</TD>
+
+<TD>NULL</TD>
+</TR>
+
+<TR>
+<TD>6</TD>
+
+<TD>OBJECT ID</TD>
+</TR>
+
+<TR>
+<TD>9</TD>
+
+<TD>REAL</TD>
+</TR>
+
+<TR>
+<TD>10</TD>
+
+<TD>ENUMERATED</TD>
+</TR>
+</TABLE>
+
+<LI><FONT SIZE=+2>Composed types</FONT></LI>
+
+<UL>
+<TABLE BORDER=1 >
+<TR>
+<TD>Tag</TD>
+
+<TD>Type</TD>
+
+<TD>Comments</TD>
+</TR>
+
+<TR>
+<TD>16</TD>
+
+<TD>SEQUENCE</TD>
+
+<TD>ordered list</TD>
+</TR>
+
+<TR>
+<TD>16</TD>
+
+<TD>SEQUENCE&nbsp;OF</TD>
+
+<TD>ordered list of the same type</TD>
+</TR>
+
+<TR>
+<TD>17</TD>
+
+<TD>SET</TD>
+
+<TD>unordered list</TD>
+</TR>
+
+<TR>
+<TD>17</TD>
+
+<TD>SET OF</TD>
+
+<TD>unordered list of the same type</TD>
+</TR>
+
+<TR>
+<TD>11</TD>
+
+<TD>CHOICE</TD>
+
+<TD>like union in C</TD>
+</TR>
+</TABLE>
+<FONT SIZE=+2></FONT></UL>
+
+<LI><FONT SIZE=+2>Predefined composed types</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>NUMERIC STRING, UTC TIME, GRAPHICS STRING, ...</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+2>Tag</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+2>Each data type can have a tag type and a tag value</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>UNIVERSAL: Predefined types</FONT></LI>
+
+<LI><FONT SIZE=+1>APPLICATION: Data types used by OSI protocols</FONT></LI>
+
+<LI><FONT SIZE=+1>PRIVATE: user defined data types</FONT></LI>
+
+<LI><FONT SIZE=+1>Context specific: identify the position of element (e.g.,
+used to indetify different commands in SNMP)</FONT></LI>
+</UL>
+</UL>
+</UL>
+
+<LI><FONT SIZE=+2>Basic Encoding Rules (BER)</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+2>describes how each data type are to be encoded/decoded
+to/from a bit sequence</FONT></LI>
+
+<LI><FONT SIZE=+2>Encoding rules</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+2>Encoded with TAG+LENGTH+VALUE</FONT></LI>
+
+<LI><FONT SIZE=+2>TAG: 8 bits (tag type, primitive/constructed, tag number)</FONT></LI>
+
+<LI><FONT SIZE=+2>LENGTH: length of encoded data</FONT></LI>
+
+<LI><FONT SIZE=+2>VALUE: encoded data</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+2>BER example</FONT></LI>
+</UL>
+</UL>
+
+<LI><FONT SIZE=+2>Data Compression</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+2>Encoding a finite set of equally likely symbols</FONT></LI>
+
+<LI><FONT SIZE=+2>Frequency dependent coding</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+2>Huffman coding</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+2>Context dependent encoding</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+2>Run length coding</FONT></LI>
+
+<LI><FONT SIZE=+2>Lempel-Ziv compression algorithm</FONT></LI>
+
+<LI><FONT SIZE=+2>Video compression technologies (H.261, JPEG, MPEG)</FONT></LI>
+</UL>
+</UL>
+
+<LI><FONT SIZE=+2>Network security</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+2>Data encryption (cryptography)</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+2>Substitution cipher</FONT></LI>
+
+<LI><FONT SIZE=+2>Data Encryption Standard (DES)</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+2>Key distribution problem</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+2>Public key cryptography</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+2>RSA algorithm</FONT></LI>
+</UL>
+</UL>
+
+<LI><FONT SIZE=+2>Authentication</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+2>Proving who you are</FONT></LI>
+
+<LI><FONT SIZE=+2>Authentication using public key</FONT></LI>
+
+<LI><FONT SIZE=+2>Public key exchange via trusted server</FONT></LI>
+
+<LI><FONT SIZE=+2>Symmetric key exchange via trusted server</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+2>Firewalls</FONT></LI>
+</UL>
+</UL>
+
+</BODY>
+</HTML>

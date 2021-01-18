@@ -1,0 +1,317 @@
+
+<!-- begin new headers and page layout -->
+<body bgcolor="#ffffff">
+<br>
+<center>
+<table border=0 cellpadding=0 cellspacing=0>
+<tr>
+<td><a href="http://www.ietf.org/home.html" tppabs="http://www.ietf.org/home.html"><img src="../images/header/ietflogo_sm.gif" tppabs="http://www.ietf.org/images/header/ietflogo_sm.gif" border="0"></a></td>
+<td><a href="http://www.ietf.org/home.html" tppabs="http://www.ietf.org/home.html"><img src="../images/header/home11.gif" tppabs="http://www.ietf.org/images/header/home11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.ietf.org/html.charters/wg-dir.html" tppabs="http://www.ietf.org/html.charters/wg-dir.html"><img src="../images/header/wg11.gif" tppabs="http://www.ietf.org/images/header/wg11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.ietf.org/meetings/meetings.html" tppabs="http://www.ietf.org/meetings/meetings.html"><img src="../images/header/meetings11.gif" tppabs="http://www.ietf.org/images/header/meetings11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.ietf.org/proceedings/directory.html" tppabs="http://www.ietf.org/proceedings/directory.html"><img src="../images/header/proceed11.gif" tppabs="http://www.ietf.org/images/header/proceed11.gif"  border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="../1id-abstracts.html" tppabs="http://www.ietf.org/1id-abstracts.html"><img src="../images/header/id-index11.gif" tppabs="http://www.ietf.org/images/header/id-index11.gif" border="0"></a></td>
+<td><img src="../images/header/separator.gif" tppabs="http://www.ietf.org/images/header/separator.gif" border="0"></td>
+<td><a href="http://www.isi.edu/rfc-editor/" tppabs="http://www.isi.edu/rfc-editor/"><img src="../images/header/rfc11.gif" tppabs="http://www.ietf.org/images/header/rfc11.gif" border="0"></a></td>
+</tr>
+</table>
+</center>
+<hr>
+<!-- end new headers and layout -->
+
+<dl>
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-cat-idup-gss-08.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-cat-idup-gss-08.txt">
+"Independent Data Unit Protection Generic Security Service Application   Program Interface  (IDUP-GSS-API)", C. Adams, 10/14/1997. (143599 bytes)</A>
+<dd>        The IDUP-GSS-API extends the GSS-API [RFC-2078] for applications
+       requiring protection of a generic data unit (such as a file or
+       message) in a way which is independent of the protection of any 
+    other
+       data unit and independent of any concurrent contact with designated
+       'receivers' of the data unit.  Thus, it is suitable for applications
+       such as secure electronic mail where data needs to be protected
+       without any on-line connection with the intended recipient(s) of 
+    that
+       data.  The protection offered by IDUP includes services such as data
+       origin authentication with data integrity, data confidentiality with
+       data integrity, and support for non-repudiation services.  
+    Subsequent
+       to being protected, the data unit can be transferred to the
+       recipient(s) - or to an archive - perhaps to be processed
+       ('unprotected') only days or years later.
+     
+       Throughout the remainder of this document, the 'unit' of data
+       described in the above paragraph will be referred to as an IDU
+       (Independent Data Unit).  The IDU can be of any size (the 
+    application
+       may, if it wishes, split the IDU into pieces and have the protection
+       computed a piece at a time, but the resulting protection token
+       applies to the entire IDU).  However, the primary characteristic of
+       an IDU is that it represents a stand-alone unit of data whose
+       protection is entirely independent of any other unit of data.  If an
+       application protects several IDUs and sends them all to a single    
+    receiver, the IDUs may be unprotected by that receiver in any order
+       over any time span; no logical connection of any kind is implied by
+       the protection process itself.
+     
+       As with RFC-2078, this IDUP-GSS-API definition provides security
+       services to callers in a generic fashion, supportable with a range 
+    of
+       underlying mechanisms and technologies and hence allowing source-
+       level portability of applications to different environments. This
+       specification                                                       
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-cat-kerberos-pk-init-05.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-cat-kerberos-pk-init-05.txt">
+"Public Key Cryptography for Initial Authentication in Kerberos",   Clifford Neuman, John Wray, B. Tung, J. Trostle, M. Hur, A. Medvinsky,   11/21/1997. (40949 bytes)</A>
+<dd>         This document defines extensions (PKINIT) to the Kerberos protocol
+        specification (RFC 1510 [1]) to provide a method for using public
+        key cryptography during initial authentication.  The methods
+        defined specify the ways in which preauthentication data fields and
+        error data fields in Kerberos messages are to be used to transport
+        public key data.
+                                                                           
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-cat-gssv2-cbind-05.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-cat-gssv2-cbind-05.txt">
+"Generic Security Service API Version 2 : C-bindings", John Wray,   11/24/1997. (213241 bytes)</A>
+<dd>        This draft document specifies C language bindings for Version 2 of 
+    the
+       Generic Security Service Application Program Interface (GSSAPI), 
+    which
+       is described at a language-independent conceptual level in other 
+    drafts
+       [GSSAPI]. It revises RFC-1509, making specific incremental changes 
+    in
+       response to implementation experience and liaison requests.  It is
+       intended, therefore, that this draft or a successor version thereof 
+    will
+       become the basis for subsequent progression of the GSS-API 
+    specification
+       on the standards track.
+     
+       The Generic Security Service Application Programming Interface 
+    provides
+       security services to its callers, and is intended for implementation
+       atop a variety of underlying cryptographic mechanisms.  Typically,
+       GSSAPI callers will be application protocols into which security
+       enhancements are integrated through invocation of services provided 
+    by
+       the GSSAPI. The GSSAPI allows a caller application to authenticate a
+       principal identity associated with a peer application, to delegate
+       rights to a peer, and to apply security services such as 
+    confidentiality
+       and integrity on a per-message basis.
+                                                                           
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-cat-idup-cbind-03.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-cat-idup-cbind-03.txt">
+"Independent Data Unit Protection Generic Security Service Application   Program Interface: C-bindings", D. Thakkar, S. Klump, 04/16/1997. (250954 bytes)</A>
+<dd>     The Independent Data Unit Protection Generic Security Service 
+    Application Program Interface (IDUP-GSS-API) extends the GSS-API 
+    [RFC-1508] for applications requiring protection of a generic data unit
+    (such as a file or message) in a way that is independent of the 
+    protection of any other data unit and independent of any concurrent 
+    contact with designated 'receivers' of the data unit.  Thus, it is 
+    suitable for applications such as secure electronic mail where data 
+    needs to be protected without any on-line connection with the intended 
+    recipient(s) of that data.  The protection offered by the IDUP includes
+    data origin authentication with data integrity, data confidentiality 
+    with data integrity, and support for non-repudiation services.  
+    Subsequent to being protected, the independent data unit can be 
+    transferred to the recipient(s) - or to an archive - perhaps to be 
+    processed ('unprotected') only days or years later.          The 
+    Independent Data Unit Protection Generic Security Service Application 
+    Program Interface for Signing and Encrypting (IDUP-SE) provides a 
+    simplified API for the services of signing and encrypting.             
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-cat-snego-07.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-cat-snego-07.txt">
+"The Simple and Protected GSS-API Negotiation Mechanism", D. Pinkas, E.   Baize, 11/18/1997. (29510 bytes)</A>
+<dd>     This draft document specifies a Security Negotiation Mechanism for the
+    Generic Security Service Application Program Interface (GSS-API) which
+    is described in [1].
+     
+    The GSS-API provides a generic interface which can be layered atop
+    different security mechanisms such that if communicating peers acquire
+    GSS-API credentials for the same security mechanism, then a security
+    7context may be established between them (subject to policy). However,
+    GSS-API doesn't prescribe the method by which GSS-API peers can
+    establish whether they have a common security mechanism.
+     
+    The Simple and Protected GSS-API Negotiation Mechanism defined here
+    is a pseudo-security mechanism, represented by the object identifier
+    iso.org.dod.internet.security.mechanism.snego (1.3.6.1.5.5.2) which
+    enables GSS-API peers to determine in-band whether their credentials
+    share common GSS-API security mechanism(s), and if so, to invoke
+    normal security context establishment for a selected common security
+    mechanism. This is most useful for applications that are based on
+    GSS-API implementations which support multiple security mechanisms.
+    
+    This allows to negotiate different security mechanisms, different
+    options within a given security mechanism (such as different
+    cryptographic algorithms due to policy or legislative constraints)
+    or different options from several security mechanisms.
+     
+    Once the common security mechanism is identified, the mechanism may
+    then negotiate mechanism-specific options during its context
+    establishment. This will be inside the mechanism tokens, and
+    invisible to the SPNEGO protocol.
+     
+    The simple and protected GSS-API mechanism negotiation is based on the
+    following negotiation model : the initiator proposes one security
+    mechanism or an ordered list of security mechanisms, the target either
+    accepts the proposed security mechanism, or chooses one from an
+    offered set, or rejects the proposed value(s). The target then informs
+    the initiator of its choice.
+     
+    In                                                                     
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-cat-xgssapi-acc-cntrl-02.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-cat-xgssapi-acc-cntrl-02.txt">
+"Extended Generic Security Service APIs: XGSS-APIs Access control and   delegation extensions", D. Pinkas, T. Parker, 03/24/1997. (52472 bytes)</A>
+<dd>     The Generic Security Service Application Program Interface (GSS-API), 
+    as defined in RFC-1508, provides security services to callers in a 
+    generic fashion, supportable with a range of underlying mechanisms and 
+    technologies and hence allowing source-level portability of 
+    applications to different environments. It defines GSS-API services and
+    primitives at a level independent of underlying mechanism and 
+    programming language environment.     The GSSAPI allows a caller 
+    application to authenticate a principal identity associated with a peer
+    application, to delegate rights to a peer, and to apply security 
+    services such as confidentiality and integrity on a per-message basis. 
+    The primitives of the GSS-API do not currently allow support of 
+    security attributes other than a single identity and do not allow fine 
+    control of delegation.                                                 
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-cat-kerberos-pk-cross-03.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-cat-kerberos-pk-cross-03.txt">
+"Public Key Cryptography for Cross-Realm Authentication in Kerberos", G.   Tsudik, Clifford Neuman, B. Sommerfeld, B. Tung, M. Hur, T. Ryutov, A.   Medvinsky, 11/26/1997. (12303 bytes)</A>
+<dd>         This document defines extensions to the Kerberos protocol
+        specification (RFC 1510, ''The Kerberos Network Authentication
+        Service (V5)'', September 1993) to provide a method for using
+        public key cryptography during cross-realm authentication.  The
+        methods defined here specify the way in which message exchanges
+        are to be used to transport cross-realm secret keys protected by
+        encryption under public keys certified as belonging to KDCs.
+                                                                           
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-cat-pktapp-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-cat-pktapp-00.txt">
+"Public Key Utilizing Tickets for Application Servers (PKTAPP)", Clifford  Neuman, M. Hur, A. Medvinsky, 02/17/1997. (11099 bytes)</A>
+<dd>     Public key based Kerberos for Distributed Authentication[1], (PKDA) 
+    proposed by Sirbu & Chuang, describes PK based authentication that 
+    eliminates the use of a centralized key distribution center while 
+    retaining the advantages of Kerberos tickets.  This draft describes 
+    how, without any modification, the PKINIT specification[2] may be used 
+    to implement the ideas introduced in PKDA.  The benefit is that only a 
+    single PK Kerberos extension is needed to address the goals of PKINIT &
+    PKDA.                                                                  
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-cat-kerb-chg-password-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-cat-kerb-chg-password-00.txt">
+"Kerberos Change Password Protocol", M. Horowitz, 03/10/1997. (10163 bytes)</A>
+<dd>     The Kerberos V5 protocol [RFC1510] does not describe any mechanism for 
+    users to change their own passwords.  In order to promote 
+    interoperability between workstations, personal computers, terminal 
+    servers, routers, and KDC's from multiple vendors, a common password 
+    changing protocol is required.                                         
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-cat-kerberos-err-msg-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-cat-kerberos-err-msg-00.txt">
+"Integrity Protection for the Kerberos Error Message", G. Tsudik, B.   Tung, M. Hur, A. Medvinsky, 03/26/1997. (10021 bytes)</A>
+<dd>     The Kerberos error message, as defined in RFC 1510, is transmitted to 
+    the client without any integrity assurance.  Therefore, the client has 
+    no means to distinguish between a valid error message sent from the KDC
+    and one sent by an attacker.  This draft describes a method for 
+    assuring the integrity of Kerberos error messages, and proposes a 
+    consistent format for the e-data field in the KRB_ERROR message.  This 
+    e-data format enables the storage of cryptographic checksums by 
+    providing an extensible mechanism for specifying e-data types.         
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-cat-kerberos-revisions-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-cat-kerberos-revisions-00.txt">
+"The Kerberos Network Authentication Service (V5)", Theodore Ts'o,   Clifford Neuman, 07/14/1997. (299207 bytes)</A>
+<dd>     This document provides an overview and specification of Version  5  of 
+    the Kerberos protocol, and updates RFC1510 to clarify aspects of the 
+    protocol and its  intended  use  that require  more  detailed or 
+    clearer explanation than was provided in RFC1510.  This document is 
+    intended  to  provide  a detailed description of the protocol, suitable
+    for implementation, together with descriptions of the appropriate use 
+    of protocol messages and fields within those messages.                 
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-cat-ftpdsaauth-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-cat-ftpdsaauth-00.txt">
+"FTP Authentication Using DSA", P. Yee, Russ Housley, W. Nace,   07/21/1997. (16771 bytes)</A>
+<dd>     This document defines a method to secure file transfers using the FTP 
+    specification RFC 959, 'FILE TRANSFER PROTOCOL (FTP)' (October 1985) 
+    and the work in progress document 'FTP Security Extensions' 
+    Draft-ietf-cat-ftpsec-09.txt[1].  This method will use the extensions 
+    proposed in the 'FTP Security Extensions' Draft document along with a 
+    public/private digital signature.                                      
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-cat-ftpkeasj-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-cat-ftpkeasj-00.txt">
+"Encryption using KEA and SKIPJACK", P. Yee, Russ Housley, W. Nace,   07/21/1997. (19064 bytes)</A>
+<dd>     This document defines a method to encrypt a file transfer using the FTP
+    specification RFC 959, 'FILE TRANSFER PROTOCOL (FTP)' (October 1985) 
+    and the work in progress document 'FTP Security Extensions' 
+    draft-ietf-cat-ftpsec-09.txt[1].  This method will use the Key Exchange
+    Algorithm (KEA) to give mutual authentication and establish the data 
+    encryption keys.  SKIPJACK is used to encrypt file data and the FTP 
+    command channel.                                                       
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-cat-kerberos-anoncred-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-cat-kerberos-anoncred-00.txt">
+"Anonymous Credentials in Kerberos", J. Cargille, M. Hur, A. Medvinsky,   09/22/1997. (8582 bytes)</A>
+<dd>     This document defines the concept of anonymous Kerberos
+        credentials, and describes how such credentials can be securely
+        obtained from a Kerberos KDC via the PKINIT extension.  This draft
+        defines no new mechanisms or protocols; instead, it defines the
+        concepts and proposes usage and naming conventions.                
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-cat-rfc2078bis-01.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-cat-rfc2078bis-01.txt">
+"Generic Security Service Application Program Interface Version 2, Update  1", John Linn, 11/13/1997. (206985 bytes)</A>
+<dd>     The Generic Security Service Application Program Interface (GSS-API),
+       Version 2, as defined in [RFC-2078], provides security services to
+       callers in a generic fashion, supportable with a range of underlying
+       mechanisms and technologies and hence allowing source-level
+       portability of applications to different environments. This
+       specification defines GSS-API services and primitives at a level
+       independent of underlying mechanism and programming language
+       environment, and is to be complemented by other, related 
+       specifications:
+    
+          documents defining specific parameter bindings for particular
+          language environments
+     
+          documents defining token formats, protocols, and procedures to be
+          implemented in order to realize GSS-API services atop particular
+          security mechanisms
+     
+       This Internet-Draft revises [RFC-2078], making specific, incremental
+          changes in response to implementation experience and liaison
+       requests. It is intended, therefore, that this draft or a successor
+       version thereto will become the basis for subsequent progression of
+       the GSS-API specification on the standards track.                   
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-cat-user2user-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-cat-user2user-00.txt">
+"User to User Kerberos Authentication using GSS-API Preliminary Draft",   Michael Swift, 10/27/1997. (9094 bytes)</A>
+<dd>       This draft proposes a simple extension to the Kerberos
+      GSS-API mechanism to support user to user authentication
+      both in the case where the client application explicitly
+      requests user to user authentication and when it does not
+      know whether the server supports user to user
+      authentication.                                                      
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-cat-krb5-ipv6-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-cat-krb5-ipv6-00.txt">
+"Kerberos over IPv6", Assar Westerlund, 10/29/1997. (3903 bytes)</A>
+<dd>        This document specifies the address types and transport types
+       necessary for using Kerberos [RFC1510] over IPv6 [RFC1883].         
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-cat-iakerb-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-cat-iakerb-00.txt">
+"Initial Authentication with Kerberos and the GSS-API (IAKERB)", Michael   Swift, 11/05/1997. (10914 bytes)</A>
+<dd>       This draft proposes a new Kerberos authentication
+      mechanism for use when the client computer is unable to
+      contact a Key Distribution Center (KDC). Instead, the
+      client will send Authentication Service (AS) and Ticket
+      Granting Service (TGS) requests to the server, which will
+      then forward them to the appropriate KDC.                            
+<dt> <A HREF="ftp://ietf.org/internet-drafts/draft-ietf-cat-krb5-tcp-00.txt" tppabs="ftp://ietf.org/internet-drafts/draft-ietf-cat-krb5-tcp-00.txt">
+"Kerberos over TCP", Assar Westerlund, Johan Danielsson, 11/24/1997. (3964 bytes)</A>
+<dd>        This document specifies how the communication should be done between
+       a client and a KDC using Kerberos [RFC1510] with TCP as the 
+    transport
+       protocol.
+                                                                           
+</dl>
+
+<HR>
+
+<I> IETF Secretariat - Please send questions, comments, and/or 
+suggestions to </I> <a href="mailto:ietf-web@ietf.org">ietf-web@ietf.org</a>.
+<P>
+
+<A HREF="../1id-abstracts.html" tppabs="http://www.ietf.org/1id-abstracts.html">
+<IMG SRC="../icons/back.xbm" tppabs="http://www.ietf.org/icons/back.xbm"> Return to Internet-Draft directory. </A> <P>
+
+<A HREF="http://www.ietf.org/home.html" tppabs="http://www.ietf.org/home.html">
+<IMG SRC="../icons/back.xbm" tppabs="http://www.ietf.org/icons/back.xbm"> <IMG SRC="../icons/back.xbm" tppabs="http://www.ietf.org/icons/back.xbm">
+Return to IETF home page. </A>
+
+</body>
+</html>
+

@@ -1,0 +1,329 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>電腦網路上課投影片</TITLE>
+   <META NAME="Author" CONTENT="黃仁竑">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+<base href="http://exodus.cs.ccu.edu.tw/~rhhwang/">
+</HEAD>
+<BODY>
+<CENTER><P><B><FONT SIZE=+3>Computer Networks</FONT></B></P></CENTER>
+
+<HR WIDTH="100%"></P>
+<P><B><FONT COLOR="#000000" SIZE=+1>八十七學年第一學期上課錄影</FONT></B></P>
+
+<UL>
+<LI><B><FONT COLOR="#000000">
+<A HREF="http://dedu.cc.ccu.edu.tw/net98f/981203.html">
+十二月三日上課錄影 (Chapter 5, part II: IP, ICMP, ARP, CIDR)
+</A>
+</FONT></B></LI>
+
+<LI><B><FONT COLOR="#000000">
+<A HREF="http://dedu.cc.ccu.edu.tw/net98f/981208.html">
+十二月八日上課錄影 (Chapter 5, part II: Firewall, IPv6)
+</A>
+</FONT></B></LI>
+<LI><B><FONT COLOR="#000000">
+<A HREF="http://dedu.cc.ccu.edu.tw/net98f/981210.html">
+十二月十日上課錄影 (ATM, AAL)
+</A>
+</FONT></B></LI>
+<LI><B><FONT COLOR="#000000">
+<A HREF="http://dedu.cc.ccu.edu.tw/net98f/981215.html">
+十二月十五日上課錄影 (AAL, IP over ATM)
+</A>
+</UL>
+<HR WIDTH="100%"></P>
+
+<P><B><FONT COLOR="#000000" SIZE=+1>Course Outline:</FONT></B></P>
+
+<OL>
+<LI>
+<B><FONT COLOR="#000000" SIZE=+1>
+<A HREF="net98/ch1/index.htm">
+Introduction
+</A>
+</FONT></B></LI>
+
+<OL>
+<LI><B><FONT COLOR="#000000">Terminologies</FONT></B></LI>
+
+<LI><B><FONT COLOR="#000000">Layered network architecture</FONT></B></LI>
+
+<LI><B><FONT COLOR="#000000">Internetworking</FONT></B></LI>
+
+<LI><B><FONT COLOR="#000000">History</FONT></B></LI>
+
+<LI><B><FONT COLOR="#000000">
+<A HREF="net98/ch1.ps">
+Down load slides (Postscript)
+</A>
+</FONT></B></LI>
+</OL>
+
+<LI>
+<B><FONT COLOR="#000000"><FONT SIZE=+1>
+<A HREF="net98/ch2/index.htm">Physical Layer</A>
+</FONT></FONT></B>
+</LI>
+<OL>
+<LI><B><FONT COLOR="#000000">Theoretic basis</FONT></B></LI>
+<LI><B><FONT COLOR="#000000">Transmission media</FONT></B></LI>
+<LI><B><FONT COLOR="#000000">ISDN and Broadband ISDN</FONT></B></LI>
+<LI><B><FONT COLOR="#000000">Data transmission</FONT></B></LI>
+<LI><B><FONT COLOR="#000000">Data encoding/decoding</FONT></B></LI>
+
+<LI><B><FONT COLOR="#000000">
+<A HREF="net98/ch2.ps">
+Down load slides (Postscript)
+</A>
+</FONT></B></LI>
+</OL>
+
+<LI>
+<B><FONT COLOR="#000000"><FONT SIZE=+1>
+<A HREF="net98/ch3/index.htm">Data Link Layer</A>
+</FONT></FONT></B>
+</LI>
+
+<OL>
+<LI><B><FONT COLOR="#000000">Framing</FONT></B></LI>
+<LI><B><FONT COLOR="#000000">Error Control</FONT></B></LI>
+<LI><B><FONT COLOR="#000000">Flow Control</FONT></B></LI>
+<LI><B><FONT COLOR="#000000">HDLC Layer</FONT></B></LI>
+<LI><B><FONT COLOR="#000000">
+<A HREF="net98/ch3.ps">
+Down load slides (Postscript)
+</A>
+</FONT></B></LI>
+</OL>
+
+<LI><B><FONT COLOR="#000000">MAC Layer</FONT></B></LI>
+
+<OL>
+<LI>
+<B><FONT COLOR="#000000">
+<A HREF="net98/ch4-1/index.htm">
+Multiple access problem (part I)
+</A></FONT></B></LI>
+
+<OL>
+<LI><B><FONT COLOR="#000000">case study: IEEE 802.3, Fast Ethernet,
+Gigabit Ehternet, Ether Switch</FONT></B></LI>
+<LI><B><FONT COLOR="#000000">
+<A HREF="net98/ch4-1.ps">
+Down load slides (Postscript)
+</A>
+</FONT></B></LI>
+</OL>
+
+<LI>
+<B><FONT COLOR="#000000">
+<A HREF="net98/ch4-2/index.htm">
+Multiple access problem (part II)
+</A></FONT></B></LI>
+
+<OL>
+<LI><B><FONT COLOR="#000000">case study: IEEE 802.5, FDDI, DQDB,
+100VG-anyLAN, Wireless LAN</FONT></B></LI>
+<LI><B><FONT COLOR="#000000">
+<A HREF="net98/ch4-2.ps">
+Down load slides (Postscript)
+</A>
+</FONT></B></LI>
+</OL>
+
+<LI>
+<B><FONT COLOR="#000000">
+<A HREF="net98/ch4-3/index.htm">
+Bridge
+</A></FONT></B></LI>
+
+<OL>
+<LI><B><FONT COLOR="#000000">Transparent bridge</FONT></B></LI>
+<LI><B><FONT COLOR="#000000">Source routing bridge</FONT></B></LI>
+<LI><B><FONT COLOR="#000000">Remote bridge</FONT></B></LI>
+<LI>
+<A HREF="net98/ch4-3.ps">
+Down load slides (Postscript)
+</A>
+</FONT></B></LI>
+</OL>
+
+</OL>
+
+
+<LI>
+<B><FONT COLOR="#000000"><FONT SIZE=+1>Network Layer</FONT></FONT></B></LI>
+
+<OL>
+<LI>
+<B><FONT COLOR="#000000">
+<A HREF="net98/ch5-1/index.htm">
+Routing (part I)
+</A></FONT></B></LI>
+
+<OL>
+<LI><B><FONT COLOR="#000000">Link State</FONT></B></LI>
+
+<LI><B><FONT COLOR="#000000">Distance Vector</FONT></B></LI>
+
+<LI><B><FONT COLOR="#000000">ES-IS Routing</FONT></B></LI>
+
+<LI><B><FONT COLOR="#000000">Intradomain IS-IS Routing</FONT></B></LI>
+
+<LI><B><FONT COLOR="#000000">Interdomain IS-IS Routing</FONT></B></LI>
+
+<LI><B><FONT COLOR="#000000">case studies: IDRP, EGP, BGP, IP, ICMP, SLIP,
+PPP</FONT></B></LI>
+
+<LI><B><FONT COLOR="#000000">
+<A HREF="net98/ch5-1.ps">
+Down load slides (Postscript)
+</A>
+</FONT></B></LI>
+
+</OL>
+
+<LI>
+<B><FONT COLOR="#000000">
+<A HREF="net98/ch5-2/index.htm">
+Multicast and IP (Part II)
+</A></FONT></B></LI>
+<OL>
+<LI><B><FONT COLOR="#000000">Multicast (MBone)</FONT></B></LI>
+<LI><B><FONT COLOR="#000000">Congestion Control</FONT></B></LI>
+<LI><B><FONT COLOR="#000000">Flow Control</FONT></B></LI>
+<LI><B><FONT COLOR="#000000">IP, CIDR, IPv6</FONT></B></LI>
+<LI><B><FONT COLOR="#000000">
+<A HREF="net98/ch5-2.ps">
+Down load slides (Postscript)
+</A>
+</FONT></B></LI>
+</OL>
+
+<LI>
+<B><FONT COLOR="#000000">
+<A HREF="net98/AtmAAL/index.htm">
+ATM and AAL
+</A></FONT></B></LI>
+<OL>
+<A HREF="net98/AtmAAL.ppt">
+Down load slides (PowerPoint)
+</A>
+</FONT></B></LI>
+</OL>
+
+</OL>
+
+<LI>
+<B><FONT COLOR="#000000"><FONT SIZE=+1>
+<A HREF="net98/ch6/index.htm">Transport Layer</A>
+</FONT></FONT></B>
+</LI>
+<OL>
+<LI><B><FONT COLOR="#000000">Reliable/Unreliable data transfer</FONT></B></LI>
+
+<LI><B><FONT COLOR="#000000">Connection setup/tear down</FONT></B></LI>
+
+<LI><B><FONT COLOR="#000000">Congestion and flow control</FONT></B></LI>
+
+<LI><B><FONT COLOR="#000000">Multiplexing and addressing</FONT></B></LI>
+
+<LI><B><FONT COLOR="#000000">case studies: TCP, UDP</FONT></B></LI>
+
+<LI>
+<B><FONT COLOR="#000000">
+<A HREF="net98/Rsvp/index.htm">
+QOS Signaling Protocol: RSVP</A></FONT></B></LI>
+
+<LI>
+<B><FONT COLOR="#000000">
+<A HREF="net98/socket.doc">
+Socket programming</A></FONT></B></LI>
+
+<LI>
+<B><FONT COLOR="#000000">
+<A HREF="net98/select/index.htm">
+Advanced socket programming</A></FONT></B></LI>
+
+<LI>
+<B><FONT COLOR="#000000">
+<A HREF="net98/winsock.doc">
+Winsock programming</A></FONT></B></LI>
+
+<LI>
+<B><FONT COLOR="#000000">
+<A HREF="net98/IpMcast/index.htm">
+IP Multicast Programming</A></FONT></B></LI>
+
+<LI>
+<B><FONT COLOR="#000000">
+<A HREF="net98/rpc/index.htm">
+Remote Procedure Call</A></FONT></B></LI>
+</OL>
+
+<LI><B><FONT COLOR="#000000"><FONT SIZE=+1>Application Layer</FONT></FONT></B></LI>
+
+<OL>
+<LI> <B><FONT COLOR="#000000"> 
+<A HREF="net98/security/index.htm">
+Network Security</A></FONT></B></LI>
+
+<LI> <B><FONT COLOR="#000000">
+<A HREF="net98/netsec/index.htm">
+Firewall </A></FONT></B></LI>
+
+<LI> <B><FONT COLOR="#000000"> 
+<A HREF="net98/dns/index.htm">
+DNS</A></FONT></B></LI>
+
+<LI> <B><FONT COLOR="#000000"> EMail 
+<OL>
+<LI> <A HREF="handout/application/smtp.htm">
+SMTP </A>
+<LI> <A HREF="handout/application/mime.htm">
+MIME </A>
+<LI> <A HREF="handout/application/pop3.htm">
+POP3 </A>
+<LI> <A HREF="net98/secmail/index.htm">
+PGP and PEM</A>
+</OL>
+</FONT></B></LI>
+<LI> <B><FONT COLOR="#000000">
+<A HREF="handout/application/http.htm"> 
+WWW (HTTP)</A></FONT></B></LI>
+
+<OL>
+<LI> <B><FONT COLOR="#000000">
+<A HREF="net98/html/index.htm">
+HTML</A></FONT></B></LI>
+<LI> <B><FONT COLOR="#000000">
+<A HREF="net98/Javascript/index.htm">
+Javascript</A></FONT></B></LI>
+<LI> <B><FONT COLOR="#000000">
+<A HREF="net98/Java/">
+Java</A></FONT></B></LI>
+<LI> <B><FONT COLOR="#000000">
+<A HREF="net98/perl/">
+Perl</A></FONT></B></LI>
+</OL>
+
+<LI> <B><FONT COLOR="#000000">
+<A HREF="handout/application/news.htm">
+USENET NEWS</A></FONT></B></LI>
+
+<LI> <B><FONT COLOR="#000000"> 
+<A HREF="net98/snmp/index.htm">
+Network Management (SNMP)</A></FONT></B></LI>
+
+<LI> <B><FONT COLOR="#000000">
+<A HREF="handout/application/ec/index.htm">
+E-Commerce</A></FONT></B></LI>
+</OL>
+
+<LI><B><FONT COLOR="#000000"><FONT SIZE=+1>Summary and Future Directions</FONT></FONT></B></LI>
+</OL>
+</BODY>
+</HTML>

@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE></TITLE>
+   <META NAME="Author" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.01Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY>
+
+<P><B><FONT SIZE=+1><A HREF="#q1">問題一</A></FONT></B></P>
+
+<P><B><FONT SIZE=+1>問題二</FONT></B></P>
+
+<P><B><FONT SIZE=+1>問題三</FONT></B></P>
+
+<P>
+<HR WIDTH="100%"></P>
+
+<P><A NAME="q1"></A><B><FONT SIZE=+2>問一: </FONT></B></P>
+
+<P>若定義 01111110 = 開頭 or 結尾而資料內容中如果有 01111110 出現就換成</P>
+
+<P>011111<FONT COLOR="#FF0000">0</FONT>10 而 01111100 則把它換成 011111<FONT COLOR="#FF0000">0</FONT>00</P>
+
+<P>紅色的字是為了讓資料中的 01111110 不會被誤認為開頭 or 結尾所故意加入的.</P>
+
+<P>其實, 此例中的 011111 可以想成是溢出字元 Esc , 以老師上課的例子來講,</P>
+
+<P>Esc+10 是開頭 or 結尾, Esc+01 是 Esc 本身, Esc+00 是因 01 而被迫加一位的
+0.</P>
+
+<P>不過有一點我不很清楚的是, 為什麼不用 01111110 最後一位的 0 來動手腳,</P>
+
+<P>而要用 01111110 倒數第二位的 1 來動手腳咧? @:</P>
+
+<P><B><FONT SIZE=+2>答一:</FONT></B></P>
+
+<P>我覺得你說的也可行唷，只要破壞 01111110 不要 在 Data 中出現即可，所以可以如你說。</P>
+
+<P>01111110 用 0111111<FONT COLOR="#FF0000">1</FONT>0 Stuffing </P>
+
+<P>01111111 用 0111111<FONT COLOR="#FF0000">1</FONT>1 Stuffing</P>
+
+<P><B><FONT SIZE=+2>答二:</FONT></B></P>
+
+<P>(一) stuffing: 以實際的例子來說明吧! 如果原始資料是 011011111111111111110010
+Bit stuffing </P>
+
+<P>是看到5個1就插入一個0，所以stuffing後的結果是 011011111<FONT COLOR="#FF0000">0</FONT>11111<FONT COLOR="#FF0000">0</FONT>11111<FONT COLOR="#FF0000">0</FONT>10010
+</P>
+
+<P>其中三個紅色的<FONT COLOR="#FF0000">0</FONT>表示是插入的。 </P>
+
+<P>(二) 為什麼要5個1而不是6個1呢? 如果是6個1那不是和原先的pattern衝了嗎?
+</P>
+
+<P>例如原始資料是01111111，你stuffing 後是011111101其中01111110不就是framing
+的pattern嗎?</P>
+
+<P>(三)stuffing速度要很快，所以愈容易implement愈好。如果收端要前後對照才可以de-stuff，</P>
+
+<P>就不好了。</P>
+
+</BODY>
+</HTML>

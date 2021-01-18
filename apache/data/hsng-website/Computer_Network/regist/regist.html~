@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE></TITLE>
+   <META NAME="Author" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.01Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" 
+ LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<CENTER><IMG SRC="qtitle.gif" border=0 ><br><P>
+<table border=0>
+<TR><TD>
+<A HREF="register.html">
+<img src="radio.jpg" border=0">
+<font size=5>登錄系統</font>
+<A HREF="del_mem.html">
+<img src="radio.jpg" border=0">
+<font size=5>退選刪除系統</font></A><BR>
+<A HREF="talk.html">
+<img src="radio.jpg" border=0">
+<font size=5>聊天室紀錄登錄查詢系統</font></A><BR>
+<A HREF="check.html">
+<img src="radio.jpg" border=0">
+<font size=5>出席登錄查詢系統</font></A><BR>
+</TD></TR>
+</TABLE>
+</CENTER>
+
+</BODY>
+</HTML>

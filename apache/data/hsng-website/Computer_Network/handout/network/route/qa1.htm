@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE></TITLE>
+   <META NAME="Author" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="../../gif/bg-slate.gif">
+
+<P><FONT SIZE=+1>廣播是將一封包送到網路上所有的節點。可使用的方法有：</FONT></P>
+
+<OL>
+<LI><FONT SIZE=+1>從 source 到其他每一節點分別送一份封包<BR>
+缺點：浪費頻寬，需要知道網路上所有的節點位址</FONT></LI>
+
+<LI><FONT SIZE=+1>Flooding：每一個收到封包的節點均將此封包轉送給其<BR>
+　　　　 他所有相鄰的節點<BR>
+缺點：一個節點可能收到好幾份相同的封包。造成頻<BR>
+　　　寬浪費。而且如何停止 flooding 也是一個問題。</FONT></LI>
+
+<LI><FONT SIZE=+1>Reverse Path Forwarding (RDF)：source 先將封包送到<BR>
+所有的鄰居。然後其他的節點在收到封包後，如果這<BR>
+封包是由此節點到 source 的最短路徑上的節點送來的<BR>
+，則再轉送給其他所有相鄰的節點，否則就將此封包<BR>
+丟掉。例子如下圖：</FONT></LI>
+</OL>
+<FONT SIZE=+1></FONT>
+<UL>
+<P><IMG SRC="rpf.gif" HEIGHT=600 WIDTH=500></P>
+</UL>
+
+</BODY>
+</HTML>

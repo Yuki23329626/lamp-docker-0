@@ -1,0 +1,941 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE></TITLE>
+   <META NAME="Author" CONTENT="">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="../../gif/bg-slate.gif">
+
+<UL>
+<UL>
+<UL>
+<UL>
+<P><FONT SIZE=+3>Routing and Multicast</FONT></P>
+</UL>
+</UL>
+</UL>
+</UL>
+
+<UL>
+<LI><FONT SIZE=+2>Theory of routing</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Action of routing</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Simply look up packet id and forward to appropriate <BR>
+outgoing link</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Question: how does network determine and maintain routing<BR>
+¡@¡@¡@¡@tables?</FONT></LI>
+
+<LI><FONT SIZE=+1>Goals of routing</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Scalability</FONT></LI>
+
+<LI><FONT SIZE=+1>Safe internection of heterogeneous networks</FONT></LI>
+
+<LI><FONT SIZE=+1>Robust, fault-tolent, self-healing</FONT></LI>
+
+<LI><FONT SIZE=+1>Support QOS</FONT></LI>
+
+<LI><FONT SIZE=+1>Good performance (high utilization, low delay, ...)</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Types of routing algorithms</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>centralized vs decentralized</FONT></LI>
+
+<LI><FONT SIZE=+1>static, dynamic, or adaptive</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Link-State routing (LS)</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Routing with global informatio: link cost</FONT></LI>
+
+<LI><FONT SIZE=+1>Quasi-centralized: broadcast link costs perioidcally
+or <BR>
+when changed</FONT></LI>
+
+<LI><FONT SIZE=+1>Use Dijkstra or Bellman-Ford shortest path algorithm<BR>
+to find the best route</FONT></LI>
+
+<LI><FONT SIZE=+1>Details of Dijkstra (Bellman-Ford) algorithms omitted</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Distance vector routing (DV)</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Asynchronous, distributed algorithm</FONT></LI>
+
+<LI><FONT SIZE=+1>Link cost only passed to neighborhood nodes</FONT></LI>
+
+<LI><FONT SIZE=+1>Use distributed version of Bellman-Ford algorithm to
+find <BR>
+the best route</FONT></LI>
+
+<LI><FONT SIZE=+1>Problems</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>looping: good news travels fast, bad news travels slow</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Split horizon</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>send infinity cost to the reverse direction <BR>
+of the shortest path</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Poisoned reverse</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>constantly increase cost implies loops, sent<BR>
+PR updates to start hold down</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>hold down</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>do not send updates during a period of time</FONT></LI>
+</UL>
+</UL>
+
+<LI><FONT SIZE=+1>Oscillation</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>avoid periodic change</FONT></LI>
+
+<LI><FONT SIZE=+1>link costs should not be strictly increasing functions<BR>
+of traffic load</FONT></LI>
+</UL>
+</UL>
+</UL>
+
+<LI><FONT SIZE=+1>Comparison of LS and DV algorithms</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Message complexity</FONT></LI>
+
+<LI><FONT SIZE=+1>Robustness</FONT></LI>
+
+<LI><FONT SIZE=+1>Speed of convergence</FONT></LI>
+</UL>
+</UL>
+
+<LI><FONT SIZE=+3>Routing protocols </FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1><A HREF="http://www.cisco.com/univ-src/ccden/data/doc/cintrnet/ito/55794.htm">OSI
+Routing</A></FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Hierarchical structure of networks</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>End System (ES)</FONT></LI>
+
+<LI><FONT SIZE=+1>Intradomain intermediate system (IS)</FONT></LI>
+
+<LI><FONT SIZE=+1>Interdomain intermediate system (IS)</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>ES-IS routing</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>discovery protocol: ESs and ISs learn about each other
+<BR>
+through hello packets</FONT></LI>
+
+<LI><FONT SIZE=+1>Hello packets: EHS (ES hello message), ISH (IS hello<BR>
+message)</FONT></LI>
+
+<LI><FONT SIZE=+1>Hello conveys network-layer(NSAP) addresses and <BR>
+subnetwork (SNPA) addresses (data-link layer)</FONT></LI>
+
+<LI><FONT SIZE=+1>Redirection (IS-&gt;ES)</FONT></LI>
+
+<LI><FONT SIZE=+1>Map to TCP/IP and ICMP</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>IS-IS routing</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Two level hierarchy</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Level 1</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>routing within the same area (a group of <BR>
+contiguous networks)</FONT></LI>
+
+<LI><FONT SIZE=+1>Link state routing (complete, consistent <BR>
+picture of network topology)</FONT></LI>
+
+<LI><FONT SIZE=+1>Knowledge of level 2 routers connected <BR>
+to the same area</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Level 2</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>routing between level 1 areas within a domain</FONT></LI>
+
+<LI><FONT SIZE=+1>Link state routing</FONT></LI>
+
+<LI><FONT SIZE=+1>strict hierarchy (pass through level 2 routers <BR>
+only)</FONT></LI>
+</UL>
+</UL>
+
+<LI><FONT SIZE=+1>Link cost</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>3 metrics: delay, expense, error rate</FONT></LI>
+
+<LI><FONT SIZE=+1>Maximum value: 64 for link, 1024 for path</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Support of multiple network-layer protocols</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Integrated IS-IS</FONT></LI>
+
+<LI><FONT SIZE=+1>Ships-in-the-night</FONT></LI>
+</UL>
+</UL>
+
+<LI><FONT SIZE=+1>Interdomain Routing Protocol (IDRP)</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Routing between domains (different administrative control)</FONT></LI>
+
+<LI><FONT SIZE=+1>Border intermediate system (BIS)(exterior gateways):
+router <BR>
+for interdomain routing</FONT></LI>
+
+<LI><FONT SIZE=+1>Distance vector routing</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Exchange information about id's of routing domains,<BR>
+paths to these domains</FONT></LI>
+
+<LI><FONT SIZE=+1>exclusion list, inclusion list</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Policy dependent routing</FONT></LI>
+</UL>
+</UL>
+
+<LI><FONT SIZE=+1>Internet routing protocols</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Intradomain routing protocols</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1><A HREF="http://www.cisco.com/univ-src/ccden/data/doc/cintrnet/ito/55024.htm">Routing
+Information Protocol (RIP)</A></FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Originally designed for Xerox PARC Universal <BR>
+Protocol (used in XNS)</FONT></LI>
+
+<LI><FONT SIZE=+1>Adopted by UNIX and TCP/IP in 1982 (e.g., <BR>
+routed of BSD)</FONT></LI>
+
+<LI><FONT SIZE=+1><A HREF="ftp://ds.internic.net/rfc/rfc1058.txt">RFC 1058
+[1988]</A> </FONT></LI>
+
+<LI><FONT SIZE=+1><A HREF="ftp://ds.internic.net/rfc/rfc1388.txt">RIPv2:
+RFC 1388 [1993]</A></FONT></LI>
+
+<LI><FONT SIZE=+1>Widely used in PC networking</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Novell, 3Com, Apple Talk, Banyan, <BR>
+Ungerman-Bass</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Distance vector routing</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>use hop count as cost metric (up to 15)</FONT></LI>
+
+<LI><FONT SIZE=+1>restrict size of the network to 15</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Routing table</FONT></LI>
+
+<P><IMG SRC="riptbl.gif" ALT="RIP routing table" HEIGHT=189 WIDTH=403></P>
+
+<UL>
+<LI><FONT SIZE=+1>Timers</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>routing update timer (30 s): time to send <BR>
+routing table to neighbors</FONT></LI>
+
+<LI><FONT SIZE=+1>route invalid timer (90 s): time to make an <BR>
+entry old</FONT></LI>
+
+<LI><FONT SIZE=+1>route flush timer (270 s): time to remove <BR>
+an entry</FONT></LI>
+</UL>
+</UL>
+
+<LI><FONT SIZE=+1>RIP packet format</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>commands: request or reply</FONT></LI>
+
+<LI><FONT SIZE=+1>version number</FONT></LI>
+
+<LI><FONT SIZE=+1>up to 25 destination addresses</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Stability</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>hop count limit: 15 means infinity</FONT></LI>
+
+<LI><FONT SIZE=+1>hold down: </FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Asynchronous transmission may make old <BR>
+information update new information</FONT></LI>
+
+<LI><FONT SIZE=+1>Hold down any changes that might affect <BR>
+recently removed routes for some period of time</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Split horizons</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>no update on backward route</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Poison Reverse Update</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>constantly increase cost implies loops</FONT></LI>
+</UL>
+</UL>
+</UL>
+
+<LI><FONT SIZE=+1><A HREF="http://www.cisco.com/univ-src/ccden/data/doc/cintrnet/ito/55182.htm">Interior
+Gateway Routing Protocol (IGRP)</A></FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>IGRP</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Developed by Cisco in mid-1980's for routing<BR>
+within an Autonomous system (AS)</FONT></LI>
+
+<LI><FONT SIZE=+1>Enhanced IGRP was proposed in 1990's</FONT></LI>
+
+<LI><FONT SIZE=+1>Distance vector routing</FONT></LI>
+
+<LI><FONT SIZE=+1>Combination of metrics</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Delay (1..2<SUP>24</SUP>)</FONT></LI>
+
+<LI><FONT SIZE=+1>Bandwidth (1200bps to 10Gbps)</FONT></LI>
+
+<LI><FONT SIZE=+1>Reliability (1..255)</FONT></LI>
+
+<LI><FONT SIZE=+1>Load (1..255)</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Support multipath routing</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>among equal metric paths</FONT></LI>
+
+<LI><FONT SIZE=+1>among different metric paths</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>timers: update, invalid, flush, hold-down</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Enhanced IGRP</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>New features</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>fast convergence: store neighbors' routing<BR>
+tables (Diffusing Update Algorithm, DUAL<BR>
+)</FONT></LI>
+
+<LI><FONT SIZE=+1>variable length subnet masks</FONT></LI>
+
+<LI><FONT SIZE=+1>partial, bounded updates: update only when<BR>
+a route cost change</FONT></LI>
+
+<LI><FONT SIZE=+1>multiple network-layer support: IP, Apple <BR>
+Talk, Novell</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>New technology</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Neighbor discovery/recovery</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Dynamically learn new neighbors</FONT></LI>
+
+<LI><FONT SIZE=+1>Send hello to check alive</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Reliable Transport Protocol (RTP)</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Guaranteed ordered delivery of IGRP<BR>
+packets</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>DUAL finite state machine: compute routes</FONT></LI>
+
+<LI><FONT SIZE=+1>Protocol-dependent modules: for network layer</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>protocol specific requirements (e.g., IP <BR>
+encapsulated IGRP packets)</FONT></LI>
+</UL>
+</UL>
+</UL>
+</UL>
+
+<LI><FONT SIZE=+1><A HREF="http://www.cisco.com/univ-src/ccden/data/doc/cintrnet/ito/55167.htm">Open
+Shortest Path First (OSPF)</A></FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1><A HREF="ftp://ds.internic.net/rfc/rfc1247.txt">RFC 1247</A></FONT></LI>
+
+<LI><FONT SIZE=+1>Characteristics</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Open: not proprietary</FONT></LI>
+
+<LI><FONT SIZE=+1>SPF: Dijkstra algorithm (link state routing)</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Routing Hierarchy</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>AS: collections of networks under a common <BR>
+admistrative (areas)</FONT></LI>
+
+<LI><FONT SIZE=+1>Area: a group of contiguous networks (e.g., LAN) <BR>
+and routers (area border routers, multiple ports)</FONT></LI>
+
+<LI><FONT SIZE=+1>Topological database: overall picture of networks <BR>
+in relationship to routers</FONT></LI>
+
+<LI><FONT SIZE=+1>Domain: network of routers with the same <BR>
+topological database (~AS)</FONT></LI>
+
+<LI><FONT SIZE=+1>In order to reduce routing traffic, topology of a <BR>
+domain is not passed to other routers outside of<BR>
+the domain</FONT></LI>
+
+<LI><FONT SIZE=+1>Two types of OSPF routing: intra-area and <BR>
+interarea (backbone)</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>SPF algorithm</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>The basis for OSPF operations</FONT></LI>
+
+<LI><FONT SIZE=+1>Routers use Hello protocol to acquire neighbors</FONT></LI>
+
+<LI><FONT SIZE=+1>If an area (network) is attached by more than <BR>
+one router, a router is elected as the designated<BR>
+router which is responsible for generating link <BR>
+state information (and another one for backup)</FONT></LI>
+
+<LI><FONT SIZE=+1>Each router compute a shortest-path tree (with <BR>
+itself as the root) from the topological database: <BR>
+Dijkstra's algorithm</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Special features</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Reliable broadcast for flooding link state information</FONT></LI>
+
+<LI><FONT SIZE=+1>Euqal-cost multipath routing</FONT></LI>
+
+<LI><FONT SIZE=+1>Routing based on Type of Service (TOS)</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>IP TOS: delay, throughput, reliability</FONT></LI>
+
+<LI><FONT SIZE=+1>Seperate routing table for each TOS: needs <BR>
+8 routing tables?</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Allows level-2 routers to send path cost to level-1<BR>
+routers</FONT></LI>
+
+<LI><FONT SIZE=+1>Runs on top of IP</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>allows variable-length subnet mask</FONT></LI>
+
+<LI><FONT SIZE=+1>IS-IS uses underlying data-link control protocol</FONT></LI>
+</UL>
+</UL>
+</UL>
+</UL>
+
+<LI><FONT SIZE=+1>Interdomain routing protocols</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Concerns</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>connecting networks under different administrative control</FONT></LI>
+
+<LI><FONT SIZE=+1>one or more routers in each domain are border gateways</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>internet jargon: exterior gateways</FONT></LI>
+
+<LI><FONT SIZE=+1>ISO jargon: border intermediate systems (BIS)</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Border gateways form a backbone for routing</FONT></LI>
+
+<LI><FONT SIZE=+1>Policy dependent routing</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>each domain determines its own policy for how packets<BR>
+to be routed/forwarded</FONT></LI>
+</UL>
+</UL>
+
+<LI><FONT SIZE=+1><A HREF="http://www.cisco.com/univ-src/ccden/data/doc/cintrnet/ito/55167.htm">E</A><A HREF="http://www.cisco.com/univ-src/ccden/data/doc/cintrnet/ito/55146.htm">xterior
+Gateway Protocol (EGP</A><A HREF="http://www.cisco.com/univ-src/ccden/data/doc/cintrnet/ito/55167.htm">)</A></FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1><A HREF="ftp://ds.internic.net/rfc/rfc904.txt">RFC 904
+[1984]</A></FONT></LI>
+
+<LI><FONT SIZE=+1>Widely used in Internet (ARPANET) in the past, but <BR>
+now phased out by BGP, IDRP</FONT></LI>
+
+<LI><FONT SIZE=+1>Routing among AS</FONT></LI>
+
+<P><IMG SRC="egp.gif" HEIGHT=146 WIDTH=514></P>
+
+<LI><FONT SIZE=+1>Distributes complete route updates</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>contain network reachability information (so it is <BR>
+also called a reachability protocol, not a routing <BR>
+protocol) </FONT></LI>
+
+<LI><FONT SIZE=+1>no performance metric</FONT></LI>
+
+<LI><FONT SIZE=+1>no intelligence</FONT></LI>
+
+<LI><FONT SIZE=+1>allow routing loops</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Primitive functions</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>establish neighbors</FONT></LI>
+
+<LI><FONT SIZE=+1>poll to see if neighbors alive</FONT></LI>
+
+<LI><FONT SIZE=+1>distribute updates</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Messages</FONT></LI>
+
+<TABLE BORDER=1 WIDTH="70%" >
+<TR ALIGN=CENTER>
+<TD><FONT SIZE=+1><B>Message</B> </FONT></TD>
+
+<TD><B><FONT SIZE=+1>Function</FONT></B></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>Neighbor acquisition</FONT></TD>
+
+<TD><FONT SIZE=+1>Establishes/de-establishes neighbors</FONT></TD>
+</TR>
+
+<TR VALIGN=BOTTOM>
+<TD ALIGN=CENTER><FONT SIZE=+1>Neighbor reachability</FONT></TD>
+
+<TD VALIGN=CENTER><FONT SIZE=+1>Determines if neighbors are alive</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>Poll</FONT></TD>
+
+<TD><FONT SIZE=+1>Determines reachability of a particular network</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>Routing update</FONT></TD>
+
+<TD><FONT SIZE=+1>Provides routing updates</FONT></TD>
+</TR>
+
+<TR>
+<TD><FONT SIZE=+1>Error</FONT></TD>
+
+<TD><FONT SIZE=+1>Indicates error conditions</FONT></TD>
+</TR>
+</TABLE>
+<FONT SIZE=+1></FONT></UL>
+
+<LI><FONT SIZE=+1><A HREF="http://www.cisco.com/univ-src/ccden/data/doc/cintrnet/ito/55143.htm">Border
+Gateway Protocol (BG</A><A HREF="http://www.cisco.com/univ-src/ccden/data/doc/cintrnet/ito/55167.htm">P)</A></FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1><A HREF="ftp://ds.internic.net/rfc/rfc1163.txt">RFC 1163
+</A></FONT></LI>
+
+<LI><FONT SIZE=+1>Ancestor of IDRP</FONT></LI>
+
+<LI><FONT SIZE=+1>Distance vector routing</FONT></LI>
+
+<LI><FONT SIZE=+1>Can be used within and between ASs</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>one router will be elected to represent an AS <BR>
+if more than one exist</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Routing table keeps all feasible paths to a destination<BR>
+network</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>but advertises only the optimal path to neighbors</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>No periodic refresh of the entire table, exchanges <BR>
+only changes in tables</FONT></LI>
+
+<LI><FONT SIZE=+1>Update messages are sent over TCP for reliable <BR>
+delivery</FONT></LI>
+
+<LI><FONT SIZE=+1>Messages</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Open: first send, reply with keepalive</FONT></LI>
+
+<LI><FONT SIZE=+1>Keepalive: send often enough to keep the <BR>
+hold-time timer from expiring</FONT></LI>
+
+<LI><FONT SIZE=+1>Update: routing updates, include AS path (list <BR>
+of ASs on the path) and next hop information</FONT></LI>
+
+<LI><FONT SIZE=+1>Notification: send when an error is detected</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Metric: combination of different metric with the <BR>
+degree of preference</FONT></LI>
+</UL>
+</UL>
+</UL>
+</UL>
+
+<LI><FONT SIZE=+3>Routing in TANet</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Tanet backbone IP addresses: 134.208.x.x</FONT></LI>
+
+<LI><FONT SIZE=+1>Some examples</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>134.208.150 : CHC, NCTU, NTHU (110, 113, 114)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.200 : MOE, NTU (111, 112)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.201 : MOE, NCU (111, 115)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.202 : NCU, NCTU (115, 113)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.203 : NCTU, NCHU (113, 120)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.204 : NCHU, NCKU (120, 116)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.205 : NCKU, NSYSU (116, 117)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.206 : CHC, NTU (110, 112)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.207 : CHC, NCHU (112, 120)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.208 : CHC, NCKU (110, 116)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.209 : MOE, NCCU (111, 123)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.210 : NCCU, NSYSU (123, 117)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.214 : MOE, CHC (111, 110)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.215 : CHC, NCKU (110, 116)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.216 : NCKU--&gt;NSYSU, CHC, Internet (NSYSU)<BR>
+¡@¡@¡@¡@¡@¡@, NCCU (241,242,243,244)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.217 : Internet (NSYSU), NCKU (115,116)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.219.116 : TANET-Internet</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.220 : NCCU, NCKU (123,116)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.29 : NCCU, NCHU (123, 120)</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Traceroute</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>CSIE, NCCU --&gt; NSYSU (south)</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>140.123.101.250 (csie, nccu)</FONT></LI>
+
+<LI><FONT SIZE=+1>140.123.243.254 (ccu)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.220.116 (ncku)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.216.241 (ncku)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.205.117 (nsysu)</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>CSIE, NCCU --&gt; NTU (north)</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>140.123.101.250 (csie, nccu)</FONT></LI>
+
+<LI><FONT SIZE=+1>140.123.243.254 (ccu)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.220.116 (ncku)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.216.242 (ncku)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.208.110 (chc)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.206.112 (ntu)</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>CSIE, NCCU --&gt; Internet</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>140.123.101.250 (csie, nccu)</FONT></LI>
+
+<LI><FONT SIZE=+1>140.123.243.254 (ccu)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.220.116 (ncku)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.216.243 (ncku)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.217.115 (nsysu)</FONT></LI>
+
+<LI><FONT SIZE=+1>134.208.219.116 (Internet gateway)</FONT></LI>
+</UL>
+</UL>
+</UL>
+
+<LI><FONT SIZE=+3>Multicasting</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Broadcast routing</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>N point-to-point</FONT></LI>
+
+<LI><FONT SIZE=+1>Flooding</FONT></LI>
+
+<LI><FONT SIZE=+1>Reverse path forwarding (RPF)</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>MBONE</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Multicast Backbone (1992)</FONT></LI>
+
+<LI><FONT SIZE=+1>Begun from audiocast of IETF</FONT></LI>
+
+<LI><FONT SIZE=+1>Terminologies</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Islands: subnetworks that support IP multicast</FONT></LI>
+
+<LI><FONT SIZE=+1>Mrouters: routers that run multicast deamon (mrouted)</FONT></LI>
+
+<LI><FONT SIZE=+1>Tunnels: virtual point-to-point links that connect mrouters</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>A host joins/leaves a multicast by JoinHostGroup( ) and
+LeaveHostGroup( ) </FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>a join requires sending an Internet Group Management<BR>
+Protocol (IGMP) to a mrouter in the island</FONT></LI>
+
+<LI><FONT SIZE=+1>multicast packets are routed by protocols such as DVMRP<BR>
+, PIM, CBT, and MOSPF</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Applications</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Session Directory (SD): tools for show/join/create multicast
+<BR>
+sessions</FONT></LI>
+
+<LI><FONT SIZE=+1>NetVideo (NV): real time video multicasting</FONT></LI>
+
+<LI><FONT SIZE=+1>Visual Audio Tool (VAT): real time audio multicasting</FONT></LI>
+
+<LI><FONT SIZE=+1>WhiteBoard (WB): shared whiteboard </FONT></LI>
+</UL>
+</UL>
+
+<LI><FONT SIZE=+1><A HREF="http://www.cisco.com/warp/public/674/4.html">Mulricast
+protocols</A></FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Distance Vector Multicast Routing Protocol (DVMRP, RFC
+1075)</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>distance vector algorithm</FONT></LI>
+
+<LI><FONT SIZE=+1>Reverse Path Forwarding</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>RPF is for broadcast originally</FONT></LI>
+
+<LI><FONT SIZE=+1>DVMRP modifies it to Truncated RPF</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Horizon split with Poison reverse to avoid looping</FONT></LI>
+
+<LI><FONT SIZE=+1>IGMP to learn group members</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>there is a &quot;subtype&quot; field in DVMRP header
+indicates</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Group membership queries: subtype=1</FONT></LI>
+
+<LI><FONT SIZE=+1>Group membership reports: subtype=2</FONT></LI>
+
+<LI><FONT SIZE=+1>DVMRP routing updates: subtype=3</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Queries are generated periodically by mrouters (with
+<BR>
+address 224.0.0.1) to query group members on the <BR>
+subnetwork</FONT></LI>
+
+<LI><FONT SIZE=+1>End systems send reports to mrouters upon receiving<BR>
+queries</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>Truncated RPF</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Duplicate messages as in RPF</FONT></LI>
+
+<LI><FONT SIZE=+1>On a subnetwork, only one mrouter is responsible for
+<BR>
+forwarding (dominating mrouter)</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>the one with shortest distance to the source</FONT></LI>
+
+<LI><FONT SIZE=+1>tie break by preferring lower address</FONT></LI>
+</UL>
+
+<LI><FONT SIZE=+1>dominating mrouter then decides if the connected <BR>
+subnetwork is a child or a leaf for a particular multicast<BR>
+tree</FONT></LI>
+
+<LI><FONT SIZE=+1>prune messages are sent to neighbor mrouters to cut the<BR>
+braodcast tree to the multicast tree</FONT></LI>
+
+<LI><FONT SIZE=+1>dynamically join by sending a graft message</FONT></LI>
+</UL>
+</UL>
+
+<LI><FONT SIZE=+1>Protocol-Independent Multicast (PIM)</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>dense mode</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>like DVMRP, use truncated RPF</FONT></LI>
+
+<P><IMG SRC="pim1.gif" HEIGHT=316 WIDTH=520></P>
+</UL>
+
+<LI><FONT SIZE=+1>sparse mode</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>rendezvous point (RP)</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>sender and receivers register with rendezvous <BR>
+point first (prechosen)</FONT></LI>
+
+<LI><FONT SIZE=+1>optimal multicast tree is then automatically for<BR>
+med as traffic goes on</FONT></LI>
+
+<LI><FONT SIZE=+1>there is a list of RPs to choose from</FONT></LI>
+
+<LI><FONT SIZE=+1>support RP (also called core) migration</FONT></LI>
+
+<P><IMG SRC="pim2.gif" HEIGHT=231 WIDTH=450></P>
+
+<P><IMG SRC="pim3.gif" HEIGHT=231 WIDTH=450></P>
+</UL>
+</UL>
+</UL>
+
+<LI><FONT SIZE=+1>Core Based Tree (CBT)</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>Core is the RP</FONT></LI>
+
+<LI><FONT SIZE=+1>organize RPs into a multilevel global hierarchy</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>transparent to senders and receivers, they all only<BR>
+contact with their designated routers (level 0 RP)</FONT></LI>
+</UL>
+</UL>
+
+<LI><FONT SIZE=+1>Multicat Open Shortest Path First (MOSPF, RFC 1584)</FONT></LI>
+
+<UL>
+<LI><FONT SIZE=+1>modification of OSPF to multicast</FONT></LI>
+
+<LI><FONT SIZE=+1>based on shortest path from source to each destination</FONT></LI>
+</UL>
+</UL>
+</UL>
+</UL>
+
+</BODY>
+</HTML>

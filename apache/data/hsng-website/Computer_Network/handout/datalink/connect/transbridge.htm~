@@ -1,0 +1,343 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Untitled</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="../../gif/bg-slate.gif">
+
+<P><FONT COLOR="#0080FF"><FONT SIZE=+3>Transparent Bridge</FONT></FONT></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>功能簡介</FONT></FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>過濾：丟棄同一網路中互送的資料<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>前送：轉送不同網路中對送之資料</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>橋接網路(BLAN)</FONT></FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>由網路橋連結而成之網路<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>提高可靠度：某一區段網路故障不影響其他區段網路<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>提高效率：各區段獨立運作，減少衝撞機會<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>提昇安全性：監控網路資訊，避免不必要資料外流<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>配合地理環境：利用遠距離網路橋(Remote
+Bridge)可解決遠距離之問題</FONT></P>
+</UL>
+
+<P><IMG SRC="blan.gif" HEIGHT=417 WIDTH=610></P>
+
+<P><IMG SRC="blan2.gif" HEIGHT=513 WIDTH=576></P>
+
+<P><IMG SRC="../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>設計時考慮因素</FONT></FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>透明化服務</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>使用者不必知道有網路橋之存在</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>足夠大之緩衝區(buffer)</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>因應連接不同速率網路</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>位址辨認及路徑選擇</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>必須知道各工作站位置<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>知道如何適當選擇路徑</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>連接多個網路</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>雙埠(two-port
+bridge)<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>多埠(Multi-port bridge)</FONT></P>
+</UL>
+</UL>
+
+<P><IMG SRC="../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>網路橋結構</FONT></FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>多埠，每一埠接一網路<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>埠的結構：硬體介面，MAC軟體，LLC軟體，高層軟體<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>橋的結構：MAC轉送軟體，高層軟體(網路橋通訊協定，管理系統等)</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>運作原理</FONT></FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>MAC轉送軟體</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>向前送程式：負責接送與轉送<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>學習程式：檢查資料原始位址，更新過濾資料庫<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>過濾資料庫：提供訊息予向前送程式，以判斷資料該如何轉送<BR>
+　。內容由初始設定或自動學習程式填入</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>網路橋通訊軟體</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>每一網路橋埠提供LLC
+type 1服務，使網路橋間可以溝通<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>網路橋通訊訊息：使用群位址：01-80-C2-00-00-00<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>網路橋依收到之訊息進行埠狀態設定及過濾資料庫內容更正<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>網路橋也可轉送訊息給其他網路橋</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>過濾資料庫</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>三欄位：工作站位址、隸屬埠、資料登錄時間<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>當收到一MAC frame時，若其資料未在資料庫內，則加入。或<BR>
+　資料不符則更新。<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>一筆資料若太久未更新則去除<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>學習流程：原始位址在資料庫中則更新時間(及隸屬埠)，否則<BR>
+　重新登錄<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>轉送流程：若不在資料庫中，須廣播所有網路，否則將資料送<BR>
+　到正確網路<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>例子：</FONT></P>
+
+<P><IMG SRC="fildb.gif" HEIGHT=433 WIDTH=511></P>
+</UL>
+</UL>
+
+<P><IMG SRC="../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>網路迴路問題</FONT></FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>為了容錯設計，兩工作站間可能有一條以上之通訊路徑<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>迴路造成網路橋學習錯誤</FONT></P>
+
+<P><IMG SRC="loop.gif" HEIGHT=432 WIDTH=527></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>A→B<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>Bridge X,Y登錄(A,1)<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>Bridge X將訊息送到LAN2，造成Bridge
+Y更正(A,2)<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>Bridge Y將訊息送到LAN2，造成Bridge
+X更正(A,2)<BR>
+　→學習錯誤</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>利用擴張樹演算法解決</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>擴張樹名詞定義</FONT></FONT><FONT SIZE=+1>
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>分散式演算法<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>網路橋識別碼(ID)<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>網路橋埠識別碼(port
+ID)<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>MAC層群體位址(group
+MAC address)：橋與橋以此位址通訊<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>根點網路橋(Root Bridge)：具有最小ID<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>傳輸費用(Transmission
+Cost)：每一埠均有TC，通常定義為傳輸延遲<BR>
+　時間<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>路徑費用(Path Cost)：一路徑中所有傳輸埠費用之總和<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>根埠(Root Port)：除根點網路橋外，每一網路橋均有一根埠。在擴張<BR>
+　樹上，經由此埠可以到達根點網路橋<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>根路徑費用(Root Path
+Cost)：由一網路橋至根點網路橋的路徑費用。<BR>
+　此費用為所有至根點網路橋路徑費用中最小者。(如Bridge5 為10)<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>代理埠(Designated Port)：每一區域網路均有一代理埠。經由此埠至<BR>
+　根點網路橋費用最小。多條路徑費用相同時，以網路橋識別碼、網<BR>
+　路橋埠識別碼較少者為優先。(如LAN2為(B3,P2))<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>代理網路橋(Designated
+Bridge)：每一區域網路均有代理網路橋。此<BR>
+　網路橋含有代理埠。(如LAN2為B3)<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>前送延遲時間(Forward
+Delay)：傳送一筆資料到任何工作站所需最<BR>
+　長時間。<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>網路橋直徑：一個網路橋到任一工作站所需經過最多的網路橋數<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>訊息年齡(Message Age)：一訊息已生存多久的時間<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>訊息時限(Maximum Age)：一筆網路橋間通訊資料的生存極限。其<BR>
+　值由根點網路橋決定。另外資料庫的每一訊息也有訊息時限<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>問候時間(Hello Time)：根點網路橋產生通訊資料的間隔。網路正常<BR>
+　時，每一網路橋會定時收到問候訊息。若收不到問候資料，表示擴<BR>
+　張樹斷裂</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>擴張樹演算法</FONT></FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>決定根點網路橋<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>每一網路橋找出其根埠<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>每一區域網路找出其代理埠<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>每一網路橋或區域網路到根點網路橋的最小費用路徑均在擴張樹上</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>找出根點網路橋</FONT></FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>初始狀態</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>每一網路橋認定自己是根點網路橋，送出網路橋通訊協定<BR>
+　資料單元(BPDU)到所有直接相連的區域網路中，告知其他<BR>
+　網路橋<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>BPDU中根點網路辨識碼及網路橋辨識碼均填入自己的辨<BR>
+　識碼。根路徑費用則為0。埠辨識碼填入送出該BPDU之埠<BR>
+　辨識碼</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>核定狀態</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>當一網路橋收到一BPDU時，便比較其根點辨識碼是否大於本<BR>
+　身認定的根點辨識碼<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>是則丟棄此一BPDU<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>否則表示須更正根點橋辨識碼且須將此BPDU送到所有直接連<BR>
+　結的區域網路上<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>真正的根點網路橋只要在等待二倍的前送延遲時間後，便可確<BR>
+　定自己是根點網路橋(不會收到比自己辨識碼更小之BPDU)</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>正常運作狀態</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>根點網路橋每隔一段問候時間須送出問候訊息給所有的網路橋</FONT></P>
+</UL>
+</UL>
+
+<P><IMG SRC="state.gif" HEIGHT=393 WIDTH=762></P>
+
+<P><IMG SRC="../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>找出網路橋的根埠</FONT></FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>如果是由埠
+i收到比本身認定的根點辨識碼小的BPDU，則將根埠設<BR>
+　為i，並將根路徑費用設成BPDU上之根路徑費用與埠i傳輸費用的和<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>將BPDU之根路徑費用更新，並傳給其他網路橋<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>在二倍的前送延遲時間內沒有收到更好的BPDU就可確定根埠</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>找出區域網路代理埠</FONT></FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>由與其相連的網路橋共同決定<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>當一網路橋確定其根埠及根路徑費用後，便可開始參與決定是否為<BR>
+　某一區域網路之代理埠(橋)<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>若某一網路橋的根路徑費用小於目前代理埠(橋)的根路徑費用便在<BR>
+　此區域網路上送出BPDU告知其他網路橋<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>網路橋若收到根路徑費用比自己小的，則放棄代理權。否則送出<BR>
+　BPDU以爭取代理權。當根路徑費用相同時，辨識碼小的網路橋<BR>
+　優先</FONT></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+1>例子：</FONT></FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>網路橋埠狀態</FONT></FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>凡是不屬於根埠或代理埠之埠必須停止運作<BR>
+<IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18>四種狀態</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>暫停狀態(Blocking)：每一埠的初始狀態。停止運作，不處理<BR>
+　　　　　　　　　　任何資料<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>傾聽狀態(Listening)：當有可能被選為根埠或代理埠時，便進<BR>
+　　　　　　　　　　入此狀態。在此狀態時，仍不處理任何<BR>
+　　　　　　　　　　資料<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>學習壯態(Learning)：在進入傾聽狀態後一個前送延遲時間內<BR>
+　　　　　　　　　　未被取消其根埠或代理埠資格，便進入<BR>
+　　　　　　　　　　學習狀態。在此狀態時，不轉送資料，<BR>
+　　　　　　　　　　只建資料庫<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>前送狀態(Forwarding)：再經一前送延遲時間後，若未被取消<BR>
+　　　　　　　　　　資格，則便可開始執行資料轉送及學習<BR>
+　　　　　　　　　　之工作</FONT></P>
+</UL>
+</UL>
+
+<P><IMG SRC="../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>網路橋通訊協定資料格式</FONT></FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>Configuration
+BPDU：建立擴張樹時使用</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>通訊協定辨識碼：0000
+0000 0000 0000<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>通訊協定版本：0000
+0000<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>BPDU種類：00000000表Configuration，1000
+0000表架構變更<BR>
+　通知用之<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>旗標：第一個位元表架構變更，第八位元表回覆旗標<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>根點網路橋辨識碼：2位元組之可設定碼及6位元組之MAC位<BR>
+　址<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>訊息時限、問候時間，前後延遲時間均由根點網路設定</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>架構變更通知BPDU(Topology
+Change Notification(TCN))</FONT></P>
+</UL>
+
+<P><IMG SRC="bpdu.gif" HEIGHT=659 WIDTH=548></P>
+
+<P><IMG SRC="../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>擴張樹維護與重組</FONT></FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>斷裂偵測</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>每隔一個問候時間，根點網路橋會送出一個BPDU<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>只有區域網路的代理埠才可以轉送此BPDU<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>如果有網路橋在一個問候時間過後未收到根點網路橋送來的<BR>
+　BPDU則表示擴張樹斷裂</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>擴張樹重組
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>當一網路橋偵測到擴張樹斷裂後，便開始進行爭奪代理網路橋<BR>
+　的角色(即發出BPDU通知在此區域網路上之網路橋其根路徑費<BR>
+　用)<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>當一區域網路產生新代理網路橋後，便沿擴張樹路徑送出架構<BR>
+　變更BPDU給根點網路橋<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>為使此架構變更BPDU可靠地停至根點網路橋，其路徑上之網<BR>
+　路橋必須傳回覆訊息給前一個傳送的網路橋<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>根點網路橋收到後，便送出含架構變更旗標之BPDU並設定一<BR>
+　較小之前送延遲時間，以便儘快刪除各網路橋資料庫中不正確<BR>
+　之資料</FONT></P>
+</UL>
+</UL>
+
+</BODY>
+</HTML>

@@ -1,0 +1,678 @@
+<HTML>
+<HEAD>
+<TITLE>Winsockµ{¦¡³]­p</TITLE>
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Microsoft Word 2.0z">
+</HEAD>
+<BODY>
+<P>
+<CENTER><FONT SIZE=5>Winsock</FONT><FONT SIZE=5 FACE="¼Ð·¢Åé">µ{¦¡³]­p
+<BR>
+<BR>
+</FONT></CENTER>
+<P>
+<CENTER><IMG SRC="winsock1.gif"><BR>
+<BR>
+</CENTER>
+<UL>
+<LI>WSAStartup()¡G³sµ²À³¥Îµ{¦¡»P Windows Sockets DLL ªº²Ä¤@­Ó¨ç¦¡¡C
+<BR>
+</UL>
+<P>
+     ®æ  ¦¡¡G int PASCAL FAR WSAStartup( WORD wVersionRequested,
+<BR>
+              LPWSADATA lpWSAData );<BR>
+<P>
+     °Ñ  ¼Æ¡G wVersionRequested ¥i¨Ï¥Îªº Windows Sockets API ³Ì°ªª©¥»
+<BR>
+              lpWSAData  «ü¦V WSADATA ¸ê®Æªº«ü¼Ð<BR>
+          <BR>
+        struct WSAData {<BR>
+  WORD  wVersion;  /* ª©¥»¡A¥Î1.1¡A(WORD)((1&lt;&lt;8)|1} */<BR>
+   WORD  wHighVersion;<BR>
+  char   szDescription[WSADESCRIPTION_LEN+1];<BR>
+  char   szSystemStatus[WSASYSSTATUS_LEN+1];<BR>
+   unsigned short iMaxSockets;<BR>
+   unsigned short  iMaxUdpDg;<BR>
+  char FAR *  lpVendorInfo;<BR>
+        };<BR>
+<P>
+     ¶Ç¦^­È¡G ¦¨¥\ - 0
+<P>
+         ¥¢±Ñ - WSASYSNOTREADY / WSAVERNOTSUPPORTED / WSAEINVAL
+<BR>
+<P>
+ »¡©ú¡G ¦¹¨ç¦¡¡u¥²¶·¡v¬OÀ³¥Îµ{¦¡©I¥s¨ì Windows Sockets DLL ¨ç¦¡¤¤
+<BR>
+ªº²Ä¤@­Ó¡A¤]°ß¦³¦¹¨ç¦¡©I¥s¦¨¥\«á¡A¤~¥i¥H¦A©I¥s¨ä¥L Windows  Sockets
+DLL ªº¨ç¦¡¡C¦¹¨ç¦¡¥çÅý¨Ï¥ÎªÌ¥i¥H«ü©w­n¨Ï¥Îªº Windows Sockets API
+ª©¥»¡A¤ÎÀò¨ú³]­pªÌªº¤@¨Ç¸ê°T¡C (* ¥Ø«e¥u´£¨Ñ WINSOCK ²Ä 1.1 ª©ªº¥\¯à)
+<BR>
+<P>
+½d¨Ò<FONT FACE="µØ±d¥é§ºÅé">¡G</FONT>
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">  </FONT><FONT FACE="µØ±d¥é§ºÅé">if (WSAStartup(</FONT>(WORD)((1&lt;&lt;8)|1},
+(LPWSDATA)&amp;WSADATA)!=0){
+<P>
+   MessageBox(NULL, &quot;WSAStartup fail&quot;,&quot;&quot;,MB_OK);
+<P>
+   return 0L;
+<P>
+  }<BR>
+<UL>
+<LI>socket()¡G«Ø¥ßSocket¡C<BR>
+</UL>
+<P>
+    ®æ  ¦¡¡G SOCKET PASCAL FAR socket( int af, <BR>
+                                       int type,  <BR>
+                                       int protocol );<BR>
+<P>
+    °Ñ  ¼Æ¡G af  ¥Ø«e¥u´£¨Ñ PF_INET(AF_INET)<BR>
+       type  Socket ªº«¬ºA (SOCK_STREAM¡BSOCK_DGRAM)<BR>
+        protocol ³q°T¨ó©w(¦pªG¨Ï¥ÎªÌ¤£«ü©w«h³]¬°0)<BR>
+<P>
+    ¶Ç¦^­È¡G ¦¨¥\ - Socket ªºÃÑ§O½X<BR>
+         ¥¢±Ñ - INVALID_SOCKET(©I¥s WSAGetLastError() ¥i±oª¾­ì¦])
+<BR>
+<P>
+    »¡©ú¡G ¦¹¨ç¦¡¥Î¨Ó«Ø¥ß¤@ Socket¡A¨Ã¬°¦¹ Socket «Ø¥ß¨ä©Ò¨Ï¥Îªº¸ê·½¡C
+<BR>
+Socket ªº«¬ºA¥i¬° Stream Socket ©Î Datagram Socket¡C<BR>
+<P>
+½d¨Ò<FONT FACE="µØ±d¥é§ºÅé">¡G</FONT>
+<P>
+<FONT FACE="µØ±d¥é§ºÅé"> </FONT><FONT FACE="µØ±d¥é§ºÅé">tcp_sock
+= socket(PF_INET, SOCK_STREAM, 0);</FONT>
+<P>
+ udp_sock = socket(PF_INET, SOCK_DGRAM, 0);<BR>
+<UL>
+<LI>bind()¡G«ü©w Socket ªº Local ¦ì§} (Address)¡C<BR>
+</UL>
+<P>
+    ®æ  ¦¡¡G int PASCAL FAR bind( SOCKET s, <BR>
+                                  const struct sockaddr FAR *name,
+<BR>
+                                  int namelen );<BR>
+<P>
+    °Ñ  ¼Æ¡G s   SocketªºÃÑ§O½X<BR>
+      name Socketªº¦ì§}­È¡A¨ä®æ¦¡¬°<BR>
+                    struct sockaddr {<BR>
+   u_short   sa_family;<BR>
+   char       sa_data[14];<BR>
+            };<BR>
+      namelen nameªºªø«×<BR>
+<P>
+    ¶Ç¦^­È¡G ¦¨¥\ - 0<BR>
+       ¥¢±Ñ - SOCKET_ERROR  (©I¥s WSAGetLastError() ¥i±oª¾­ì¦])
+<BR>
+<P>
+    »¡©ú¡G  ¦¹¤@¨ç¦¡¬O«ü©w Local ¦ì§}¤Î Port µ¹¬Y¤@¥¼©w¦W¤§ Socket¡C
+<BR>
+¨Ï¥ÎªÌ­Y¤£¦b·N¦ì§}©Î Port ªº­È¡A¨º»ò¥L¥i¥H³]©w¦ì§}¬° INADDR_ANY¡A¤Î
+Port ¬° 0¡F¨º»òWindows Sockets ·|¦Û°Ê±N¨ä³]©w¾A·í¤§¦ì§}¤Î Port
+(1024 ¨ì 5000¤§¶¡ªº­È)¡A¨Ï¥ÎªÌ¥i¥H¦b¦¹ Socket ¯u¥¿³s±µ§¹¦¨«á¡A©I¥s
+getsockname() ¨ÓÀòª¾¨ä³Q³]©wªº­È¡C
+<P>
+    ½d¨Ò<FONT FACE="µØ±d¥é§ºÅé">¡G</FONT>
+<P>
+  struct sockaddr_in sa;
+<P>
+  sa.sin_family = PF_INET;
+<P>
+  sa.sin_port = htons(5001);   /* host to network for short int
+*/
+<P>
+  sa.sin_addr.s_addr = INADDR_ANY;
+<P>
+  bind(sock, (struct sockaddr far *)&amp;sa, sizeof(sa));<BR>
+<UL>
+<LI>listen()<FONT FACE="µØ±d¥é§ºÅé">¡G³]©w</FONT> Socket <FONT FACE="µØ±d¥é§ºÅé">¬°ºÊÅ¥ª¬ºA¡A·Ç³Æ³Q³s±µ¡C</FONT>
+</UL>
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">®æ</FONT>  <FONT FACE="µØ±d¥é§ºÅé">¦¡¡G</FONT>
+int PASCAL FAR listen( SOCKET s, int backlog );
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">°Ñ</FONT>  <FONT FACE="µØ±d¥é§ºÅé">¼Æ¡G</FONT>
+s  Socket <FONT FACE="µØ±d¥é§ºÅé">ªºÃÑ§O½X</FONT>
+<P>
+    backlog  <FONT FACE="µØ±d¥é§ºÅé">¥¼¯u¥¿§¹¦¨³s±µ«e</FONT>(<FONT FACE="µØ±d¥é§ºÅé">©|¥¼©I¥s</FONT>
+accept <FONT FACE="µØ±d¥é§ºÅé">«e</FONT>)<FONT FACE="µØ±d¥é§ºÅé">©¼ºÝªº³s±µ­n
+¨Dªº³Ì¤j­Ó¼Æ</FONT>
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">¶Ç¦^­È¡G</FONT> <FONT FACE="µØ±d¥é§ºÅé">¦¨¥\</FONT>
+- 0
+<P>
+    <FONT FACE="µØ±d¥é§ºÅé">¥¢±Ñ</FONT> - SOCKET_ERROR (<FONT FACE="µØ±d¥é§ºÅé">©I¥s</FONT>
+WSAGetLastError() <FONT FACE="µØ±d¥é§ºÅé">¥i±oª¾­ì¦]</FONT>)
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">»¡©ú¡G</FONT> <FONT FACE="µØ±d¥é§ºÅé">¨Ï¥ÎªÌ¥i§Q¥Î¦¹¨ç¦¡¨Ó³]©w</FONT>
+Socket <FONT FACE="µØ±d¥é§ºÅé">¶i¤JºÊÅ¥ª¬ºA¡A¨Ã³]©w³Ì¦h¥i¦³¦h¤Ö­Ó¦b¥¼¯u¥¿§¹¦¨³s±µ«eªº©¼ºÝªº³s±µ­n¨D¡C</FONT>(<FONT FACE="µØ±d¥é§ºÅé">¥Ø«e³Ì¤j­È­­¨î¬°</FONT>
+5, <FONT FACE="µØ±d¥é§ºÅé">³Ì¤p­È¬°</FONT>1)
+<P>
+½d¨Ò<FONT FACE="µØ±d¥é§ºÅé">¡G</FONT> listen(sock, 1)<BR>
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">©I¥s§¹</FONT> listen <FONT FACE="µØ±d¥é§ºÅé">«á¡A¦¹®É</FONT>
+Client <FONT FACE="µØ±d¥é§ºÅé">ºÝ¦pªG¨Ó³s±µªº¸Ü¡A</FONT>Client
+<FONT FACE="µØ±d¥é§ºÅé">ºÝªº³s±µ°Ê§@¡]</FONT>connect<FONT FACE="µØ±d¥é§ºÅé">¡^·|¦¨¥\¡A¤£¹L¦¹®É</FONT>
+Server <FONT FACE="µØ±d¥é§ºÅé">ºÝ¥²¶·¦A©I¥s</FONT> accept() <FONT FACE="µØ±d¥é§ºÅé">¨ç¦¡¡A¤~ºâ¥¿¦¡§¹¦¨</FONT>
+Server <FONT FACE="µØ±d¥é§ºÅé">ºÝªº³s±µ°Ê§@¡C<BR>
+</FONT>
+<UL>
+<LI>accept()<FONT FACE="µØ±d¥é§ºÅé">¡G±µ¨ü¬Y¤@</FONT> Socket <FONT FACE="µØ±d¥é§ºÅé">ªº³s±µ­n¨D¡A¥H§¹¦¨</FONT>
+Stream Socket <FONT FACE="µØ±d¥é§ºÅé">ªº³s±µ¡C</FONT>
+</UL>
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">®æ</FONT>  <FONT FACE="µØ±d¥é§ºÅé">¦¡¡G</FONT>
+SOCKET PASCAL FAR accept( SCOKET s, struct sockaddr FAR  *addr,
+    int FAR *addrlen );
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">°Ñ</FONT>  <FONT FACE="µØ±d¥é§ºÅé">¼Æ¡G</FONT>
+s    Socket<FONT FACE="µØ±d¥é§ºÅé">ªºÃÑ§O½X</FONT>
+<P>
+            addr    <FONT FACE="µØ±d¥é§ºÅé">¦s©ñ¨Ó³s±µªº©¼ºÝªº¦ì§}</FONT>
+<P>
+           addrlen addr<FONT FACE="µØ±d¥é§ºÅé">ªºªø«×</FONT>
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">¶Ç¦^­È¡G¦¨¥\</FONT> - <FONT FACE="µØ±d¥é§ºÅé">·sªº</FONT>Socket<FONT FACE="µØ±d¥é§ºÅé">ÃÑ§O½X</FONT>
+<P>
+ <FONT FACE="µØ±d¥é§ºÅé">¥¢±Ñ</FONT> - INVALID_SOCKET (<FONT FACE="µØ±d¥é§ºÅé">©I¥s</FONT>
+WSAGetLastError() <FONT FACE="µØ±d¥é§ºÅé">¥i±oª¾­ì¦]</FONT>)
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">»¡©ú¡G</FONT> Server <FONT FACE="µØ±d¥é§ºÅé">ºÝ¤§À³¥Îµ{¦¡©I¥s¦¹¤@¨ç¦¡¨Ó±µ¨ü</FONT>
+Client <FONT FACE="µØ±d¥é§ºÅé">ºÝ­n¨D¤§</FONT> Socket <FONT FACE="µØ±d¥é§ºÅé">³s±µ°Ê§@¡F¦pªG</FONT>Server
+<FONT FACE="µØ±d¥é§ºÅé">ºÝ¤§</FONT> Socket <FONT FACE="µØ±d¥é§ºÅé">¬O¬°</FONT>
+Blocking <FONT FACE="µØ±d¥é§ºÅé">¼Ò¦¡¡A¥B¨S¦³¤H­n¨D³s±µ°Ê§@¡A¨º»ò¦¹¤@¨ç¦¡·|³Q</FONT><FONT FACE="µØ±d¥é§ºÅé">
+</FONT>Block <FONT FACE="µØ±d¥é§ºÅé">¦í¡F¦pªG¬°</FONT><FONT FACE="µØ±d¥é§ºÅé">
+</FONT>Non-Blocking<FONT FACE="µØ±d¥é§ºÅé"> </FONT><FONT FACE="µØ±d¥é§ºÅé">¼Ò¦¡¡A¦¹¨ç¦¡·|°¨¤W¦^ÂÐ¿ù»~¡C</FONT>accept()
+<FONT FACE="µØ±d¥é§ºÅé">¨ç¦¡ªºµªÂÐ­È¬°¤@·sªº</FONT> Socket<FONT FACE="µØ±d¥é§ºÅé">¡A¦¹·s«Øªº</FONT>
+Socket <FONT FACE="µØ±d¥é§ºÅé">¤£¥i¦A¥Î¨Ó±µ¨ü¨ä¥¦ªº³s±µ­n¨D¡F¦ý¬O­ì¥ýºÊÅ¥¤§</FONT>
+Socket <FONT FACE="µØ±d¥é§ºÅé">¤´¥i±µ¨ü¨ä¥L¤Hªº³s±µ­n¨D¡C<BR>
+</FONT>
+<P>
+TCP socket <FONT FACE="µØ±d¥é§ºÅé">ªº</FONT> Server <FONT FACE="µØ±d¥é§ºÅé">ºÝ¦b©I¥s</FONT>
+accept() <FONT FACE="µØ±d¥é§ºÅé">«á¡A·|¶Ç¦^¤@­Ó·sªº</FONT> socket
+<FONT FACE="µØ±d¥é§ºÅé">¸¹½X¡F¦Ó³o­Ó·sªº</FONT> socket <FONT FACE="µØ±d¥é§ºÅé">¸¹½X¤~¬O¯u¥¿»P</FONT>
+Client <FONT FACE="µØ±d¥é§ºÅé">ºÝ¬Û³qªº</FONT> socket<FONT FACE="µØ±d¥é§ºÅé">¡C¤ñ¦p»¡¡A§Ú­Ì¥Î</FONT>
+socket() <FONT FACE="µØ±d¥é§ºÅé">«Ø¥ß¤F¤@­Ó</FONT> TCP socket<FONT FACE="µØ±d¥é§ºÅé">¡A¦Ó¦¹</FONT>
+socket <FONT FACE="µØ±d¥é§ºÅé">ªº¸¹½X¡]¨t²Îµ¹ªº¡^¬°</FONT> 1<FONT FACE="µØ±d¥é§ºÅé">¡AµM«á§Ú­Ì©I¥sªº</FONT>
+bind()<FONT FACE="µØ±d¥é§ºÅé">¡B</FONT>listen()<FONT FACE="µØ±d¥é§ºÅé">¡B</FONT>accept()
+<FONT FACE="µØ±d¥é§ºÅé">³£¬O°w¹ï¦¹¤@</FONT> socket<FONT FACE="µØ±d¥é§ºÅé">¡F·í§Ú­Ì¦b©I¥s</FONT>
+accept() <FONT FACE="µØ±d¥é§ºÅé">«á¡A¶Ç¦^­È¬O¥t¤@­Ó</FONT> socket
+<FONT FACE="µØ±d¥é§ºÅé">¸¹½X¡]¤]¬O¨t²Îµ¹ªº¡^¡A¤ñ¦p»¡</FONT> 3<FONT FACE="µØ±d¥é§ºÅé">¡F¨º»ò¯u¥¿»P</FONT>
+Client <FONT FACE="µØ±d¥é§ºÅé">ºÝ³s±µªº¬O¸¹½X</FONT> 3 <FONT FACE="µØ±d¥é§ºÅé">³o­Ó</FONT>
+socket<FONT FACE="µØ±d¥é§ºÅé">¡A§Ú­Ì¦¬°e¸ê®Æ¤]³£¬O­n§Q¥Î</FONT>
+socket 3<FONT FACE="µØ±d¥é§ºÅé">¡A¦Ó¤£¬O</FONT> socket 1<FONT FACE="µØ±d¥é§ºÅé">¡C
+<BR>
+</FONT>
+<P>
+½d¨Ò<FONT FACE="µØ±d¥é§ºÅé">¡G<BR>
+</FONT>
+<P>
+struct sockaddr_in sa;
+<P>
+int sa_len = sizeof(sa);
+<P>
+new_sock = accept(sock, (struct sockaddr far *)&amp;sa, &amp;sa_len)
+<BR>
+<P>
+¦Ü¦¹¡AserverºÝ¤wready for communication. ¨Ï¥ÎTCPªÌ¥i¥Îsend/recv¶Ç¦¬¸ê®Æ¡A¨Ï¥ÎUDPªÌ«h¥Îsendto/recvfrom¡C
+<BR>
+<UL>
+<LI>send()¡G¨Ï¥Î³s±µ¦¡ªº Socket ¶Ç°e¸ê®Æ¡C
+</UL>
+<P>
+    ®æ  ¦¡¡G int PASCAL FAR send( SOCKET s, <BR>
+                                  const char FAR *buf,  <BR>
+                                  int len, <BR>
+                                  int flags );
+<P>
+    °Ñ  ¼Æ¡G s   Socket ªºÃÑ§O½X<BR>
+      buf  ¦s©ñ­n¶Ç°eªº¸ê®Æªº¼È¦s°Ï<BR>
+      len   buf ªºªø«×<BR>
+      flags ¦¹¨ç¦¡³Q©I¥sªº¤è¦¡<BR>
+    ¶Ç¦^­È¡G ¦¨¥\ - °e¥Xªº¸ê®Æªø«× <BR>
+        ¥¢±Ñ - SOCKET_ERROR (©I¥s WSAGetLastError() ¥i±oª¾­ì¦])
+<P>
+    »¡©ú¡G ¦¹¨ç¦¡¾A¥Î©ó³s±µ¦¡ªº Datagram ©Î Stream Socket ¨Ó¶Ç°e¸ê®Æ¡C
+<BR>
+¹ï Datagram Socket ¨¥¡A­Y¬O datagram ªº¤j¤p¶W¹L­­¨î¡A«h±N¤£·|°e¥X
+<BR>
+¥ô¦ó¸ê®Æ¡A¨Ã·|¶Ç¦^¿ù»~­È¡C­Y¬O¶Ç°e (transport) ¨t²Î¤º¤§Àx¦sªÅ¶¡¤£
+<BR>
+°÷¦s©ñ³o¨Ç­n¶Ç°eªº¸ê®Æ¡Asend() ±N·|³Q block ¦í¡A°£«D¸Ó Socket
+³Q³]<BR>
+©w¬° non-blocking ¼Ò¦¡¡C¨Ï¥ÎªÌ¥ç¶·ª`·N send()¨ç¦¡°õ¦æ§¹¦¨¡A¨Ã¤£ªí
+<BR>
+¥Ü¸ê®Æ¤w¸g¦¨¥\¦a°e©è¹ï¤è¤F¡C flags ªº­È¥i³]¬° MSG_DONTROUTE <BR>
+(*¼È¤£´£¨Ñ¦¹¥\¯à)¤Î MSG_OOB ªº²Õ¦X¡C<BR>
+<UL>
+<LI>recv()¡G¦Û Socket ±µ¦¬¸ê®Æ¡C<BR>
+</UL>
+<P>
+    ®æ  ¦¡¡G int PASCAL FAR recv( SOCKET s, <BR>
+                                  char FAR *buf, <BR>
+                                  int len,  <BR>
+                                  int flags );<BR>
+<P>
+    °Ñ  ¼Æ¡G s   Socket ªºÃÑ§O½X<BR>
+      buf  ¦s©ñ±µ¦¬¨ìªº¸ê®Æªº¼È¦s°Ï<BR>
+       len  buf ªºªø«×<BR>
+        flags ¦¹¨ç¦¡³Q©I¥sªº¤è¦¡<BR>
+   <BR>
+    ¶Ç¦^­È¡G ¦¨¥\ - ±µ¦¬¨ìªº¸ê®Æªø«× (­Y¹ï¤è Socket ¤wÃö³¬¡A«h¬°
+0)<BR>
+       ¥¢±Ñ - SOCKET_ERROR (©I¥s WSAGetLastError() ¥i±oª¾­ì¦])
+<BR>
+<P>
+»¡©ú¡G ¦¹¨ç¦¡¥Î¨Ó¦Û³s±µ¦¡ªº Datagram Socket ©Î Stream Socket ±µ¦¬¸ê®Æ¡C¹ï
+Stream Socket ¨¥¡A§Ú­Ì¥i¥H±µ¦¬¨ì¥Ø«e¦³®Äªº (available) ¸ê®Æ¡A¦ý¨ä¼Æ¶q¤£¶W¹L
+len ªº¤j¤p¡C­Y¬O¦¹ Socket ³]©w SO_OOBINLINE¡A¥B¦³ out-of-band
+ªº¸ê®Æ¥¼³QÅª¨ú¡A¨º»ò¥u¦³ out-of-band ªº¸ê®Æ³Q¨ú¥X¡C¹ï Datagram
+Socket ¨¥¡A¥u¨ú¥X²Ä¤@­Ó datagram¡F­Y¬O¸Ó datagram ¤j©ó¨Ï¥ÎªÌ´£¨ÑªºÀx¦sªÅ¶¡¡A¨º»ò¥u¦³¸ÓªÅ¶¡¤j¤pªº¸ê®Æ³Q¨ú¥X¡A¦h¾lªº¸ê®Æ±N¿ò¥¢¡A¥B¦^ÂÐ¿ù»~ªº°T®§¡C
+flags ªº­È¥i¬° MSG_PEEK¡BMSG_OOB (*¼È¤£´£¨Ñ¦¹¥\¯à)ªº²Õ¦X¡C<BR>
+<UL>
+<LI>sendto()¡G±N¸ê®Æ°e¨ì«ü©wªº¥Øªº¦a¡C
+</UL>
+<P>
+    ®æ  ¦¡¡G int PASCAL FAR sendto( SOCKET s, <BR>
+                                    const char FAR *buf,  <BR>
+                                    int len, <BR>
+                                    int flags, <BR>
+        const struct sockaddr FAR *to,  <BR>
+                                    int tolen );<BR>
+<P>
+    °Ñ  ¼Æ¡G s   Socket ªºÃÑ§O½X<BR>
+      buf  ¦s©ñ­n¶Ç°eªº¸ê®Æªº¼È¦s°Ï<BR>
+        len  buf ªºªø«×<BR>
+       flags  ¦¹¨ç¦¡³Q©I¥sªº¤è¦¡<BR>
+          to  ¸ê®Æ­n°e¹Fªº¦ì§}<BR>
+           tolen  to ªº¤j¤p<BR>
+   <BR>
+    ¶Ç¦^­È¡G ¦¨¥\ - °e¥Xªº¸ê®Æªø«× <BR>
+      ¥¢±Ñ - SOCKET_ERROR (©I¥s WSAGetLastError() ¥i±oª¾­ì¦])
+<BR>
+<P>
+»¡©ú¡G ¦¹¨ç¦¡¾A¥Î©ó Datagram ©Î Stream Socket ¨Ó¶Ç°e¸ê®Æ¨ì«ü©wªº¦ì§}¡C
+<BR>
+¹ï Datagram Socket ¨¥¡A­Y¬O datagram ªº¤j¤p¶W¹L­­¨î¡A«h±N¤£·|°e¥X¥ô¦ó¸ê®Æ¡A¨Ã·|¶Ç¦^¿ù»~­È¡C¹ï
+Stream Socket ¨¥¡A¨ä§@¥Î»P send() ¬Û¦P¡F°Ñ¼Æ to ¤Î tolen ¦b¦¹¨ÃµL§@¥Î¡C
+­Y¬O¶Ç°e (transport) ¨t²Î¤º¤§Àx¦sªÅ¶¡¤£°÷¦s©ñ³o¨Ç­n¶Ç°eªº¸ê®Æ¡Asendto()
+±N·|³Q block ¦í¡A°£«D¸Ó Socket ³Q³]©w¬° non-blocking ¼Ò¦¡¡C¨Ï¥ÎªÌ¥ç¶·ª`·N
+sendto() ¨ç¦¡°õ¦æ§¹¦¨¡A¨Ã¤£ªí¥Ü¸ê®Æ¤w¸g¦¨¥\¦a°e©è¹ï¤è¤F¡C flags
+ªº­È¥i³]¬° MSG_DONTROUTE(*¼È¤£´£¨Ñ¦¹¥\¯à)¤Î MSG_OOB ªº²Õ¦X¡C<BR>
+<UL>
+<LI>recvfrom()¡GÅª¨ú¤@­Ó Datagram¡A¨ÃÀx¦s¸ê®Æ¨Ó·½ªº¦ì§}¡C<BR>
+</UL>
+<P>
+    ®æ  ¦¡¡G int PASCAL FAR recvfrom( SOCKET s, <BR>
+                                      char FAR *buf, <BR>
+                                      int len,  <BR>
+                                      int flags, <BR>
+                                      struct socketaddr FAR *from,
+<BR>
+                                      int FAR  *fromlen );<BR>
+<P>
+    °Ñ  ¼Æ¡G s   Socket ªºÃÑ§O½X<BR>
+       buf  ¦s©ñ±µ¦¬¨ìªº¸ê®Æªº¼È¦s°Ï<BR>
+       len  buf ªºªø«×<BR>
+      flags ¦¹¨ç¦¡³Q©I¥sªº¤è¦¡<BR>
+      from  ¸ê®Æ¨Ó·½ªº¦ì§}<BR>
+        fromlen from ªº¤j¤p<BR>
+   <BR>
+    ¶Ç¦^­È¡G ¦¨¥\ - ±µ¦¬¨ìªº¸ê®Æªø«× (­Y¹ï¤è Socket ¤wÃö³¬¡A«h¬°
+0)<BR>
+      ¥¢±Ñ - SOCKET_ERROR (©I¥s WSAGetLastError() ¥i±oª¾­ì¦])
+<BR>
+<P>
+»¡©ú¡G ¦¹¨ç¦¡¥Î¨ÓÅª¨ú¸ê®Æ¨Ã°O¿ý¸ê®Æ¨Ó·½ªº¦ì§}¡C¹ï Stream Socket
+¨¥¡A¨ä§@¥Î»P recv() ¬Û¦P¡A°Ñ¼Æ from ¤Î fromlen ±N¤£³Q¥Î¨ì¡C<BR>
+<UL>
+<LI>closesocket()<FONT FACE="µØ±d¥é§ºÅé">¡GÃö³¬¬Y¤@</FONT>Socket<FONT FACE="µØ±d¥é§ºÅé">¡C</FONT>
+</UL>
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">®æ</FONT>  <FONT FACE="µØ±d¥é§ºÅé">¦¡¡G</FONT>
+int PASCAL FAR closesocket( SOCKET s );
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">°Ñ</FONT>  <FONT FACE="µØ±d¥é§ºÅé">¼Æ¡G</FONT>
+s         Socket <FONT FACE="µØ±d¥é§ºÅé">ªºÃÑ§O½X</FONT>
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">¶Ç¦^­È¡G¦¨¥\</FONT> - 0
+<P>
+ <FONT FACE="µØ±d¥é§ºÅé">¥¢±Ñ</FONT> - SOCKET_ERROR (<FONT FACE="µØ±d¥é§ºÅé">©I¥s</FONT>
+WSAGetLastError() <FONT FACE="µØ±d¥é§ºÅé">¥i±oª¾­ì¦]</FONT>)
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">»¡©ú¡G</FONT> <FONT FACE="µØ±d¥é§ºÅé">¦¹¤@¨ç¦¡¬O¥Î¨ÓÃö³¬¬Y¤@</FONT>
+Socket<FONT FACE="µØ±d¥é§ºÅé">¡C</FONT>
+<P>
+ <FONT FACE="µØ±d¥é§ºÅé">­Y¬O¨Ï¥ÎªÌ­ì¥ý¹ï­nÃö³¬¤§</FONT> Socket
+<FONT FACE="µØ±d¥é§ºÅé">³]©w</FONT> SO_DONTLINGER<FONT FACE="µØ±d¥é§ºÅé">¡A«h¦b©I¥s¦¹¤@¨ç¦¡«á¡A·|°¨¤W¦^ÂÐ¡A¦ý¬O¦¹¤@</FONT>
+Sokcet <FONT FACE="µØ±d¥é§ºÅé">©|¥¼¶Ç°e§¹²¦ªº¸ê®Æ·|Ä~Äò°e§¹«á¤~Ãö³¬¡C</FONT>
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">­Y¬O¨Ï¥ÎªÌ­ì¥ý³]©w¦¹</FONT> Socket <FONT FACE="µØ±d¥é§ºÅé">¬°</FONT>
+SO_LINGER<FONT FACE="µØ±d¥é§ºÅé">¡A«h¦³¨âºØ±¡ªp¡G</FONT>
+<P>
+(a) Timeout <FONT FACE="µØ±d¥é§ºÅé">³]¬°</FONT> 0 <FONT FACE="µØ±d¥é§ºÅé">ªº¸Ü¡A¦¹¤@</FONT>
+Socket <FONT FACE="µØ±d¥é§ºÅé">°¨¤W­«·s³]©w</FONT> (reset)<FONT FACE="µØ±d¥é§ºÅé">¡A¥¼¶Ç§¹©Î¥¼¦¬¨ìªº¸ê®Æ¥þ³¡¿ò¥¢¡C</FONT>
+<P>
+(b) Timeout <FONT FACE="µØ±d¥é§ºÅé">¤£¬°</FONT> 0 <FONT FACE="µØ±d¥é§ºÅé">ªº¸Ü¡A«h·|±N¸ê®Æ°e§¹¡A©Î¬Oµ¥¨ì</FONT>
+Timeout <FONT FACE="µØ±d¥é§ºÅé">µo¥Í«á¤~¯u¥¿Ãö³¬¡C<BR>
+</FONT>
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">µ{¦¡µ²§ô«e¡AÅªªÌ­Ì¥i¤d¸U§O§Ñ¤F­n©I¥s</FONT>
+WSACleanup() <FONT FACE="µØ±d¥é§ºÅé">¨Ó³qª¾</FONT> Winsock Stack<FONT FACE="µØ±d¥é§ºÅé">¡F¦pªG±z¤£©I¥s¦¹¤@¨ç¦¡¡A</FONT>Winsock
+Stack <FONT FACE="µØ±d¥é§ºÅé">¤¤¦³¨Ç¸ê·½¥i¯à¤´·|³Q±z¦û¥Î¦ÓµLªk²M°£ÄÀ©ñ³é¡C
+<BR>
+</FONT>
+<UL>
+<LI><FONT FACE="CG Times (WN)">WSACleanup()</FONT><FONT FACE="µØ±d¥é§ºÅé">¡Gµ²§ô</FONT><FONT FACE="µØ±d¥é§ºÅé">
+</FONT><FONT FACE="CG Times (WN)">Windows Sockets DLL </FONT><FONT FACE="µØ±d¥é§ºÅé">ªº¨Ï¥Î¡C</FONT>
+</UL>
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">®æ</FONT><FONT FACE="CG Times (WN)"> 
+</FONT><FONT FACE="µØ±d¥é§ºÅé">¦¡¡G</FONT><FONT FACE="CG Times (WN)">
+int PASCAL FAR WSACleanup( void );</FONT>
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">°Ñ</FONT><FONT FACE="CG Times (WN)"> 
+</FONT><FONT FACE="µØ±d¥é§ºÅé">¼Æ¡G</FONT><FONT FACE="CG Times (WN)">
+</FONT><FONT FACE="µØ±d¥é§ºÅé">µL</FONT>
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">¶Ç¦^­È¡G ¦¨¥\</FONT><FONT FACE="CG Times (WN)">
+- 0</FONT>
+<P>
+ <FONT FACE="µØ±d¥é§ºÅé">¥¢±Ñ</FONT><FONT FACE="CG Times (WN)">
+- SOCKET_ERROR (</FONT><FONT FACE="µØ±d¥é§ºÅé">©I¥s</FONT><FONT FACE="µØ±d¥é§ºÅé">
+</FONT><FONT FACE="CG Times (WN)">WSAGetLastError() </FONT><FONT FACE="µØ±d¥é§ºÅé">¥i±oª¾­ì¦]</FONT><FONT FACE="CG Times (WN)">)</FONT>
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">»¡©ú¡G</FONT><FONT FACE="CG Times (WN)">
+</FONT><FONT FACE="µØ±d¥é§ºÅé">À³¥Îµ{¦¡¦b¨Ï¥Î</FONT><FONT FACE="µØ±d¥é§ºÅé">
+</FONT><FONT FACE="CG Times (WN)">Windows Sockets DLL </FONT><FONT FACE="µØ±d¥é§ºÅé">®É¥²¶·¥ý©I¥s</FONT><FONT FACE="µØ±d¥é§ºÅé">
+</FONT><FONT FACE="CG Times (WN)">WSAStartup() </FONT><FONT FACE="µØ±d¥é§ºÅé">¨Ó¦V</FONT><FONT FACE="µØ±d¥é§ºÅé">
+</FONT><FONT FACE="CG Times (WN)">Windows Sockets DLL </FONT><FONT FACE="µØ±d¥é§ºÅé">µù¥U¡F·íÀ³¥Îµ{¦¡¤£¦A»Ý­n¨Ï¥Î</FONT><FONT FACE="µØ±d¥é§ºÅé">
+</FONT><FONT FACE="CG Times (WN)">Windows  Sockets DLL </FONT><FONT FACE="µØ±d¥é§ºÅé">®É¡A¶·©I¥s¦¹¤@¨ç¦¡¨Óµù¾P¨Ï¥Î¡A¥H«KÄÀ©ñ¨ä¥e¥Îªº¸ê·½¡C
+<BR>
+</FONT>
+<UL>
+<LI>ClientºÝ¤§µ{¦¡:
+</UL>
+<P>
+connect()<FONT FACE="µØ±d¥é§ºÅé">¡G­n¨D³s±µ¬Y¤@</FONT> TCP Socket
+<FONT FACE="µØ±d¥é§ºÅé">¨ì«ü©wªº¹ï¤è¡C</FONT>
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">®æ</FONT>  <FONT FACE="µØ±d¥é§ºÅé">¦¡¡G</FONT>
+int PASCAL FAR connect( SOCKET s, const struct sockaddr
+<P>
+    FAR *name, int namelen );
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">°Ñ</FONT>  <FONT FACE="µØ±d¥é§ºÅé">¼Æ¡G</FONT>
+s   Socket <FONT FACE="µØ±d¥é§ºÅé">ªºÃÑ§O½X</FONT>
+<P>
+ name  <FONT FACE="µØ±d¥é§ºÅé">¦¹</FONT> Socket <FONT FACE="µØ±d¥é§ºÅé">·Q­n³s±µªº¹ï¤è¦ì§}</FONT>
+<P>
+ namelen name<FONT FACE="µØ±d¥é§ºÅé">ªºªø«×</FONT>
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">¶Ç¦^­È¡G</FONT> <FONT FACE="µØ±d¥é§ºÅé">¦¨¥\</FONT>
+- 0
+<P>
+  <FONT FACE="µØ±d¥é§ºÅé">¥¢±Ñ</FONT> - SOCKET_ERROR (<FONT FACE="µØ±d¥é§ºÅé">©I¥s</FONT>WSAGetLastError()<FONT FACE="µØ±d¥é§ºÅé">¥i±oª¾­ì¦]</FONT>)
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">»¡©ú¡G</FONT> <FONT FACE="µØ±d¥é§ºÅé">¦¹¨ç¦¡¥Î¨Ó¦V¹ï¤è­n¨D«Ø¥ß³s±µ¡C­Y¬O«ü©wªº¹ï¤è¦ì§}¬°</FONT>
+0 <FONT FACE="µØ±d¥é§ºÅé">ªº¸Ü¡A·|¶Ç¦^¿ù»~­È¡C·í³s±µ«Ø¥ß§¹¦¨«á¡A¨Ï¥ÎªÌ§Y¥i§Q¥Î¦¹¤@</FONT>
+Socket <FONT FACE="µØ±d¥é§ºÅé">¨Ó°µ¶Ç°e©Î±µ¦¬¸ê®Æ¤§¥Î¤F¡C</FONT>
+<P>
+½d¨Ò<FONT FACE="µØ±d¥é§ºÅé">¡G</FONT>
+<P>
+  struct sockaddr_in sa;
+<P>
+  sa.sin_family = PF_INET;
+<P>
+  sa.sin_port = htons(5001);   /* server's port number*/
+<P>
+  sa.sin_addr.s_addr = htonl(serverip);
+<P>
+  connect(sock, (struct sockaddr far *)&amp;sa, sizeof(sa));
+<P>
+<CENTER><B><FONT SIZE=5>Asynchronous Control<BR>
+</FONT></B></CENTER>
+<P>
+³]©waasynchronous mode, µ¥eventµo¥Í®É¡A¨t²Î³qª¾«á¦A³B²z¡C
+<UL>
+<LI>WSAAsyncSelect()<FONT FACE="µØ±d¥é§ºÅé">¡G­n¨D¬Y¤@</FONT>
+Socket <FONT FACE="µØ±d¥é§ºÅé">¦³¨Æ¥ó</FONT> (event) <FONT FACE="µØ±d¥é§ºÅé">µo¥Í®É³qª¾¨Ï¥ÎªÌ¡C</FONT>
+</UL>
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">®æ</FONT>  <FONT FACE="µØ±d¥é§ºÅé">¦¡¡G</FONT>
+int PASCAL FAR WSAAsyncSelect( SOCKET s, HWND hWnd, 
+<P>
+    unsigned int wMsg, long lEvent );
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">°Ñ</FONT>  <FONT FACE="µØ±d¥é§ºÅé">¼Æ¡G</FONT>
+s  Socket <FONT FACE="µØ±d¥é§ºÅé">ªº½s¸¹</FONT>
+<P>
+     hWnd <FONT FACE="µØ±d¥é§ºÅé">°Ê§@§¹¦¨«á¡A±µ¨ü°T®§ªºµøµ¡</FONT>
+handle
+<P>
+      wMsg  <FONT FACE="µØ±d¥é§ºÅé">¶Ç¦^µøµ¡ªº°T®§</FONT>
+<P>
+    lEvent  <FONT FACE="µØ±d¥é§ºÅé">À³¥Îµ{¦¡¦³¿³½ìªººô¸ô¨Æ¥ó</FONT>
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">¶Ç¦^­È¡G</FONT> <FONT FACE="µØ±d¥é§ºÅé">¦¨¥\</FONT>
+- 0
+<P>
+    <FONT FACE="µØ±d¥é§ºÅé">¥¢±Ñ</FONT> - SOCKET_ERROR (<FONT FACE="µØ±d¥é§ºÅé">©I¥s</FONT>
+WSAGetLastError() <FONT FACE="µØ±d¥é§ºÅé">¥i±oª¾­ì¦]</FONT>)
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">»¡©ú¡G</FONT> <FONT FACE="µØ±d¥é§ºÅé">¦¹¨ç¦¡¬OÅý¨Ï¥ÎªÌ¥Î¨Ó­n¨D</FONT>
+Windows Sockets DLL <FONT FACE="µØ±d¥é§ºÅé">¦b°»´ú¨ì¬Y¤@</FONT>
+ Socket <FONT FACE="µØ±d¥é§ºÅé">¦³ºô¸ô¨Æ¥ó®É°e°T®§¨ì¨Ï¥ÎªÌ«ü©wªºµøµ¡¡Fºô¸ô¨Æ¥ó¬O¥Ñ°Ñ¼Æ</FONT>
+lEvent <FONT FACE="µØ±d¥é§ºÅé">³]©w¡C©I¥s¦¹¨ç¦¡·|¥D°Ê±N¸Ó</FONT>
+Socket <FONT FACE="µØ±d¥é§ºÅé">³]©w¬°</FONT> Non-blocking <FONT FACE="µØ±d¥é§ºÅé">¼Ò¦¡¡C</FONT>lEvent
+<FONT FACE="µØ±d¥é§ºÅé">ªº­È¥i¬°¥H¤U¤§¡u</FONT>OR<FONT FACE="µØ±d¥é§ºÅé">¡v²Õ¦X¡G</FONT>(<FONT FACE="µØ±d¥é§ºÅé">°Ñ¨£</FONT>
+WINSOCK<FONT FACE="µØ±d¥é§ºÅé">²Ä</FONT>1.1<FONT FACE="µØ±d¥é§ºÅé">ª©</FONT>88<FONT FACE="µØ±d¥é§ºÅé">¡B</FONT>89<FONT FACE="µØ±d¥é§ºÅé">­¶</FONT>)
+<I><B>FD_READ<FONT FACE="µØ±d¥é§ºÅé">¡B</FONT>FD_WRITE<FONT FACE="µØ±d¥é§ºÅé">¡B</FONT>FD_OOB<FONT FACE="µØ±d¥é§ºÅé">¡B</FONT>FD_ACCEPT<FONT FACE="µØ±d¥é§ºÅé">¡B</FONT>FD_CONNECT<FONT FACE="µØ±d¥é§ºÅé">¡B</FONT>FD_CLOSE</B></I>
+ <FONT FACE="µØ±d¥é§ºÅé">¨Ï¥ÎªÌ­Y¬O°w¹ï¬Y¤@</FONT>Socket<FONT FACE="µØ±d¥é§ºÅé">¦A¦¸©I¥s¦¹¨ç¦¡®É¡A·|¨ú®ø¹ï¸Ó</FONT>
+Socket   <FONT FACE="µØ±d¥é§ºÅé">­ì¥ý¤§³]©w¡C­Y­n¨ú®ø¹ï¸Ó</FONT>Socket
+<FONT FACE="µØ±d¥é§ºÅé">ªº©Ò¦³³]©w¡A«h</FONT> lEvent <FONT FACE="µØ±d¥é§ºÅé">ªº­È¥²¶·³]¬°</FONT>
+0<FONT FACE="µØ±d¥é§ºÅé">¡C<BR>
+</FONT>
+<P>
+½d¨Ò<FONT FACE="µØ±d¥é§ºÅé">¡G</FONT>
+<P>
+   ¦b Winmain() ¤¤
+<P>
+    hwnd = CreateWindow(…});
+<P>
+   ­n¨t²Î¦bsock³o­Ósocket§¹¦¨accept()«á¡A³qª¾hwnd³o­Ówindow, «h
+<P>
+    WSAAsyncSelect(sock,hwnd,ASYNC_EVENT,FD_ACCEPT);
+<P>
+   &nbsp;Note: ¥i¥Hcall WSAAsyncSelect¤@¦¸¥H¤W¡C
+<P>
+   ­n¨ú®ø³o­Óasynchronous mode³]©w¡A«h
+<P>
+     WSAAsyncSelect(sock,hwnd,0,0);
+<UL>
+<LI>Catch Message
+</UL>
+<P>
+¦bWndProc() ¤¤
+<P>
+ switch (message) {
+<P>
+  case ASYN_EVENT: {
+<P>
+   …}.. process …}.
+<P>
+  }
+<P>
+ }
+<P>
+¨ä¤¤
+<P>
+ wParam¦s¨º¤@socketµo¥Íevent
+<P>
+ lParamªºHIWORD¦serror code
+<P>
+ lParamªºLOWORD¦sevent code<BR>
+<P>
+½d¨Ò<FONT FACE="µØ±d¥é§ºÅé">¡G</FONT>
+<P>
+ switch (WSAGETSELECTEVENT(lParam)) {
+<P>
+  case FD_ACCEPT: {
+<P>
+   if  (WSAGETSELECTERROR(lParam)!=0) {
+<P>
+    showmsg(&quot;error at asynchronous accept!&quot;);
+<P>
+   }
+<P>
+   …….
+<P>
+   ……
+<P>
+  }
+<P>
+  case FD_READ: {
+<P>
+   ……
+<P>
+   ……
+<P>
+  }
+<P>
+ }<BR>
+<P>
+ ¦pªG¦³¤@­Ó¥H¤Wªºsocket¦bµ¥asynchronous event,«h¥i¥ÎwParam¿ë§O¡A¦p
+<P>
+  send(wParam,&amp;buf, strlen(buf),0);
+<P>
+  recv(wParam,&amp;buf,sizeof(buf));
+<P>
+ FD_WRITE eventµo¥Í®É¾÷: socket¥i¥H¶Ç¥Bsystem buffer¦³ªÅ¡C
+<P>
+ buffer overflow code¬°10035 (WSAEWOULDBLOCK)
+<UL>
+<LI>Blocking
+</UL>
+<P>
+  ¦³¨Ç°Ê§@(¦pread)·|³y¦¨blocking¡A¦¹®É­Y¦³¨ä¥Leventµo¥Í¡A¥i¥H§Q¥ÎWSAIsBlocking()ÀË¬d¬O§_¦³block¡A­Y¦³¦A¥ÎWSACancelBlockingCall()¨ú®øblocking¤§°Ê§@¡C
+<P>
+ ¦bWindows 3.1¤U¡A­Y¬Oblocked®É¡A·|°µ¤U¦C¨Æ
+<P>
+ for (;;) {
+<P>
+  while (Blocking Hook());
+<P>
+  if (operation_cancel());
+<P>
+  if (operation_complete());
+<P>
+    break;
+<P>
+ }<BR>
+<P>
+ Block Hook() {
+<P>
+  MSG msg;
+<P>
+  BOOL ret;
+<P>
+  ret = (BOOL) PeekMessage(&amp;msg,NULL,0,0,PM_REMOVE);
+<P>
+  if (ret) {
+<P>
+   TranslateMessage(&amp;msg);
+<P>
+   Dispatch Message(&amp;meg);
+<P>
+  }
+<P>
+  return ret;
+<P>
+ }<BR>
+<UL>
+<LI> ioctlsocket()<FONT FACE="µØ±d¥é§ºÅé">¡G±±¨î</FONT> Socket
+<FONT FACE="µØ±d¥é§ºÅé">ªº¼Ò¦¡¡C</FONT>
+</UL>
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">®æ</FONT>  <FONT FACE="µØ±d¥é§ºÅé">¦¡¡G</FONT>
+int PASCAL FAR ioctlsocket( SOCKET s, long cmd, u_long  FAR *argP
+);
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">°Ñ</FONT>  <FONT FACE="µØ±d¥é§ºÅé">¼Æ¡G</FONT>
+s Socket <FONT FACE="µØ±d¥é§ºÅé">ªºÃÑ§O½X</FONT>
+<P>
+  cmd  <FONT FACE="µØ±d¥é§ºÅé">«ü¥O¦WºÙ</FONT>
+<P>
+   argP <FONT FACE="µØ±d¥é§ºÅé">«ü¦V</FONT> cmd <FONT FACE="µØ±d¥é§ºÅé">°Ñ¼Æªº«ü¼Ð</FONT>
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">¶Ç¦^­È¡G¦¨¥\</FONT> - 0
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">¥¢±Ñ</FONT> - SOCKET_ERROR (<FONT FACE="µØ±d¥é§ºÅé">©I¥s</FONT>
+WSAGetLastError() <FONT FACE="µØ±d¥é§ºÅé">¥i±oª¾­ì¦]</FONT>)
+<P>
+<FONT FACE="µØ±d¥é§ºÅé">»¡©ú¡G</FONT> <FONT FACE="µØ±d¥é§ºÅé">¦¹¨ç¦¡¥Î¨ÓÀò¨ú©Î³]©w</FONT>
+Socket <FONT FACE="µØ±d¥é§ºÅé">ªº¹B§@°Ñ¼Æ¡C¨ä©Ò´£¨Ñªº«ü¥O¦³¡G</FONT>(<FONT FACE="µØ±d¥é§ºÅé">°Ñ¨£</FONT>
+WINSOCK <FONT FACE="µØ±d¥é§ºÅé">²Ä</FONT> 1.1 <FONT FACE="µØ±d¥é§ºÅé">ª©</FONT>
+35<FONT FACE="µØ±d¥é§ºÅé">¡B</FONT>36 <FONT FACE="µØ±d¥é§ºÅé">­¶</FONT>)
+<P>
+cmd <FONT FACE="µØ±d¥é§ºÅé">ªº­È¥i¬°¡G</FONT>
+<P>
+FIONBIO    -- <FONT FACE="µØ±d¥é§ºÅé">¶}Ãö</FONT> non-blocking
+<FONT FACE="µØ±d¥é§ºÅé">¼Ò¦¡</FONT>
+<P>
+FIONREAD   -- <FONT FACE="µØ±d¥é§ºÅé">¦Û</FONT> Socket <FONT FACE="µØ±d¥é§ºÅé">¤@¦¸¥iÅª¨úªº¸ê®Æ¶q¡]¥Ø«e</FONT>
+in buffer <FONT FACE="µØ±d¥é§ºÅé">ªº¸ê®Æ¶q¡^</FONT>
+<P>
+SIOCATMARK -- OOB <FONT FACE="µØ±d¥é§ºÅé">¸ê®Æ¬O§_¤w³QÅª¨ú§¹</FONT>
+<P>
+½d¨Ò<FONT FACE="µØ±d¥é§ºÅé">¡G</FONT>
+<P>
+ ioctlsocket(sock, FIONREAD, (u_long FAR)&amp;argP);
+<UL>
+<LI>select()¡GÀË¬d¤@©Î¦h­Ó Sockets ¬O§_³B©ó¥iÅª¡B¥i¼g©Î¿ù»~ªºª¬ºA¡C
+<BR>
+</UL>
+<P>
+    ®æ  ¦¡¡G int PASCAL FAR select( int nfds, <BR>
+                                  fd_set FAR *readfds,  <BR>
+                                  fd_set FAR *writefds, <BR>
+                    fd_set FAR *exceptfds,  <BR>
+                                  const struct timeval FAR *timeout
+);<BR>
+<P>
+    °Ñ  ¼Æ¡G nfds  ¦¹°Ñ¼Æ¦b¦¹¨ÃµL§@¥Î<BR>
+      readfds  ­n³QÀË¬d¬O§_¥iÅªªº Sockets<BR>
+      writefds  ­n³QÀË¬d¬O§_¥i¼gªº Sockets<BR>
+       exceptfds  ­n³QÀË¬d¬O§_¦³¿ù»~ªº Sockets (*¼ÈµL§@¥Î)<BR>
+       timeout  ¦¹¨ç¦¡¸Óµ¥«Ýªº®É¶¡¡C­Y¬° NULL ®É¡A<BR>
+    ªí¥Ü blocking¡A¦¹¨ç¦¡·|µ¥¨ì¦³¨Æ¥óµo¥Í¡C<BR>
+   <BR>
+    ¶Ç¦^­È¡G ¦¨¥\ - ²Å¦X±ø¥óªº Sockets Á`¼Æ (­Y Timeout µo¥Í¡A«h¬°
+0)<BR>
+       ¥¢±Ñ - SOCKET_ERROR (©I¥s WSAGetLastError() ¥i±oª¾­ì¦])
+<BR>
+<P>
+    »¡©ú¡G ¨Ï¥ÎªÌ¥i§Q¥Î¦¹¨ç¦¡¨ÓÀË¬d Sockets ¬O§_¦³¸ê®Æ¥i³QÅª¨ú¡A
+<BR>
+©Î¬O¦³ªÅ¶¡¥i¥H¼g¤J¡A©Î¬O¦³¿ù»~µo¥Í¡C<BR>
+<P>
+½d¨Ò¡G
+<P>
+  FD_ZERO(*set); /* reset a set */
+<P>
+  FD_SET(s, *set); /* add s into set */
+<P>
+  FD_CLR(s, *set); /* delete s from set*/
+<P>
+  FD_ISSET(s, *set); /* Is s in the set */<BR>
+<P>
+  timeout.tv_sec = 0;
+<P>
+  timeout.tv_usec = 100000;<BR>
+<P>
+  select(nfds, readset, writeset, exceptset, &amp;timeout);<BR>
+<P>
+©ú
+</BODY>
+</HTML>

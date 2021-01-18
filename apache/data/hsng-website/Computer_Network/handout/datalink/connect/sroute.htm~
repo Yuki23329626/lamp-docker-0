@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Untitled</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="../../gif/bg-slate.gif">
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>原始選徑(Source routing) </FONT></FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>傳輸路徑由工作站選定並將路徑訊息放入資料中
+</FONT></P>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>只有在路徑訊息上的網路橋才做資料轉送
+</FONT></P>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>特性
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>可使用最佳傳輸路徑
+<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>網路橋不需要過濾資料庫及擴張樹演算法
+<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>提供非透明化服務 <BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>有效使用所有路徑</FONT></P>
+</UL>
+</UL>
+
+<P><IMG SRC="../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>路徑型態 </FONT></FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>沒有路徑：在同一區域網路中，網路橋不轉送
+</FONT></P>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>指定路徑：工作站指定單一路徑，網路橋依路徑訊息轉送資料
+</FONT></P>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>所有路徑：網路橋廣播資料，供找尋路徑使用
+</FONT></P>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>擴張樹路徑：沿擴張樹結構廣播，亦可使找尋路徑使用
+</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>位址模式 </FONT></FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>個別位址
+</FONT></P>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>群體位址
+</FONT></P>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>廣播位址
+</FONT></P>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>路徑型態與位址模式：</FONT></P>
+</UL>
+
+<P><BR>
+<IMG SRC="t12-1.gif" HEIGHT=684 WIDTH=594></P>
+
+<P><IMG SRC="../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>路徑資訊取得方法</FONT></FONT><FONT SIZE=+1>
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>人為載入
+</FONT></P>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>詢問同網路上之其他工作站
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>需有一部事先載入
+</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>自動尋找
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>利用路徑尋找程序
+<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>可能造成廣播風暴(broadcast
+storm)</FONT></P>
+</UL>
+</UL>
+
+<P><IMG SRC="../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>路徑自動尋找方法</FONT></FONT><FONT SIZE=+1>
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>方法一
+</FONT></P>
+</UL>
+
+<UL>
+<UL>
+<P><FONT SIZE=+1>(1)原始工作站用所有路徑型態廣播要求 <BR>
+(2)目的地工作站以指定單一路徑方法回答 </FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>方法二(IEEE
+802.5) </FONT></P>
+
+<UL>
+<P><FONT SIZE=+1>(1)原始工作站用擴張樹路徑型態廣播要求 <BR>
+(2)目的地工作站用所有路徑型態廣播其回答 <BR>
+(3)例子：</FONT></P>
+
+<P><IMG SRC="f12-2.gif" HEIGHT=684 WIDTH=433></P>
+</UL>
+</UL>
+
+<P><IMG SRC="../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>路徑取捨方法</FONT></FONT><FONT SIZE=+1>
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>最小傳輸延遲時間
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>如最早收到之回答之路徑
+</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>最少網路橋個數之路徑
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>如某時間內所有到回答中，含最少網路橋之路徑
+<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>或第一個少於n個網路橋之路徑
+</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>允許最大資料尺寸(frame
+size)之路徑 </FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>某時間內允許最大尺寸或第一個大於某尺寸之路徑
+</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>以上三個之結合</FONT></P>
+</UL>
+
+<P><IMG SRC="../../gif/bar.gif" HEIGHT=20 WIDTH=600></P>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+2>資料格式</FONT></FONT><FONT SIZE=+1>
+</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>RII：Routing
+Information Indicator</FONT></P>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>RC：4
+fields</FONT></P>
+
+<UL>
+<P><IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19><FONT SIZE=+1>路徑型態
+<BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>訊息長度 <BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>訊息方向 <BR>
+<IMG SRC="../../gif/gr_diam.gif" HEIGHT=19 WIDTH=19>最大資料尺寸：</FONT></P>
+
+<P><IMG SRC="t12-2.gif" HEIGHT=324 WIDTH=494></P>
+</UL>
+
+<P><IMG SRC="../../gif/redcube.gif" HEIGHT=18 WIDTH=18><FONT SIZE=+1>RI除RC外，另含14對
+( LAN , Bridge ) 資訊，其中LAN佔12 bits，<BR>
+　Bridge ID佔4 bits</FONT><BR>
+</P>
+</UL>
+<CENTER>
+<P><A HREF="javascript:history.go(-1)">
+<IMG SRC="../../../gif/goup.jpg" BORDER=0 HEIGHT=55 WIDTH=136></A></P>
+</CENTER>
+</BODY>
+</HTML>

@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>The member delete subsystem </TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#FFFFFF" LINK="#FFFF00" VLINK="#00FFFF" ALINK="#FF0000"
+BACKGROUND="blue.gif">
+
+<CENTER><P><A NAME="TOP"></A></P></CENTER>
+
+<CENTER>
+<TABLE BORDER><tr><td><font size="+4"><blink>學生退選刪除系統</blink></font></font></table><BR>
+
+
+<P><BR>
+<IMG SRC="l_red.gif" ALT="ball" HEIGHT=20 WIDTH=20><FONT SIZE=+2>歡迎加入電腦網路行列</FONT><IMG SRC="l_red.gif" ALT="ball" HEIGHT=20 WIDTH=20><BR>
+<BR>
+</P>
+</center>
+<a href="/regist/mail/mail.html">進入網路郵局</A><BR>
+<a href="/cgi-bin/regist/show_mem">顯示修課的人</a>
+<p>
+<Center><p>
+<img src="/regist/colorbar.gif">
+<FORM METHOD="POST"
+ACTION="/cgi-bin/regist/del_mem"><font size="+2">請 輸 入 以 下 資 料</font><BR>
+<BR>
+</P>
+<A2>若是學生自行退選，請輸入第一二項；<br>
+若由系統管理者刪除，請輸入第一三四項。</A2><p>
+</center>
+<DL>
+
+<DT><DD><IMG SRC="/regist/smile.gif" ><font size="+1">1.欲退選學生學號:</font>  </DT>
+<INPUT NAME="ID" TYPE="text" VALUE="" SIZE=9><BR>
+</DD>
+
+<DT><DD><IMG SRC="/regist/smile.gif" > <font size="+1">2.學生密碼:</font> </DT>
+<INPUT NAME="passwd" TYPE="password" VALUE="" SIZE=8><BR>
+</DD>
+
+<DT><DD><IMG SRC="/regist/smile.gif" ><font size="+1">3.系統管理者帳號:</font>
+</DT>
+<INPUT NAME="ID" TYPE="text" VALUE="" SIZE=9><BR>
+</DD>
+
+<DT><DD><IMG SRC="/regist/smile.gif" > <font size="+1">4.系統管理者密碼:</font> </DT>
+<INPUT NAME="check_passwd" TYPE="password" VALUE="" SIZE=8><BR>
+</DD>
+
+</DL>
+<CENTER><P><INPUT TYPE="submit" VALUE="確定">.... <INPUT TYPE="reset" VALUE="擦掉重寫">.
+<p>
+<img src="/regist/colorbar.gif"></P></CENTER>
+
+<P></SELECT><BR>
+<BR>
+</FORM></P>
+
+</BODY>
+</HTML>

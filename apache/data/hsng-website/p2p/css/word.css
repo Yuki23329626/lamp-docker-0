@@ -1,0 +1,28 @@
+.word {
+	font-size: 13px;
+	line-height: 20px;
+	color: #333333;
+}
+a:link {
+	font-size: 13px;
+	line-height: 20px;
+	color: #333333;
+	text-decoration: none;
+}
+a:visited {
+	font-size: 13px;
+	line-height: 20px;
+	color: #333333;
+	text-decoration: none;
+}
+a:hover {
+	font-size: 13px;
+	color: #0033CC;
+	text-decoration: underline;
+}
+a:active {
+	font-size: 13px;
+	line-height: 20px;
+	color: #0033CC;
+	text-decoration: underline;
+}
