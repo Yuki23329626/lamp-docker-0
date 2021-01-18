@@ -115,8 +115,8 @@
                 <td colspan="6" style="font-size: 60px">
                     <?php
 
-                    require_once $_SERVER['DOCUMENT_ROOT'] . 'pi/carLocationSearch/Foundation/HttpReq.php';
-                    require_once $_SERVER['DOCUMENT_ROOT'] . 'pi/carLocationSearch/Foundation/Config.php';
+                    require_once $_SERVER['DOCUMENT_ROOT'] . '/pi/carLocationSearch/Foundation/HttpReq.php';
+                    require_once $_SERVER['DOCUMENT_ROOT'] . '/pi/carLocationSearch/Foundation/Config.php';
 
                     if (isset($_POST['submitButton'])){
 
@@ -211,7 +211,7 @@
                         </table>
                         <?php
 
-                        require_once $_SERVER['DOCUMENT_ROOT'] . 'pi/carLocationSearch/Foundation/Config.php';
+                        require_once $_SERVER['DOCUMENT_ROOT'] . '/pi/carLocationSearch/Foundation/Config.php';
 
                         $url = Config::$ipUrl.'carLocationSearch/Manager/location_query_all.php';
 
@@ -295,7 +295,7 @@
                     <td>
                         <?php
 
-                        require_once $_SERVER['DOCUMENT_ROOT'] . 'pi/carLocationSearch/Foundation/Config.php';
+                        require_once $_SERVER['DOCUMENT_ROOT'] . '/pi/carLocationSearch/Foundation/Config.php';
 
                         $url = Config::$ipUrl.'carLocationSearch/Manager/location_query_all.php';
 
