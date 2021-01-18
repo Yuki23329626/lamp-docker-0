@@ -8,13 +8,13 @@ header("Content-Type: application/json; charset=UTF-8");
 require_once $_SERVER['DOCUMENT_ROOT'] . '/carLocationSearch/Foundation/HelpUtil.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/carLocationSearch/Foundation/HttpReq.php';
 // require_once $_SERVER['DOCUMENT_ROOT'] . '/../../dbConfig/DatabaseConfig.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/dbConfig/DatabaseConfig.php';
+// require_once $_SERVER['DOCUMENT_ROOT'] . '/dbConfig/DatabaseConfig.php';
 
-// class DatabaseConfig
-// {
-//     public static $account = 'root';
-//     public static $password = $_ENV["MYSQL_ROOT_PASSWORD"];
-// }
+class DatabaseConfig
+{
+    public static $account = 'root';
+    public static $password = $_ENV["MYSQL_ROOT_PASSWORD"];
+}
 
 $username = DatabaseConfig::$account;
 $password = DatabaseConfig::$password;
