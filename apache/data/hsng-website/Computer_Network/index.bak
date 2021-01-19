@@ -1,7 +1,0 @@
-<HTML>
-<TITLE>電腦網路</TITLE>
-<FRAMESET COLS="150,*" BORDER=2>
-  <FRAME NAME="menu" SRC="menu.html" FRAMEBORDER=0 >
-  <FRAME NAME="display" SRC="network.html" FRAMEBORDER=0 NORESIZE>
-</FRAMESET>
-</HTML>

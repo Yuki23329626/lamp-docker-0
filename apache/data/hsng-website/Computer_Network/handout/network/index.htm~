@@ -1,9 +1,0 @@
-<HTML>
-<FRAMESET ROWS="*,50">
-  <FRAMESET  COLS="15%,85%">
-     <FRAME SRC="content.htm" NAME="LEFT">
-     <FRAME SRC="./intro/intro.htm" NAME="RIGHT">
-  </FRAMESET>
-  <FRAME SRC="../toolbar.htm" NAME="DOWN">
-</FRAMESET>
-</HTML>
