@@ -1851,9 +1851,12 @@
 			padding: 1.5rem;
 		}
 
-		.box .content .align-center h2,
-		.box .content .align-center h4{
+		.box .content .align-center h2{
 			color: rgb(255, 255, 255);
+		}
+
+		.box .content .align-center h4{
+			color: rgb(190, 190, 190);
 		}
 
 		.box > :last-child,
