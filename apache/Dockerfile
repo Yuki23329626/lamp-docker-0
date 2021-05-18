@@ -14,8 +14,9 @@ RUN docker-php-ext-install mysqli
 RUN a2enmod rewrite headers
 
 COPY ./conf/.vimrc /root/
-COPY ./data/* /var/www/html/
+COPY ./data/* /var/www/
 COPY ./conf/apache2.conf /etc/apache2/
 COPY ./conf/000-default.conf /etc/apache2/sites-available/
 COPY ./conf/default-ssl.conf /etc/apache2/sites-available/
 COPY ./ssl/* /etc/apache2/ssl/
+#COPY ./.well-known/pki-validation/* /var/www/.well-known/pki-validation/
