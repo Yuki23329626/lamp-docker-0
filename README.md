@@ -73,6 +73,14 @@ Get into your apache container
 sh attach.sh
 ```
 
+## Check the logs on Apache  
+
+If you want to check the logs while testing the website, you can use the following script.
+
+```bash
+sh get_apache_log.sh
+```
+
 If you want to exit the container, just type "exit" in bash  
 
 ```bash
