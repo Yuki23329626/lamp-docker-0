@@ -24,7 +24,7 @@ if( isset($input) ) {
     mysqli_query($conn,"SET NAMES 'UTF8'");
 
     //query to check whether exist
-    $query = "SELECT `id` FROM `temperature` WHERE `date`='$date'";
+    $query = "SELECT `id` FROM `temperature` WHERE `date`='$date' AND `id`='$id'";
     $result = mysqli_query($conn,$query) or die ('MySQL query 1 error');
     $rowNum = $result->num_rows;
     if($rowNum>0){

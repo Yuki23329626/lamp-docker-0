@@ -81,9 +81,32 @@
         <br/>
         <br/>
         <br/>
-        <label><input id="remember" type="checkbox" style="width:3%;height:3%;">記住員工編號或學號</label><br>
-        <input type="submit" name="Submit" value="Submit" class="mybuttion"/>
+        <label><input id="rememberMe" type="checkbox" style="width:3%;height:3%;">記住員工編號或學號</label><br>
+        <input type="submit" name="Submit" value="Submit" class="mybuttion" onclick="lsRememberMe()"/>
     </form>
+    <script>
+        const rmCheck = document.getElementById("rememberMe"),
+            IDinput = document.getElementById("Idnum");
+
+        <!--localstorage 不為空-->
+        if (localStorage.checkbox && localStorage.checkbox !== "") {
+            rmCheck.setAttribute("checked", "checked");
+            IDinput.value = localStorage.userid;
+        } else {
+            rmCheck.removeAttribute("checked");
+            IDinput.value = "";
+        }
+
+        function lsRememberMe() {
+            if (rmCheck.checked && IDinput.value !== "") {
+                localStorage.userid = IDinput.value;
+                localStorage.checkbox = rmCheck.value;
+            } else {
+                localStorage.userid = "";
+                localStorage.checkbox = "";
+            }
+        }
+    </script>
     <?php
 
     require_once $_SERVER['DOCUMENT_ROOT'] . '/TemperatureRecord/Foundation/HttpReq.php';
@@ -108,7 +131,6 @@
 
         $message = json_encode($message);
         $result = HttpReq::httpPost($url, $message);
-        error_log($result);
         $decodeMessage = json_decode($result);
         if (isset($decodeMessage)){
             if (strcmp($decodeMessage->status, "200") == 0) {
