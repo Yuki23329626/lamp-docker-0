@@ -227,7 +227,8 @@
         error_log("test");
 
         //post to query
-        $url = Config::$ipUrl . '/TemperatureRecord/Manager/insert.php';
+        $url = Config::$ipUrl . 'TemperatureRecord/Manager/insert.php';
+        error_log($url);
         $message = array(
             "id" => $id,
             "temp" => $temp,
@@ -235,11 +236,13 @@
             "date" => date("Y-n-j"),
             "time" => date("H:i:s")
         );
+        error_log("test123");
 
         $message = json_encode($message);
         $result = HttpReq::httpPost($url, $message);
 
         $decodeMessage = json_decode($result);
+        error_log($decodeMessage->status);
         if (isset($decodeMessage)) {
             if (strcmp($decodeMessage->status, "200") == 0) {
                 echo "<script type='text/javascript'>" . "document.querySelector('#notification_message').innerHTML += '成功，已新增今日體溫紀錄'" . "</script>";

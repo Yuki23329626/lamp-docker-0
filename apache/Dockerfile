@@ -19,4 +19,4 @@ COPY ./conf/apache2.conf /etc/apache2/
 COPY ./conf/000-default.conf /etc/apache2/sites-available/
 COPY ./conf/default-ssl.conf /etc/apache2/sites-available/
 COPY ./ssl/* /etc/apache2/ssl/
-#COPY ./.well-known/pki-validation/* /var/www/.well-known/pki-validation/
+COPY ./conf/php.ini-development /usr/local/etc/php/
