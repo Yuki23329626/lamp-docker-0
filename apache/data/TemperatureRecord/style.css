@@ -1,0 +1,26 @@
+h1{
+    text-align: center;
+    font-size: 320%;
+}
+form{
+    font-size: 301%;
+    text-align: center;
+}
+
+.mytext{
+    width :80%;
+    height :7%;
+    font-size:120%
+}
+.mybuttion{
+    text-align: center;
+    width: 80%;
+    height: 7%;
+    font-size: 150%;
+}
+.myselect{
+    width:80%;
+    height: 7%;
+    font-size: 50%;
+}
+optgroup { font-size:150%; }
